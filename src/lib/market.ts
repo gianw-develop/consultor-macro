@@ -255,7 +255,7 @@ function getCoreBias(snapshot: {
     if (snapshot.change < 0) {
       return {
         bias: "expansion" as const,
-        note: "Presión bajista favorece apetito por riesgo",
+        note: snapshot.key === "us10y" ? "Yield baja = presión sale de bonos → favorable índices" : "Dólar débil = liquidez entra a riesgo",
         expansion: true,
         decline: false,
       };
@@ -264,7 +264,7 @@ function getCoreBias(snapshot: {
     if (snapshot.change > 0) {
       return {
         bias: "decline" as const,
-        note: "Subida presiona valuaciones y favorece defensiva",
+        note: snapshot.key === "us10y" ? "Yield sube = presión para acciones e índices" : "Dólar fuerte = liquidez sale de riesgo",
         expansion: false,
         decline: true,
       };
@@ -275,7 +275,7 @@ function getCoreBias(snapshot: {
     if (snapshot.change > 0) {
       return {
         bias: "expansion" as const,
-        note: "Carry trade activo y soporte para riesgo",
+        note: "Carry trade activo = bullish",
         expansion: true,
         decline: false,
       };
@@ -284,7 +284,7 @@ function getCoreBias(snapshot: {
     if (snapshot.change < 0) {
       return {
         bias: "decline" as const,
-        note: "Desarme de carry trade y salida de riesgo",
+        note: "Carry trade se deshace = riesgo-off = bearish",
         expansion: false,
         decline: true,
       };
@@ -295,7 +295,7 @@ function getCoreBias(snapshot: {
     if (snapshot.change <= 0.2) {
       return {
         bias: snapshot.change < 0 ? ("expansion" as const) : ("stable" as const),
-        note: snapshot.change < 0 ? "Volatilidad relajándose" : "Volatilidad estable",
+        note: snapshot.change < 0 ? "Mercado cómodo comprando" : "Mercado cómodo comprando",
         expansion: true,
         decline: false,
       };
@@ -304,7 +304,7 @@ function getCoreBias(snapshot: {
     if (snapshot.change > 0.2) {
       return {
         bias: "decline" as const,
-        note: "Volatilidad subiendo y menor apetito por riesgo",
+        note: "Mercado busca protección",
         expansion: false,
         decline: true,
       };
@@ -344,13 +344,13 @@ function evaluateCondition(coreVariables: MarketSnapshot[]): ConditionSummary {
   if (expansionCount >= 3 && expansionCount > declineCount) {
     return {
       regime: "expansion",
-      title: "🔵 EXPANSIÓN",
+      title: "🔵 EXPANSIÓN — BUSCAR COMPRAS",
       shortLabel: "🔵",
       narrative:
-        "Flujo favorece riesgo. Buscar compras en retrocesos de US100, SP500 y US30.",
+        "Flujo institucional favorece riesgo. Comprar retrocesos en US100 / SP500 / US30.",
       score: expansionCount,
       total: 4,
-      strengthLabel: expansionCount === 4 ? "Señal fuerte" : "Señal moderada",
+      strengthLabel: expansionCount === 4 ? "Señal FUERTE — alta confianza" : `Señal MODERADA — ${getContradictions("expansion").join(", ")}`,
       contradictions: expansionCount === 4 ? [] : getContradictions("expansion"),
     };
   }
@@ -358,25 +358,25 @@ function evaluateCondition(coreVariables: MarketSnapshot[]): ConditionSummary {
   if (declineCount >= 3 && declineCount > expansionCount) {
     return {
       regime: "decline",
-      title: "🔴 CAÍDA",
+      title: "🔴 CAÍDA — BUSCAR VENTAS",
       shortLabel: "🔴",
       narrative:
-        "Flujo sale de riesgo. Buscar ventas en rebotes de US100, SP500 y US30.",
+        "Flujo sale de riesgo. Vender rebotes en US100 / SP500 / US30.",
       score: declineCount,
       total: 4,
-      strengthLabel: declineCount === 4 ? "Señal fuerte" : "Señal moderada",
+      strengthLabel: declineCount === 4 ? "Señal FUERTE — alta confianza" : `Señal MODERADA — ${getContradictions("decline").join(", ")}`,
       contradictions: declineCount === 4 ? [] : getContradictions("decline"),
     };
   }
 
   return {
     regime: "neutral",
-    title: "🟡 NEUTRAL",
+    title: "🟡 NEUTRAL — NO OPERAR",
     shortLabel: "🟡",
-    narrative: "Sin alineación macro clara. Esperar confirmación.",
+    narrative: "Variables contradictorias. Esperar alineación.",
     score: Math.max(expansionCount, declineCount),
     total: 4,
-    strengthLabel: "Sin alineación clara",
+    strengthLabel: "Sin alineación — ESPERAR",
     contradictions: [],
   };
 }
