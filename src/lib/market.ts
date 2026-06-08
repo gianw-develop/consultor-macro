@@ -344,8 +344,8 @@ function evaluateCondition(coreVariables: MarketSnapshot[]): ConditionSummary {
   if (expansionCount >= 3 && expansionCount > declineCount) {
     return {
       regime: "expansion",
-      title: "🔵 EXPANSIÓN — BUSCAR COMPRAS",
-      shortLabel: "🔵",
+      title: "BUSCAR COMPRAS",
+      shortLabel: "🟢",
       narrative:
         "Flujo institucional favorece riesgo. Comprar retrocesos en US100 / SP500 / US30.",
       score: expansionCount,
@@ -358,7 +358,7 @@ function evaluateCondition(coreVariables: MarketSnapshot[]): ConditionSummary {
   if (declineCount >= 3 && declineCount > expansionCount) {
     return {
       regime: "decline",
-      title: "🔴 CAÍDA — BUSCAR VENTAS",
+      title: "BUSCAR VENTAS",
       shortLabel: "🔴",
       narrative:
         "Flujo sale de riesgo. Vender rebotes en US100 / SP500 / US30.",
@@ -371,7 +371,7 @@ function evaluateCondition(coreVariables: MarketSnapshot[]): ConditionSummary {
 
   return {
     regime: "neutral",
-    title: "🟡 NEUTRAL — NO OPERAR",
+    title: "NO OPERAR",
     shortLabel: "🟡",
     narrative: "Variables contradictorias. Esperar alineación.",
     score: Math.max(expansionCount, declineCount),

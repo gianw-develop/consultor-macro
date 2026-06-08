@@ -23,8 +23,8 @@ function getTodayEvents(schedule: DashboardData['weeklySchedule']) {
 
 const regimeStyles = {
   expansion: {
-    card: "border-blue-200 bg-blue-50 text-blue-900",
-    badge: "bg-blue-100 text-blue-800",
+    card: "border-green-200 bg-green-50 text-green-900",
+    badge: "bg-green-100 text-green-800",
   },
   decline: {
     card: "border-red-200 bg-red-50 text-red-900",
@@ -64,7 +64,7 @@ function getBiasBadge(snapshot: MarketSnapshot) {
   if (snapshot.bias === "expansion") {
     return {
       label: "✅ Expansión",
-      className: "bg-blue-100 text-blue-700",
+      className: "bg-green-100 text-green-700",
     };
   }
 
