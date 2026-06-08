@@ -1,0 +1,37 @@
+[
+  {
+    "day": "Lunes",
+    "date": "2026-06-08",
+    "name": "Fed Speeches",
+    "timeEt": "10:00 AM ET",
+    "impact": "medium"
+  },
+  {
+    "day": "Martes",
+    "date": "2026-06-09",
+    "name": "Bond Auctions",
+    "timeEt": "1:00 PM ET",
+    "impact": "medium"
+  },
+  {
+    "day": "Miércoles",
+    "date": "2026-06-10",
+    "name": "CPI",
+    "timeEt": "8:30 AM ET",
+    "impact": "high"
+  },
+  {
+    "day": "Jueves",
+    "date": "2026-06-11",
+    "name": "Jobless Claims",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium"
+  },
+  {
+    "day": "Viernes",
+    "date": "2026-06-12",
+    "name": "PPI",
+    "timeEt": "8:30 AM ET",
+    "impact": "high"
+  }
+]

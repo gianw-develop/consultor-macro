@@ -1,0 +1,466 @@
+import economicEvents from "@/data/economic-events.json";
+import { formatEtTimeLabel, getEtDateKey } from "@/lib/date";
+import type {
+  ConditionSummary,
+  DashboardData,
+  ImpactLevel,
+  MarketSnapshot,
+  Regime,
+  WeeklyScheduleDay,
+} from "@/lib/types";
+
+type YahooChartResponse = {
+  chart?: {
+    result?: Array<{
+      meta?: {
+        previousClose?: number;
+      };
+      indicators?: {
+        quote?: Array<{
+          close?: Array<number | null>;
+        }>;
+      };
+    }>;
+    error?: {
+      description?: string;
+    } | null;
+  };
+};
+
+type InstrumentConfig = {
+  key: string;
+  label: string;
+  symbol: string;
+  precision: number;
+  unit?: "percent";
+  transformValue?: (value: number) => number;
+  changePrecision?: number;
+};
+
+const CORE_VARIABLES = [
+  {
+    key: "us10y",
+    label: "US10Y",
+    symbol: "^TNX",
+    precision: 2,
+    unit: "percent" as const,
+    transformValue: (value: number) => value / 10,
+    changePrecision: 2,
+  },
+  {
+    key: "dxy",
+    label: "DXY",
+    symbol: "DX-Y.NYB",
+    precision: 2,
+  },
+  {
+    key: "usdjpy",
+    label: "USDJPY",
+    symbol: "USDJPY=X",
+    precision: 2,
+  },
+  {
+    key: "vix",
+    label: "VIX",
+    symbol: "^VIX",
+    precision: 2,
+  },
+] satisfies InstrumentConfig[];
+
+const CONTEXT_VARIABLES = [
+  {
+    key: "wti",
+    label: "Petróleo WTI",
+    symbol: "CL=F",
+    precision: 2,
+  },
+  {
+    key: "brent",
+    label: "Brent",
+    symbol: "BZ=F",
+    precision: 2,
+  },
+] satisfies InstrumentConfig[];
+
+const FUTURES_VARIABLES = [
+  {
+    key: "es",
+    label: "ES",
+    symbol: "ES=F",
+    precision: 2,
+  },
+  {
+    key: "nq",
+    label: "NQ",
+    symbol: "NQ=F",
+    precision: 2,
+  },
+  {
+    key: "ym",
+    label: "YM",
+    symbol: "YM=F",
+    precision: 2,
+  },
+] satisfies InstrumentConfig[];
+
+function formatNumber(value: number, precision: number) {
+  return new Intl.NumberFormat("en-US", {
+    minimumFractionDigits: precision,
+    maximumFractionDigits: precision,
+  }).format(value);
+}
+
+function formatPrice(value: number | null, config: InstrumentConfig) {
+  if (value === null) {
+    return "Sin datos";
+  }
+
+  const transformed = config.transformValue ? config.transformValue(value) : value;
+  const formatted = formatNumber(transformed, config.precision);
+
+  if (config.unit === "percent") {
+    return `${formatted}%`;
+  }
+
+  if (config.key === "wti" || config.key === "brent") {
+    return `$${formatted}`;
+  }
+
+  return formatted;
+}
+
+function formatChange(value: number | null, percent: number | null, config: InstrumentConfig) {
+  if (value === null || percent === null) {
+    return "Sin datos";
+  }
+
+  const transformed = config.transformValue ? config.transformValue(value) : value;
+  const precision = config.changePrecision ?? config.precision;
+  const sign = transformed > 0 ? "+" : "";
+  const formattedValue = `${sign}${formatNumber(transformed, precision)}`;
+  const formattedPercent = `${percent > 0 ? "+" : ""}${formatNumber(percent, 2)}%`;
+
+  if (config.unit === "percent") {
+    return `${formattedValue} pts`;
+  }
+
+  return `${formattedValue} · ${formattedPercent}`;
+}
+
+function getMovement(change: number | null): MarketSnapshot["movement"] {
+  if (change === null) {
+    return "missing";
+  }
+
+  if (change > 0) {
+    return "up";
+  }
+
+  if (change < 0) {
+    return "down";
+  }
+
+  return "flat";
+}
+
+async function fetchYahooSnapshot(config: InstrumentConfig) {
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(config.symbol)}?interval=1d&range=5d`;
+
+  try {
+    const response = await fetch(url, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const payload = (await response.json()) as YahooChartResponse;
+    const result = payload.chart?.result?.[0];
+    const closes = result?.indicators?.quote?.[0]?.close?.filter(
+      (value): value is number => typeof value === "number",
+    );
+
+    if (!closes || closes.length === 0) {
+      throw new Error("No close data");
+    }
+
+    const current = closes.at(-1) ?? null;
+    const previous = closes.at(-2) ?? result?.meta?.previousClose ?? null;
+
+    if (current === null || previous === null) {
+      throw new Error("Incomplete close data");
+    }
+
+    const change = current - previous;
+    const changePercent = previous === 0 ? null : (change / previous) * 100;
+
+    return {
+      current,
+      previous,
+      change,
+      changePercent,
+      available: true,
+    };
+  } catch {
+    return {
+      current: null,
+      previous: null,
+      change: null,
+      changePercent: null,
+      available: false,
+    };
+  }
+}
+
+function buildSnapshot(
+  config: InstrumentConfig,
+  values: Awaited<ReturnType<typeof fetchYahooSnapshot>>,
+  bias: MarketSnapshot["bias"] = "neutral",
+  note = "Sin lectura disponible",
+): MarketSnapshot {
+  return {
+    key: config.key,
+    label: config.label,
+    symbol: config.symbol,
+    current: values.current,
+    previous: values.previous,
+    change: values.change,
+    changePercent: values.changePercent,
+    available: values.available,
+    priceLabel: formatPrice(values.current, config),
+    changeLabel: formatChange(values.change, values.changePercent, config),
+    movement: getMovement(values.change),
+    bias: values.available ? bias : "missing",
+    note: values.available ? note : "Datos no disponibles — verificar manualmente",
+  };
+}
+
+function getCoreBias(snapshot: {
+  key: string;
+  change: number | null;
+  available: boolean;
+}) {
+  if (!snapshot.available || snapshot.change === null) {
+    return {
+      bias: "missing" as const,
+      note: "Datos no disponibles — verificar manualmente",
+      expansion: false,
+      decline: false,
+    };
+  }
+
+  if (snapshot.key === "us10y" || snapshot.key === "dxy") {
+    if (snapshot.change < 0) {
+      return {
+        bias: "expansion" as const,
+        note: "Presión bajista favorece apetito por riesgo",
+        expansion: true,
+        decline: false,
+      };
+    }
+
+    if (snapshot.change > 0) {
+      return {
+        bias: "decline" as const,
+        note: "Subida presiona valuaciones y favorece defensiva",
+        expansion: false,
+        decline: true,
+      };
+    }
+  }
+
+  if (snapshot.key === "usdjpy") {
+    if (snapshot.change > 0) {
+      return {
+        bias: "expansion" as const,
+        note: "Carry trade activo y soporte para riesgo",
+        expansion: true,
+        decline: false,
+      };
+    }
+
+    if (snapshot.change < 0) {
+      return {
+        bias: "decline" as const,
+        note: "Desarme de carry trade y salida de riesgo",
+        expansion: false,
+        decline: true,
+      };
+    }
+  }
+
+  if (snapshot.key === "vix") {
+    if (snapshot.change <= 0.2) {
+      return {
+        bias: snapshot.change < 0 ? ("expansion" as const) : ("stable" as const),
+        note: snapshot.change < 0 ? "Volatilidad relajándose" : "Volatilidad estable",
+        expansion: true,
+        decline: false,
+      };
+    }
+
+    if (snapshot.change > 0.2) {
+      return {
+        bias: "decline" as const,
+        note: "Volatilidad subiendo y menor apetito por riesgo",
+        expansion: false,
+        decline: true,
+      };
+    }
+  }
+
+  return {
+    bias: "neutral" as const,
+    note: "Lectura sin sesgo claro",
+    expansion: false,
+    decline: false,
+  };
+}
+
+function evaluateCondition(coreVariables: MarketSnapshot[]): ConditionSummary {
+  const expansionAligned = coreVariables.filter((snapshot) => snapshot.bias === "expansion" || snapshot.bias === "stable");
+  const declineAligned = coreVariables.filter((snapshot) => snapshot.bias === "decline");
+
+  const expansionCount = expansionAligned.length;
+  const declineCount = declineAligned.length;
+
+  const getContradictions = (regime: Regime) =>
+    coreVariables
+      .filter((snapshot) => {
+        if (!snapshot.available) {
+          return false;
+        }
+
+        if (regime === "expansion") {
+          return !(snapshot.bias === "expansion" || snapshot.bias === "stable");
+        }
+
+        return snapshot.bias !== "decline";
+      })
+      .map((snapshot) => snapshot.label);
+
+  if (expansionCount >= 3 && expansionCount > declineCount) {
+    return {
+      regime: "expansion",
+      title: "🔵 EXPANSIÓN",
+      shortLabel: "🔵",
+      narrative:
+        "Flujo favorece riesgo. Buscar compras en retrocesos de US100, SP500 y US30.",
+      score: expansionCount,
+      total: 4,
+      strengthLabel: expansionCount === 4 ? "Señal fuerte" : "Señal moderada",
+      contradictions: expansionCount === 4 ? [] : getContradictions("expansion"),
+    };
+  }
+
+  if (declineCount >= 3 && declineCount > expansionCount) {
+    return {
+      regime: "decline",
+      title: "🔴 CAÍDA",
+      shortLabel: "🔴",
+      narrative:
+        "Flujo sale de riesgo. Buscar ventas en rebotes de US100, SP500 y US30.",
+      score: declineCount,
+      total: 4,
+      strengthLabel: declineCount === 4 ? "Señal fuerte" : "Señal moderada",
+      contradictions: declineCount === 4 ? [] : getContradictions("decline"),
+    };
+  }
+
+  return {
+    regime: "neutral",
+    title: "🟡 NEUTRAL",
+    shortLabel: "🟡",
+    narrative: "Sin alineación macro clara. Esperar confirmación.",
+    score: Math.max(expansionCount, declineCount),
+    total: 4,
+    strengthLabel: "Sin alineación clara",
+    contradictions: [],
+  };
+}
+
+function buildWeeklySchedule() {
+  const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+  const allowedEvents = new Set([
+    "CPI",
+    "PPI",
+    "NFP",
+    "PCE",
+    "FOMC",
+    "GDP",
+    "Jobless Claims",
+    "Bond Auctions",
+    "Fed Speeches",
+  ]);
+
+  const filtered = (economicEvents as Array<{
+    day: string;
+    name: string;
+    timeEt: string;
+    impact: ImpactLevel;
+  }>).filter((event) => allowedEvents.has(event.name));
+
+  return days.map<WeeklyScheduleDay>((day) => ({
+    day,
+    events: filtered
+      .filter((event) => event.day === day)
+      .map((event) => ({
+        name: event.name,
+        timeEt: event.timeEt,
+        impact: event.impact,
+      })),
+  }));
+}
+
+async function buildMarketGroup(configs: InstrumentConfig[]) {
+  const values = await Promise.all(configs.map((config) => fetchYahooSnapshot(config)));
+
+  return configs.map((config, index) => buildSnapshot(config, values[index], "neutral", "Lectura de mercado"));
+}
+
+export async function getDashboardData(): Promise<DashboardData> {
+  const fetchedAt = new Date();
+  const coreValues = await Promise.all(
+    CORE_VARIABLES.map((config) => fetchYahooSnapshot(config)),
+  );
+
+  const coreVariables = CORE_VARIABLES.map((config, index) => {
+    const values = coreValues[index];
+    const bias = getCoreBias({
+      key: config.key,
+      change: values.change,
+      available: values.available,
+    });
+
+    return buildSnapshot(config, values, bias.bias, bias.note);
+  });
+
+  const [macroContext, futures] = await Promise.all([
+    buildMarketGroup(CONTEXT_VARIABLES),
+    buildMarketGroup(FUTURES_VARIABLES),
+  ]);
+
+  const condition = evaluateCondition(coreVariables);
+  const unavailable = [...coreVariables, ...macroContext, ...futures]
+    .filter((snapshot) => !snapshot.available)
+    .map((snapshot) => snapshot.label);
+
+  const warnings =
+    unavailable.length > 0
+      ? [`Sin datos en: ${unavailable.join(", ")}`]
+      : [];
+
+  return {
+    fetchedAt: fetchedAt.toISOString(),
+    etDateKey: getEtDateKey(fetchedAt),
+    lastUpdatedEt: formatEtTimeLabel(fetchedAt),
+    coreVariables,
+    macroContext,
+    futures,
+    weeklySchedule: buildWeeklySchedule(),
+    condition,
+    warnings,
+  };
+}

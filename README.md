@@ -1,36 +1,124 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Consultor Macro
 
-## Getting Started
+Dashboard pre-market personal para swing trading de índices con lectura macro de flujo institucional.
 
-First, run the development server:
+## Qué hace
+
+- Evalúa si el entorno está en `EXPANSIÓN`, `CAÍDA` o `NEUTRAL`
+- Usa Yahoo Finance como fuente principal sin API key
+- Refresca datos cada 5 minutos
+- Protege el acceso con password simple y cookie HttpOnly de 30 días
+- Muestra contexto adicional de petróleo, futuros y calendario económico semanal
+- Guarda un historial liviano de condiciones en `localStorage`
+
+## Stack
+
+- Next.js 16 App Router
+- TypeScript
+- Tailwind CSS 4
+
+## Variables de entorno
+
+Crea un archivo `.env.local`:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+SITE_PASSWORD="macro2026"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Si no defines `SITE_PASSWORD`, el proyecto usa `macro2026` como valor por defecto para facilitar el primer arranque local.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Desarrollo local
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm install
+npm run dev
+```
 
-## Learn More
+Abre `http://localhost:3000`.
 
-To learn more about Next.js, take a look at the following resources:
+## Build de producción
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```bash
+npm run build
+npm start
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Fuente de datos
 
-## Deploy on Vercel
+Símbolos usados desde Yahoo Finance:
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `^TNX` → US10Y
+- `DX-Y.NYB` → DXY
+- `USDJPY=X` → USDJPY
+- `^VIX` → VIX
+- `CL=F` → WTI
+- `BZ=F` → Brent
+- `ES=F` → ES
+- `NQ=F` → NQ
+- `YM=F` → YM
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Si Yahoo no responde o algún símbolo falla, la UI mantiene el dashboard operativo y muestra mensajes de disponibilidad parcial.
+
+## Calendario económico semanal
+
+El calendario está en:
+
+- `src/data/economic-events.json`
+
+Puedes actualizarlo manualmente cada semana sin tocar lógica de la app. Mantén solo eventos relevantes para tu proceso:
+
+- CPI
+- PPI
+- NFP
+- PCE
+- FOMC
+- GDP
+- Jobless Claims
+- Bond Auctions
+- Fed Speeches
+
+## Flujo de autenticación
+
+- Pantalla de login minimalista
+- Password enviada a `POST /api/auth/login`
+- Cookie HttpOnly válida por 30 días
+- `POST /api/auth/logout` elimina la sesión
+
+## Crear repo en GitHub y subir el proyecto
+
+1. Crea un repositorio nuevo en GitHub
+2. Copia la URL remota del repo
+3. Ejecuta:
+
+```bash
+git remote add origin <TU_URL_DE_GITHUB>
+git push -u origin main
+```
+
+## Conectar a Vercel
+
+1. Entra a Vercel
+2. Importa el repositorio de GitHub
+3. Framework detectado: Next.js
+4. Añade la variable de entorno:
+
+```bash
+SITE_PASSWORD=tu_password_real
+```
+
+5. Despliega
+
+## Apuntar el dominio `consultormacro.com`
+
+1. Abre tu proyecto en Vercel
+2. Ve a `Settings` → `Domains`
+3. Añade `consultormacro.com`
+4. Añade también `www.consultormacro.com` si quieres redirección
+5. Configura en tu DNS los registros que Vercel indique
+6. Espera la validación SSL automática
+
+## Notas operativas
+
+- La hora siempre se muestra en ET
+- El historial de condiciones se guarda en el navegador del usuario
+- La app está optimizada para una sola pantalla y uso móvil
