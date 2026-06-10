@@ -84,7 +84,9 @@ const CONTEXT_VARIABLES = [
 
 const EVENT_REACTIONS: Record<string, string> = {
   "CPI": "Si CPI > esperado → inflación alta → tasas arriba → Índices caen (buscar ventas). Si CPI < esperado → Índices suben (buscar compras).",
+  "Core CPI": "Si Core CPI > esperado → inflación subyacente alta → tasas arriba → Índices caen. Si Core CPI < esperado → alivio → Índices suben.",
   "PPI": "Si PPI > esperado → presión inflacionaria → tasas arriba → Índices caen. Si PPI < esperado → alivio → Índices suben.",
+  "Core PPI": "Si Core PPI > esperado → presión de costos alta → tasas arriba → Índices caen. Si Core PPI < esperado → alivio → Índices suben.",
   "NFP": "Si NFP > esperado → economía fuerte → tasas arriba → Índices caen. Si NFP < esperado → economía débil → tasas abajo → Índices suben.",
   "PCE": "Si PCE > esperado → inflación persistente → tasas arriba → Índices caen. Si PCE < esperado → Índices suben.",
   "FOMC": "Si tono hawkish → tasas arriba → Índices caen. Si tono dovish → tasas abajo → Índices suben. Si neutral → esperar reacción.",
@@ -425,7 +427,9 @@ function mapImpact(impact: string): ImpactLevel {
 
 function normalizeEventName(title: string): string {
   const t = title.toLowerCase();
+  if (t.includes("core cpi")) return "Core CPI";
   if (t.includes("cpi")) return "CPI";
+  if (t.includes("core ppi")) return "Core PPI";
   if (t.includes("ppi")) return "PPI";
   if (t.includes("non-farm") || t.includes("nfp")) return "NFP";
   if (t.includes("pce")) return "PCE";
