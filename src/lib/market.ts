@@ -393,6 +393,68 @@ function evaluateCondition(coreVariables: MarketSnapshot[]): ConditionSummary {
   };
 }
 
+type ForexFactoryEvent = {
+  title: string;
+  country: string;
+  date: string;
+  impact: string;
+  forecast: string;
+  previous: string;
+};
+
+function parseEtTimeLabelFromIso(dateStr: string): string {
+  const d = new Date(dateStr);
+  return d.toLocaleTimeString("en-US", {
+    hour: "numeric",
+    minute: "2-digit",
+    hour12: true,
+    timeZone: "America/New_York",
+  }) + " ET";
+}
+
+function getDayNameFromDate(dateStr: string): string {
+  const d = new Date(dateStr);
+  const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
+  return days[d.getDay()];
+}
+
+function mapImpact(impact: string): ImpactLevel {
+  if (impact === "High") return "high";
+  return "medium";
+}
+
+function normalizeEventName(title: string): string {
+  const t = title.toLowerCase();
+  if (t.includes("cpi")) return "CPI";
+  if (t.includes("ppi")) return "PPI";
+  if (t.includes("non-farm") || t.includes("nfp")) return "NFP";
+  if (t.includes("pce")) return "PCE";
+  if (t.includes("fomc")) return "FOMC";
+  if (t.includes("gdp")) return "GDP";
+  if (t.includes("jobless") || t.includes("unemployment claims")) return "Jobless Claims";
+  if (t.includes("bond auction")) return "Bond Auctions";
+  if (t.includes("fed") && t.includes("speak")) return "Fed Speeches";
+  return "";
+}
+
+async function fetchForexFactoryEvents(): Promise<ForexFactoryEvent[]> {
+  try {
+    const response = await fetch("https://nfs.faireconomy.media/ff_calendar_thisweek.json", {
+      cache: "no-store",
+      signal: AbortSignal.timeout(10000),
+    });
+
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
+
+    const data = (await response.json()) as ForexFactoryEvent[];
+    return data;
+  } catch {
+    return [];
+  }
+}
+
 function buildWeeklySchedule() {
   const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
   const allowedEvents = new Set([
@@ -427,6 +489,44 @@ function buildWeeklySchedule() {
   }));
 }
 
+async function buildWeeklyScheduleFromApi(): Promise<WeeklyScheduleDay[]> {
+  const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+  const apiEvents = await fetchForexFactoryEvents();
+
+  const mappedEvents = apiEvents
+    .filter((event) => event.country === "USD")
+    .map((event) => {
+      const normalizedName = normalizeEventName(event.title);
+      return {
+        normalizedName,
+        dayName: getDayNameFromDate(event.date),
+        timeEt: parseEtTimeLabelFromIso(event.date),
+        impact: mapImpact(event.impact),
+        forecast: event.forecast || undefined,
+        previous: event.previous || undefined,
+        actual: undefined as string | undefined,
+        reaction: normalizedName ? EVENT_REACTIONS[normalizedName] : undefined,
+      };
+    })
+    .filter((event) => event.normalizedName !== "");
+
+  return days.map<WeeklyScheduleDay>((day) => ({
+    day,
+    events: mappedEvents
+      .filter((event) => event.dayName === day)
+      .map((event) => ({
+        name: event.normalizedName,
+        timeEt: event.timeEt,
+        impact: event.impact,
+        reaction: event.reaction,
+        forecast: event.forecast,
+        previous: event.previous,
+        actual: event.actual,
+        status: "upcoming" as const,
+      })),
+  }));
+}
+
 async function buildMarketGroup(configs: InstrumentConfig[]) {
   const values = await Promise.all(configs.map((config) => fetchYahooSnapshot(config)));
 
@@ -450,9 +550,10 @@ export async function getDashboardData(): Promise<DashboardData> {
     return buildSnapshot(config, values, bias.bias, bias.note);
   });
 
-  const [macroContext, futures] = await Promise.all([
+  const [macroContext, futures, weeklySchedule] = await Promise.all([
     buildMarketGroup(CONTEXT_VARIABLES),
     buildMarketGroup(FUTURES_VARIABLES),
+    buildWeeklyScheduleFromApi(),
   ]);
 
   const condition = evaluateCondition(coreVariables);
@@ -472,7 +573,7 @@ export async function getDashboardData(): Promise<DashboardData> {
     coreVariables,
     macroContext,
     futures,
-    weeklySchedule: buildWeeklySchedule(),
+    weeklySchedule,
     condition,
     warnings,
   };

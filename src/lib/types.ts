@@ -32,6 +32,10 @@ export interface WeeklyEvent {
   timeEt: string;
   impact: ImpactLevel;
   reaction?: string;
+  forecast?: string;
+  actual?: string;
+  previous?: string;
+  status?: "upcoming" | "released";
 }
 
 export interface WeeklyScheduleDay {

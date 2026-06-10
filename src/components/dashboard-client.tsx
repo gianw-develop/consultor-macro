@@ -505,6 +505,16 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                               💡 {event.reaction}
                             </div>
                           ) : null}
+                          {(event.forecast || event.previous) ? (
+                            <div className="flex flex-wrap gap-3 text-xs text-slate-500">
+                              {event.forecast ? (
+                                <span>📊 Esperado: <span className="font-medium text-slate-700">{event.forecast}</span></span>
+                              ) : null}
+                              {event.previous ? (
+                                <span>📈 Anterior: <span className="font-medium text-slate-700">{event.previous}</span></span>
+                              ) : null}
+                            </div>
+                          ) : null}
                         </div>
                       ))}
                     </div>
