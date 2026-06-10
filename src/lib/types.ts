@@ -31,6 +31,7 @@ export interface WeeklyEvent {
   name: string;
   timeEt: string;
   impact: ImpactLevel;
+  reaction?: string;
 }
 
 export interface WeeklyScheduleDay {

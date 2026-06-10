@@ -82,6 +82,18 @@ const CONTEXT_VARIABLES = [
   },
 ] satisfies InstrumentConfig[];
 
+const EVENT_REACTIONS: Record<string, string> = {
+  "CPI": "Si CPI > esperado → inflación alta → tasas arriba → Índices caen (buscar ventas). Si CPI < esperado → Índices suben (buscar compras).",
+  "PPI": "Si PPI > esperado → presión inflacionaria → tasas arriba → Índices caen. Si PPI < esperado → alivio → Índices suben.",
+  "NFP": "Si NFP > esperado → economía fuerte → tasas arriba → Índices caen. Si NFP < esperado → economía débil → tasas abajo → Índices suben.",
+  "PCE": "Si PCE > esperado → inflación persistente → tasas arriba → Índices caen. Si PCE < esperado → Índices suben.",
+  "FOMC": "Si tono hawkish → tasas arriba → Índices caen. Si tono dovish → tasas abajo → Índices suben. Si neutral → esperar reacción.",
+  "GDP": "Si GDP > esperado → economía fuerte → tasas arriba → Índices caen. Si GDP < esperado → recesión fear → tasas abajo → Índices suben.",
+  "Jobless Claims": "Si Claims < esperado → economía fuerte → tasas arriba → Índices caen. Si Claims > esperado → economía débil → Índices suben.",
+  "Bond Auctions": "Si demanda débil (yield sube) → presión para tasas → Índices caen. Si demanda fuerte (yield baja) → alivio → Índices suben.",
+  "Fed Speeches": "Si discurso hawkish → tasas arriba → Índices caen. Si dovish → tasas abajo → Índices suben.",
+};
+
 const FUTURES_VARIABLES = [
   {
     key: "es",
@@ -410,6 +422,7 @@ function buildWeeklySchedule() {
         name: event.name,
         timeEt: event.timeEt,
         impact: event.impact,
+        reaction: EVENT_REACTIONS[event.name],
       })),
   }));
 }

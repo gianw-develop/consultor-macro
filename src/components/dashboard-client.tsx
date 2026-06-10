@@ -485,19 +485,26 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                       {day.events.map((event) => (
                         <div
                           key={`${day.day}-${event.name}-${event.timeEt}`}
-                          className="flex flex-col gap-2 rounded-2xl bg-white px-3 py-3 sm:flex-row sm:items-center sm:justify-between"
+                          className="flex flex-col gap-2 rounded-2xl bg-white px-3 py-3"
                         >
-                          <div className="flex items-center gap-2">
-                            <span className="text-sm font-medium text-slate-950">
-                              {event.name}
-                            </span>
-                            <span
-                              className={`inline-flex rounded-full px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${impactStyles[event.impact]}`}
-                            >
-                              {event.impact === "high" ? "Alto" : "Medio"}
-                            </span>
+                          <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
+                            <div className="flex items-center gap-2">
+                              <span className="text-sm font-medium text-slate-950">
+                                {event.name}
+                              </span>
+                              <span
+                                className={`inline-flex rounded-full px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${impactStyles[event.impact]}`}
+                              >
+                                {event.impact === "high" ? "Alto" : "Medio"}
+                              </span>
+                            </div>
+                            <span className="text-sm text-slate-600">{event.timeEt}</span>
                           </div>
-                          <span className="text-sm text-slate-600">{event.timeEt}</span>
+                          {event.reaction ? (
+                            <div className="rounded-lg bg-slate-50 px-3 py-2 text-xs leading-5 text-slate-600">
+                              💡 {event.reaction}
+                            </div>
+                          ) : null}
                         </div>
                       ))}
                     </div>
