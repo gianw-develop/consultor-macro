@@ -4,7 +4,66 @@ import { useEffect, useMemo, useState } from "react";
 import { formatEtDateLabel, formatEtTimeLabel } from "@/lib/date";
 import type { DashboardData, DashboardHistoryEntry, MarketSnapshot } from "@/lib/types";
 
+const EVENT_RESULTS_STORAGE_KEY = "consultor-macro-event-results";
 const HISTORY_STORAGE_KEY = "consultor-macro-history";
+
+function loadEventResults(): Record<string, { userActual: string; verdict: "bullish" | "bearish" | "neutral" }> {
+  if (typeof window === "undefined") return {};
+  try {
+    const raw = window.localStorage.getItem(EVENT_RESULTS_STORAGE_KEY);
+    if (!raw) return {};
+    const parsed = JSON.parse(raw);
+    return typeof parsed === "object" && parsed !== null ? parsed : {};
+  } catch {
+    return {};
+  }
+}
+
+function persistEventResults(results: Record<string, { userActual: string; verdict: "bullish" | "bearish" | "neutral" }>) {
+  window.localStorage.setItem(EVENT_RESULTS_STORAGE_KEY, JSON.stringify(results));
+}
+
+function getVerdict(eventName: string, forecast: string | undefined, userActual: string): "bullish" | "bearish" | "neutral" {
+  if (!forecast || !userActual) return "neutral";
+  
+  const parseValue = (str: string) => {
+    const cleaned = str.replace(/[^0-9.\-]/g, "");
+    return parseFloat(cleaned);
+  };
+  
+  const forecastVal = parseValue(forecast);
+  const actualVal = parseValue(userActual);
+  
+  if (isNaN(forecastVal) || isNaN(actualVal)) return "neutral";
+  
+  // For most economic indicators: lower than expected = bullish (less inflation/pressure)
+  // Exceptions: GDP, NFP (higher can be bullish or bearish depending on context)
+  const lowerIsBullish = ["CPI", "Core CPI", "PPI", "Core PPI", "PCE", "Jobless Claims"].includes(eventName);
+  const higherIsBullish = ["GDP"].includes(eventName);
+  
+  if (lowerIsBullish) {
+    return actualVal < forecastVal ? "bullish" : actualVal > forecastVal ? "bearish" : "neutral";
+  }
+  
+  if (higherIsBullish) {
+    return actualVal > forecastVal ? "bullish" : actualVal < forecastVal ? "bearish" : "neutral";
+  }
+  
+  // Default: NFP, FOMC, etc. - neutral if equal, otherwise depends on context
+  return actualVal === forecastVal ? "neutral" : "neutral";
+}
+
+function getVerdictStyle(verdict: "bullish" | "bearish" | "neutral") {
+  if (verdict === "bullish") return "bg-emerald-100 text-emerald-800 border-emerald-300";
+  if (verdict === "bearish") return "bg-rose-100 text-rose-800 border-rose-300";
+  return "bg-slate-100 text-slate-600 border-slate-300";
+}
+
+function getVerdictLabel(verdict: "bullish" | "bearish" | "neutral") {
+  if (verdict === "bullish") return "🟢 BULLISH - Índices subirán";
+  if (verdict === "bearish") return "🔴 BEARISH - Índices caerán";
+  return "⚪ NEUTRAL - Sin cambio claro";
+}
 
 
 function getActionShort(title: string) {
@@ -163,6 +222,11 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
     return mergeHistory(loadHistory(), initialData);
   });
   const [clock, setClock] = useState(() => new Date());
+  const [eventResults, setEventResults] = useState(() => loadEventResults());
+
+  useEffect(() => {
+    persistEventResults(eventResults);
+  }, [eventResults]);
 
   useEffect(() => {
     persistHistory(history);
@@ -482,9 +546,15 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                         </div>
                       )}
 
-                      {day.events.map((event) => (
+                      {day.events.map((event) => {
+                        const eventKey = `${day.day}-${event.name}-${event.timeEt}`;
+                        const result = eventResults[eventKey];
+                        const userActual = result?.userActual || "";
+                        const verdict = result?.verdict || "neutral";
+                        
+                        return (
                         <div
-                          key={`${day.day}-${event.name}-${event.timeEt}`}
+                          key={eventKey}
                           className="flex flex-col gap-2 rounded-2xl bg-white px-3 py-3"
                         >
                           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -515,8 +585,38 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                               ) : null}
                             </div>
                           ) : null}
+                          
+                          {/* Input para ingresar resultado manual */}
+                          <div className="flex flex-col gap-2 mt-1">
+                            <div className="flex items-center gap-2">
+                              <input
+                                type="text"
+                                placeholder="Ingresar resultado actual..."
+                                value={userActual}
+                                onChange={(e) => {
+                                  const newValue = e.target.value;
+                                  const newVerdict = getVerdict(event.name, event.forecast, newValue);
+                                  setEventResults(prev => ({
+                                    ...prev,
+                                    [eventKey]: { userActual: newValue, verdict: newVerdict }
+                                  }));
+                                }}
+                                className="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
+                              />
+                              {userActual && (
+                                <span className={`rounded-full border px-3 py-1 text-xs font-bold ${getVerdictStyle(verdict)}`}>
+                                  {verdict === "bullish" ? "🟢" : verdict === "bearish" ? "🔴" : "⚪"}
+                                </span>
+                              )}
+                            </div>
+                            {userActual && (
+                              <div className={`rounded-lg border px-3 py-2 text-xs font-bold ${getVerdictStyle(verdict)}`}>
+                                {getVerdictLabel(verdict)}
+                              </div>
+                            )}
+                          </div>
                         </div>
-                      ))}
+                      );})}
                     </div>
                   )}
                 </div>

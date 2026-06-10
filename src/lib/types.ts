@@ -36,6 +36,8 @@ export interface WeeklyEvent {
   actual?: string;
   previous?: string;
   status?: "upcoming" | "released";
+  userActual?: string;
+  verdict?: "bullish" | "bearish" | "neutral";
 }
 
 export interface WeeklyScheduleDay {
