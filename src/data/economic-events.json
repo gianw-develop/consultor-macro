@@ -1,37 +1,122 @@
 [
   {
     "day": "Lunes",
-    "date": "2026-06-08",
-    "name": "Fed Speeches",
-    "timeEt": "10:00 AM ET",
-    "impact": "medium"
+    "name": "NFIB Small Business Index",
+    "timeEt": "6:00 AM ET",
+    "impact": "medium",
+    "forecast": "96.0",
+    "actual": "95.3",
+    "previous": "95.9"
   },
   {
     "day": "Martes",
-    "date": "2026-06-09",
-    "name": "Bond Auctions",
-    "timeEt": "1:00 PM ET",
-    "impact": "medium"
+    "name": "ADP Weekly Employment Change",
+    "timeEt": "8:15 AM ET",
+    "impact": "medium",
+    "actual": "29.0K",
+    "previous": "35.8K"
+  },
+  {
+    "day": "Martes",
+    "name": "Trade Balance",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium",
+    "forecast": "-56.2B",
+    "actual": "-55.9B",
+    "previous": "-60.3B"
+  },
+  {
+    "day": "Martes",
+    "name": "Existing Home Sales",
+    "timeEt": "10:00 AM ET",
+    "impact": "medium",
+    "forecast": "4.07M",
+    "actual": "4.17M",
+    "previous": "4.02M"
   },
   {
     "day": "Miércoles",
-    "date": "2026-06-10",
-    "name": "CPI",
+    "name": "Core CPI m/m",
     "timeEt": "8:30 AM ET",
-    "impact": "high"
+    "impact": "high",
+    "forecast": "0.3%",
+    "actual": "0.2%",
+    "previous": "0.4%",
+    "reaction": "Si Core CPI > esperado → inflación subyacente alta → tasas arriba → Índices caen. Si Core CPI < esperado → alivio → Índices suben."
+  },
+  {
+    "day": "Miércoles",
+    "name": "Core CPI y/y",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "2.9%",
+    "actual": "2.9%",
+    "previous": "2.8%",
+    "reaction": "Igual que el esperado. Neutro."
+  },
+  {
+    "day": "Miércoles",
+    "name": "CPI m/m",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "0.5%",
+    "actual": "0.5%",
+    "previous": "0.6%",
+    "reaction": "Si CPI > esperado → inflación alta → tasas arriba → Índices caen (buscar ventas). Si CPI < esperado → Índices suben (buscar compras)."
+  },
+  {
+    "day": "Miércoles",
+    "name": "CPI y/y",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "4.2%",
+    "actual": "4.2%",
+    "previous": "3.8%",
+    "reaction": "Igual que el esperado. Neutro."
+  },
+  {
+    "day": "Miércoles",
+    "name": "Crude Oil Inventories",
+    "timeEt": "10:30 AM ET",
+    "impact": "medium",
+    "forecast": "-3.0M",
+    "previous": "-8.0M",
+    "reaction": "Si inventario < esperado (menos petróleo) → petróleo sube → inflación presionada → Índices tienden a caer. Si inventario > esperado → alivio inflacionario → Índices suben."
   },
   {
     "day": "Jueves",
-    "date": "2026-06-11",
-    "name": "Jobless Claims",
+    "name": "Unemployment Claims",
     "timeEt": "8:30 AM ET",
-    "impact": "medium"
+    "impact": "medium",
+    "forecast": "220K",
+    "previous": "225K",
+    "reaction": "Si Claims < esperado → economía fuerte → tasas arriba → Índices caen. Si Claims > esperado → economía débil → tasas abajo → Índices suben."
   },
   {
     "day": "Viernes",
-    "date": "2026-06-12",
-    "name": "PPI",
+    "name": "Core PPI m/m",
     "timeEt": "8:30 AM ET",
-    "impact": "high"
+    "impact": "high",
+    "forecast": "0.5%",
+    "previous": "1.0%",
+    "reaction": "Si Core PPI > esperado → presión de costos alta → tasas arriba → Índices caen. Si Core PPI < esperado → alivio → Índices suben."
+  },
+  {
+    "day": "Viernes",
+    "name": "PPI m/m",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "0.7%",
+    "previous": "1.4%",
+    "reaction": "Si PPI > esperado → presión inflacionaria → tasas arriba → Índices caen. Si PPI < esperado → alivio → Índices suben."
+  },
+  {
+    "day": "Viernes",
+    "name": "Prelim UoM Consumer Sentiment",
+    "timeEt": "10:00 AM ET",
+    "impact": "medium",
+    "forecast": "46.1",
+    "previous": "48.2",
+    "reaction": "Si UoM > esperado → confianza alta → consumo fuerte → bullish. Si UoM < esperado → confianza baja → bearish."
   }
 ]

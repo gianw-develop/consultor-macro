@@ -402,6 +402,7 @@ type ForexFactoryEvent = {
   impact: string;
   forecast: string;
   previous: string;
+  actual: string;
 };
 
 function parseEtTimeLabelFromIso(dateStr: string): string {
@@ -508,7 +509,7 @@ async function buildWeeklyScheduleFromApi(): Promise<WeeklyScheduleDay[]> {
         impact: mapImpact(event.impact),
         forecast: event.forecast || undefined,
         previous: event.previous || undefined,
-        actual: undefined as string | undefined,
+        actual: event.actual || undefined,
         reaction: normalizedName ? EVENT_REACTIONS[normalizedName] : undefined,
       };
     })

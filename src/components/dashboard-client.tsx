@@ -7,24 +7,8 @@ import type { DashboardData, DashboardHistoryEntry, MarketSnapshot } from "@/lib
 const EVENT_RESULTS_STORAGE_KEY = "consultor-macro-event-results";
 const HISTORY_STORAGE_KEY = "consultor-macro-history";
 
-function loadEventResults(): Record<string, { userActual: string; verdict: "bullish" | "bearish" | "neutral" }> {
-  if (typeof window === "undefined") return {};
-  try {
-    const raw = window.localStorage.getItem(EVENT_RESULTS_STORAGE_KEY);
-    if (!raw) return {};
-    const parsed = JSON.parse(raw);
-    return typeof parsed === "object" && parsed !== null ? parsed : {};
-  } catch {
-    return {};
-  }
-}
-
-function persistEventResults(results: Record<string, { userActual: string; verdict: "bullish" | "bearish" | "neutral" }>) {
-  window.localStorage.setItem(EVENT_RESULTS_STORAGE_KEY, JSON.stringify(results));
-}
-
-function getVerdict(eventName: string, forecast: string | undefined, userActual: string): "bullish" | "bearish" | "neutral" {
-  if (!forecast || !userActual) return "neutral";
+function getEventVerdict(eventName: string, forecast: string | undefined, actual: string | undefined): "bullish" | "bearish" | "neutral" {
+  if (!forecast || !actual) return "neutral";
   
   const parseValue = (str: string) => {
     const cleaned = str.replace(/[^0-9.\-]/g, "");
@@ -32,12 +16,10 @@ function getVerdict(eventName: string, forecast: string | undefined, userActual:
   };
   
   const forecastVal = parseValue(forecast);
-  const actualVal = parseValue(userActual);
+  const actualVal = parseValue(actual);
   
   if (isNaN(forecastVal) || isNaN(actualVal)) return "neutral";
   
-  // For most economic indicators: lower than expected = bullish (less inflation/pressure)
-  // Exceptions: GDP, NFP (higher can be bullish or bearish depending on context)
   const lowerIsBullish = ["CPI", "Core CPI", "PPI", "Core PPI", "PCE", "Jobless Claims"].includes(eventName);
   const higherIsBullish = ["GDP"].includes(eventName);
   
@@ -49,7 +31,6 @@ function getVerdict(eventName: string, forecast: string | undefined, userActual:
     return actualVal > forecastVal ? "bullish" : actualVal < forecastVal ? "bearish" : "neutral";
   }
   
-  // Default: NFP, FOMC, etc. - neutral if equal, otherwise depends on context
   return actualVal === forecastVal ? "neutral" : "neutral";
 }
 
@@ -222,11 +203,6 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
     return mergeHistory(loadHistory(), initialData);
   });
   const [clock, setClock] = useState(() => new Date());
-  const [eventResults, setEventResults] = useState(() => loadEventResults());
-
-  useEffect(() => {
-    persistEventResults(eventResults);
-  }, [eventResults]);
 
   useEffect(() => {
     persistHistory(history);
@@ -547,14 +523,9 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                       )}
 
                       {day.events.map((event) => {
-                        const eventKey = `${day.day}-${event.name}-${event.timeEt}`;
-                        const result = eventResults[eventKey];
-                        const userActual = result?.userActual || "";
-                        const verdict = result?.verdict || "neutral";
-                        
                         return (
                         <div
-                          key={eventKey}
+                          key={`${day.day}-${event.name}-${event.timeEt}`}
                           className="flex flex-col gap-2 rounded-2xl bg-white px-3 py-3"
                         >
                           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
@@ -575,10 +546,13 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                               💡 {event.reaction}
                             </div>
                           ) : null}
-                          {(event.forecast || event.previous) ? (
+                          {(event.forecast || event.previous || event.actual) ? (
                             <div className="flex flex-wrap gap-3 text-xs text-slate-500">
                               {event.forecast ? (
                                 <span>📊 Esperado: <span className="font-medium text-slate-700">{event.forecast}</span></span>
+                              ) : null}
+                              {event.actual ? (
+                                <span>📋 Actual: <span className="font-bold text-slate-900">{event.actual}</span></span>
                               ) : null}
                               {event.previous ? (
                                 <span>📈 Anterior: <span className="font-medium text-slate-700">{event.previous}</span></span>
@@ -586,35 +560,17 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                             </div>
                           ) : null}
                           
-                          {/* Input para ingresar resultado manual */}
-                          <div className="flex flex-col gap-2 mt-1">
-                            <div className="flex items-center gap-2">
-                              <input
-                                type="text"
-                                placeholder="Ingresar resultado actual..."
-                                value={userActual}
-                                onChange={(e) => {
-                                  const newValue = e.target.value;
-                                  const newVerdict = getVerdict(event.name, event.forecast, newValue);
-                                  setEventResults(prev => ({
-                                    ...prev,
-                                    [eventKey]: { userActual: newValue, verdict: newVerdict }
-                                  }));
-                                }}
-                                className="flex-1 rounded-lg border border-slate-300 bg-white px-3 py-2 text-sm text-slate-700 placeholder:text-slate-400 focus:border-blue-500 focus:outline-none focus:ring-1 focus:ring-blue-500"
-                              />
-                              {userActual && (
-                                <span className={`rounded-full border px-3 py-1 text-xs font-bold ${getVerdictStyle(verdict)}`}>
-                                  {verdict === "bullish" ? "🟢" : verdict === "bearish" ? "🔴" : "⚪"}
-                                </span>
-                              )}
-                            </div>
-                            {userActual && (
-                              <div className={`rounded-lg border px-3 py-2 text-xs font-bold ${getVerdictStyle(verdict)}`}>
-                                {getVerdictLabel(verdict)}
-                              </div>
-                            )}
-                          </div>
+                          {/* Veredicto automático si hay actual */}
+                          {event.actual && event.forecast ? (
+                            (() => {
+                              const verdict = getEventVerdict(event.name, event.forecast, event.actual);
+                              return (
+                                <div className={`rounded-lg border px-3 py-2 text-xs font-bold ${getVerdictStyle(verdict)}`}>
+                                  {getVerdictLabel(verdict)}
+                                </div>
+                              );
+                            })()
+                          ) : null}
                         </div>
                       );})}
                     </div>
