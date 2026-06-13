@@ -460,18 +460,51 @@ async function fetchForexFactoryEvents(): Promise<ForexFactoryEvent[]> {
   }
 }
 
-function buildWeeklySchedule() {
+async function buildWeeklyScheduleFromApi(): Promise<WeeklyScheduleDay[]> {
   const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+  
+  // Intentar API primero
+  const apiEvents = await fetchForexFactoryEvents();
+  
+  if (apiEvents.length > 0) {
+    const mappedEvents = apiEvents
+      .filter((event) => event.country === "USD")
+      .map((event) => {
+        const normalizedName = normalizeEventName(event.title);
+        return {
+          normalizedName,
+          dayName: getDayNameFromDate(event.date),
+          timeEt: parseEtTimeLabelFromIso(event.date),
+          impact: mapImpact(event.impact),
+          forecast: event.forecast || undefined,
+          previous: event.previous || undefined,
+          actual: event.actual || undefined,
+          reaction: normalizedName ? EVENT_REACTIONS[normalizedName] : undefined,
+        };
+      })
+      .filter((event) => event.normalizedName !== "");
+
+    return days.map<WeeklyScheduleDay>((day) => ({
+      day,
+      events: mappedEvents
+        .filter((event) => event.dayName === day)
+        .map((event) => ({
+          name: event.normalizedName,
+          timeEt: event.timeEt,
+          impact: event.impact,
+          reaction: event.reaction,
+          forecast: event.forecast,
+          previous: event.previous,
+          actual: event.actual,
+          status: "upcoming" as const,
+        })),
+    }));
+  }
+  
+  // Fallback al JSON manual si la API no devuelve nada
   const allowedEvents = new Set([
-    "CPI",
-    "PPI",
-    "NFP",
-    "PCE",
-    "FOMC",
-    "GDP",
-    "Jobless Claims",
-    "Bond Auctions",
-    "Fed Speeches",
+    "CPI", "Core CPI", "PPI", "Core PPI", "NFP", "PCE", "FOMC", 
+    "GDP", "Jobless Claims", "Bond Auctions", "Fed Speeches"
   ]);
 
   const filtered = (economicEvents as Array<{
@@ -479,6 +512,10 @@ function buildWeeklySchedule() {
     name: string;
     timeEt: string;
     impact: ImpactLevel;
+    forecast?: string;
+    actual?: string;
+    previous?: string;
+    reaction?: string;
   }>).filter((event) => allowedEvents.has(event.name));
 
   return days.map<WeeklyScheduleDay>((day) => ({
@@ -489,41 +526,7 @@ function buildWeeklySchedule() {
         name: event.name,
         timeEt: event.timeEt,
         impact: event.impact,
-        reaction: EVENT_REACTIONS[event.name],
-      })),
-  }));
-}
-
-async function buildWeeklyScheduleFromApi(): Promise<WeeklyScheduleDay[]> {
-  const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
-  const apiEvents = await fetchForexFactoryEvents();
-
-  const mappedEvents = apiEvents
-    .filter((event) => event.country === "USD")
-    .map((event) => {
-      const normalizedName = normalizeEventName(event.title);
-      return {
-        normalizedName,
-        dayName: getDayNameFromDate(event.date),
-        timeEt: parseEtTimeLabelFromIso(event.date),
-        impact: mapImpact(event.impact),
-        forecast: event.forecast || undefined,
-        previous: event.previous || undefined,
-        actual: event.actual || undefined,
-        reaction: normalizedName ? EVENT_REACTIONS[normalizedName] : undefined,
-      };
-    })
-    .filter((event) => event.normalizedName !== "");
-
-  return days.map<WeeklyScheduleDay>((day) => ({
-    day,
-    events: mappedEvents
-      .filter((event) => event.dayName === day)
-      .map((event) => ({
-        name: event.normalizedName,
-        timeEt: event.timeEt,
-        impact: event.impact,
-        reaction: event.reaction,
+        reaction: event.reaction || EVENT_REACTIONS[event.name],
         forecast: event.forecast,
         previous: event.previous,
         actual: event.actual,
