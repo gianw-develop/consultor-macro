@@ -82,6 +82,20 @@ const CONTEXT_VARIABLES = [
   },
 ] satisfies InstrumentConfig[];
 
+export const EVENT_DISPLAY_NAMES: Record<string, string> = {
+  "CPI": "CPI (Índice de precios al consumidor)",
+  "Core CPI": "Core CPI (Inflación subyacente al consumidor)",
+  "PPI": "PPI (Índice de precios al productor)",
+  "Core PPI": "Core PPI (Inflación subyacente al productor)",
+  "NFP": "NFP (Empleo no agrícola - Non-Farm Payrolls)",
+  "PCE": "PCE (Gasto personal / Inflación preferida por la Fed)",
+  "FOMC": "FOMC (Decisión de tasas de la Fed)",
+  "GDP": "GDP (Producto Interno Bruto)",
+  "Jobless Claims": "Jobless Claims (Solicitudes de desempleo)",
+  "Bond Auctions": "Bond Auctions (Subastas de bonos del Tesoro)",
+  "Fed Speeches": "Fed Speeches (Discursos de la Reserva Federal)",
+};
+
 const EVENT_REACTIONS: Record<string, string> = {
   "CPI": "Si CPI > esperado → inflación alta → tasas arriba → Índices caen (buscar ventas). Si CPI < esperado → Índices suben (buscar compras).",
   "Core CPI": "Si Core CPI > esperado → inflación subyacente alta → tasas arriba → Índices caen. Si Core CPI < esperado → alivio → Índices suben.",

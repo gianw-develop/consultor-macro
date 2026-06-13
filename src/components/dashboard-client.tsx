@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
+import { EVENT_DISPLAY_NAMES } from "@/lib/market";
 import { formatEtDateLabel, formatEtTimeLabel } from "@/lib/date";
 import type { DashboardData, DashboardHistoryEntry, MarketSnapshot } from "@/lib/types";
 
@@ -531,7 +532,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                           <div className="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
                             <div className="flex items-center gap-2">
                               <span className="text-sm font-medium text-slate-950">
-                                {event.name}
+                                {EVENT_DISPLAY_NAMES[event.name] || event.name}
                               </span>
                               <span
                                 className={`inline-flex rounded-full px-2 py-1 text-[11px] font-semibold uppercase tracking-[0.14em] ${impactStyles[event.impact]}`}
