@@ -94,6 +94,20 @@ export const EVENT_DISPLAY_NAMES: Record<string, string> = {
   "Jobless Claims": "Jobless Claims (Solicitudes de desempleo)",
   "Bond Auctions": "Bond Auctions (Subastas de bonos del Tesoro)",
   "Fed Speeches": "Fed Speeches (Discursos de la Reserva Federal)",
+  "Empire State Manufacturing Index": "Empire State Manufacturing Index (Indicador de manufactura NY)",
+  "Industrial Production": "Industrial Production (Producción industrial)",
+  "ADP Weekly Employment Change": "ADP Weekly Employment Change (Cambio semanal empleo ADP)",
+  "Building Permits": "Building Permits (Permisos de construcción)",
+  "Housing Starts": "Housing Starts (Comienzos de construcción de viviendas)",
+  "Import Prices": "Import Prices (Precios de importación)",
+  "Core Retail Sales": "Core Retail Sales (Ventas minoristas sin autos)",
+  "Retail Sales": "Retail Sales (Ventas minoristas)",
+  "Pending Home Sales": "Pending Home Sales (Ventas de viviendas pendientes)",
+  "Crude Oil Inventories": "Crude Oil Inventories (Inventarios de petróleo crudo)",
+  "Philly Fed Manufacturing Index": "Philly Fed Manufacturing Index (Indicador de manufactura Philly)",
+  "Unemployment Claims": "Unemployment Claims (Solicitudes de desempleo)",
+  "President Trump Speaks": "President Trump Speaks (Discurso del Presidente)",
+  "Business Inventories": "Business Inventories (Inventarios empresariales)",
 };
 
 const EVENT_REACTIONS: Record<string, string> = {
