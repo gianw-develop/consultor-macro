@@ -583,69 +583,11 @@ async function fetchForexFactoryEvents(): Promise<ForexFactoryEvent[]> {
   }
 }
 
-async function buildWeeklyScheduleFromApi(): Promise<WeeklyScheduleDay[]> {
+async function buildWeeklyScheduleMerged(): Promise<WeeklyScheduleDay[]> {
   const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
-  
-  // Intentar API primero
-  const apiEvents = await fetchForexFactoryEvents();
-  
-  if (apiEvents.length > 0) {
-    const deduped = new Map<string, any>();
-    
-    apiEvents
-      .filter((event) => event.country === "USD")
-      .forEach((event) => {
-        const normalizedName = normalizeEventName(event.title);
-        if (!normalizedName) return;
-        
-        const dayName = getDayNameFromDate(event.date);
-        const key = `${dayName}-${normalizedName}`;
-        
-        const timeEt = parseEtTimeLabelFromIso(event.date);
-        const existing = deduped.get(key);
-        
-        if (existing) {
-          // Merge data: prefer actual > forecast > previous
-          if (event.actual) existing.actual = event.actual;
-          if (event.forecast && !existing.forecast) existing.forecast = event.forecast;
-          if (event.previous && !existing.previous) existing.previous = event.previous;
-          // Keep earliest time
-          if (timeEt < existing.timeEt) existing.timeEt = timeEt;
-        } else {
-          deduped.set(key, {
-            normalizedName,
-            dayName,
-            timeEt,
-            impact: mapImpact(event.impact),
-            forecast: event.forecast || undefined,
-            previous: event.previous || undefined,
-            actual: event.actual || undefined,
-            reaction: EVENT_REACTIONS[normalizedName],
-          });
-        }
-      });
 
-    const mappedEvents = Array.from(deduped.values());
-
-    return days.map<WeeklyScheduleDay>((day) => ({
-      day,
-      events: mappedEvents
-        .filter((event) => event.dayName === day)
-        .map((event) => ({
-          name: event.normalizedName,
-          timeEt: event.timeEt,
-          impact: event.impact,
-          reaction: event.reaction,
-          forecast: event.forecast,
-          previous: event.previous,
-          actual: event.actual,
-          status: "upcoming" as const,
-        })),
-    }));
-  }
-  
-  // Fallback al JSON manual si la API no devuelve nada
-  const filtered = (economicEvents as Array<{
+  // 1. Cargar SIEMPRE el JSON manual como base
+  const jsonEvents = (economicEvents as Array<{
     day: string;
     name: string;
     timeEt: string;
@@ -656,15 +598,76 @@ async function buildWeeklyScheduleFromApi(): Promise<WeeklyScheduleDay[]> {
     reaction?: string;
   }>);
 
+  const base = new Map<string, any>();
+  jsonEvents.forEach((event) => {
+    const key = `${event.day}-${event.name}`;
+    base.set(key, {
+      name: event.name,
+      day: event.day,
+      timeEt: event.timeEt,
+      impact: event.impact,
+      forecast: event.forecast,
+      previous: event.previous,
+      actual: event.actual,
+      reaction: event.reaction,
+    });
+  });
+
+  // 2. Enriquecer con API de Forex Factory
+  try {
+    const apiEvents = await fetchForexFactoryEvents();
+    if (apiEvents.length > 0) {
+      apiEvents
+        .filter((event) => event.country === "USD")
+        .forEach((event) => {
+          const normalizedName = normalizeEventName(event.title);
+          if (!normalizedName) return;
+
+          const dayName = getDayNameFromDate(event.date);
+          const key = `${dayName}-${normalizedName}`;
+          const timeEt = parseEtTimeLabelFromIso(event.date);
+          const existing = base.get(key);
+
+          if (existing) {
+            // Merge: preferir el más completo (API actual > JSON actual > nada)
+            if (event.actual && event.actual !== existing.forecast) {
+              existing.actual = event.actual;
+            } else if (!existing.actual && event.actual) {
+              existing.actual = event.actual;
+            }
+            if (event.forecast && !existing.forecast) existing.forecast = event.forecast;
+            if (event.previous && !existing.previous) existing.previous = event.previous;
+            if (!existing.timeEt || timeEt < existing.timeEt) existing.timeEt = timeEt;
+            if (event.impact === "High") existing.impact = "high";
+          } else {
+            base.set(key, {
+              name: normalizedName,
+              day: dayName,
+              timeEt,
+              impact: mapImpact(event.impact),
+              forecast: event.forecast || undefined,
+              previous: event.previous || undefined,
+              actual: event.actual || undefined,
+              reaction: EVENT_REACTIONS[normalizedName],
+            });
+          }
+        });
+    }
+  } catch {
+    // Si la API falla, seguimos con el JSON manual solo
+  }
+
+  const allEvents = Array.from(base.values());
+
   return days.map<WeeklyScheduleDay>((day) => ({
     day,
-    events: filtered
+    events: allEvents
       .filter((event) => event.day === day)
       .map((event) => ({
         name: event.name,
         timeEt: event.timeEt,
         impact: event.impact,
-        reaction: event.reaction || EVENT_REACTIONS[event.name],
+        reaction: event.reaction,
         forecast: event.forecast,
         previous: event.previous,
         actual: event.actual,
@@ -699,7 +702,7 @@ export async function getDashboardData(): Promise<DashboardData> {
   const [macroContext, futures, weeklySchedule] = await Promise.all([
     buildMarketGroup(CONTEXT_VARIABLES),
     buildMarketGroup(FUTURES_VARIABLES),
-    buildWeeklyScheduleFromApi(),
+    buildWeeklyScheduleMerged(),
   ]);
 
   const condition = evaluateCondition(coreVariables);
