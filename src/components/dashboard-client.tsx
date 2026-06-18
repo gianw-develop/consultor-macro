@@ -505,10 +505,43 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                 >
                   {/* RESUMEN DIARIO ARRIBA */}
                   {(() => {
+                    const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+                    const todayIndex = new Date().getDay() - 1; // 0 = Monday
+                    const dayIndex = days.indexOf(day.day);
+                    const isPast = dayIndex < todayIndex;
+                    const isToday = dayIndex === todayIndex;
+                    
                     const dv = getDayVerdict(day.events);
-                    const isPast = ["Lunes", "Martes", "Miércoles"].includes(day.day);
-                    const isToday = new Date().getDay() - 1 === ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"].indexOf(day.day);
-                    if (dv.concluded === 0 && !isPast) return null;
+                    
+                    // Si no hay eventos en este día, no mostrar nada
+                    if (day.events.length === 0) return null;
+                    
+                    // Si es día futuro y no hay datos concluidos, mostrar "Próximamente"
+                    if (dayIndex > todayIndex && dv.concluded === 0) return null;
+                    
+                    // Si es hoy y no hay datos aún, mostrar pendiente
+                    if (isToday && dv.concluded === 0) {
+                      return (
+                        <div className="mb-3 rounded-xl border bg-amber-50 text-amber-800 border-amber-300 px-4 py-3">
+                          <div className="font-bold text-sm">🟡 PENDIENTE</div>
+                          <div className="mt-1 text-xs leading-5">
+                            Datos del día aún no publicados. Esperar resultados para veredicto.
+                          </div>
+                        </div>
+                      );
+                    }
+                    
+                    // Si es pasado pero no hay datos concluidos (raro)
+                    if (isPast && dv.concluded === 0) {
+                      return (
+                        <div className="mb-3 rounded-xl border bg-slate-100 text-slate-600 border-slate-300 px-4 py-3">
+                          <div className="font-bold text-sm">⚪ SIN DATOS</div>
+                          <div className="mt-1 text-xs leading-5">
+                            No se registraron resultados para este día.
+                          </div>
+                        </div>
+                      );
+                    }
                     
                     let colorClass = "bg-slate-100 text-slate-700 border-slate-300";
                     let icon = "🟣 ESPERAR";
