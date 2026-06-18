@@ -5,6 +5,7 @@
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "13.2",
+    "actual": "5.7",
     "previous": "19.6",
     "reaction": "Si > esperado → manufactura fuerte → bullish. Si < esperado → debilidad → bearish."
   },
@@ -14,6 +15,7 @@
     "timeEt": "9:15 AM ET",
     "impact": "medium",
     "forecast": "0.3%",
+    "actual": "0.1%",
     "previous": "0.7%",
     "reaction": "Si > esperado → producción fuerte → bullish. Si < esperado → contracción → bearish."
   },
@@ -22,7 +24,7 @@
     "name": "ADP Weekly Employment Change",
     "timeEt": "8:15 AM ET",
     "impact": "medium",
-    "actual": "29.0K",
+    "actual": "25.5K",
     "previous": "29.0K",
     "reaction": "Si > esperado → empleo fuerte → tasas arriba → Índices caen. Si < esperado → alivio → Índices suben."
   },
@@ -32,6 +34,7 @@
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "1.42M",
+    "actual": "1.413M",
     "previous": "1.44M",
     "reaction": "Si > esperado → construcción fuerte → bullish. Si < esperado → debilidad → bearish."
   },
@@ -41,6 +44,7 @@
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "1.43M",
+    "actual": "1.177M",
     "previous": "1.47M",
     "reaction": "Si > esperado → vivienda fuerte → bullish. Si < esperado → debilidad → bearish."
   },
@@ -50,6 +54,7 @@
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "0.9%",
+    "actual": "1.9%",
     "previous": "1.9%",
     "reaction": "Si > esperado → presión inflacionaria → tasas arriba → bearish. Si < esperado → alivio → bullish."
   },
@@ -95,6 +100,7 @@
     "timeEt": "2:00 PM ET",
     "impact": "high",
     "forecast": "3.75%",
+    "actual": "3.75%",
     "previous": "3.75%",
     "reaction": "Si hawkish → tasas arriba → Índices caen. Si dovish → tasas abajo → Índices suben."
   },
