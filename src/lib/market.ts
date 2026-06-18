@@ -506,6 +506,11 @@ export function getEventVerdict(
     return actualVal > forecastVal ? "bullish" : actualVal < forecastVal ? "bearish" : "neutral";
   }
 
+  // Special case: FOMC no change = neutral but bullish (no hike = relief)
+  if (eventName === "FOMC") {
+    return "bullish"; // No rate hike = relief for indices
+  }
+
   return "neutral";
 }
 
