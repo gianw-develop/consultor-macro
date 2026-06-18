@@ -645,11 +645,6 @@ async function buildWeeklyScheduleFromApi(): Promise<WeeklyScheduleDay[]> {
   }
   
   // Fallback al JSON manual si la API no devuelve nada
-  const allowedEvents = new Set([
-    "CPI", "Core CPI", "PPI", "Core PPI", "NFP", "PCE", "FOMC", 
-    "GDP", "Jobless Claims", "Bond Auctions", "Fed Speeches"
-  ]);
-
   const filtered = (economicEvents as Array<{
     day: string;
     name: string;
@@ -659,7 +654,7 @@ async function buildWeeklyScheduleFromApi(): Promise<WeeklyScheduleDay[]> {
     actual?: string;
     previous?: string;
     reaction?: string;
-  }>).filter((event) => allowedEvents.has(event.name));
+  }>);
 
   return days.map<WeeklyScheduleDay>((day) => ({
     day,
