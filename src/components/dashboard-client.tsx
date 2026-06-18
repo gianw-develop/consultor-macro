@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useMemo, useState } from "react";
-import { EVENT_DISPLAY_NAMES } from "@/lib/market";
+import { EVENT_DISPLAY_NAMES, getDayVerdict } from "@/lib/market";
 import { formatEtDateLabel, formatEtTimeLabel } from "@/lib/date";
 import type { DashboardData, DashboardHistoryEntry, MarketSnapshot } from "@/lib/types";
 
@@ -503,6 +503,43 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                       : "border-slate-200 bg-slate-50"
                   }`}
                 >
+                  {/* RESUMEN DIARIO ARRIBA */}
+                  {(() => {
+                    const dv = getDayVerdict(day.events);
+                    const isPast = ["Lunes", "Martes", "Miércoles"].includes(day.day);
+                    const isToday = new Date().getDay() - 1 === ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"].indexOf(day.day);
+                    if (dv.concluded === 0 && !isPast) return null;
+                    
+                    let colorClass = "bg-slate-100 text-slate-700 border-slate-300";
+                    let icon = "🟣 ESPERAR";
+                    if (dv.verdict === "COMPRAR") {
+                      colorClass = "bg-emerald-100 text-emerald-900 border-emerald-300";
+                      icon = "🟢 COMPRAR";
+                    } else if (dv.verdict === "VENDER") {
+                      colorClass = "bg-rose-100 text-rose-900 border-rose-300";
+                      icon = "🔴 VENDER";
+                    } else if (dv.verdict === "NEUTRO") {
+                      colorClass = "bg-amber-100 text-amber-900 border-amber-300";
+                      icon = "🟡 NEUTRO";
+                    }
+                    
+                    return (
+                      <div className={`mb-3 rounded-xl border ${colorClass} px-4 py-3`}>
+                        <div className="flex items-center justify-between">
+                          <div className="font-bold text-sm">
+                            {icon}
+                          </div>
+                          <div className="text-xs font-semibold opacity-80">
+                            {dv.concluded > 0 ? `${dv.bullish}B · ${dv.bearish}S · ${dv.neutral}N` : "Pendiente"}
+                          </div>
+                        </div>
+                        <div className="mt-1 text-xs leading-5 opacity-90">
+                          {dv.conclusion}
+                        </div>
+                      </div>
+                    );
+                  })()}
+
                   <div className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 flex items-center gap-2">
                     {day.day}
                     {new Date().getDay() - 1 === ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"].indexOf(day.day) && (

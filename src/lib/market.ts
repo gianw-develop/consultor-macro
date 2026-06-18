@@ -470,6 +470,96 @@ function normalizeEventName(title: string): string {
   return "";
 }
 
+export function getEventVerdict(
+  eventName: string,
+  forecast: string | undefined,
+  actual: string | undefined
+): "bullish" | "bearish" | "neutral" {
+  if (!forecast || !actual) return "neutral";
+
+  const parseValue = (str: string) => {
+    const cleaned = str.replace(/[^0-9.\-]/g, "");
+    const val = parseFloat(cleaned);
+    return isNaN(val) ? null : val;
+  };
+
+  const forecastVal = parseValue(forecast);
+  const actualVal = parseValue(actual);
+
+  if (forecastVal === null || actualVal === null) return "neutral";
+
+  const lowerIsBullish = [
+    "CPI", "Core CPI", "PPI", "Core PPI", "PCE", "Import Prices",
+    "Jobless Claims", "Unemployment Claims", "Crude Oil Inventories"
+  ];
+  const higherIsBullish = [
+    "GDP", "Empire State Manufacturing Index", "Industrial Production",
+    "Philly Fed Manufacturing Index", "Pending Home Sales",
+    "Building Permits", "Housing Starts", "Retail Sales", "Core Retail Sales"
+  ];
+
+  if (lowerIsBullish.includes(eventName)) {
+    return actualVal < forecastVal ? "bullish" : actualVal > forecastVal ? "bearish" : "neutral";
+  }
+
+  if (higherIsBullish.includes(eventName)) {
+    return actualVal > forecastVal ? "bullish" : actualVal < forecastVal ? "bearish" : "neutral";
+  }
+
+  return "neutral";
+}
+
+export type DayVerdict = "COMPRAR" | "VENDER" | "NEUTRO" | "ESPERAR";
+
+export function getDayVerdict(events: Array<{ name: string; forecast?: string; actual?: string; impact?: string }>): {
+  verdict: DayVerdict;
+  bullish: number;
+  bearish: number;
+  neutral: number;
+  concluded: number;
+  conclusion: string;
+} {
+  let bullish = 0;
+  let bearish = 0;
+  let neutral = 0;
+  let concluded = 0;
+
+  events.forEach((event) => {
+    if (!event.forecast || !event.actual) {
+      return;
+    }
+    concluded++;
+    const v = getEventVerdict(event.name, event.forecast, event.actual);
+    if (v === "bullish") bullish++;
+    else if (v === "bearish") bearish++;
+    else neutral++;
+  });
+
+  const net = bullish - bearish;
+
+  let verdict: DayVerdict;
+  let conclusion: string;
+
+  if (concluded === 0) {
+    verdict = "ESPERAR";
+    conclusion = "Aún no hay resultados. Esperar a que salgan los datos.";
+  } else if (net >= 2 || bullish > bearish && bullish >= 2) {
+    verdict = "COMPRAR";
+    conclusion = `La mayoría de datos favorecen al alza (${bullish} bullish vs ${bearish} bearish). Buscar compras en retrocesos.`;
+  } else if (net <= -2 || bearish > bullish && bearish >= 2) {
+    verdict = "VENDER";
+    conclusion = `La mayoría de datos presionan a la baja (${bearish} bearish vs ${bullish} bullish). Buscar ventas en rebotes.`;
+  } else if (bullish === bearish && bullish > 0) {
+    verdict = "NEUTRO";
+    conclusion = "Datos mixtos y contradictorios. Sin dirección clara.";
+  } else {
+    verdict = "NEUTRO";
+    conclusion = `Resultados neutros o insuficientes (${bullish} bullish, ${bearish} bearish, ${neutral} neutral). Esperar.`;
+  }
+
+  return { verdict, bullish, bearish, neutral, concluded, conclusion };
+}
+
 async function fetchForexFactoryEvents(): Promise<ForexFactoryEvent[]> {
   try {
     const response = await fetch("https://nfs.faireconomy.media/ff_calendar_thisweek.json", {
@@ -495,22 +585,42 @@ async function buildWeeklyScheduleFromApi(): Promise<WeeklyScheduleDay[]> {
   const apiEvents = await fetchForexFactoryEvents();
   
   if (apiEvents.length > 0) {
-    const mappedEvents = apiEvents
+    const deduped = new Map<string, any>();
+    
+    apiEvents
       .filter((event) => event.country === "USD")
-      .map((event) => {
+      .forEach((event) => {
         const normalizedName = normalizeEventName(event.title);
-        return {
-          normalizedName,
-          dayName: getDayNameFromDate(event.date),
-          timeEt: parseEtTimeLabelFromIso(event.date),
-          impact: mapImpact(event.impact),
-          forecast: event.forecast || undefined,
-          previous: event.previous || undefined,
-          actual: event.actual || undefined,
-          reaction: normalizedName ? EVENT_REACTIONS[normalizedName] : undefined,
-        };
-      })
-      .filter((event) => event.normalizedName !== "");
+        if (!normalizedName) return;
+        
+        const dayName = getDayNameFromDate(event.date);
+        const key = `${dayName}-${normalizedName}`;
+        
+        const timeEt = parseEtTimeLabelFromIso(event.date);
+        const existing = deduped.get(key);
+        
+        if (existing) {
+          // Merge data: prefer actual > forecast > previous
+          if (event.actual) existing.actual = event.actual;
+          if (event.forecast && !existing.forecast) existing.forecast = event.forecast;
+          if (event.previous && !existing.previous) existing.previous = event.previous;
+          // Keep earliest time
+          if (timeEt < existing.timeEt) existing.timeEt = timeEt;
+        } else {
+          deduped.set(key, {
+            normalizedName,
+            dayName,
+            timeEt,
+            impact: mapImpact(event.impact),
+            forecast: event.forecast || undefined,
+            previous: event.previous || undefined,
+            actual: event.actual || undefined,
+            reaction: EVENT_REACTIONS[normalizedName],
+          });
+        }
+      });
+
+    const mappedEvents = Array.from(deduped.values());
 
     return days.map<WeeklyScheduleDay>((day) => ({
       day,
