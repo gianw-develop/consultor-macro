@@ -27,28 +27,38 @@ function getExternalLinks(ticker: string) {
 
 export function TenXScreenerPanel({
   candidates,
+  title = "10X Stock Screener",
+  description = "Motor privado para priorizar empresas pequenas con supervivencia, crecimiento y potencial explicable.",
+  eyebrow = "Score empresa 0-100",
+  showUniverseNote = true,
 }: {
   candidates: TenXScreenerResult[];
+  title?: string;
+  description?: string;
+  eyebrow?: string;
+  showUniverseNote?: boolean;
 }) {
   return (
     <section className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
       <div className="mb-4 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <div>
           <h2 className="text-lg font-semibold tracking-tight text-slate-950">
-            10X Stock Screener
+            {title}
           </h2>
           <p className="mt-1 text-sm text-slate-500">
-            Motor privado para priorizar empresas pequenas con supervivencia, crecimiento y potencial explicable.
+            {description}
           </p>
         </div>
         <span className="w-fit rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600">
-          Score empresa 0-100
+          {eyebrow}
         </span>
       </div>
 
-      <div className="mb-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">
-        Universo actual: dataset manual. El radar macro ya prioriza tendencias, pero estas empresas no se descubren solas todavia.
-      </div>
+      {showUniverseNote ? (
+        <div className="mb-4 rounded-2xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm leading-6 text-amber-900">
+          Universo actual: dataset manual. El radar macro ya prioriza tendencias, pero estas empresas no se descubren solas todavia.
+        </div>
+      ) : null}
 
       <div className="grid gap-3 lg:grid-cols-2">
         {candidates.map((candidate, index) => {

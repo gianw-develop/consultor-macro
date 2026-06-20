@@ -36,6 +36,72 @@ type YahooChartResponse = {
   };
 };
 
+type YahooQuoteResponse = {
+  quoteResponse?: {
+    result?: Array<{
+      symbol?: string;
+      shortName?: string;
+      longName?: string;
+      fullExchangeName?: string;
+      exchange?: string;
+      regularMarketPrice?: number;
+      marketCap?: number;
+      averageDailyVolume3Month?: number;
+      averageDailyVolume10Day?: number;
+      sharesOutstanding?: number;
+    }>;
+  };
+};
+
+type YahooRawValue = {
+  raw?: number;
+  fmt?: string;
+};
+
+type YahooQuoteSummaryResponse = {
+  quoteSummary?: {
+    result?: Array<{
+      price?: {
+        shortName?: string;
+        longName?: string;
+        exchangeName?: string;
+        regularMarketPrice?: YahooRawValue;
+        marketCap?: YahooRawValue;
+      };
+      summaryProfile?: {
+        sector?: string;
+        industry?: string;
+      };
+      financialData?: {
+        currentPrice?: YahooRawValue;
+        totalCash?: YahooRawValue;
+        totalDebt?: YahooRawValue;
+        revenueGrowth?: YahooRawValue;
+        grossMargins?: YahooRawValue;
+        ebitdaMargins?: YahooRawValue;
+        profitMargins?: YahooRawValue;
+        freeCashflow?: YahooRawValue;
+        operatingCashflow?: YahooRawValue;
+        totalRevenue?: YahooRawValue;
+      };
+      defaultKeyStatistics?: {
+        enterpriseValue?: YahooRawValue;
+        sharesOutstanding?: YahooRawValue;
+      };
+      majorHoldersBreakdown?: {
+        insidersPercentHeld?: YahooRawValue;
+      };
+      summaryDetail?: {
+        averageVolume?: YahooRawValue;
+        averageVolume10days?: YahooRawValue;
+      };
+    }>;
+    error?: {
+      description?: string;
+    } | null;
+  };
+};
+
 type InstrumentConfig = {
   key: string;
   label: string;
@@ -208,6 +274,12 @@ function formatChange(value: number | null, percent: number | null, config: Inst
   }
 
   return `${formattedValue} · ${formattedPercent}`;
+}
+
+function rawNumber(value: YahooRawValue | number | null | undefined) {
+  if (typeof value === "number") return Number.isFinite(value) ? value : null;
+  if (typeof value?.raw === "number" && Number.isFinite(value.raw)) return value.raw;
+  return null;
 }
 
 function getMovement(change: number | null): MarketSnapshot["movement"] {
@@ -1058,7 +1130,7 @@ function buildTenXExplanation(result: Omit<TenXScreenerResult, "explanation">) {
   return `${result.ticker} queda como ${result.classification} con score ${result.score}/100. Fortalezas: ${strengthText}. Riesgos: ${riskText}.${themeText}${missingText}`;
 }
 
-function scoreTenXCompany(company: TenXCompanyInput): TenXScreenerResult {
+export function scoreTenXCompany(company: TenXCompanyInput): TenXScreenerResult {
   const survival = evaluateSurvival(company);
   const growth = evaluateGrowth(company);
   const potential = evaluatePotential(company);
@@ -1084,6 +1156,187 @@ function scoreTenXCompany(company: TenXCompanyInput): TenXScreenerResult {
     ...baseResult,
     explanation: buildTenXExplanation(baseResult),
   };
+}
+
+async function fetchYahooQuote(ticker: string) {
+  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(ticker)}`;
+
+  try {
+    const response = await fetch(url, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Yahoo quote HTTP ${response.status}`);
+    }
+
+    const payload = (await response.json()) as YahooQuoteResponse;
+    return payload.quoteResponse?.result?.[0] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchYahooQuoteSummary(ticker: string) {
+  const modules = [
+    "price",
+    "summaryProfile",
+    "financialData",
+    "defaultKeyStatistics",
+    "majorHoldersBreakdown",
+    "summaryDetail",
+  ].join(",");
+  const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${encodeURIComponent(ticker)}?modules=${modules}`;
+
+  try {
+    const response = await fetch(url, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Yahoo quoteSummary HTTP ${response.status}`);
+    }
+
+    const payload = (await response.json()) as YahooQuoteSummaryResponse;
+    return payload.quoteSummary?.result?.[0] ?? null;
+  } catch {
+    return null;
+  }
+}
+
+async function fetchYahooDrawdown12mPct(ticker: string) {
+  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1d&range=1y`;
+
+  try {
+    const response = await fetch(url, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(8000),
+    });
+
+    if (!response.ok) {
+      throw new Error(`Yahoo chart HTTP ${response.status}`);
+    }
+
+    const payload = (await response.json()) as YahooChartResponse;
+    const closes = payload.chart?.result?.[0]?.indicators?.quote?.[0]?.close?.filter(
+      (value): value is number => typeof value === "number" && Number.isFinite(value),
+    );
+
+    if (!closes || closes.length < 2) {
+      return null;
+    }
+
+    const current = closes.at(-1);
+    const high = Math.max(...closes);
+
+    if (!current || high <= 0) {
+      return null;
+    }
+
+    return ((current - high) / high) * 100;
+  } catch {
+    return null;
+  }
+}
+
+function estimateTrendFromMargin(value: number | null | undefined): TenXTrend {
+  if (typeof value !== "number") return "unknown";
+  if (value > 0.1) return "stable";
+  if (value > 0) return "stable";
+  return "deteriorating";
+}
+
+export async function analyzeTenXTickerManually(tickerInput: string): Promise<TenXScreenerResult> {
+  const ticker = tickerInput.trim().toUpperCase().replace(/[^A-Z0-9.-]/g, "");
+
+  if (!ticker) {
+    throw new Error("Ticker requerido");
+  }
+
+  const [quote, summary, drawdown12mPct] = await Promise.all([
+    fetchYahooQuote(ticker),
+    fetchYahooQuoteSummary(ticker),
+    fetchYahooDrawdown12mPct(ticker),
+  ]);
+
+  if (!quote && !summary) {
+    throw new Error("No se encontraron datos publicos para ese ticker");
+  }
+
+  const price = rawNumber(summary?.price?.regularMarketPrice) ?? rawNumber(summary?.financialData?.currentPrice) ?? quote?.regularMarketPrice ?? null;
+  const marketCap = rawNumber(summary?.price?.marketCap) ?? quote?.marketCap ?? null;
+  const averageVolume =
+    rawNumber(summary?.summaryDetail?.averageVolume) ??
+    rawNumber(summary?.summaryDetail?.averageVolume10days) ??
+    quote?.averageDailyVolume3Month ??
+    quote?.averageDailyVolume10Day ??
+    null;
+  const avgDailyVolumeUsd = typeof averageVolume === "number" && typeof price === "number" ? averageVolume * price : null;
+  const totalCash = rawNumber(summary?.financialData?.totalCash);
+  const totalDebt = rawNumber(summary?.financialData?.totalDebt);
+  const freeCashflow = rawNumber(summary?.financialData?.freeCashflow);
+  const operatingCashflow = rawNumber(summary?.financialData?.operatingCashflow);
+  const totalRevenue = rawNumber(summary?.financialData?.totalRevenue);
+  const enterpriseValue = rawNumber(summary?.defaultKeyStatistics?.enterpriseValue);
+  const revenueGrowth = rawNumber(summary?.financialData?.revenueGrowth);
+  const grossMargins = rawNumber(summary?.financialData?.grossMargins);
+  const ebitdaMargins = rawNumber(summary?.financialData?.ebitdaMargins);
+  const profitMargins = rawNumber(summary?.financialData?.profitMargins);
+  const insidersPercentHeld = rawNumber(summary?.majorHoldersBreakdown?.insidersPercentHeld);
+  const exchange = summary?.price?.exchangeName ?? quote?.fullExchangeName ?? quote?.exchange;
+  const listedOnMajorExchange = typeof exchange === "string" && !/otc|pink|other otc/i.test(exchange);
+  const cashRunwayMonths =
+    typeof totalCash === "number" && typeof freeCashflow === "number" && freeCashflow < 0
+      ? (totalCash / Math.abs(freeCashflow)) * 12
+      : typeof freeCashflow === "number" && freeCashflow > 0
+        ? 24
+        : null;
+
+  const company: TenXCompanyInput = {
+    ticker,
+    companyName: summary?.price?.longName ?? summary?.price?.shortName ?? quote?.longName ?? quote?.shortName ?? ticker,
+    exchange,
+    sector: summary?.summaryProfile?.sector,
+    industry: summary?.summaryProfile?.industry,
+    marketCapUsd: marketCap,
+    enterpriseValueUsd: enterpriseValue,
+    avgDailyVolumeUsd,
+    sharePrice: price,
+    revenueGrowthYoyPct: typeof revenueGrowth === "number" ? revenueGrowth * 100 : null,
+    grossMarginPct: typeof grossMargins === "number" ? grossMargins * 100 : null,
+    ebitdaMarginTrend: estimateTrendFromMargin(ebitdaMargins),
+    netMarginTrend: estimateTrendFromMargin(profitMargins),
+    freeCashFlowTrend:
+      typeof freeCashflow === "number" || typeof operatingCashflow === "number"
+        ? (freeCashflow ?? operatingCashflow ?? 0) > 0
+          ? "positive_inflection"
+          : "deteriorating"
+        : "unknown",
+    roicTrend: "unknown",
+    cashUsd: totalCash,
+    totalDebtUsd: totalDebt,
+    cashRunwayMonths,
+    sharesOutstandingGrowthPct: null,
+    drawdown12mPct,
+    delistingRisk: listedOnMajorExchange ? false : null,
+    bankruptcyRisk: typeof totalCash === "number" && typeof totalDebt === "number" ? totalCash < totalDebt * 0.1 : null,
+    insiderOwnershipPct: typeof insidersPercentHeld === "number" ? insidersPercentHeld * 100 : null,
+    recentInsiderBuying: null,
+    recentInsiderSelling: null,
+    tamEstimateUsd: null,
+    evToSales:
+      typeof enterpriseValue === "number" && typeof totalRevenue === "number" && totalRevenue > 0
+        ? enterpriseValue / totalRevenue
+        : null,
+    catalysts: null,
+    notes: `Analisis manual por ticker. Sector: ${summary?.summaryProfile?.sector ?? "sin sector"}. Industria: ${summary?.summaryProfile?.industry ?? "sin industria"}.`,
+    dataSource: "Yahoo Finance public snapshot",
+    dataDate: getEtDateKey(new Date()),
+  };
+
+  return scoreTenXCompany(company);
 }
 
 function normalizeSupabaseCompany(row: Record<string, unknown>): TenXCompanyInput {

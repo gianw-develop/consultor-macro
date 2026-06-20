@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { TenXScreenerPanel } from "@/components/tenx-screener-panel";
 import type { TenXRegimeRadarItem, TenXScreenerResult } from "@/lib/types";
 
@@ -24,6 +24,52 @@ export function TenXScreenerClient({
   const [radarItems, setRadarItems] = useState(radar);
   const [isRefreshing, setIsRefreshing] = useState(false);
   const [refreshState, setRefreshState] = useState<string | null>(null);
+  const [manualTicker, setManualTicker] = useState("");
+  const [manualResult, setManualResult] = useState<TenXScreenerResult | null>(null);
+  const [manualError, setManualError] = useState<string | null>(null);
+  const [isAnalyzingManual, setIsAnalyzingManual] = useState(false);
+
+  const analyzeManualTicker = async (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+
+    const ticker = manualTicker.trim().toUpperCase();
+
+    if (!ticker) {
+      setManualError("Escribe un ticker para analizar.");
+      return;
+    }
+
+    setIsAnalyzingManual(true);
+    setManualError(null);
+
+    try {
+      const response = await fetch("/api/10x/analyze", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ ticker }),
+      });
+
+      if (response.status === 401) {
+        window.location.reload();
+        return;
+      }
+
+      const payload = (await response.json()) as TenXScreenerResult | { error?: string };
+
+      if (!response.ok) {
+        throw new Error("error" in payload ? payload.error : "No se pudo analizar el ticker.");
+      }
+
+      setManualResult(payload as TenXScreenerResult);
+      setManualTicker(ticker);
+    } catch (error) {
+      setManualError(error instanceof Error ? error.message : "No se pudo analizar el ticker.");
+    } finally {
+      setIsAnalyzingManual(false);
+    }
+  };
 
   useEffect(() => {
     const refreshData = async () => {
@@ -152,6 +198,66 @@ export function TenXScreenerClient({
           })}
         </div>
       </section>
+
+      <section className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
+        <div className="mb-4 flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
+          <div>
+            <h2 className="text-lg font-semibold tracking-tight text-slate-950">
+              Analisis manual por ticker
+            </h2>
+            <p className="mt-1 text-sm text-slate-500">
+              Escribe una empresa que viste fuera del radar y la pasamos por los filtros 10X disponibles.
+            </p>
+          </div>
+          <span className="w-fit rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold uppercase tracking-[0.16em] text-slate-600">
+            Modo lupa
+          </span>
+        </div>
+
+        <form
+          onSubmit={analyzeManualTicker}
+          className="flex flex-col gap-3 sm:flex-row sm:items-center"
+        >
+          <label className="sr-only" htmlFor="manual-ticker">
+            Ticker
+          </label>
+          <input
+            id="manual-ticker"
+            value={manualTicker}
+            onChange={(event) => setManualTicker(event.target.value.toUpperCase())}
+            placeholder="Ej: AAPL, SOUN, INOD"
+            className="min-h-12 flex-1 rounded-2xl border border-slate-200 bg-slate-50 px-4 text-sm font-semibold uppercase tracking-[0.12em] text-slate-950 outline-none transition placeholder:font-medium placeholder:normal-case placeholder:tracking-normal placeholder:text-slate-400 focus:border-slate-400 focus:bg-white"
+            maxLength={16}
+          />
+          <button
+            type="submit"
+            disabled={isAnalyzingManual}
+            className="min-h-12 rounded-2xl bg-slate-950 px-5 text-sm font-semibold text-white transition hover:bg-slate-800 disabled:cursor-not-allowed disabled:bg-slate-400"
+          >
+            {isAnalyzingManual ? "Analizando..." : "Analizar manual"}
+          </button>
+        </form>
+
+        <p className="mt-3 text-xs leading-5 text-slate-500">
+          Usa datos publicos disponibles. Si faltan balance, insiders o crecimiento, el score lo penaliza como investigacion pendiente.
+        </p>
+
+        {manualError ? (
+          <div className="mt-4 rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
+            {manualError}
+          </div>
+        ) : null}
+      </section>
+
+      {manualResult ? (
+        <TenXScreenerPanel
+          candidates={[manualResult]}
+          title="Resultado manual"
+          description="Lectura puntual del ticker con el mismo marco de supervivencia, crecimiento, potencial y temas macro."
+          eyebrow="Analisis puntual"
+          showUniverseNote={false}
+        />
+      ) : null}
 
       <TenXScreenerPanel candidates={candidates} />
 
