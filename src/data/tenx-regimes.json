@@ -1,0 +1,81 @@
+[
+  {
+    "id": "ai_infrastructure",
+    "name": "IA / semiconductores / data centers",
+    "status": "active",
+    "priority": 5,
+    "thesis": "La demanda de compute, memoria, conectividad y datos para IA sigue dirigiendo capex global.",
+    "keywords": [
+      "ai",
+      "artificial intelligence",
+      "semiconductor",
+      "chip",
+      "memory",
+      "data center",
+      "datacenter",
+      "gpu",
+      "optical",
+      "photonics",
+      "interconnect",
+      "dataset"
+    ],
+    "marketProxies": ["SMH", "SOXX", "BOTZ"]
+  },
+  {
+    "id": "defense_geopolitics",
+    "name": "Defensa / drones / ciberseguridad",
+    "status": "active",
+    "priority": 4,
+    "thesis": "Tension geopolitica y rearme elevan demanda de defensa, vigilancia, autonomia, municion y ciberseguridad.",
+    "keywords": [
+      "defense",
+      "defence",
+      "aerospace",
+      "drone",
+      "missile",
+      "munitions",
+      "surveillance",
+      "cybersecurity",
+      "cyber",
+      "space defense",
+      "security"
+    ],
+    "marketProxies": ["XAR", "ITA", "SHLD"]
+  },
+  {
+    "id": "pandemic_biotech",
+    "name": "Biotech / salud de emergencia",
+    "status": "watch",
+    "priority": 3,
+    "thesis": "Se activa con brotes, pandemias, aprobaciones regulatorias o urgencia sanitaria; sin catalizador queda en observacion.",
+    "keywords": [
+      "biotech",
+      "vaccine",
+      "mrna",
+      "diagnostic",
+      "pandemic",
+      "antiviral",
+      "cell therapy",
+      "clinical",
+      "fda"
+    ],
+    "marketProxies": ["XBI", "IBB"]
+  },
+  {
+    "id": "energy_security",
+    "name": "Energia / nuclear / red electrica",
+    "status": "active",
+    "priority": 2,
+    "thesis": "IA, data centers y seguridad energetica aumentan la importancia de nuclear, red electrica y almacenamiento.",
+    "keywords": [
+      "nuclear",
+      "uranium",
+      "grid",
+      "power",
+      "energy storage",
+      "electric",
+      "infrastructure"
+    ],
+    "marketProxies": ["URA", "NLR", "GRID"]
+  }
+]

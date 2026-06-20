@@ -5,7 +5,6 @@ import { EVENT_DISPLAY_NAMES, getDayVerdict } from "@/lib/market";
 import { formatEtDateLabel, formatEtTimeLabel } from "@/lib/date";
 import type { DashboardData, DashboardHistoryEntry, MarketSnapshot } from "@/lib/types";
 
-const EVENT_RESULTS_STORAGE_KEY = "consultor-macro-event-results";
 const HISTORY_STORAGE_KEY = "consultor-macro-history";
 
 function getEventVerdict(eventName: string, forecast: string | undefined, actual: string | undefined): "bullish" | "bearish" | "neutral" {
@@ -283,14 +282,24 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
               </p>
             </div>
 
-            <button
-              type="button"
-              onClick={handleLogout}
-              disabled={isLoggingOut}
-              className="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
-            >
-              {isLoggingOut ? "Cerrando..." : "Cerrar sesión"}
-            </button>
+            <div className="flex flex-wrap gap-2">
+              <a
+                href="/10x"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+              >
+                Abrir 10X
+              </a>
+              <button
+                type="button"
+                onClick={handleLogout}
+                disabled={isLoggingOut}
+                className="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-100 disabled:cursor-not-allowed disabled:opacity-60"
+              >
+                {isLoggingOut ? "Cerrando..." : "Cerrar sesión"}
+              </button>
+            </div>
           </div>
         </header>
 
@@ -320,8 +329,10 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
           <span className="text-slate-400">·</span>
           <span>Score {data.condition.score}/4</span>
           <span className="text-slate-400">·</span>
-          <span className={getTodayEvents(data.weeklySchedule).length > 0 ? "text-amber-700" : ""}>
-            {getTodayEvents(data.weeklySchedule).length > 0 
+          <span className={!data.session.isTradingDay ? "text-slate-700 font-bold" : getTodayEvents(data.weeklySchedule).length > 0 ? "text-amber-700" : ""}>
+            {!data.session.isTradingDay
+              ? data.session.label
+              : getTodayEvents(data.weeklySchedule).length > 0 
               ? `⚠️ ${getTodayEvents(data.weeklySchedule)[0].name} ${getTodayEvents(data.weeklySchedule)[0].timeEt}` 
               : "Sin noticias hoy ✅"}
           </span>
@@ -355,6 +366,9 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
               {data.condition.narrative}
             </p>
             <div className="flex flex-wrap items-center justify-center gap-2 pt-2 text-sm">
+              <span className="rounded-full bg-white/70 px-3 py-1 font-medium">
+                {data.session.label}
+              </span>
               <span className="rounded-full bg-white/70 px-3 py-1 font-medium">
                 Score: {data.condition.score}/{data.condition.total}
               </span>
