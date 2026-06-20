@@ -23,6 +23,18 @@ type YahooChartResponse = {
     result?: Array<{
       meta?: {
         previousClose?: number;
+        chartPreviousClose?: number;
+        currency?: string;
+        symbol?: string;
+        exchangeName?: string;
+        fullExchangeName?: string;
+        instrumentType?: string;
+        regularMarketPrice?: number;
+        regularMarketVolume?: number;
+        longName?: string;
+        shortName?: string;
+        fiftyTwoWeekHigh?: number;
+        fiftyTwoWeekLow?: number;
       };
       indicators?: {
         quote?: Array<{
@@ -1206,7 +1218,7 @@ async function fetchYahooQuoteSummary(ticker: string) {
   }
 }
 
-async function fetchYahooDrawdown12mPct(ticker: string) {
+async function fetchYahooChartProfile(ticker: string) {
   const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1d&range=1y`;
 
   try {
@@ -1220,22 +1232,32 @@ async function fetchYahooDrawdown12mPct(ticker: string) {
     }
 
     const payload = (await response.json()) as YahooChartResponse;
-    const closes = payload.chart?.result?.[0]?.indicators?.quote?.[0]?.close?.filter(
+    const result = payload.chart?.result?.[0];
+    const closes = result?.indicators?.quote?.[0]?.close?.filter(
       (value): value is number => typeof value === "number" && Number.isFinite(value),
     );
 
     if (!closes || closes.length < 2) {
-      return null;
+      return {
+        meta: result?.meta ?? null,
+        drawdown12mPct: null,
+      };
     }
 
     const current = closes.at(-1);
     const high = Math.max(...closes);
 
     if (!current || high <= 0) {
-      return null;
+      return {
+        meta: result?.meta ?? null,
+        drawdown12mPct: null,
+      };
     }
 
-    return ((current - high) / high) * 100;
+    return {
+      meta: result?.meta ?? null,
+      drawdown12mPct: ((current - high) / high) * 100,
+    };
   } catch {
     return null;
   }
@@ -1255,23 +1277,35 @@ export async function analyzeTenXTickerManually(tickerInput: string): Promise<Te
     throw new Error("Ticker requerido");
   }
 
-  const [quote, summary, drawdown12mPct] = await Promise.all([
+  if (ticker === "APPL") {
+    throw new Error("No encontre APPL. Para Apple usa AAPL.");
+  }
+
+  const [quote, summary, chartProfile] = await Promise.all([
     fetchYahooQuote(ticker),
     fetchYahooQuoteSummary(ticker),
-    fetchYahooDrawdown12mPct(ticker),
+    fetchYahooChartProfile(ticker),
   ]);
 
-  if (!quote && !summary) {
+  const chartMeta = chartProfile?.meta ?? null;
+
+  if (!quote && !summary && !chartMeta) {
     throw new Error("No se encontraron datos publicos para ese ticker");
   }
 
-  const price = rawNumber(summary?.price?.regularMarketPrice) ?? rawNumber(summary?.financialData?.currentPrice) ?? quote?.regularMarketPrice ?? null;
+  const price =
+    rawNumber(summary?.price?.regularMarketPrice) ??
+    rawNumber(summary?.financialData?.currentPrice) ??
+    quote?.regularMarketPrice ??
+    rawNumber(chartMeta?.regularMarketPrice) ??
+    null;
   const marketCap = rawNumber(summary?.price?.marketCap) ?? quote?.marketCap ?? null;
   const averageVolume =
     rawNumber(summary?.summaryDetail?.averageVolume) ??
     rawNumber(summary?.summaryDetail?.averageVolume10days) ??
     quote?.averageDailyVolume3Month ??
     quote?.averageDailyVolume10Day ??
+    rawNumber(chartMeta?.regularMarketVolume) ??
     null;
   const avgDailyVolumeUsd = typeof averageVolume === "number" && typeof price === "number" ? averageVolume * price : null;
   const totalCash = rawNumber(summary?.financialData?.totalCash);
@@ -1285,7 +1319,7 @@ export async function analyzeTenXTickerManually(tickerInput: string): Promise<Te
   const ebitdaMargins = rawNumber(summary?.financialData?.ebitdaMargins);
   const profitMargins = rawNumber(summary?.financialData?.profitMargins);
   const insidersPercentHeld = rawNumber(summary?.majorHoldersBreakdown?.insidersPercentHeld);
-  const exchange = summary?.price?.exchangeName ?? quote?.fullExchangeName ?? quote?.exchange;
+  const exchange = summary?.price?.exchangeName ?? quote?.fullExchangeName ?? quote?.exchange ?? chartMeta?.fullExchangeName ?? chartMeta?.exchangeName;
   const listedOnMajorExchange = typeof exchange === "string" && !/otc|pink|other otc/i.test(exchange);
   const cashRunwayMonths =
     typeof totalCash === "number" && typeof freeCashflow === "number" && freeCashflow < 0
@@ -1296,7 +1330,7 @@ export async function analyzeTenXTickerManually(tickerInput: string): Promise<Te
 
   const company: TenXCompanyInput = {
     ticker,
-    companyName: summary?.price?.longName ?? summary?.price?.shortName ?? quote?.longName ?? quote?.shortName ?? ticker,
+    companyName: summary?.price?.longName ?? summary?.price?.shortName ?? quote?.longName ?? quote?.shortName ?? chartMeta?.longName ?? chartMeta?.shortName ?? ticker,
     exchange,
     sector: summary?.summaryProfile?.sector,
     industry: summary?.summaryProfile?.industry,
@@ -1319,7 +1353,7 @@ export async function analyzeTenXTickerManually(tickerInput: string): Promise<Te
     totalDebtUsd: totalDebt,
     cashRunwayMonths,
     sharesOutstandingGrowthPct: null,
-    drawdown12mPct,
+    drawdown12mPct: chartProfile?.drawdown12mPct ?? null,
     delistingRisk: listedOnMajorExchange ? false : null,
     bankruptcyRisk: typeof totalCash === "number" && typeof totalDebt === "number" ? totalCash < totalDebt * 0.1 : null,
     insiderOwnershipPct: typeof insidersPercentHeld === "number" ? insidersPercentHeld * 100 : null,
