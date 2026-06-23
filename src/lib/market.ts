@@ -33,6 +33,7 @@ type YahooChartResponse = {
         regularMarketVolume?: number;
         longName?: string;
         shortName?: string;
+        firstTradeDate?: number;
         fiftyTwoWeekHigh?: number;
         fiftyTwoWeekLow?: number;
       };
@@ -1241,6 +1242,7 @@ async function fetchYahooChartProfile(ticker: string) {
       return {
         meta: result?.meta ?? null,
         drawdown12mPct: null,
+        closes: [],
       };
     }
 
@@ -1251,12 +1253,14 @@ async function fetchYahooChartProfile(ticker: string) {
       return {
         meta: result?.meta ?? null,
         drawdown12mPct: null,
+        closes,
       };
     }
 
     return {
       meta: result?.meta ?? null,
       drawdown12mPct: ((current - high) / high) * 100,
+      closes,
     };
   } catch {
     return null;
@@ -1268,6 +1272,152 @@ function estimateTrendFromMargin(value: number | null | undefined): TenXTrend {
   if (value > 0.1) return "stable";
   if (value > 0) return "stable";
   return "deteriorating";
+}
+
+function percentChangeFromLookback(closes: number[], sessions: number) {
+  if (closes.length <= sessions) return null;
+
+  const current = closes.at(-1);
+  const previous = closes.at(-1 - sessions);
+
+  if (!current || !previous || previous <= 0) return null;
+
+  return ((current - previous) / previous) * 100;
+}
+
+function estimateAverageDailyMovePct(closes: number[]) {
+  if (closes.length < 3) return null;
+
+  const changes = closes
+    .slice(1)
+    .map((close, index) => {
+      const previous = closes[index];
+      return previous > 0 ? Math.abs((close - previous) / previous) * 100 : null;
+    })
+    .filter((value): value is number => typeof value === "number" && Number.isFinite(value));
+
+  if (changes.length === 0) return null;
+
+  return changes.reduce((sum, value) => sum + value, 0) / changes.length;
+}
+
+function yearsSinceUnixTimestamp(timestamp: number | undefined) {
+  if (typeof timestamp !== "number") return null;
+
+  const years = (Date.now() - timestamp * 1000) / (365.25 * 24 * 60 * 60 * 1000);
+  return Number.isFinite(years) ? years : null;
+}
+
+function formatSignedPct(value: number | null) {
+  if (typeof value !== "number") return "sin datos";
+
+  return `${value >= 0 ? "+" : ""}${value.toFixed(1)}%`;
+}
+
+function applyManualMarketSignal(
+  result: TenXScreenerResult,
+  chartProfile: NonNullable<Awaited<ReturnType<typeof fetchYahooChartProfile>>>,
+  avgDailyVolumeUsd: number | null,
+): TenXScreenerResult {
+  const closes = chartProfile.closes ?? [];
+  const change1m = percentChangeFromLookback(closes, 21);
+  const change3m = percentChangeFromLookback(closes, 63);
+  const change1y = percentChangeFromLookback(closes, Math.min(252, Math.max(2, closes.length - 1)));
+  const averageDailyMovePct = estimateAverageDailyMovePct(closes);
+  const listingAgeYears = yearsSinceUnixTimestamp(chartProfile.meta?.firstTradeDate);
+
+  let growthBonus = 0;
+  let potentialBonus = 0;
+  const strengths: string[] = [];
+  const risks: string[] = [];
+  const alerts: string[] = [];
+
+  if (typeof change1y === "number") {
+    if (change1y >= 150) {
+      growthBonus += 10;
+      strengths.push("precio con expansion 1Y extrema");
+    } else if (change1y >= 75) {
+      growthBonus += 8;
+      strengths.push("precio con expansion 1Y fuerte");
+    } else if (change1y >= 30) {
+      growthBonus += 5;
+      strengths.push("precio con tendencia 1Y positiva");
+    } else if (change1y < -35) {
+      risks.push("tendencia 1Y muy debil");
+    }
+  }
+
+  if (typeof change3m === "number") {
+    if (change3m >= 50) {
+      growthBonus += 6;
+      strengths.push("momentum 3M acelerando");
+    } else if (change3m >= 20) {
+      growthBonus += 4;
+      strengths.push("momentum 3M positivo");
+    } else if (change3m <= -25) {
+      risks.push("momentum 3M deteriorado");
+    }
+  }
+
+  if (typeof change1m === "number") {
+    if (change1m >= 15) {
+      potentialBonus += 3;
+      strengths.push("interes comprador reciente");
+    } else if (change1m <= -15) {
+      risks.push("presion vendedora reciente");
+    }
+  }
+
+  if (typeof avgDailyVolumeUsd === "number") {
+    if (avgDailyVolumeUsd >= 50_000_000) {
+      potentialBonus += 3;
+      strengths.push("liquidez institucional suficiente");
+    } else if (avgDailyVolumeUsd < 1_000_000) {
+      alerts.push("Liquidez manual muy baja");
+      risks.push("poco volumen para entrar/salir con comodidad");
+    }
+  }
+
+  if (typeof averageDailyMovePct === "number") {
+    if (averageDailyMovePct > 9) {
+      alerts.push("Alta volatilidad");
+      risks.push("volatilidad diaria muy elevada");
+    } else if (averageDailyMovePct <= 4) {
+      potentialBonus += 2;
+      strengths.push("volatilidad manejable para seguimiento");
+    }
+  }
+
+  if (typeof listingAgeYears === "number") {
+    if (listingAgeYears <= 7) {
+      potentialBonus += 4;
+      strengths.push("empresa relativamente reciente en bolsa");
+    } else if (listingAgeYears >= 20) {
+      risks.push("empresa madura, menos perfil IPO/early public");
+    }
+  }
+
+  const manualBonus = Math.min(25, growthBonus + potentialBonus);
+  const growthScore = Math.min(40, result.growthScore + growthBonus);
+  const potentialScore = Math.min(30, result.potentialScore + potentialBonus);
+  const score = Math.min(100, result.survivalScore + growthScore + potentialScore);
+  const classification = classifyTenX(score, result.disqualified);
+  const sourceWarning = "fundamentales incompletos por fuente publica";
+  const mergedStrengths = unique([...result.strengths, ...strengths]);
+  const mergedRisks = unique([...result.risks, ...risks, sourceWarning]);
+  const marketSignal = `Senal manual: 1M ${formatSignedPct(change1m)}, 3M ${formatSignedPct(change3m)}, 1Y ${formatSignedPct(change1y)}, drawdown ${formatSignedPct(chartProfile.drawdown12mPct)}, movimiento diario ${formatSignedPct(averageDailyMovePct)}.`;
+
+  return {
+    ...result,
+    score,
+    growthScore,
+    potentialScore,
+    classification,
+    alerts: unique([...result.alerts, ...alerts, `Senal manual +${manualBonus}`]),
+    strengths: mergedStrengths,
+    risks: mergedRisks,
+    explanation: `${result.ticker} queda como ${classification} con score ${score}/100. ${marketSignal} Fortalezas: ${mergedStrengths.slice(0, 3).join(", ") || "sin fortalezas suficientes por datos disponibles"}. Riesgos: ${mergedRisks.slice(0, 3).join(", ") || "sin riesgos criticos detectados"}.`,
+  };
 }
 
 export async function analyzeTenXTickerManually(tickerInput: string): Promise<TenXScreenerResult> {
@@ -1370,7 +1520,9 @@ export async function analyzeTenXTickerManually(tickerInput: string): Promise<Te
     dataDate: getEtDateKey(new Date()),
   };
 
-  return scoreTenXCompany(company);
+  const result = scoreTenXCompany(company);
+
+  return chartProfile ? applyManualMarketSignal(result, chartProfile, avgDailyVolumeUsd) : result;
 }
 
 function normalizeSupabaseCompany(row: Record<string, unknown>): TenXCompanyInput {
