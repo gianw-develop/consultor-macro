@@ -60,73 +60,151 @@
   },
   {
     "day": "Miércoles",
-    "name": "Core Retail Sales",
-    "timeEt": "8:30 AM ET",
-    "impact": "high",
-    "forecast": "0.6%",
-    "previous": "0.7%",
-    "reaction": "Si > esperado → consumo fuerte → tasas arriba → bearish. Si < esperado → alivio → bullish."
+    "name": "Flash Manufacturing PMI",
+    "timeEt": "9:45 AM ET",
+    "impact": "medium",
+    "forecast": "54.6",
+    "previous": "55.3",
+    "reaction": "Si > esperado → manufactura fuerte → bullish. Si < esperado → debilidad → bearish."
   },
   {
     "day": "Miércoles",
-    "name": "Retail Sales",
-    "timeEt": "8:30 AM ET",
-    "impact": "high",
-    "forecast": "0.5%",
-    "previous": "0.5%",
-    "reaction": "Si > esperado → ventas fuertes → tasas arriba → bearish. Si < esperado → debilidad → bullish."
+    "name": "Flash Services PMI",
+    "timeEt": "9:45 AM ET",
+    "impact": "medium",
+    "forecast": "51.1",
+    "previous": "50.9",
+    "reaction": "Si > esperado → servicios fuertes → bullish. Si < esperado → debilidad → bearish."
   },
   {
     "day": "Miércoles",
-    "name": "Pending Home Sales",
+    "name": "Richmond Manufacturing Index",
     "timeEt": "10:00 AM ET",
     "impact": "medium",
-    "forecast": "0.8%",
-    "previous": "1.4%",
-    "reaction": "Si > esperado → vivienda fuerte → bullish. Si < esperado → debilidad → bearish."
+    "forecast": "8",
+    "previous": "13",
+    "reaction": "Si > esperado → manufactura fuerte → bullish. Si < esperado → debilidad → bearish."
   },
   {
     "day": "Miércoles",
     "name": "Crude Oil Inventories",
     "timeEt": "10:30 AM ET",
     "impact": "medium",
-    "forecast": "-3.6M",
-    "previous": "-7.2M",
+    "forecast": "-3.9M",
+    "previous": "-8.3M",
     "reaction": "Si inventario < esperado (menos petróleo) → petróleo sube → inflación presionada → bearish. Si inventario > esperado → alivio inflacionario → bullish."
   },
   {
     "day": "Miércoles",
-    "name": "FOMC",
-    "timeEt": "2:00 PM ET",
-    "impact": "high",
-    "forecast": "3.75%",
-    "actual": "3.75%",
-    "previous": "3.75%",
-    "reaction": "Sin cambio de tasas (3.75%) = NEUTRO. El mercado reaccionará según el TONO del comunicado: hawkish → Índices caen / dovish → Índices suben. DXY fortalece si hawkish."
+    "name": "President Trump Speaks",
+    "timeEt": "2:05 PM ET",
+    "impact": "medium",
+    "reaction": "Si tono hawkish/proteccionista → mercado nervioso → bearish. Si tono conciliador → alivio → bullish."
   },
   {
     "day": "Jueves",
-    "name": "Philly Fed Manufacturing Index",
+    "name": "Current Account",
     "timeEt": "8:30 AM ET",
     "impact": "medium",
-    "forecast": "9.8",
-    "previous": "-0.4",
-    "reaction": "Si > esperado → manufactura fuerte → bullish. Si < esperado → debilidad → bearish."
+    "forecast": "-212B",
+    "previous": "-191B",
+    "reaction": "Si déficit menor → dólar fuerte → bearish índices. Si déficit mayor → dólar débil → bullish índices."
   },
   {
     "day": "Jueves",
-    "name": "Jobless Claims",
+    "name": "New Home Sales",
+    "timeEt": "10:00 AM ET",
+    "impact": "medium",
+    "forecast": "638K",
+    "previous": "622K",
+    "reaction": "Si > esperado → vivienda fuerte → bullish. Si < esperado → debilidad → bearish."
+  },
+  {
+    "day": "Jueves",
+    "name": "Crude Oil Inventories",
+    "timeEt": "10:30 AM ET",
+    "impact": "medium",
+    "forecast": "-3.9M",
+    "previous": "-8.3M",
+    "reaction": "Si inventario < esperado (menos petróleo) → petróleo sube → inflación presionada → bearish. Si inventario > esperado → alivio inflacionario → bullish."
+  },
+  {
+    "day": "Jueves",
+    "name": "Bank Stress Test Results",
+    "timeEt": "4:00 PM ET",
+    "impact": "medium",
+    "reaction": "Si bancos pasan bien → confianza → bullish. Si hay fallos → nerviosismo → bearish."
+  },
+  {
+    "day": "Viernes",
+    "name": "Core PCE Price Index",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "0.3%",
+    "previous": "0.2%",
+    "reaction": "Si > esperado → inflación persistente → tasas arriba → bearish. Si < esperado → alivio → bullish."
+  },
+  {
+    "day": "Viernes",
+    "name": "Final GDP",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "1.6%",
+    "previous": "1.6%",
+    "reaction": "Si > esperado → economía fuerte → tasas arriba → bearish. Si < esperado → recesión fear → tasas abajo → bullish."
+  },
+  {
+    "day": "Viernes",
+    "name": "Unemployment Claims",
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "225K",
-    "previous": "229K",
+    "previous": "226K",
     "reaction": "Si Claims < esperado → economía fuerte → tasas arriba → Índices caen. Si Claims > esperado → economía débil → Índices suben."
   },
   {
     "day": "Viernes",
-    "name": "Fed Speeches",
+    "name": "Core Durable Goods Orders",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium",
+    "forecast": "0.5%",
+    "previous": "1.1%",
+    "reaction": "Si > esperado → demanda fuerte → bullish. Si < esperado → debilidad → bearish."
+  },
+  {
+    "day": "Viernes",
+    "name": "Durable Goods Orders",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium",
+    "forecast": "-5.0%",
+    "previous": "7.9%",
+    "reaction": "Si > esperado → demanda fuerte → bullish. Si < esperado → debilidad → bearish."
+  },
+  {
+    "day": "Viernes",
+    "name": "Personal Income",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium",
+    "forecast": "0.4%",
+    "previous": "0.0%",
+    "reaction": "Si > esperado → ingresos fuertes → consumo → bullish. Si < esperado → debilidad → bearish."
+  },
+  {
+    "day": "Viernes",
+    "name": "Personal Spending",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium",
+    "forecast": "0.6%",
+    "previous": "0.5%",
+    "reaction": "Si > esperado → gasto fuerte → tasas arriba → bearish. Si < esperado → debilidad → bullish."
+  },
+  {
+    "day": "Viernes",
+    "name": "Revised UoM Consumer Sentiment",
     "timeEt": "10:00 AM ET",
     "impact": "medium",
-    "reaction": "Si discurso hawkish → tasas arriba → Índices caen. Si dovish → tasas abajo → Índices suben."
+    "forecast": "50.0",
+    "previous": "48.9",
+    "reaction": "Si > esperado → confianza alta → consumo fuerte → bullish. Si < esperado → confianza baja → bearish."
   }
 ]
