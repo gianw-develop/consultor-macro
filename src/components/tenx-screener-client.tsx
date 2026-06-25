@@ -45,6 +45,7 @@ export function TenXScreenerClient({
     try {
       const response = await fetch("/api/10x/analyze", {
         method: "POST",
+        cache: "no-store",
         headers: {
           "Content-Type": "application/json",
         },
@@ -63,6 +64,7 @@ export function TenXScreenerClient({
       }
 
       setManualResult(payload as TenXScreenerResult);
+      setManualError(null);
       setManualTicker(ticker);
     } catch (error) {
       setManualError(error instanceof Error ? error.message : "No se pudo analizar el ticker.");

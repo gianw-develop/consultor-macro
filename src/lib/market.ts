@@ -1193,23 +1193,38 @@ export function scoreTenXCompany(company: TenXCompanyInput): TenXScreenerResult 
 }
 
 async function fetchYahooQuote(ticker: string) {
-  const url = `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(ticker)}`;
+  const urls = [
+    `https://query1.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(ticker)}`,
+    `https://query2.finance.yahoo.com/v7/finance/quote?symbols=${encodeURIComponent(ticker)}`,
+  ];
 
-  try {
-    const response = await fetch(url, {
-      cache: "no-store",
-      signal: AbortSignal.timeout(8000),
-    });
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, {
+        cache: "no-store",
+        signal: AbortSignal.timeout(12000),
+        headers: {
+          Accept: "application/json,text/plain,*/*",
+          "Accept-Language": "en-US,en;q=0.9",
+          Referer: "https://finance.yahoo.com/",
+          "User-Agent": "Mozilla/5.0",
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error(`Yahoo quote HTTP ${response.status}`);
+      if (!response.ok) {
+        continue;
+      }
+
+      const payload = (await response.json()) as YahooQuoteResponse;
+      const result = payload.quoteResponse?.result?.[0] ?? null;
+
+      if (result) return result;
+    } catch {
+      continue;
     }
-
-    const payload = (await response.json()) as YahooQuoteResponse;
-    return payload.quoteResponse?.result?.[0] ?? null;
-  } catch {
-    return null;
   }
+
+  return null;
 }
 
 async function fetchYahooQuoteSummary(ticker: string) {
@@ -1221,71 +1236,99 @@ async function fetchYahooQuoteSummary(ticker: string) {
     "majorHoldersBreakdown",
     "summaryDetail",
   ].join(",");
-  const url = `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${encodeURIComponent(ticker)}?modules=${modules}`;
+  const urls = [
+    `https://query1.finance.yahoo.com/v10/finance/quoteSummary/${encodeURIComponent(ticker)}?modules=${modules}`,
+    `https://query2.finance.yahoo.com/v10/finance/quoteSummary/${encodeURIComponent(ticker)}?modules=${modules}`,
+  ];
 
-  try {
-    const response = await fetch(url, {
-      cache: "no-store",
-      signal: AbortSignal.timeout(8000),
-    });
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, {
+        cache: "no-store",
+        signal: AbortSignal.timeout(12000),
+        headers: {
+          Accept: "application/json,text/plain,*/*",
+          "Accept-Language": "en-US,en;q=0.9",
+          Referer: "https://finance.yahoo.com/",
+          "User-Agent": "Mozilla/5.0",
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error(`Yahoo quoteSummary HTTP ${response.status}`);
+      if (!response.ok) {
+        continue;
+      }
+
+      const payload = (await response.json()) as YahooQuoteSummaryResponse;
+      const result = payload.quoteSummary?.result?.[0] ?? null;
+
+      if (result) return result;
+    } catch {
+      continue;
     }
-
-    const payload = (await response.json()) as YahooQuoteSummaryResponse;
-    return payload.quoteSummary?.result?.[0] ?? null;
-  } catch {
-    return null;
   }
+
+  return null;
 }
 
 async function fetchYahooChartProfile(ticker: string) {
-  const url = `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1d&range=1y`;
+  const urls = [
+    `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1d&range=1y`,
+    `https://query2.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(ticker)}?interval=1d&range=1y`,
+  ];
 
-  try {
-    const response = await fetch(url, {
-      cache: "no-store",
-      signal: AbortSignal.timeout(8000),
-    });
+  for (const url of urls) {
+    try {
+      const response = await fetch(url, {
+        cache: "no-store",
+        signal: AbortSignal.timeout(12000),
+        headers: {
+          Accept: "application/json,text/plain,*/*",
+          "Accept-Language": "en-US,en;q=0.9",
+          Referer: "https://finance.yahoo.com/",
+          "User-Agent": "Mozilla/5.0",
+        },
+      });
 
-    if (!response.ok) {
-      throw new Error(`Yahoo chart HTTP ${response.status}`);
-    }
+      if (!response.ok) {
+        continue;
+      }
 
-    const payload = (await response.json()) as YahooChartResponse;
-    const result = payload.chart?.result?.[0];
-    const closes = result?.indicators?.quote?.[0]?.close?.filter(
-      (value): value is number => typeof value === "number" && Number.isFinite(value),
-    );
+      const payload = (await response.json()) as YahooChartResponse;
+      const result = payload.chart?.result?.[0];
+      const closes = result?.indicators?.quote?.[0]?.close?.filter(
+        (value): value is number => typeof value === "number" && Number.isFinite(value),
+      );
 
-    if (!closes || closes.length < 2) {
+      if (!closes || closes.length < 2) {
+        return {
+          meta: result?.meta ?? null,
+          drawdown12mPct: null,
+          closes: [],
+        };
+      }
+
+      const current = closes.at(-1);
+      const high = Math.max(...closes);
+
+      if (!current || high <= 0) {
+        return {
+          meta: result?.meta ?? null,
+          drawdown12mPct: null,
+          closes,
+        };
+      }
+
       return {
         meta: result?.meta ?? null,
-        drawdown12mPct: null,
-        closes: [],
-      };
-    }
-
-    const current = closes.at(-1);
-    const high = Math.max(...closes);
-
-    if (!current || high <= 0) {
-      return {
-        meta: result?.meta ?? null,
-        drawdown12mPct: null,
+        drawdown12mPct: ((current - high) / high) * 100,
         closes,
       };
+    } catch {
+      continue;
     }
-
-    return {
-      meta: result?.meta ?? null,
-      drawdown12mPct: ((current - high) / high) * 100,
-      closes,
-    };
-  } catch {
-    return null;
   }
+
+  return null;
 }
 
 function estimateTrendFromMargin(value: number | null | undefined): TenXTrend {
