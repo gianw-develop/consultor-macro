@@ -1349,6 +1349,7 @@ function applyManualMarketSignal(
 
   let growthBonus = 0;
   let potentialBonus = 0;
+  let survivalBonus = 0;
   const strengths: string[] = [];
   const risks: string[] = [];
   const alerts: string[] = [];
@@ -1392,7 +1393,15 @@ function applyManualMarketSignal(
   if (typeof avgDailyVolumeUsd === "number") {
     if (avgDailyVolumeUsd >= 50_000_000) {
       potentialBonus += 3;
+      survivalBonus += 5;
       strengths.push("liquidez institucional suficiente");
+    } else if (avgDailyVolumeUsd >= 10_000_000) {
+      potentialBonus += 2;
+      survivalBonus += 4;
+      strengths.push("liquidez alta para ejecucion");
+    } else if (avgDailyVolumeUsd >= 1_000_000) {
+      survivalBonus += 3;
+      strengths.push("liquidez operable");
     } else if (avgDailyVolumeUsd < 1_000_000) {
       alerts.push("Liquidez manual muy baja");
       risks.push("poco volumen para entrar/salir con comodidad");
@@ -1403,6 +1412,10 @@ function applyManualMarketSignal(
     if (averageDailyMovePct > 9) {
       alerts.push("Alta volatilidad");
       risks.push("volatilidad diaria muy elevada");
+    } else if (averageDailyMovePct <= 2.5) {
+      potentialBonus += 1;
+      survivalBonus += 2;
+      strengths.push("volatilidad diaria controlada");
     } else if (averageDailyMovePct <= 4) {
       potentialBonus += 2;
       strengths.push("volatilidad manejable para seguimiento");
@@ -1413,17 +1426,43 @@ function applyManualMarketSignal(
     if (listingAgeYears <= 7) {
       potentialBonus += 4;
       strengths.push("empresa relativamente reciente en bolsa");
+      survivalBonus += 1;
     } else if (listingAgeYears >= 20) {
       risks.push("empresa madura, menos perfil IPO/early public");
     }
   }
 
-  const manualBonus = Math.min(25, growthBonus + potentialBonus);
-  const growthScore = Math.min(40, result.growthScore + growthBonus);
-  const potentialScore = Math.min(30, result.potentialScore + potentialBonus);
-  const score = Math.min(100, result.survivalScore + growthScore + potentialScore);
+  if (typeof chartProfile.drawdown12mPct === "number") {
+    if (chartProfile.drawdown12mPct >= -20) {
+      growthBonus += 4;
+      survivalBonus += 3;
+      strengths.push("drawdown contenido respecto al maximo anual");
+    } else if (chartProfile.drawdown12mPct >= -45) {
+      growthBonus += 2;
+      survivalBonus += 2;
+    } else if (chartProfile.drawdown12mPct <= -75) {
+      alerts.push("Drawdown extremo");
+      risks.push("caida muy profunda frente al maximo anual");
+    }
+  }
+
+  const chartOnlyMode =
+    result.missingData.length >= 8 &&
+    result.growthScore === 0 &&
+    result.potentialScore === 0;
+
+  const manualBonus = Math.min(35, growthBonus + potentialBonus + survivalBonus);
+  const survivalScore = Math.min(
+    30,
+    chartOnlyMode ? Math.max(result.survivalScore, 6) + survivalBonus : result.survivalScore + survivalBonus,
+  );
+  const growthScore = Math.min(40, chartOnlyMode ? growthBonus : result.growthScore + growthBonus);
+  const potentialScore = Math.min(30, chartOnlyMode ? potentialBonus : result.potentialScore + potentialBonus);
+  const score = Math.min(100, survivalScore + growthScore + potentialScore);
   const classification = classifyTenX(score, result.disqualified);
-  const sourceWarning = "fundamentales incompletos por fuente publica";
+  const sourceWarning = chartOnlyMode
+    ? "score parcial basado en chart/momentum por bloqueo de fundamentales de Yahoo"
+    : "fundamentales incompletos por fuente publica";
   const mergedStrengths = unique([...result.strengths, ...strengths]);
   const mergedRisks = unique([...result.risks, ...risks, sourceWarning]);
   const marketSignal = `Senal manual: 1M ${formatSignedPct(change1m)}, 3M ${formatSignedPct(change3m)}, 1Y ${formatSignedPct(change1y)}, drawdown ${formatSignedPct(chartProfile.drawdown12mPct)}, movimiento diario ${formatSignedPct(averageDailyMovePct)}.`;
@@ -1431,13 +1470,19 @@ function applyManualMarketSignal(
   return {
     ...result,
     score,
+    survivalScore,
     growthScore,
     potentialScore,
     classification,
-    alerts: unique([...result.alerts, ...alerts, `Senal manual +${manualBonus}`]),
+    alerts: unique([
+      ...result.alerts,
+      ...alerts,
+      chartOnlyMode ? "Modo chart-only activado" : "",
+      `Senal manual +${manualBonus}`,
+    ]),
     strengths: mergedStrengths,
     risks: mergedRisks,
-    explanation: `${result.ticker} queda como ${classification} con score ${score}/100. ${marketSignal} Fortalezas: ${mergedStrengths.slice(0, 3).join(", ") || "sin fortalezas suficientes por datos disponibles"}. Riesgos: ${mergedRisks.slice(0, 3).join(", ") || "sin riesgos criticos detectados"}.`,
+    explanation: `${result.ticker} queda como ${classification} con score ${score}/100. ${chartOnlyMode ? "Lectura basada principalmente en precio, momentum y liquidez. " : ""}${marketSignal} Fortalezas: ${mergedStrengths.slice(0, 3).join(", ") || "sin fortalezas suficientes por datos disponibles"}. Riesgos: ${mergedRisks.slice(0, 3).join(", ") || "sin riesgos criticos detectados"}.`,
   };
 }
 
