@@ -1,202 +1,211 @@
 [
   {
     "day": "Lunes",
-    "name": "Empire State Manufacturing Index",
-    "timeEt": "8:30 AM ET",
+    "name": "FOMC Member Waller Speaks",
+    "timeEt": "9:00 AM ET",
     "impact": "medium",
-    "forecast": "13.2",
-    "actual": "5.7",
-    "previous": "19.6",
-    "reaction": "Si > esperado → manufactura fuerte → bullish. Si < esperado → debilidad → bearish."
+    "reaction": "Si tono hawkish → DXY sube y los índices caen. Si tono dovish → DXY cae y los índices suben."
   },
   {
     "day": "Lunes",
-    "name": "Industrial Production",
-    "timeEt": "9:15 AM ET",
+    "name": "FOMC Member Goolsbee Speaks",
+    "timeEt": "5:30 PM ET",
     "impact": "medium",
-    "forecast": "0.3%",
-    "actual": "0.1%",
-    "previous": "0.7%",
-    "reaction": "Si > esperado → producción fuerte → bullish. Si < esperado → contracción → bearish."
+    "reaction": "Si tono hawkish → DXY sube y los índices caen. Si tono dovish → DXY cae y los índices suben."
   },
   {
     "day": "Martes",
     "name": "ADP Weekly Employment Change",
     "timeEt": "8:15 AM ET",
     "impact": "medium",
-    "actual": "25.5K",
-    "previous": "29.0K",
-    "reaction": "Si > esperado → empleo fuerte → tasas arriba → Índices caen. Si < esperado → alivio → Índices suben."
+    "previous": "25.5K",
+    "reaction": "Si empleo sale fuerte → tasas arriba → DXY fuerte e índices bajo presión. Si sale débil → alivio para índices."
   },
   {
     "day": "Martes",
-    "name": "Building Permits",
-    "timeEt": "8:30 AM ET",
-    "impact": "medium",
-    "forecast": "1.42M",
-    "actual": "1.413M",
-    "previous": "1.44M",
-    "reaction": "Si > esperado → construcción fuerte → bullish. Si < esperado → debilidad → bearish."
-  },
-  {
-    "day": "Martes",
-    "name": "Housing Starts",
-    "timeEt": "8:30 AM ET",
-    "impact": "medium",
-    "forecast": "1.43M",
-    "actual": "1.177M",
-    "previous": "1.47M",
-    "reaction": "Si > esperado → vivienda fuerte → bullish. Si < esperado → debilidad → bearish."
-  },
-  {
-    "day": "Martes",
-    "name": "Import Prices",
-    "timeEt": "8:30 AM ET",
-    "impact": "medium",
-    "forecast": "0.9%",
-    "actual": "1.9%",
-    "previous": "1.9%",
-    "reaction": "Si > esperado → presión inflacionaria → tasas arriba → bearish. Si < esperado → alivio → bullish."
-  },
-  {
-    "day": "Miércoles",
     "name": "Flash Manufacturing PMI",
     "timeEt": "9:45 AM ET",
     "impact": "medium",
     "forecast": "54.6",
     "previous": "55.3",
-    "reaction": "Si > esperado → manufactura fuerte → bullish. Si < esperado → debilidad → bearish."
+    "reaction": "Si PMI > esperado → crecimiento fuerte, DXY puede fortalecerse y los índices pueden reaccionar mixtos. Si PMI < esperado → debilidad macro y presión bajista."
   },
   {
-    "day": "Miércoles",
+    "day": "Martes",
     "name": "Flash Services PMI",
     "timeEt": "9:45 AM ET",
     "impact": "medium",
     "forecast": "51.1",
     "previous": "50.9",
-    "reaction": "Si > esperado → servicios fuertes → bullish. Si < esperado → debilidad → bearish."
+    "reaction": "Si Services PMI > esperado → economía resiliente, DXY firme. Si < esperado → debilidad y posible alivio en yields."
   },
   {
-    "day": "Miércoles",
+    "day": "Martes",
     "name": "Richmond Manufacturing Index",
     "timeEt": "10:00 AM ET",
     "impact": "medium",
     "forecast": "8",
     "previous": "13",
-    "reaction": "Si > esperado → manufactura fuerte → bullish. Si < esperado → debilidad → bearish."
+    "reaction": "Si > esperado → manufactura sólida. Si < esperado → debilidad industrial y sesgo defensivo."
   },
   {
-    "day": "Miércoles",
-    "name": "Crude Oil Inventories",
-    "timeEt": "10:30 AM ET",
-    "impact": "medium",
-    "forecast": "-3.9M",
-    "previous": "-8.3M",
-    "reaction": "Si inventario < esperado (menos petróleo) → petróleo sube → inflación presionada → bearish. Si inventario > esperado → alivio inflacionario → bullish."
-  },
-  {
-    "day": "Miércoles",
+    "day": "Martes",
     "name": "President Trump Speaks",
     "timeEt": "2:05 PM ET",
     "impact": "medium",
-    "reaction": "Si tono hawkish/proteccionista → mercado nervioso → bearish. Si tono conciliador → alivio → bullish."
+    "reaction": "Tono agresivo/proteccionista → riesgo-off, DXY fuerte e índices débiles. Tono conciliador → alivio y soporte a índices."
   },
   {
-    "day": "Jueves",
+    "day": "Miércoles",
     "name": "Current Account",
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "-212B",
     "previous": "-191B",
-    "reaction": "Si déficit menor → dólar fuerte → bearish índices. Si déficit mayor → dólar débil → bullish índices."
+    "reaction": "Si el déficit sale menor al esperado → DXY puede fortalecerse. Si el déficit empeora → presión bajista para el dólar."
   },
   {
-    "day": "Jueves",
+    "day": "Miércoles",
     "name": "New Home Sales",
     "timeEt": "10:00 AM ET",
     "impact": "medium",
     "forecast": "638K",
     "previous": "622K",
-    "reaction": "Si > esperado → vivienda fuerte → bullish. Si < esperado → debilidad → bearish."
+    "reaction": "Si > esperado → vivienda fuerte y economía resiliente. Si < esperado → enfriamiento macro."
   },
   {
-    "day": "Jueves",
+    "day": "Miércoles",
     "name": "Crude Oil Inventories",
     "timeEt": "10:30 AM ET",
     "impact": "medium",
     "forecast": "-3.9M",
     "previous": "-8.3M",
-    "reaction": "Si inventario < esperado (menos petróleo) → petróleo sube → inflación presionada → bearish. Si inventario > esperado → alivio inflacionario → bullish."
+    "reaction": "Menos inventario del esperado → petróleo sube, presión inflacionaria y sesgo bearish para índices. Más inventario → alivio."
   },
   {
-    "day": "Jueves",
+    "day": "Miércoles",
     "name": "Bank Stress Test Results",
     "timeEt": "4:00 PM ET",
     "impact": "medium",
-    "reaction": "Si bancos pasan bien → confianza → bullish. Si hay fallos → nerviosismo → bearish."
+    "reaction": "Resultados sólidos → confianza en bancos y soporte al riesgo. Resultados flojos → nerviosismo y presión bajista."
   },
   {
-    "day": "Viernes",
+    "day": "Miércoles",
+    "name": "President Trump Speaks",
+    "timeEt": "8:30 PM ET",
+    "impact": "medium",
+    "reaction": "Tono agresivo/proteccionista → riesgo-off, DXY fuerte e índices débiles. Tono conciliador → alivio y soporte a índices."
+  },
+  {
+    "day": "Jueves",
     "name": "Core PCE Price Index",
     "timeEt": "8:30 AM ET",
     "impact": "high",
     "forecast": "0.3%",
     "previous": "0.2%",
-    "reaction": "Si > esperado → inflación persistente → tasas arriba → bearish. Si < esperado → alivio → bullish."
+    "reaction": "Si Core PCE > esperado → inflación persistente, DXY/yields arriba e índices caen. Si < esperado → bullish para índices."
   },
   {
-    "day": "Viernes",
+    "day": "Jueves",
     "name": "Final GDP",
     "timeEt": "8:30 AM ET",
     "impact": "high",
     "forecast": "1.6%",
     "previous": "1.6%",
-    "reaction": "Si > esperado → economía fuerte → tasas arriba → bearish. Si < esperado → recesión fear → tasas abajo → bullish."
+    "reaction": "Si GDP > esperado → economía fuerte, posible DXY firme y reacción mixta en índices. Si < esperado → temor a desaceleración."
   },
   {
-    "day": "Viernes",
+    "day": "Jueves",
     "name": "Unemployment Claims",
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "225K",
     "previous": "226K",
-    "reaction": "Si Claims < esperado → economía fuerte → tasas arriba → Índices caen. Si Claims > esperado → economía débil → Índices suben."
+    "reaction": "Claims por debajo del esperado → mercado laboral fuerte, DXY firme e índices bajo presión. Claims por encima → alivio."
   },
   {
-    "day": "Viernes",
+    "day": "Jueves",
     "name": "Core Durable Goods Orders",
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "0.5%",
     "previous": "1.1%",
-    "reaction": "Si > esperado → demanda fuerte → bullish. Si < esperado → debilidad → bearish."
+    "reaction": "Si > esperado → demanda empresarial fuerte. Si < esperado → enfriamiento económico."
   },
   {
-    "day": "Viernes",
+    "day": "Jueves",
     "name": "Durable Goods Orders",
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "-5.0%",
     "previous": "7.9%",
-    "reaction": "Si > esperado → demanda fuerte → bullish. Si < esperado → debilidad → bearish."
+    "reaction": "Si sale mejor de lo esperado → soporte macro. Si peor → debilidad cíclica y sesgo bearish."
   },
   {
-    "day": "Viernes",
+    "day": "Jueves",
     "name": "Personal Income",
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "0.4%",
     "previous": "0.0%",
-    "reaction": "Si > esperado → ingresos fuertes → consumo → bullish. Si < esperado → debilidad → bearish."
+    "reaction": "Ingresos > esperado → consumo fuerte. Ingresos < esperado → debilidad del consumidor."
   },
   {
-    "day": "Viernes",
+    "day": "Jueves",
     "name": "Personal Spending",
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "0.6%",
     "previous": "0.5%",
-    "reaction": "Si > esperado → gasto fuerte → tasas arriba → bearish. Si < esperado → debilidad → bullish."
+    "reaction": "Gasto > esperado → economía caliente, posible presión inflacionaria. Gasto < esperado → enfriamiento."
+  },
+  {
+    "day": "Jueves",
+    "name": "FOMC Member Bowman Speaks",
+    "timeEt": "8:45 AM ET",
+    "impact": "medium",
+    "reaction": "Si tono hawkish → DXY sube e índices caen. Si dovish → soporte a índices."
+  },
+  {
+    "day": "Jueves",
+    "name": "Natural Gas Storage",
+    "timeEt": "10:30 AM ET",
+    "impact": "medium",
+    "forecast": "67B",
+    "previous": "73B",
+    "reaction": "Dato útil para energía. Impacto indirecto sobre inflación y sentimiento de riesgo."
+  },
+  {
+    "day": "Jueves",
+    "name": "FOMC Member Williams Speaks",
+    "timeEt": "3:40 PM ET",
+    "impact": "medium",
+    "reaction": "Si tono hawkish → DXY sube e índices caen. Si dovish → soporte a índices."
+  },
+  {
+    "day": "Jueves",
+    "name": "FOMC Member Goolsbee Speaks",
+    "timeEt": "6:30 PM ET",
+    "impact": "medium",
+    "reaction": "Si tono hawkish → DXY sube e índices caen. Si dovish → soporte a índices."
+  },
+  {
+    "day": "Viernes",
+    "name": "Goods Trade Balance",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium",
+    "forecast": "-85.0B",
+    "previous": "-82.4B",
+    "reaction": "Déficit menor al esperado → apoyo al dólar. Déficit mayor → presión bajista para DXY."
+  },
+  {
+    "day": "Viernes",
+    "name": "Prelim Wholesale Inventories",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium",
+    "forecast": "0.3%",
+    "previous": "0.5%",
+    "reaction": "Inventarios altos pueden sugerir menor demanda; inventarios controlados suelen ser más sanos."
   },
   {
     "day": "Viernes",
@@ -205,6 +214,28 @@
     "impact": "medium",
     "forecast": "50.0",
     "previous": "48.9",
-    "reaction": "Si > esperado → confianza alta → consumo fuerte → bullish. Si < esperado → confianza baja → bearish."
+    "reaction": "Confianza > esperado → consumo fuerte. Confianza < esperado → sesgo defensivo."
+  },
+  {
+    "day": "Viernes",
+    "name": "Revised UoM Inflation Expectations",
+    "timeEt": "10:00 AM ET",
+    "impact": "medium",
+    "previous": "4.6%",
+    "reaction": "Expectativas de inflación altas → DXY/yields arriba e índices bajo presión. Bajas → alivio."
+  },
+  {
+    "day": "Viernes",
+    "name": "FOMC Member Williams Speaks",
+    "timeEt": "10:30 AM ET",
+    "impact": "medium",
+    "reaction": "Si tono hawkish → DXY sube e índices caen. Si dovish → soporte a índices."
+  },
+  {
+    "day": "Viernes",
+    "name": "FOMC Member Kashkari Speaks",
+    "timeEt": "11:30 AM ET",
+    "impact": "medium",
+    "reaction": "Si tono hawkish → DXY sube e índices caen. Si dovish → soporte a índices."
   }
 ]
