@@ -53,12 +53,53 @@ function getActionShort(title: string) {
   return "NO OPERAR";
 }
 
-function getTodayEvents(schedule: DashboardData['weeklySchedule']) {
-  const todayIndex = new Date().getDay() - 1; // 0 is Monday
-  if (todayIndex < 0 || todayIndex > 4) return [];
+function getEtWeekdayIndex(date: Date) {
+  const weekday = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    weekday: "short",
+  }).format(date);
+  const map: Record<string, number> = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4 };
+  return map[weekday] ?? -1;
+}
+
+function getEtMinutesOfDay(date: Date) {
+  const parts = new Intl.DateTimeFormat("en-US", {
+    timeZone: "America/New_York",
+    hour: "2-digit",
+    minute: "2-digit",
+    hour12: false,
+  }).formatToParts(date);
+  const hour = parseInt(parts.find((part) => part.type === "hour")?.value ?? "0", 10);
+  const minute = parseInt(parts.find((part) => part.type === "minute")?.value ?? "0", 10);
+  return hour * 60 + minute;
+}
+
+function parseEventTimeToMinutes(timeEt: string) {
+  const match = timeEt.match(/(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+  if (!match) return null;
+  let hours = parseInt(match[1], 10);
+  const minutes = parseInt(match[2], 10);
+  const meridiem = match[3].toUpperCase();
+  if (meridiem === "PM" && hours !== 12) hours += 12;
+  if (meridiem === "AM" && hours === 12) hours = 0;
+  return hours * 60 + minutes;
+}
+
+function getTodayEvents(schedule: DashboardData['weeklySchedule'], now: Date) {
+  const todayIndex = getEtWeekdayIndex(now);
+  if (todayIndex < 0) return [];
   const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
   const todayName = days[todayIndex];
   return schedule.find(d => d.day === todayName)?.events || [];
+}
+
+function getUpcomingTodayEvents(schedule: DashboardData['weeklySchedule'], now: Date) {
+  const nowMinutes = getEtMinutesOfDay(now);
+  return getTodayEvents(schedule, now).filter((event) => {
+    const eventMinutes = parseEventTimeToMinutes(event.timeEt);
+    if (eventMinutes === null) return true; // eventos sin hora fija (ej. feriado) siguen vigentes
+    return eventMinutes >= nowMinutes;
+  });
 }
 
 const regimeStyles = {
@@ -329,11 +370,13 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
           <span className="text-slate-400">·</span>
           <span>Score {data.condition.score}/4</span>
           <span className="text-slate-400">·</span>
-          <span className={!data.session.isTradingDay ? "text-slate-700 font-bold" : getTodayEvents(data.weeklySchedule).length > 0 ? "text-amber-700" : ""}>
+          <span className={!data.session.isTradingDay ? "text-slate-700 font-bold" : getUpcomingTodayEvents(data.weeklySchedule, clock).length > 0 ? "text-amber-700" : ""}>
             {!data.session.isTradingDay
               ? data.session.label
-              : getTodayEvents(data.weeklySchedule).length > 0 
-              ? `⚠️ ${getTodayEvents(data.weeklySchedule)[0].name} ${getTodayEvents(data.weeklySchedule)[0].timeEt}` 
+              : getUpcomingTodayEvents(data.weeklySchedule, clock).length > 0
+              ? `⚠️ ${getUpcomingTodayEvents(data.weeklySchedule, clock)[0].name} ${getUpcomingTodayEvents(data.weeklySchedule, clock)[0].timeEt}`
+              : getTodayEvents(data.weeklySchedule, clock).length > 0
+              ? "Eventos de hoy ya publicados ✅"
               : "Sin noticias hoy ✅"}
           </span>
         </div>
