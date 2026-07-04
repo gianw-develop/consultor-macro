@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LiquidacionesChart } from "@/components/liquidaciones-chart";
 import { getSpotPrice, getSpotKlines } from "@/lib/binance-client";
 import {
@@ -14,6 +14,7 @@ import {
   getLeverageGrid,
   type LiquidacionesData,
   type LiquidacionesError,
+  type LiquidationCluster,
   type SupportedSymbol,
 } from "@/lib/liquidation-clusters";
 
@@ -145,6 +146,50 @@ export function LiquidacionesClient({
   const validData = data !== null && !hasError ? (data as LiquidacionesData) : null;
   const currentGrid = getLeverageGrid(SYMBOL_TO_PAIR[symbol]);
 
+  const liquidatedPrices = useMemo(() => {
+    const set = new Set<number>();
+    if (!validData) return set;
+    const { klines: k, longClusters: longs, shortClusters: shorts } = validData;
+    if (k.length === 0) return set;
+
+    for (const cluster of longs) {
+      if (k.some((candle) => candle.low <= cluster.price)) {
+        set.add(cluster.price);
+      }
+    }
+    for (const cluster of shorts) {
+      if (k.some((candle) => candle.high >= cluster.price)) {
+        set.add(cluster.price);
+      }
+    }
+    return set;
+  }, [validData]);
+
+  function clusterCardClass(cluster: LiquidationCluster, side: "long" | "short"): string {
+    const liq = liquidatedPrices.has(cluster.price);
+    if (liq) {
+      return "rounded-2xl border border-slate-300 bg-slate-100 px-4 py-3";
+    }
+    if (side === "long") {
+      return "rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3";
+    }
+    return "rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3";
+  }
+
+  function clusterLabelClass(cluster: LiquidationCluster, side: "long" | "short"): string {
+    const liq = liquidatedPrices.has(cluster.price);
+    if (liq) return "text-xs font-semibold uppercase tracking-[0.12em] text-slate-400";
+    if (side === "long") return "text-xs font-semibold uppercase tracking-[0.12em] text-emerald-700";
+    return "text-xs font-semibold uppercase tracking-[0.12em] text-rose-700";
+  }
+
+  function clusterPriceClass(cluster: LiquidationCluster, side: "long" | "short"): string {
+    const liq = liquidatedPrices.has(cluster.price);
+    if (liq) return "mt-1 text-lg font-semibold text-slate-400 line-through";
+    if (side === "long") return "mt-1 text-lg font-semibold text-emerald-900";
+    return "mt-1 text-lg font-semibold text-rose-900";
+  }
+
   return (
     <section className="flex flex-col gap-4">
       <div className="rounded-[28px] border border-slate-200 bg-white p-5 shadow-sm sm:p-6">
@@ -260,12 +305,12 @@ export function LiquidacionesClient({
             {validData.longClusters.map((cluster) => (
               <div
                 key={`long-${cluster.price}`}
-                className="rounded-2xl border border-emerald-200 bg-emerald-50 px-4 py-3"
+                className={clusterCardClass(cluster, "long")}
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-emerald-700">
-                  LONG {cluster.leverages.map((l) => `x${l}`).join("/")}
+                <p className={clusterLabelClass(cluster, "long")}>
+                  LONG {cluster.leverages.map((l) => `x${l}`).join("/")}{liquidatedPrices.has(cluster.price) ? " · LIQUIDADO" : ""}
                 </p>
-                <p className="mt-1 text-lg font-semibold text-emerald-900">
+                <p className={clusterPriceClass(cluster, "long")}>
                   ${formatPrice(cluster.price)}
                 </p>
               </div>
@@ -273,12 +318,12 @@ export function LiquidacionesClient({
             {validData.shortClusters.map((cluster) => (
               <div
                 key={`short-${cluster.price}`}
-                className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3"
+                className={clusterCardClass(cluster, "short")}
               >
-                <p className="text-xs font-semibold uppercase tracking-[0.12em] text-rose-700">
-                  SHORT {cluster.leverages.map((l) => `x${l}`).join("/")}
+                <p className={clusterLabelClass(cluster, "short")}>
+                  SHORT {cluster.leverages.map((l) => `x${l}`).join("/")}{liquidatedPrices.has(cluster.price) ? " · LIQUIDADO" : ""}
                 </p>
-                <p className="mt-1 text-lg font-semibold text-rose-900">
+                <p className={clusterPriceClass(cluster, "short")}>
                   ${formatPrice(cluster.price)}
                 </p>
               </div>
@@ -293,6 +338,7 @@ export function LiquidacionesClient({
               currentPrice={validData.currentPrice}
               symbol={symbol}
               interval={interval}
+              liquidatedPrices={liquidatedPrices}
             />
           </div>
         </>

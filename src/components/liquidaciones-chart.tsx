@@ -22,6 +22,7 @@ interface LiquidacionesChartProps {
   currentPrice: number;
   symbol: SupportedSymbol;
   interval: string;
+  liquidatedPrices: Set<number>;
 }
 
 const LONG_COLORS = ["#065f46", "#059669", "#10b981", "#34d399", "#6ee7b7", "#a7f3d0", "#d1fae5"];
@@ -65,6 +66,7 @@ export function LiquidacionesChart({
   currentPrice,
   symbol,
   interval,
+  liquidatedPrices,
 }: LiquidacionesChartProps) {
   const containerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
@@ -253,35 +255,39 @@ export function LiquidacionesChart({
     const newLines: IPriceLine[] = [];
 
     longClusters.forEach((cluster, index) => {
-      const color = LONG_COLORS[Math.min(index, LONG_COLORS.length - 1)];
+      const liq = liquidatedPrices.has(cluster.price);
+      const color = liq ? "#94a3b8" : LONG_COLORS[Math.min(index, LONG_COLORS.length - 1)];
+      const label = `LONG ${formatLeverages(cluster.leverages)}${liq ? " (LIQ)" : ""}`;
       newLines.push(
         series.createPriceLine({
           price: cluster.price,
           color,
-          lineWidth: 2,
-          lineStyle: LineStyle.Dashed,
+          lineWidth: liq ? 1 : 2,
+          lineStyle: liq ? LineStyle.Dotted : LineStyle.Dashed,
           axisLabelVisible: true,
-          title: `LONG ${formatLeverages(cluster.leverages)}`,
+          title: label,
         }),
       );
     });
 
     shortClusters.forEach((cluster, index) => {
-      const color = SHORT_COLORS[Math.min(index, SHORT_COLORS.length - 1)];
+      const liq = liquidatedPrices.has(cluster.price);
+      const color = liq ? "#94a3b8" : SHORT_COLORS[Math.min(index, SHORT_COLORS.length - 1)];
+      const label = `SHORT ${formatLeverages(cluster.leverages)}${liq ? " (LIQ)" : ""}`;
       newLines.push(
         series.createPriceLine({
           price: cluster.price,
           color,
-          lineWidth: 2,
-          lineStyle: LineStyle.Dashed,
+          lineWidth: liq ? 1 : 2,
+          lineStyle: liq ? LineStyle.Dotted : LineStyle.Dashed,
           axisLabelVisible: true,
-          title: `SHORT ${formatLeverages(cluster.leverages)}`,
+          title: label,
         }),
       );
     });
 
     priceLinesRef.current = newLines;
-  }, [longClusters, shortClusters, currentPrice]);
+  }, [longClusters, shortClusters, currentPrice, liquidatedPrices]);
 
   return (
     <div className="relative w-full">
