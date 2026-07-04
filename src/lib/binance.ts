@@ -1,4 +1,10 @@
 const BINANCE_FUTURES_BASE = "https://fapi.binance.com";
+const BINANCE_SPOT_BASE = "https://api.binance.com";
+
+const FETCH_HEADERS = {
+  "User-Agent": "Mozilla/5.0 (compatible; consultor-macro/1.0)",
+  Accept: "application/json",
+};
 
 export interface BinanceKline {
   time: number;
@@ -23,16 +29,16 @@ export interface BinanceOpenInterestHistEntry {
   timestamp: number;
 }
 
-async function fetchBinance<T>(path: string, params: Record<string, string>): Promise<T | null> {
+async function fetchJson<T>(url: string): Promise<T | null> {
   try {
-    const query = new URLSearchParams(params).toString();
-    const response = await fetch(`${BINANCE_FUTURES_BASE}${path}?${query}`, {
+    const response = await fetch(url, {
       cache: "no-store",
+      headers: FETCH_HEADERS,
       signal: AbortSignal.timeout(8000),
     });
 
     if (!response.ok) {
-      throw new Error(`Binance HTTP ${response.status}`);
+      return null;
     }
 
     return (await response.json()) as T;
@@ -41,16 +47,22 @@ async function fetchBinance<T>(path: string, params: Record<string, string>): Pr
   }
 }
 
+function buildUrl(base: string, path: string, params: Record<string, string>): string {
+  const query = new URLSearchParams(params).toString();
+  return `${base}${path}?${query}`;
+}
+
 export async function getKlines(
   symbol: string,
   interval: string = "15m",
   limit: number = 200,
 ): Promise<BinanceKline[] | null> {
-  const raw = await fetchBinance<unknown[][]>("/fapi/v1/klines", {
-    symbol,
-    interval,
-    limit: String(limit),
-  });
+  const params = { symbol, interval, limit: String(limit) };
+
+  // Try Futures first, fall back to Spot
+  const raw =
+    (await fetchJson<unknown[][]>(buildUrl(BINANCE_FUTURES_BASE, "/fapi/v1/klines", params))) ??
+    (await fetchJson<unknown[][]>(buildUrl(BINANCE_SPOT_BASE, "/api/v3/klines", params)));
 
   if (!raw) {
     return null;
@@ -70,30 +82,49 @@ export async function getKlines(
 }
 
 export async function getMarkPrice(symbol: string): Promise<BinancePremiumIndex | null> {
-  const raw = await fetchBinance<{
+  // Try Futures premiumIndex first
+  const raw = await fetchJson<{
     symbol: string;
     markPrice: string;
     indexPrice: string;
     lastFundingRate: string;
     time: number;
-  }>("/fapi/v1/premiumIndex", { symbol });
+  }>(buildUrl(BINANCE_FUTURES_BASE, "/fapi/v1/premiumIndex", { symbol }));
 
-  if (!raw) {
+  if (raw) {
+    const markPrice = Number(raw.markPrice);
+    if (Number.isFinite(markPrice) && markPrice > 0) {
+      return {
+        symbol: raw.symbol,
+        markPrice,
+        indexPrice: Number(raw.indexPrice),
+        lastFundingRate: Number(raw.lastFundingRate),
+        time: raw.time,
+      };
+    }
+  }
+
+  // Fallback: Spot ticker price
+  const spotRaw = await fetchJson<{ symbol: string; price: string }>(
+    buildUrl(BINANCE_SPOT_BASE, "/api/v3/ticker/price", { symbol }),
+  );
+
+  if (!spotRaw) {
     return null;
   }
 
-  const markPrice = Number(raw.markPrice);
+  const spotPrice = Number(spotRaw.price);
 
-  if (!Number.isFinite(markPrice) || markPrice <= 0) {
+  if (!Number.isFinite(spotPrice) || spotPrice <= 0) {
     return null;
   }
 
   return {
-    symbol: raw.symbol,
-    markPrice,
-    indexPrice: Number(raw.indexPrice),
-    lastFundingRate: Number(raw.lastFundingRate),
-    time: raw.time,
+    symbol: spotRaw.symbol,
+    markPrice: spotPrice,
+    indexPrice: spotPrice,
+    lastFundingRate: 0,
+    time: Date.now(),
   };
 }
 
@@ -102,18 +133,15 @@ export async function getOpenInterestHist(
   period: string = "15m",
   limit: number = 8,
 ): Promise<BinanceOpenInterestHistEntry[] | null> {
-  const raw = await fetchBinance<
+  // Open Interest History is Futures-only; gracefully returns null if unavailable
+  const raw = await fetchJson<
     Array<{
       symbol: string;
       sumOpenInterest: string;
       sumOpenInterestValue: string;
       timestamp: number;
     }>
-  >("/futures/data/openInterestHist", {
-    symbol,
-    period,
-    limit: String(limit),
-  });
+  >(buildUrl(BINANCE_FUTURES_BASE, "/futures/data/openInterestHist", { symbol, period, limit: String(limit) }));
 
   if (!raw) {
     return null;
