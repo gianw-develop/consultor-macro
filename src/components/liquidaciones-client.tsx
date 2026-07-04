@@ -309,26 +309,26 @@ export function LiquidacionesClient({
                 ${formatPrice(validData.currentPrice)}
               </p>
             </div>
-            {validData.longClusters.map((cluster) => (
+            {validData.longClusters.map((cluster, i) => (
               <div
                 key={`long-${cluster.price}`}
                 className={clusterCardClass(cluster, "long")}
               >
                 <p className={clusterLabelClass(cluster, "long")}>
-                  LONG {cluster.leverages.map((l) => `x${l}`).join("/")}{liquidatedPrices.has(cluster.price) ? " · LIQUIDADO" : ""}
+                  LONG {i + 1}{liquidatedPrices.has(cluster.price) ? " · LIQ" : ""}
                 </p>
                 <p className={clusterPriceClass(cluster, "long")}>
                   ${formatPrice(cluster.price)}
                 </p>
               </div>
             ))}
-            {validData.shortClusters.map((cluster) => (
+            {validData.shortClusters.map((cluster, i) => (
               <div
                 key={`short-${cluster.price}`}
                 className={clusterCardClass(cluster, "short")}
               >
                 <p className={clusterLabelClass(cluster, "short")}>
-                  SHORT {cluster.leverages.map((l) => `x${l}`).join("/")}{liquidatedPrices.has(cluster.price) ? " · LIQUIDADO" : ""}
+                  SHORT {i + 1}{liquidatedPrices.has(cluster.price) ? " · LIQ" : ""}
                 </p>
                 <p className={clusterPriceClass(cluster, "short")}>
                   ${formatPrice(cluster.price)}

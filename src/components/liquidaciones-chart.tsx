@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import {
   createChart,
   CandlestickSeries,
@@ -28,6 +28,7 @@ interface LiquidacionesChartProps {
 const LONG_COLORS = ["#065f46", "#059669", "#10b981", "#34d399", "#6ee7b7", "#a7f3d0", "#d1fae5"];
 const SHORT_COLORS = ["#7f1d1d", "#b91c1c", "#dc2626", "#ef4444", "#f87171", "#fca5a5", "#fecaca"];
 
+const DEFAULT_HEIGHT = 650;
 const WS_RECONNECT_DELAY_MS = 3000;
 
 type WsStatus = "connecting" | "connected" | "disconnected";
@@ -59,6 +60,33 @@ function WsIndicator({ status }: { status: WsStatus }) {
   );
 }
 
+function FullscreenButton({ onClick, isFullscreen }: { onClick: () => void; isFullscreen: boolean }) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      title={isFullscreen ? "Salir de pantalla completa" : "Pantalla completa"}
+      className="absolute top-2 left-2 z-10 flex items-center justify-center rounded-full bg-white/80 p-1.5 text-slate-500 shadow-sm backdrop-blur-sm transition hover:bg-white hover:text-slate-900"
+    >
+      {isFullscreen ? (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="4 14 10 14 10 20" />
+          <polyline points="20 10 14 10 14 4" />
+          <line x1="14" y1="10" x2="21" y2="3" />
+          <line x1="3" y1="21" x2="10" y2="14" />
+        </svg>
+      ) : (
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <polyline points="15 3 21 3 21 9" />
+          <polyline points="9 21 3 21 3 15" />
+          <line x1="21" y1="3" x2="14" y2="10" />
+          <line x1="3" y1="21" x2="10" y2="14" />
+        </svg>
+      )}
+    </button>
+  );
+}
+
 export function LiquidacionesChart({
   klines,
   longClusters,
@@ -68,11 +96,40 @@ export function LiquidacionesChart({
   interval,
   liquidatedPrices,
 }: LiquidacionesChartProps) {
+  const wrapperRef = useRef<HTMLDivElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
   const chartRef = useRef<IChartApi | null>(null);
   const seriesRef = useRef<ISeriesApi<"Candlestick"> | null>(null);
   const priceLinesRef = useRef<IPriceLine[]>([]);
   const [wsStatus, setWsStatus] = useState<WsStatus>("connecting");
+  const [isFullscreen, setIsFullscreen] = useState(false);
+
+  const toggleFullscreen = useCallback(() => {
+    const wrapper = wrapperRef.current;
+    if (!wrapper) return;
+
+    if (!document.fullscreenElement) {
+      void wrapper.requestFullscreen();
+    } else {
+      void document.exitFullscreen();
+    }
+  }, []);
+
+  useEffect(() => {
+    function handleChange() {
+      const fs = !!document.fullscreenElement;
+      setIsFullscreen(fs);
+      const chart = chartRef.current;
+      const container = containerRef.current;
+      if (chart && container) {
+        const newHeight = fs ? window.innerHeight : DEFAULT_HEIGHT;
+        chart.applyOptions({ width: container.clientWidth, height: newHeight });
+        chart.timeScale().fitContent();
+      }
+    }
+    document.addEventListener("fullscreenchange", handleChange);
+    return () => document.removeEventListener("fullscreenchange", handleChange);
+  }, []);
 
   useEffect(() => {
     const container = containerRef.current;
@@ -82,7 +139,7 @@ export function LiquidacionesChart({
 
     const chart = createChart(container, {
       width: container.clientWidth,
-      height: 420,
+      height: DEFAULT_HEIGHT,
       layout: {
         background: { type: ColorType.Solid, color: "#ffffff" },
         textColor: "#0f172a",
@@ -153,14 +210,9 @@ export function LiquidacionesChart({
   }, [klines]);
 
   // WebSocket para actualizacion de velas en tiempo real
-  // Usa stream.binance.com (Spot) porque fstream.binance.com (Futures)
-  // conecta pero no envia datos en ciertos entornos/regiones.
-  // El formato del mensaje es identico y los precios spot/futures son equivalentes.
   useEffect(() => {
-    const pair = SYMBOL_TO_PAIR[symbol].toLowerCase(); // ej: btcusdt
+    const pair = SYMBOL_TO_PAIR[symbol].toLowerCase();
     const streamName = `${pair}@kline_${interval}`;
-    // FIXED: usar stream.binance.com (Spot) en lugar de fstream.binance.com (Futures)
-    // fstream conecta (onopen OK) pero no pushea mensajes en ciertos ambientes
     const wsUrl = `wss://stream.binance.com:9443/ws/${streamName}`;
 
     let ws: WebSocket | null = null;
@@ -290,7 +342,8 @@ export function LiquidacionesChart({
   }, [longClusters, shortClusters, currentPrice, liquidatedPrices]);
 
   return (
-    <div className="relative w-full">
+    <div ref={wrapperRef} className="relative w-full bg-white">
+      <FullscreenButton onClick={toggleFullscreen} isFullscreen={isFullscreen} />
       <WsIndicator status={wsStatus} />
       <div ref={containerRef} className="w-full" />
     </div>
