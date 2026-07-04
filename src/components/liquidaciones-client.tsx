@@ -152,13 +152,20 @@ export function LiquidacionesClient({
     const { klines: k, longClusters: longs, shortClusters: shorts } = validData;
     if (k.length === 0) return set;
 
+    // Solo verificar velas de las ultimas 4 horas.
+    // Los niveles se calculan del precio actual, asi que comparar contra
+    // velas de hace dias (cuando el precio era muy diferente) da falsos positivos.
+    const fourHoursAgo = Math.floor(Date.now() / 1000) - 4 * 60 * 60;
+    const recent = k.filter((candle) => candle.time >= fourHoursAgo);
+    if (recent.length === 0) return set;
+
     for (const cluster of longs) {
-      if (k.some((candle) => candle.low <= cluster.price)) {
+      if (recent.some((candle) => candle.low <= cluster.price)) {
         set.add(cluster.price);
       }
     }
     for (const cluster of shorts) {
-      if (k.some((candle) => candle.high >= cluster.price)) {
+      if (recent.some((candle) => candle.high >= cluster.price)) {
         set.add(cluster.price);
       }
     }
