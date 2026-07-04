@@ -3,7 +3,6 @@ import { cookies } from "next/headers";
 import { LoginForm } from "@/components/login-form";
 import { LiquidacionesClient } from "@/components/liquidaciones-client";
 import { SESSION_COOKIE, validateSessionToken } from "@/lib/auth";
-import { calculateLiquidationLevels, DEFAULT_LEVELS } from "@/lib/liquidation-clusters";
 
 export const dynamic = "force-dynamic";
 
@@ -19,8 +18,6 @@ export default async function LiquidacionesPage() {
       </main>
     );
   }
-
-  const initialData = await calculateLiquidationLevels("BTC", DEFAULT_LEVELS);
 
   return (
     <main className="min-h-screen bg-[var(--app-bg)] px-4 py-4 sm:px-6 lg:px-8">
@@ -47,7 +44,7 @@ export default async function LiquidacionesPage() {
           </div>
         </header>
 
-        <LiquidacionesClient initialSymbol="BTC" initialData={initialData} />
+        <LiquidacionesClient initialSymbol="BTC" />
       </div>
     </main>
   );

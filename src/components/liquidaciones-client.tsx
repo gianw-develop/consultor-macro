@@ -2,12 +2,15 @@
 
 import { useCallback, useEffect, useRef, useState } from "react";
 import { LiquidacionesChart } from "@/components/liquidaciones-chart";
+import { getSpotPrice, getSpotKlines } from "@/lib/binance-client";
 import {
   DEFAULT_LEVELS,
   MAX_LEVELS,
   MIN_LEVELS,
   SUPPORTED_SYMBOLS,
   SYMBOL_TO_PAIR,
+  calculateClusters,
+  clampLevels,
   getLeverageGrid,
   type LiquidacionesData,
   type LiquidacionesError,
@@ -35,10 +38,8 @@ function formatPrice(price: number): string {
 
 export function LiquidacionesClient({
   initialSymbol,
-  initialData,
 }: {
   initialSymbol: SupportedSymbol;
-  initialData: LiquidacionesData | LiquidacionesError;
 }) {
   const [symbol, setSymbol] = useState<SupportedSymbol>(initialSymbol);
   const [levels, setLevels] = useState<number>(DEFAULT_LEVELS);
@@ -46,11 +47,9 @@ export function LiquidacionesClient({
   const [activeLeverages, setActiveLeverages] = useState<number[]>(
     () => getLeverageGrid(SYMBOL_TO_PAIR[initialSymbol]),
   );
-  const [data, setData] = useState<LiquidacionesData | LiquidacionesError>(initialData);
-  const [isLoading, setIsLoading] = useState(false);
-  const [lastUpdated, setLastUpdated] = useState<Date | null>(
-    !isErrorPayload(initialData) ? new Date(initialData.updatedAt) : null,
-  );
+  const [data, setData] = useState<LiquidacionesData | LiquidacionesError | null>(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [lastUpdated, setLastUpdated] = useState<Date | null>(null);
 
   const fetchData = useCallback(
     async (
@@ -62,25 +61,42 @@ export function LiquidacionesClient({
       setIsLoading(true);
 
       try {
-        const leveragesParam = targetLeverages.join(",");
-        const response = await fetch(
-          `/api/liquidaciones?symbol=${targetSymbol}&levels=${targetLevels}&interval=${targetInterval}&leverages=${leveragesParam}`,
-          { cache: "no-store" },
-        );
+        const pairSymbol = SYMBOL_TO_PAIR[targetSymbol];
 
-        if (response.status === 401) {
-          window.location.reload();
+        const [price, klines] = await Promise.all([
+          getSpotPrice(pairSymbol),
+          getSpotKlines(pairSymbol, targetInterval, 200),
+        ]);
+
+        if (!price) {
+          setData({ error: "No se pudo obtener el precio actual desde Binance." });
           return;
         }
 
-        const payload = (await response.json()) as LiquidacionesData | LiquidacionesError;
-        setData(payload);
-
-        if (!isErrorPayload(payload)) {
-          setLastUpdated(new Date(payload.updatedAt));
+        if (!klines) {
+          setData({ error: "No se pudo obtener el historial de velas desde Binance." });
+          return;
         }
+
+        const clamped = clampLevels(targetLevels);
+        const { longClusters, shortClusters, totalLongCandidateClusters, totalShortCandidateClusters } =
+          calculateClusters(pairSymbol, price, clamped, null, targetLeverages);
+
+        setData({
+          symbol: targetSymbol,
+          currentPrice: price,
+          openInterest: null,
+          requestedLevels: clamped,
+          longClusters,
+          shortClusters,
+          totalLongCandidateClusters,
+          totalShortCandidateClusters,
+          klines,
+          updatedAt: new Date().toISOString(),
+        });
+        setLastUpdated(new Date());
       } catch {
-        setData({ error: "No se pudo actualizar. Manteniendo ultimos datos disponibles." });
+        setData({ error: "Error al obtener datos de Binance. Reintenta en unos segundos." });
       } finally {
         setIsLoading(false);
       }
@@ -88,11 +104,13 @@ export function LiquidacionesClient({
     [],
   );
 
+  // Fetch on mount
   const isFirstRender = useRef(true);
 
   useEffect(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
+      void fetchData(symbol, levels, interval, activeLeverages);
       return;
     }
 
@@ -116,15 +134,15 @@ export function LiquidacionesClient({
   function toggleLeverage(lev: number) {
     setActiveLeverages((prev) => {
       if (prev.includes(lev)) {
-        if (prev.length === 1) return prev; // no deseleccionar el ultimo
+        if (prev.length === 1) return prev;
         return prev.filter((l) => l !== lev);
       }
       return [...prev, lev].sort((a, b) => a - b);
     });
   }
 
-  const hasError = isErrorPayload(data);
-  const validData = !hasError ? data : null;
+  const hasError = data !== null && isErrorPayload(data);
+  const validData = data !== null && !hasError ? (data as LiquidacionesData) : null;
   const currentGrid = getLeverageGrid(SYMBOL_TO_PAIR[symbol]);
 
   return (
@@ -216,9 +234,15 @@ export function LiquidacionesClient({
         </div>
       </div>
 
+      {data === null && isLoading ? (
+        <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-8 text-center text-sm text-slate-500">
+          Cargando datos de Binance...
+        </div>
+      ) : null}
+
       {hasError ? (
         <div className="rounded-2xl border border-rose-200 bg-rose-50 px-4 py-3 text-sm text-rose-800">
-          {data.error}
+          {(data as LiquidacionesError).error}
         </div>
       ) : null}
 

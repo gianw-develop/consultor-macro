@@ -165,7 +165,6 @@ export function LiquidacionesChart({
     let reconnectTimer: ReturnType<typeof setTimeout> | null = null;
     let unmounted = false;
 
-    console.log(`[WS] Iniciando conexion: ${wsUrl}`);
     setWsStatus("connecting");
 
     function connect() {
@@ -174,14 +173,12 @@ export function LiquidacionesChart({
       ws = new WebSocket(wsUrl);
 
       ws.onopen = () => {
-        console.log(`[WS] Conectado a ${wsUrl}`);
         setWsStatus("connected");
       };
 
       ws.onmessage = (event: MessageEvent<string>) => {
         const series = seriesRef.current;
         if (!series) {
-          console.warn("[WS] onmessage: seriesRef.current es null, ignorando mensaje");
           return;
         }
         try {
@@ -196,12 +193,10 @@ export function LiquidacionesChart({
             };
           };
           if (msg.e !== "kline") {
-            console.log("[WS] Mensaje ignorado (e!=kline):", msg.e);
             return;
           }
           const k = msg.k;
           if (!k) {
-            console.warn("[WS] Mensaje kline sin campo k:", msg);
             return;
           }
           series.update({
@@ -211,23 +206,20 @@ export function LiquidacionesChart({
             low: Number(k.l),
             close: Number(k.c),
           });
-        } catch (err) {
-          console.error("[WS] Error parseando mensaje:", err);
+        } catch {
+          // ignore malformed messages
         }
       };
 
-      ws.onerror = (err) => {
-        console.error("[WS] onerror:", err);
+      ws.onerror = () => {
         setWsStatus("disconnected");
         ws?.close();
       };
 
-      ws.onclose = (event) => {
-        console.log(`[WS] Conexion cerrada. code=${event.code} reason="${event.reason}" wasClean=${event.wasClean}`);
+      ws.onclose = () => {
         ws = null;
         setWsStatus("disconnected");
         if (!unmounted) {
-          console.log(`[WS] Reconectando en ${WS_RECONNECT_DELAY_MS}ms...`);
           setWsStatus("connecting");
           reconnectTimer = setTimeout(connect, WS_RECONNECT_DELAY_MS);
         }
@@ -238,10 +230,9 @@ export function LiquidacionesChart({
 
     return () => {
       unmounted = true;
-      console.log("[WS] Limpiando WebSocket (cambio de symbol/interval o desmontaje)");
       if (reconnectTimer !== null) clearTimeout(reconnectTimer);
       if (ws) {
-        ws.onclose = null; // evitar reconexion al cerrar intencionalmente
+        ws.onclose = null;
         ws.close();
         ws = null;
       }
