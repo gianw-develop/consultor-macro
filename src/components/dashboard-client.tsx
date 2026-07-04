@@ -332,6 +332,14 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
               >
                 Abrir 10X
               </a>
+              <a
+                href="/liquidaciones"
+                target="_blank"
+                rel="noreferrer"
+                className="inline-flex items-center justify-center rounded-2xl border border-slate-200 bg-white px-4 py-2.5 text-sm font-medium text-slate-700 transition hover:bg-slate-50"
+              >
+                Liquidaciones
+              </a>
               <button
                 type="button"
                 onClick={handleLogout}

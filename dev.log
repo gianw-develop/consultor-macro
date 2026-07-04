@@ -1,0 +1,12 @@
+▲ Next.js 16.2.7 (Turbopack)
+- Local:         http://localhost:3000
+- Network:       http://192.168.1.135:3000
+✓ Ready in 501ms
+
+ GET /liquidaciones 200 in 2.3s (next.js: 2.2s, application-code: 138ms)
+ GET /api/liquidaciones?symbol=BTC 401 in 278ms (next.js: 260ms, application-code: 17ms)
+ POST /api/auth/login 200 in 158ms (next.js: 146ms, application-code: 11ms)
+ GET /api/liquidaciones?symbol=BTC&levels=5 200 in 396ms (next.js: 6ms, application-code: 390ms)
+ GET /api/liquidaciones?symbol=XRP&levels=4 200 in 330ms (next.js: 2ms, application-code: 328ms)
+ GET /api/liquidaciones?symbol=DOGE 400 in 19ms (next.js: 2ms, application-code: 17ms)
+ GET /api/liquidaciones?symbol=ETH&levels=50 200 in 327ms (next.js: 1780µs, application-code: 325ms)
