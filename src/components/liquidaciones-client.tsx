@@ -2,14 +2,14 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { LiquidacionesChart } from "@/components/liquidaciones-chart";
-import { getSpotPrice, getSpotKlines } from "@/lib/binance-client";
+import { getMarkPrice, getKlines } from "@/lib/binance-client";
 import {
   DEFAULT_LEVELS,
   MAX_LEVELS,
   MIN_LEVELS,
   SUPPORTED_SYMBOLS,
   SYMBOL_TO_PAIR,
-  calculateClusters,
+  calculateMultiEntryClusters,
   clampLevels,
   getLeverageGrid,
   type LiquidacionesData,
@@ -65,8 +65,8 @@ export function LiquidacionesClient({
         const pairSymbol = SYMBOL_TO_PAIR[targetSymbol];
 
         const [price, klines] = await Promise.all([
-          getSpotPrice(pairSymbol),
-          getSpotKlines(pairSymbol, targetInterval, 200),
+          getMarkPrice(pairSymbol),
+          getKlines(pairSymbol, targetInterval, 200),
         ]);
 
         if (!price) {
@@ -81,7 +81,7 @@ export function LiquidacionesClient({
 
         const clamped = clampLevels(targetLevels);
         const { longClusters, shortClusters, totalLongCandidateClusters, totalShortCandidateClusters } =
-          calculateClusters(pairSymbol, price, clamped, null, targetLeverages);
+          calculateMultiEntryClusters(pairSymbol, price, klines, clamped, targetLeverages);
 
         setData({
           symbol: targetSymbol,
@@ -303,7 +303,7 @@ export function LiquidacionesClient({
           <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 lg:grid-cols-6">
             <div className="rounded-2xl border border-slate-200 bg-slate-50 px-4 py-3">
               <p className="text-xs font-semibold uppercase tracking-[0.12em] text-slate-500">
-                Precio actual
+                Mark Price
               </p>
               <p className="mt-1 text-lg font-semibold text-slate-950">
                 ${formatPrice(validData.currentPrice)}
@@ -354,13 +354,11 @@ export function LiquidacionesClient({
       <footer className="rounded-[28px] border border-slate-200 bg-white px-5 py-4 text-sm text-slate-600 shadow-sm sm:px-7">
         <div className="flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between">
           <span>
-            Niveles aproximados basados en Open Interest publico de Binance. No son datos exactos de
-            Coinglass.
+            Mapa de liquidez 1 dia · Binance {symbol}/USDT Perpetuo. Niveles aproximados.
           </span>
           <span>
-            Velas actualizadas en tiempo real via WebSocket de Binance. Niveles de liquidacion
-            refrescados cada 15 min.
-            {lastUpdated ? ` · Ultima actualizacion: ${lastUpdated.toLocaleTimeString()}` : ""}
+            Velas en tiempo real via WebSocket. Niveles refrescados cada 15 min.
+            {lastUpdated ? ` · ${lastUpdated.toLocaleTimeString()}` : ""}
           </span>
         </div>
       </footer>

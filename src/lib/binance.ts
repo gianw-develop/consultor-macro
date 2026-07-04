@@ -12,6 +12,7 @@ export interface BinanceKline {
   high: number;
   low: number;
   close: number;
+  volume?: number;
 }
 
 export interface BinancePremiumIndex {
@@ -75,6 +76,7 @@ export async function getKlines(
       high: Number(entry[2]),
       low: Number(entry[3]),
       close: Number(entry[4]),
+      volume: Number(entry[5]) || undefined,
     }));
   } catch {
     return null;

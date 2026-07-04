@@ -199,6 +199,92 @@ export function calculateClusters(
   };
 }
 
+// ---------------------------------------------------------------------------
+// Multi-entry liquidation calculation (similar al "Mapa de liquidez 1 dia"
+// de Coinglass). En lugar de calcular niveles solo desde el precio actual,
+// genera candidatos desde el precio de cierre de cada vela de las ultimas
+// 24h, ponderados por volumen. Esto crea clusters que representan DONDE
+// se concentraria la mayor liquidacion si se consideran todas las posiciones
+// abiertas en el ultimo dia.
+// ---------------------------------------------------------------------------
+
+function generateMultiEntryCandidates(
+  pairSymbol: string,
+  entries: { price: number; weight: number }[],
+  filteredLeverages?: number[],
+): { longCandidates: Candidate[]; shortCandidates: Candidate[] } {
+  const mmr = getMmr(pairSymbol);
+  const grid = getLeverageGrid(pairSymbol);
+  const activeGrid =
+    filteredLeverages && filteredLeverages.length > 0
+      ? grid.filter((l) => filteredLeverages.includes(l))
+      : grid;
+
+  const longCandidates: Candidate[] = [];
+  const shortCandidates: Candidate[] = [];
+
+  for (const entry of entries) {
+    for (const leverage of activeGrid) {
+      const levWeight = LEVERAGE_WEIGHT[leverage] ?? 0.3;
+      const longPrice = entry.price * (1 - 1 / leverage + mmr);
+      const shortPrice = entry.price * (1 + 1 / leverage - mmr);
+
+      longCandidates.push({ price: longPrice, leverage, weight: levWeight * entry.weight });
+      shortCandidates.push({ price: shortPrice, leverage, weight: levWeight * entry.weight });
+    }
+  }
+
+  return { longCandidates, shortCandidates };
+}
+
+export function calculateMultiEntryClusters(
+  pairSymbol: string,
+  currentPrice: number,
+  klines: BinanceKline[],
+  levels: number,
+  filteredLeverages?: number[],
+): {
+  longClusters: LiquidationCluster[];
+  shortClusters: LiquidationCluster[];
+  totalLongCandidateClusters: number;
+  totalShortCandidateClusters: number;
+} {
+  const topN = clampLevels(levels);
+
+  // Filtrar velas de las ultimas 24h
+  const oneDayAgo = Math.floor(Date.now() / 1000) - 24 * 60 * 60;
+  const recentKlines = klines.filter((k) => k.time >= oneDayAgo);
+
+  let entries: { price: number; weight: number }[];
+
+  if (recentKlines.length > 0) {
+    const totalVolume = recentKlines.reduce((s, k) => s + (k.volume ?? 1), 0) || 1;
+    entries = recentKlines.map((k) => ({
+      price: k.close,
+      weight: (k.volume ?? 1) / totalVolume,
+    }));
+  } else {
+    // Fallback: single entry at current price
+    entries = [{ price: currentPrice, weight: 1 }];
+  }
+
+  const { longCandidates, shortCandidates } = generateMultiEntryCandidates(
+    pairSymbol,
+    entries,
+    filteredLeverages,
+  );
+
+  const long = clusterAndRank(longCandidates, currentPrice, topN, null);
+  const short = clusterAndRank(shortCandidates, currentPrice, topN, null);
+
+  return {
+    longClusters: long.clusters,
+    shortClusters: short.clusters,
+    totalLongCandidateClusters: long.totalClusters,
+    totalShortCandidateClusters: short.totalClusters,
+  };
+}
+
 export interface LiquidacionesData {
   symbol: SupportedSymbol;
   currentPrice: number;
