@@ -115,6 +115,7 @@ function clusterAndRank(
   currentPrice: number,
   topN: number,
   openInterestScale: number | null,
+  tolerancePct: number = CLUSTER_TOLERANCE_PCT,
 ): { clusters: LiquidationCluster[]; totalClusters: number } {
   const sorted = [...candidates].sort((a, b) => a.price - b.price);
 
@@ -131,7 +132,7 @@ function clusterAndRank(
     const active = rawClusters[rawClusters.length - 1];
     const withinTolerance =
       active !== undefined &&
-      Math.abs(candidate.price - active.anchorPrice) / currentPrice <= CLUSTER_TOLERANCE_PCT;
+      Math.abs(candidate.price - active.anchorPrice) / currentPrice <= tolerancePct;
 
     if (active && withinTolerance) {
       active.weightedPriceSum += candidate.price * candidate.weight;
@@ -153,7 +154,7 @@ function clusterAndRank(
   const clusters: LiquidationCluster[] = rawClusters.map((cluster) => ({
     price: cluster.weightedPriceSum / cluster.weight,
     strength: Math.round((100 * cluster.weight) / maxWeight),
-    leverages: cluster.leverages.sort((a, b) => a - b),
+    leverages: [...new Set(cluster.leverages)].sort((a, b) => a - b),
     estimatedMagnitude:
       openInterestScale !== null
         ? Math.round(((100 * cluster.weight) / maxWeight) * openInterestScale)
@@ -274,8 +275,13 @@ export function calculateMultiEntryClusters(
     filteredLeverages,
   );
 
-  const long = clusterAndRank(longCandidates, currentPrice, topN, null);
-  const short = clusterAndRank(shortCandidates, currentPrice, topN, null);
+  // Tolerancia mas amplia (1.5%) para multi-entry: los candidatos de cada
+  // leverage se extienden por el rango de precios de 24h y necesitan una
+  // ventana mayor para agruparse correctamente en un solo cluster por leverage.
+  const MULTI_ENTRY_TOLERANCE = 0.015;
+
+  const long = clusterAndRank(longCandidates, currentPrice, topN, null, MULTI_ENTRY_TOLERANCE);
+  const short = clusterAndRank(shortCandidates, currentPrice, topN, null, MULTI_ENTRY_TOLERANCE);
 
   return {
     longClusters: long.clusters,
