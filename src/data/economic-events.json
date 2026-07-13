@@ -1,28 +1,66 @@
 [
   {
-    "day": "Martes",
-    "name": "Consumer Credit m/m",
-    "timeEt": "3:00 PM ET",
+    "day": "Lunes",
+    "name": "NFIB Small Business Optimism Index",
+    "timeEt": "6:00 AM ET",
     "impact": "medium",
-    "forecast": "$10.0B",
-    "previous": "-$3.9B",
-    "reaction": "Crédito al consumo por encima de lo esperado → gasto resiliente y DXY firme. Por debajo → señal de cautela del consumidor."
+    "forecast": "94.5",
+    "previous": "95.3",
+    "reaction": "Optimismo empresarial por encima de lo esperado → confianza en el sector privado y sesgo positivo para DXY. Por debajo → señal de cautela en la economía real."
+  },
+  {
+    "day": "Martes",
+    "name": "CPI m/m",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "0.3%",
+    "previous": "0.1%",
+    "reaction": "CPI > esperado → presión inflacionaria, DXY/yields suben e índices bajo presión. CPI < esperado → alivio y posible rally en índices."
+  },
+  {
+    "day": "Martes",
+    "name": "CPI y/y",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "2.7%",
+    "previous": "2.4%",
+    "reaction": "Inflación anual más alta desde febrero. Por encima → Fed hawkish, presión para mantener tasas. Por debajo → apoyo a recortes cercanos."
+  },
+  {
+    "day": "Miércoles",
+    "name": "PPI m/m",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "0.2%",
+    "previous": "0.3%",
+    "reaction": "PPI > esperado → presión en costos al productor, señal adelantada de inflación, DXY firme e índices débiles. Por debajo → alivio."
+  },
+  {
+    "day": "Miércoles",
+    "name": "Retail Sales m/m",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "0.1%",
+    "previous": "-0.9%",
+    "reaction": "Venta minorista > esperado → consumidor resiliente, DXY firme e índices bajo presión por tasas. < esperado → señal de debilidad, alivio para índices."
+  },
+  {
+    "day": "Miércoles",
+    "name": "Industrial Production m/m",
+    "timeEt": "9:15 AM ET",
+    "impact": "medium",
+    "forecast": "0.2%",
+    "previous": "0.0%",
+    "reaction": "Producción industrial > esperado → actividad manufacturera robusta, DXY firme. < esperado → debilidad industrial y sesgo defensivo."
   },
   {
     "day": "Miércoles",
     "name": "Crude Oil Inventories",
     "timeEt": "10:30 AM ET",
     "impact": "medium",
-    "forecast": "-2.1M",
-    "previous": "-3.8M",
+    "forecast": "-0.6M",
+    "previous": "+7.1M",
     "reaction": "Menos inventario del esperado → petróleo sube, presión inflacionaria y sesgo bearish para índices. Más inventario → alivio en precios de energía."
-  },
-  {
-    "day": "Miércoles",
-    "name": "FOMC Meeting Minutes",
-    "timeEt": "2:00 PM ET",
-    "impact": "high",
-    "reaction": "Actas de la reunión del 17-18 de junio. Tono hawkish (poco apoyo a recortes cercanos, preocupación por aranceles/inflación) → DXY sube y yields arriba, índices bajo presión. Tono dovish → DXY cae, índices suben."
   },
   {
     "day": "Jueves",
@@ -30,25 +68,52 @@
     "timeEt": "8:30 AM ET",
     "impact": "medium",
     "forecast": "235K",
-    "previous": "233K",
+    "previous": "227K",
     "reaction": "Claims por debajo del esperado → mercado laboral fuerte, DXY firme e índices bajo presión. Claims por encima → alivio y soporte para índices."
+  },
+  {
+    "day": "Jueves",
+    "name": "Housing Starts",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium",
+    "forecast": "1.30M",
+    "previous": "1.26M",
+    "reaction": "Construcción de viviendas > esperado → sector inmobiliario resiliente y DXY firme. < esperado → señal de debilidad en el mercado de la vivienda."
+  },
+  {
+    "day": "Jueves",
+    "name": "Import Prices m/m",
+    "timeEt": "8:30 AM ET",
+    "impact": "medium",
+    "forecast": "0.0%",
+    "previous": "-0.4%",
+    "reaction": "Precios de importación > esperado → presión inflacionaria externa, DXY firme. < esperado → alivio inflacionario."
   },
   {
     "day": "Jueves",
     "name": "Natural Gas Storage",
     "timeEt": "10:30 AM ET",
     "impact": "medium",
-    "forecast": "60B",
-    "previous": "55B",
+    "forecast": "45B",
+    "previous": "53B",
     "reaction": "Dato útil para energía. Impacto indirecto sobre inflación y sentimiento de riesgo."
   },
   {
-    "day": "Viernes",
-    "name": "Federal Budget Balance",
-    "timeEt": "2:00 PM ET",
+    "day": "Jueves",
+    "name": "Preliminary UoM Consumer Sentiment",
+    "timeEt": "10:00 AM ET",
     "impact": "medium",
-    "forecast": "-$70.0B",
-    "previous": "-$316.0B",
-    "reaction": "Déficit mayor al esperado → presión sobre yields de largo plazo. Menor al esperado → alivio en bonos y sesgo positivo para índices."
+    "forecast": "61.5",
+    "previous": "60.7",
+    "reaction": "Sentimiento del consumidor > esperado → gasto futuro sólido, DXY firme. < esperado → cautela del consumidor y presión sobre índices."
+  },
+  {
+    "day": "Jueves",
+    "name": "Preliminary UoM Inflation Expectations",
+    "timeEt": "10:00 AM ET",
+    "impact": "medium",
+    "forecast": "4.7%",
+    "previous": "5.0%",
+    "reaction": "Expectativas de inflación > esperado → temor a inflación persistente, presión para Fed hawkish. < esperado → alivio para bonos e índices."
   }
 ]
