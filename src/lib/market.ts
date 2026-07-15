@@ -229,6 +229,15 @@ export const EVENT_DISPLAY_NAMES: Record<string, string> = {
   "Philly Fed Manufacturing Index": "Philly Fed Manufacturing Index (Indicador de manufactura Philly)",
   "President Trump Speaks": "President Trump Speaks (Discurso del Presidente)",
   "Business Inventories": "Business Inventories (Inventarios empresariales)",
+  "NFIB Small Business Optimism Index": "NFIB Small Business Optimism Index (Optimismo empresarial NFIB)",
+  "CPI m/m": "CPI m/m (Inflación mensual al consumidor)",
+  "CPI y/y": "CPI y/y (Inflación anual al consumidor)",
+  "PPI m/m": "PPI m/m (Inflación mensual al productor)",
+  "Retail Sales m/m": "Retail Sales m/m (Ventas minoristas mensual)",
+  "Industrial Production m/m": "Industrial Production m/m (Producción industrial mensual)",
+  "Import Prices m/m": "Import Prices m/m (Precios de importación mensual)",
+  "Preliminary UoM Consumer Sentiment": "Preliminary UoM Consumer Sentiment (Confianza consumidor Michigan preliminar)",
+  "Preliminary UoM Inflation Expectations": "Preliminary UoM Inflation Expectations (Expectativas inflación Michigan preliminar)",
 };
 
 const EVENT_REACTIONS: Record<string, string> = {
@@ -255,6 +264,15 @@ const EVENT_REACTIONS: Record<string, string> = {
   "30-y Bond Auction": "Si demanda débil (yield sube) → presión para tasas → Índices caen. Si demanda fuerte (yield baja) → alivio → Índices suben.",
   "RCM/TIPP Economic Optimism": "Optimismo > esperado → consumo fuerte → presión inflacionaria → tasas arriba → Índices caen. Optimismo < esperado → alivio → Índices suben.",
   "Fed Monetary Policy Report": "Informe hawkish → tasas arriba → Índices caen. Informe dovish → tasas abajo → Índices suben.",
+  "NFIB Small Business Optimism Index": "Optimismo empresarial > esperado → economía resiliente → presión para tasas → Índices caen. < esperado → alivio → Índices suben.",
+  "CPI m/m": "Si CPI > esperado → inflación alta → tasas arriba → Índices caen (buscar ventas). Si CPI < esperado → Índices suben (buscar compras).",
+  "CPI y/y": "Si CPI > esperado → inflación alta → tasas arriba → Índices caen (buscar ventas). Si CPI < esperado → Índices suben (buscar compras).",
+  "PPI m/m": "Si PPI > esperado → presión inflacionaria → tasas arriba → Índices caen. Si PPI < esperado → alivio → Índices suben.",
+  "Retail Sales m/m": "Ventas > esperado → consumo fuerte → presión inflacionaria → tasas arriba → Índices caen. Ventas < esperado → alivio → Índices suben.",
+  "Industrial Production m/m": "Producción > esperado → economía fuerte → DXY firme. Producción < esperado → debilidad industrial.",
+  "Import Prices m/m": "Precios de importación > esperado → presión inflacionaria → tasas arriba → Índices caen. < esperado → alivio → Índices suben.",
+  "Preliminary UoM Consumer Sentiment": "Confianza > esperado → consumo fuerte → presión inflacionaria → tasas arriba → Índices caen. Confianza < esperado → alivio → Índices suben.",
+  "Preliminary UoM Inflation Expectations": "Expectativas de inflación altas → DXY/yields arriba e índices bajo presión. Bajas → alivio.",
 };
 
 const FUTURES_VARIABLES = [
@@ -683,17 +701,46 @@ function mapImpact(impact: string): ImpactLevel {
 
 function normalizeEventName(title: string): string {
   const t = title.toLowerCase();
+  if (t.includes("nfib")) return "NFIB Small Business Optimism Index";
+  if (t.includes("core cpi") && t.includes("m/m")) return "Core CPI m/m";
+  if (t.includes("core cpi") && t.includes("y/y")) return "Core CPI y/y";
   if (t.includes("core cpi")) return "Core CPI";
+  if (t.includes("cpi") && t.includes("m/m")) return "CPI m/m";
+  if (t.includes("cpi") && t.includes("y/y")) return "CPI y/y";
   if (t.includes("cpi")) return "CPI";
+  if (t.includes("core ppi") && t.includes("m/m")) return "Core PPI m/m";
   if (t.includes("core ppi")) return "Core PPI";
+  if (t.includes("ppi") && t.includes("m/m")) return "PPI m/m";
+  if (t.includes("ppi") && t.includes("y/y")) return "PPI";
   if (t.includes("ppi")) return "PPI";
   if (t.includes("non-farm") || t.includes("nfp")) return "NFP";
   if (t.includes("pce")) return "PCE";
+  if (t.includes("fomc meeting minutes")) return "FOMC Meeting Minutes";
   if (t.includes("fomc")) return "FOMC";
   if (t.includes("gdp")) return "GDP";
-  if (t.includes("jobless") || t.includes("unemployment claims")) return "Jobless Claims";
+  if (t.includes("jobless") || t.includes("unemployment claims")) return "Unemployment Claims";
+  if (t.includes("bond auction") && t.includes("10-y")) return "10-y Bond Auction";
+  if (t.includes("bond auction") && t.includes("30-y")) return "30-y Bond Auction";
   if (t.includes("bond auction")) return "Bond Auctions";
   if (t.includes("fed") && t.includes("speak")) return "Fed Speeches";
+  if (t.includes("fed monetary policy report")) return "Fed Monetary Policy Report";
+  if (t.includes("retail sales") && t.includes("m/m")) return "Retail Sales m/m";
+  if (t.includes("core retail sales") && t.includes("m/m")) return "Core Retail Sales m/m";
+  if (t.includes("industrial production") && t.includes("m/m")) return "Industrial Production m/m";
+  if (t.includes("industrial production")) return "Industrial Production";
+  if (t.includes("import prices") && t.includes("m/m")) return "Import Prices m/m";
+  if (t.includes("import prices")) return "Import Prices";
+  if (t.includes("preliminary uom consumer sentiment") || t.includes("prelim uom consumer sentiment")) return "Preliminary UoM Consumer Sentiment";
+  if (t.includes("preliminary uom inflation expectations") || t.includes("prelim uom inflation expectations")) return "Preliminary UoM Inflation Expectations";
+  if (t.includes("crude oil inventories")) return "Crude Oil Inventories";
+  if (t.includes("natural gas storage")) return "Natural Gas Storage";
+  if (t.includes("building permits")) return "Building Permits";
+  if (t.includes("housing starts")) return "Housing Starts";
+  if (t.includes("business inventories")) return "Business Inventories";
+  if (t.includes("federal budget balance")) return "Federal Budget Balance";
+  if (t.includes("trade balance") && t.includes("usd")) return "Trade Balance";
+  if (t.includes("consumer credit")) return "Consumer Credit m/m";
+  if (t.includes("president trump speaks")) return "President Trump Speaks";
   return "";
 }
 
@@ -717,12 +764,16 @@ export function getEventVerdict(
 
   const lowerIsBullish = [
     "CPI", "Core CPI", "PPI", "Core PPI", "PCE", "Import Prices",
-    "Jobless Claims", "Unemployment Claims", "Crude Oil Inventories"
+    "Jobless Claims", "Unemployment Claims", "Crude Oil Inventories",
+    "CPI m/m", "CPI y/y", "Core CPI m/m", "Core CPI y/y",
+    "PPI m/m", "Core PPI m/m", "Import Prices m/m"
   ];
   const higherIsBullish = [
     "GDP", "Empire State Manufacturing Index", "Industrial Production",
     "Philly Fed Manufacturing Index", "Pending Home Sales",
-    "Building Permits", "Housing Starts", "Retail Sales", "Core Retail Sales"
+    "Building Permits", "Housing Starts", "Retail Sales", "Core Retail Sales",
+    "Industrial Production m/m",
+    "NFIB Small Business Optimism Index"
   ];
 
   if (lowerIsBullish.includes(eventName)) {
