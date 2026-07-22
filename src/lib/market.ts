@@ -1,7 +1,7 @@
 import economicEvents from "@/data/economic-events.json";
 import tenXRegimesSeed from "@/data/tenx-regimes.json";
 import tenXScreenerSeed from "@/data/tenx-screener.json";
-import { formatEtTimeLabel, getEtDateKey } from "@/lib/date";
+import { formatEtTimeLabel, getEtDateKey, getEtWeekdayIndex } from "@/lib/date";
 import type {
   ConditionSummary,
   DashboardData,
@@ -679,19 +679,13 @@ type WeeklyScheduleEventDraft = {
 };
 
 function parseEtTimeLabelFromIso(dateStr: string): string {
-  const d = new Date(dateStr);
-  return d.toLocaleTimeString("en-US", {
-    hour: "numeric",
-    minute: "2-digit",
-    hour12: true,
-    timeZone: "America/New_York",
-  }) + " ET";
+  return formatEtTimeLabel(new Date(dateStr));
 }
 
 function getDayNameFromDate(dateStr: string): string {
-  const d = new Date(dateStr);
-  const days = ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"];
-  return days[d.getDay()];
+  const idx = getEtWeekdayIndex(new Date(dateStr));
+  const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado", "Domingo"];
+  return days[idx] ?? "";
 }
 
 function mapImpact(impact: string): ImpactLevel {

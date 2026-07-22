@@ -2,10 +2,11 @@
 
 import { useEffect, useMemo, useState } from "react";
 import { EVENT_DISPLAY_NAMES, getDayVerdict } from "@/lib/market";
-import { formatEtDateLabel, formatEtTimeLabel } from "@/lib/date";
+import { formatEtDateLabel, formatEtTimeLabel, getEtWeekdayIndex } from "@/lib/date";
 import type { DashboardData, DashboardHistoryEntry, MarketSnapshot } from "@/lib/types";
 
 const HISTORY_STORAGE_KEY = "consultor-macro-history";
+const DAYS = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
 
 function getEventVerdict(eventName: string, forecast: string | undefined, actual: string | undefined): "bullish" | "bearish" | "neutral" {
   if (!forecast || !actual) return "neutral";
@@ -53,15 +54,6 @@ function getActionShort(title: string) {
   return "NO OPERAR";
 }
 
-function getEtWeekdayIndex(date: Date) {
-  const weekday = new Intl.DateTimeFormat("en-US", {
-    timeZone: "America/New_York",
-    weekday: "short",
-  }).format(date);
-  const map: Record<string, number> = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4 };
-  return map[weekday] ?? -1;
-}
-
 function getEtMinutesOfDay(date: Date) {
   const parts = new Intl.DateTimeFormat("en-US", {
     timeZone: "America/New_York",
@@ -87,9 +79,8 @@ function parseEventTimeToMinutes(timeEt: string) {
 
 function getTodayEvents(schedule: DashboardData['weeklySchedule'], now: Date) {
   const todayIndex = getEtWeekdayIndex(now);
-  if (todayIndex < 0) return [];
-  const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
-  const todayName = days[todayIndex];
+  if (todayIndex < 0 || todayIndex >= DAYS.length) return [];
+  const todayName = DAYS[todayIndex];
   return schedule.find(d => d.day === todayName)?.events || [];
 }
 
@@ -97,9 +88,26 @@ function getUpcomingTodayEvents(schedule: DashboardData['weeklySchedule'], now: 
   const nowMinutes = getEtMinutesOfDay(now);
   return getTodayEvents(schedule, now).filter((event) => {
     const eventMinutes = parseEventTimeToMinutes(event.timeEt);
-    if (eventMinutes === null) return true; // eventos sin hora fija (ej. feriado) siguen vigentes
+    if (eventMinutes === null) return true;
     return eventMinutes >= nowMinutes;
   });
+}
+
+function isTodayDay(dayName: string, now: Date): boolean {
+  const todayIndex = getEtWeekdayIndex(now);
+  return todayIndex >= 0 && todayIndex < DAYS.length && DAYS[todayIndex] === dayName;
+}
+
+function isPastDay(dayName: string, now: Date): boolean {
+  const todayIndex = getEtWeekdayIndex(now);
+  const dayIndex = DAYS.indexOf(dayName);
+  return todayIndex >= 0 && dayIndex < todayIndex;
+}
+
+function isFutureDay(dayName: string, now: Date): boolean {
+  const todayIndex = getEtWeekdayIndex(now);
+  const dayIndex = DAYS.indexOf(dayName);
+  return todayIndex >= 0 && dayIndex > todayIndex;
 }
 
 const regimeStyles = {
@@ -563,18 +571,16 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                 <div
                   key={day.day}
                   className={`rounded-2xl border px-4 py-4 ${
-                    new Date().getDay() - 1 === ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"].indexOf(day.day)
+                    isTodayDay(day.day, clock)
                       ? "border-amber-300 bg-amber-50/50"
                       : "border-slate-200 bg-slate-50"
                   }`}
                 >
                   {/* RESUMEN DIARIO ARRIBA */}
                   {(() => {
-                    const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
-                    const todayIndex = new Date().getDay() - 1; // 0 = Monday
-                    const dayIndex = days.indexOf(day.day);
-                    const isPast = dayIndex < todayIndex;
-                    const isToday = dayIndex === todayIndex;
+                    const isPast = isPastDay(day.day, clock);
+                    const isToday = isTodayDay(day.day, clock);
+                    const isFuture = isFutureDay(day.day, clock);
                     
                     const dv = getDayVerdict(day.events);
                     
@@ -582,7 +588,7 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
                     if (day.events.length === 0) return null;
                     
                     // Si es día futuro y no hay datos concluidos, mostrar "Próximamente"
-                    if (dayIndex > todayIndex && dv.concluded === 0) return null;
+                    if (isFuture && dv.concluded === 0) return null;
                     
                     // Si es hoy y no hay datos aún, mostrar pendiente
                     if (isToday && dv.concluded === 0) {
@@ -640,19 +646,19 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
 
                   <div className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 flex items-center gap-2">
                     {day.day}
-                    {new Date().getDay() - 1 === ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"].indexOf(day.day) && (
+                    {isTodayDay(day.day, clock) && (
                       <span className="rounded bg-amber-200 px-1.5 py-0.5 text-[10px] font-bold text-amber-800">HOY</span>
                     )}
                   </div>
                   {day.events.length === 0 ? (
                     <p className="text-sm text-slate-500">
-                      {new Date().getDay() - 1 === ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"].indexOf(day.day) 
+                      {isTodayDay(day.day, clock)
                         ? "Sin noticias de alto impacto hoy ✅" 
                         : "—"}
                     </p>
                   ) : (
                     <div className="space-y-2">
-                      {new Date().getDay() - 1 === ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"].indexOf(day.day) && (
+                      {isTodayDay(day.day, clock) && (
                         <div className="text-xs font-medium text-amber-800 mb-2">
                           ⚠️ Dato de alto impacto pendiente. Considerar reducir tamaño hasta publicación.
                         </div>

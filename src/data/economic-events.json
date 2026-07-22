@@ -1,38 +1,56 @@
 [
   {
     "day": "Lunes",
-    "name": "Leading Economic Index m/m",
+    "name": "CB Leading Index m/m",
     "timeEt": "10:00 AM ET",
     "impact": "medium",
-    "forecast": "-0.3%",
-    "previous": "0.0%",
+    "forecast": "-0.1%",
+    "previous": "0.1%",
     "reaction": "LEI < esperado → débil perspectiva económica, sesgo defensivo y presión para recortes de tasas. LEI > esperado → optimismo sobre crecimiento futuro, DXY firme."
+  },
+  {
+    "day": "Martes",
+    "name": "CPI m/m",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "0.2%",
+    "previous": "0.1%",
+    "reaction": "CPI > esperado → presión inflacionaria, DXY/yields suben e índices bajo presión. CPI < esperado → alivio y posible rally en índices."
+  },
+  {
+    "day": "Martes",
+    "name": "CPI y/y",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "2.8%",
+    "previous": "2.7%",
+    "reaction": "Inflación anual > esperado → Fed hawkish, presión para mantener tasas. < esperado → apoyo a recortes cercanos."
+  },
+  {
+    "day": "Miércoles",
+    "name": "PPI m/m",
+    "timeEt": "8:30 AM ET",
+    "impact": "high",
+    "forecast": "0.2%",
+    "previous": "0.1%",
+    "reaction": "PPI > esperado → presión en costos al productor, señal adelantada de inflación, DXY firme e índices débiles. Por debajo → alivio."
   },
   {
     "day": "Miércoles",
     "name": "Crude Oil Inventories",
     "timeEt": "10:30 AM ET",
     "impact": "medium",
-    "forecast": "-1.6M",
-    "previous": "-3.2M",
+    "forecast": "-1.5M",
+    "previous": "-2.0M",
     "reaction": "Menos inventario del esperado → petróleo sube, presión inflacionaria y sesgo bearish para índices. Más inventario → alivio en precios de energía."
-  },
-  {
-    "day": "Miércoles",
-    "name": "Natural Gas Storage",
-    "timeEt": "10:30 AM ET",
-    "impact": "medium",
-    "forecast": "40B",
-    "previous": "23B",
-    "reaction": "Dato útil para energía. Inyección menor de lo esperado con calor estival → soporte a precios del gas. Inyección mayor → presión bajista."
   },
   {
     "day": "Jueves",
     "name": "Unemployment Claims",
     "timeEt": "8:30 AM ET",
     "impact": "medium",
-    "forecast": "226K",
-    "previous": "221K",
+    "forecast": "230K",
+    "previous": "225K",
     "reaction": "Claims por debajo del esperado → mercado laboral fuerte, DXY firme e índices bajo presión. Claims por encima → alivio y soporte para índices."
   },
   {
@@ -40,8 +58,8 @@
     "name": "Flash Manufacturing PMI",
     "timeEt": "9:45 AM ET",
     "impact": "high",
-    "forecast": "52.7",
-    "previous": "52.9",
+    "forecast": "52.0",
+    "previous": "52.5",
     "reaction": "PMI manufacturero por debajo de 50 → contracción del sector, presión para índices y DXY. Por encima de 50 y del consenso → expansión y DXY firme."
   },
   {
@@ -50,7 +68,7 @@
     "timeEt": "9:45 AM ET",
     "impact": "high",
     "forecast": "53.0",
-    "previous": "52.9",
+    "previous": "53.2",
     "reaction": "Servicios > esperado → economía dominada por servicios resistente, DXY firme. < esperado → desaceleración y presión sobre índices."
   },
   {
@@ -59,16 +77,16 @@
     "timeEt": "10:00 AM ET",
     "impact": "medium",
     "forecast": "700K",
-    "previous": "623K",
+    "previous": "650K",
     "reaction": "Ventas de viviendas nuevas > esperado → sector inmobiliario sorprende al alza, yields suben e índices bajo presión. < esperado → debilidad persistente del mercado de la vivienda."
   },
   {
-    "day": "Jueves",
-    "name": "Import Prices m/m",
-    "timeEt": "8:30 AM ET",
+    "day": "Viernes",
+    "name": "Existing Home Sales",
+    "timeEt": "10:00 AM ET",
     "impact": "medium",
-    "forecast": "0.0%",
-    "previous": "-0.4%",
-    "reaction": "Precios de importación > esperado → presión inflacionaria externa (aranceles), DXY firme. < esperado → alivio inflacionario."
+    "forecast": "4.00M",
+    "previous": "3.95M",
+    "reaction": "Ventas de viviendas usadas > esperado → mercado inmobiliario resiliente, DXY firme. < esperado → continuación de debilidad sectorial."
   }
 ]

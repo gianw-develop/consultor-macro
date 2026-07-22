@@ -40,3 +40,19 @@ export function formatEtTimeLabel(date: Date | string) {
     hour12: true,
   }).format(resolved)} ET`;
 }
+
+export function getEtWeekdayName(date: Date): string {
+  return new Intl.DateTimeFormat("es-ES", {
+    timeZone: ET_TIME_ZONE,
+    weekday: "long",
+  }).format(date);
+}
+
+export function getEtWeekdayIndex(date: Date): number {
+  const weekday = new Intl.DateTimeFormat("en-US", {
+    timeZone: ET_TIME_ZONE,
+    weekday: "short",
+  }).format(date);
+  const map: Record<string, number> = { Mon: 0, Tue: 1, Wed: 2, Thu: 3, Fri: 4, Sat: 5, Sun: 6 };
+  return map[weekday] ?? -1;
+}
