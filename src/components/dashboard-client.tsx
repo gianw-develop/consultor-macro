@@ -646,6 +646,9 @@ export function DashboardClient({ initialData }: { initialData: DashboardData })
 
                   <div className="mb-3 text-sm font-semibold uppercase tracking-[0.14em] text-slate-500 flex items-center gap-2">
                     {day.day}
+                    {day.dateLabel && (
+                      <span className="text-xs normal-case text-slate-400">{day.dateLabel}</span>
+                    )}
                     {isTodayDay(day.day, clock) && (
                       <span className="rounded bg-amber-200 px-1.5 py-0.5 text-[10px] font-bold text-amber-800">HOY</span>
                     )}

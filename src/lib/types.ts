@@ -42,6 +42,8 @@ export interface WeeklyEvent {
 
 export interface WeeklyScheduleDay {
   day: string;
+  dateKey?: string;
+  dateLabel?: string;
   events: WeeklyEvent[];
 }
 

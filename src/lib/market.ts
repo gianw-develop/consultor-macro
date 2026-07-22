@@ -688,8 +688,46 @@ function getDayNameFromDate(dateStr: string): string {
   return days[idx] ?? "";
 }
 
-function mapImpact(impact: string): ImpactLevel {
-  if (impact === "High") return "high";
+function getEtMonday(date: Date): Date {
+  const idx = getEtWeekdayIndex(date);
+  const monday = new Date(date);
+  monday.setDate(monday.getDate() - (idx >= 0 ? idx : 0));
+  monday.setHours(0, 0, 0, 0);
+  return monday;
+}
+
+function getEtDateForWeekday(monday: Date, dayIndex: number): Date {
+  const d = new Date(monday);
+  d.setDate(d.getDate() + dayIndex);
+  return d;
+}
+
+function isDateInCurrentEtWeek(dateStr: string, monday: Date, friday: Date): boolean {
+  const d = new Date(dateStr);
+  const key = getEtDateKey(d);
+  const monKey = getEtDateKey(monday);
+  const friKey = getEtDateKey(friday);
+  return key >= monKey && key <= friKey;
+}
+
+function getKnownEventImpact(title: string, apiImpact: string): ImpactLevel {
+  const t = title.toLowerCase();
+  const high = [
+    "cpi", "core cpi", "ppi", "core ppi", "non-farm", "nfp", "fomc",
+    "fed interest rate decision", "retail sales", "gdp", "unemployment rate",
+    "nonfarm payrolls"
+  ];
+  const medium = [
+    "jobless claims", "unemployment claims", "flash manufacturing pmi",
+    "flash services pmi", "ism manufacturing pmi", "ism services pmi",
+    "industrial production", "housing starts", "building permits",
+    "new home sales", "existing home sales", "consumer confidence",
+    "university of michigan", "pce", "crude oil inventories",
+    "natural gas storage", "treasury currency report"
+  ];
+  if (apiImpact === "High") return "high";
+  if (high.some((k) => t.includes(k))) return "high";
+  if (medium.some((k) => t.includes(k))) return "medium";
   return "medium";
 }
 
@@ -857,73 +895,89 @@ async function fetchForexFactoryEvents(): Promise<ForexFactoryEvent[]> {
 
 async function buildWeeklyScheduleMerged(): Promise<WeeklyScheduleDay[]> {
   const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
+  const now = new Date();
+  const monday = getEtMonday(now);
+  const friday = getEtDateForWeekday(monday, 4);
 
-  // 1. Cargar SIEMPRE el JSON manual como base
-  const jsonEvents = economicEvents as WeeklyScheduleEventDraft[];
+  // 1. Intentar cargar eventos en vivo de Forex Factory
+  let apiEvents: ForexFactoryEvent[] = [];
+  try {
+    apiEvents = await fetchForexFactoryEvents();
+  } catch {
+    apiEvents = [];
+  }
 
   const base = new Map<string, WeeklyScheduleEventDraft>();
-  jsonEvents.forEach((event) => {
-    const key = `${event.day}-${event.name}`;
-    base.set(key, {
-      name: event.name,
-      day: event.day,
-      timeEt: event.timeEt,
-      impact: event.impact,
-      forecast: event.forecast,
-      previous: event.previous,
-      actual: event.actual,
-      reaction: event.reaction,
-    });
-  });
 
-  // 2. Enriquecer con API de Forex Factory
-  try {
-    const apiEvents = await fetchForexFactoryEvents();
-    if (apiEvents.length > 0) {
-      apiEvents
-        .filter((event) => event.country === "USD")
-        .forEach((event) => {
-          const normalizedName = normalizeEventName(event.title);
-          if (!normalizedName) return;
+  const filteredApi = apiEvents.filter(
+    (event) =>
+      event.country === "USD" && isDateInCurrentEtWeek(event.date, monday, friday)
+  );
 
-          const dayName = getDayNameFromDate(event.date);
-          const key = `${dayName}-${normalizedName}`;
-          const timeEt = parseEtTimeLabelFromIso(event.date);
-          const existing = base.get(key);
+  if (filteredApi.length > 0) {
+    filteredApi.forEach((event) => {
+      const normalizedName = normalizeEventName(event.title);
+      if (!normalizedName) return;
 
-          if (existing) {
-            // Merge: preferir el más completo (API actual > JSON actual > nada)
-            if (event.actual && event.actual !== existing.forecast) {
-              existing.actual = event.actual;
-            } else if (!existing.actual && event.actual) {
-              existing.actual = event.actual;
-            }
-            if (event.forecast && !existing.forecast) existing.forecast = event.forecast;
-            if (event.previous && !existing.previous) existing.previous = event.previous;
-            if (!existing.timeEt || timeEt < existing.timeEt) existing.timeEt = timeEt;
-            if (event.impact === "High") existing.impact = "high";
-          } else {
-            base.set(key, {
-              name: normalizedName,
-              day: dayName,
-              timeEt,
-              impact: mapImpact(event.impact),
-              forecast: event.forecast || undefined,
-              previous: event.previous || undefined,
-              actual: event.actual || undefined,
-              reaction: EVENT_REACTIONS[normalizedName],
-            });
-          }
+      const dayName = getDayNameFromDate(event.date);
+      const key = `${dayName}-${normalizedName}`;
+      const timeEt = parseEtTimeLabelFromIso(event.date);
+      const existing = base.get(key);
+      const impact = getKnownEventImpact(event.title, event.impact);
+
+      if (existing) {
+        if (event.actual && event.actual !== existing.forecast) {
+          existing.actual = event.actual;
+        } else if (!existing.actual && event.actual) {
+          existing.actual = event.actual;
+        }
+        if (event.forecast && !existing.forecast) existing.forecast = event.forecast;
+        if (event.previous && !existing.previous) existing.previous = event.previous;
+        if (!existing.timeEt || timeEt < existing.timeEt) existing.timeEt = timeEt;
+        if (impact === "high") existing.impact = "high";
+      } else {
+        base.set(key, {
+          name: normalizedName,
+          day: dayName,
+          timeEt,
+          impact,
+          forecast: event.forecast || undefined,
+          previous: event.previous || undefined,
+          actual: event.actual || undefined,
+          reaction: EVENT_REACTIONS[normalizedName],
         });
-    }
-  } catch {
-    // Si la API falla, seguimos con el JSON manual solo
+      }
+    });
+  }
+
+  // 2. Fallback: si la API no trae nada usable, usar JSON manual como base
+  if (base.size === 0) {
+    const jsonEvents = economicEvents as WeeklyScheduleEventDraft[];
+    jsonEvents.forEach((event) => {
+      const key = `${event.day}-${event.name}`;
+      base.set(key, {
+        name: event.name,
+        day: event.day,
+        timeEt: event.timeEt,
+        impact: event.impact,
+        forecast: event.forecast,
+        previous: event.previous,
+        actual: event.actual,
+        reaction: event.reaction,
+      });
+    });
   }
 
   const allEvents = Array.from(base.values());
 
-  return days.map<WeeklyScheduleDay>((day) => ({
+  return days.map<WeeklyScheduleDay>((day, idx) => ({
     day,
+    dateKey: getEtDateKey(getEtDateForWeekday(monday, idx)),
+    dateLabel: new Intl.DateTimeFormat("es-US", {
+      timeZone: "America/New_York",
+      month: "short",
+      day: "numeric",
+    }).format(getEtDateForWeekday(monday, idx)),
     events: allEvents
       .filter((event) => event.day === day)
       .map((event) => ({
