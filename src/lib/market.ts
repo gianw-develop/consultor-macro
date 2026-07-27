@@ -688,17 +688,25 @@ function getDayNameFromDate(dateStr: string): string {
   return days[idx] ?? "";
 }
 
+// Ancla el calculo al dia calendario ET usando UTC puro (Date.UTC + setUTCDate),
+// para que no dependa del huso horario local del servidor (Vercel corre en UTC,
+// no en ET, y mezclar getDate()/setHours() locales con formato en ET corria
+// la fecha un dia).
+function getEtCalendarNoonUtc(date: Date): Date {
+  const [year, month, day] = getEtDateKey(date).split("-").map(Number);
+  return new Date(Date.UTC(year, month - 1, day, 12, 0, 0, 0));
+}
+
 function getEtMonday(date: Date): Date {
   const idx = getEtWeekdayIndex(date);
-  const monday = new Date(date);
-  monday.setDate(monday.getDate() - (idx >= 0 ? idx : 0));
-  monday.setHours(0, 0, 0, 0);
+  const monday = getEtCalendarNoonUtc(date);
+  monday.setUTCDate(monday.getUTCDate() - (idx >= 0 ? idx : 0));
   return monday;
 }
 
 function getEtDateForWeekday(monday: Date, dayIndex: number): Date {
   const d = new Date(monday);
-  d.setDate(d.getDate() + dayIndex);
+  d.setUTCDate(d.getUTCDate() + dayIndex);
   return d;
 }
 
@@ -875,25 +883,72 @@ export function getDayVerdict(events: Array<{ name: string; forecast?: string; a
   return { verdict, bullish, bearish, neutral, concluded, conclusion };
 }
 
-async function fetchForexFactoryEvents(): Promise<ForexFactoryEvent[]> {
-  try {
-    const response = await fetch("https://nfs.faireconomy.media/ff_calendar_thisweek.json", {
-      cache: "no-store",
-      signal: AbortSignal.timeout(10000),
-    });
+// Forex Factory rate-limita agresivamente (probado: bloquea en la 2da llamada seguida).
+// Cacheamos en memoria del proceso y, si una llamada falla, reusamos la última
+// respuesta buena en vez de caer directo al JSON estatico desactualizado.
+const FOREX_FACTORY_CACHE_TTL_MS = 15 * 60 * 1000;
+const FOREX_FACTORY_STALE_FALLBACK_MS = 6 * 60 * 60 * 1000;
 
-    if (!response.ok) {
-      throw new Error(`HTTP ${response.status}`);
+let cachedForexFactoryEvents: ForexFactoryEvent[] = [];
+let cachedForexFactoryEventsAt = 0;
+
+async function fetchForexFactoryEventsRaw(): Promise<ForexFactoryEvent[]> {
+  for (let attempt = 0; attempt < 2; attempt++) {
+    try {
+      const response = await fetch("https://nfs.faireconomy.media/ff_calendar_thisweek.json", {
+        cache: "no-store",
+        signal: AbortSignal.timeout(10000),
+        headers: {
+          Accept: "application/json,text/plain,*/*",
+          "User-Agent": "Mozilla/5.0 (compatible; consultor-macro/1.0)",
+        },
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP ${response.status}`);
+      }
+
+      const text = await response.text();
+
+      if (!text.trim().startsWith("[")) {
+        // Forex Factory responde HTML (p. ej. "Rate Limited") en vez de JSON.
+        throw new Error("Respuesta no-JSON de Forex Factory (posible rate limit)");
+      }
+
+      return JSON.parse(text) as ForexFactoryEvent[];
+    } catch {
+      if (attempt === 0) {
+        continue;
+      }
     }
-
-    const data = (await response.json()) as ForexFactoryEvent[];
-    return data;
-  } catch {
-    return [];
   }
+
+  return [];
 }
 
-async function buildWeeklyScheduleMerged(): Promise<WeeklyScheduleDay[]> {
+async function fetchForexFactoryEvents(): Promise<{ events: ForexFactoryEvent[]; stale: boolean }> {
+  const now = Date.now();
+
+  if (cachedForexFactoryEvents.length > 0 && now - cachedForexFactoryEventsAt < FOREX_FACTORY_CACHE_TTL_MS) {
+    return { events: cachedForexFactoryEvents, stale: false };
+  }
+
+  const fresh = await fetchForexFactoryEventsRaw();
+
+  if (fresh.length > 0) {
+    cachedForexFactoryEvents = fresh;
+    cachedForexFactoryEventsAt = now;
+    return { events: fresh, stale: false };
+  }
+
+  if (cachedForexFactoryEvents.length > 0 && now - cachedForexFactoryEventsAt < FOREX_FACTORY_STALE_FALLBACK_MS) {
+    return { events: cachedForexFactoryEvents, stale: true };
+  }
+
+  return { events: [], stale: false };
+}
+
+async function buildWeeklyScheduleMerged(): Promise<{ days: WeeklyScheduleDay[]; usedStaticFallback: boolean }> {
   const days = ["Lunes", "Martes", "Miércoles", "Jueves", "Viernes"];
   const now = new Date();
   const monday = getEtMonday(now);
@@ -902,7 +957,7 @@ async function buildWeeklyScheduleMerged(): Promise<WeeklyScheduleDay[]> {
   // 1. Intentar cargar eventos en vivo de Forex Factory
   let apiEvents: ForexFactoryEvent[] = [];
   try {
-    apiEvents = await fetchForexFactoryEvents();
+    apiEvents = (await fetchForexFactoryEvents()).events;
   } catch {
     apiEvents = [];
   }
@@ -917,10 +972,15 @@ async function buildWeeklyScheduleMerged(): Promise<WeeklyScheduleDay[]> {
   if (filteredApi.length > 0) {
     filteredApi.forEach((event) => {
       const normalizedName = normalizeEventName(event.title);
-      if (!normalizedName) return;
+      const isHighFromApi = event.impact === "High";
 
+      // Si no reconocemos el nombre y la fuente no lo marca como alto impacto,
+      // lo saltamos para no llenar el calendario de ruido de bajo impacto.
+      if (!normalizedName && !isHighFromApi) return;
+
+      const displayName = normalizedName || event.title;
       const dayName = getDayNameFromDate(event.date);
-      const key = `${dayName}-${normalizedName}`;
+      const key = `${dayName}-${displayName}`;
       const timeEt = parseEtTimeLabelFromIso(event.date);
       const existing = base.get(key);
       const impact = getKnownEventImpact(event.title, event.impact);
@@ -937,21 +997,23 @@ async function buildWeeklyScheduleMerged(): Promise<WeeklyScheduleDay[]> {
         if (impact === "high") existing.impact = "high";
       } else {
         base.set(key, {
-          name: normalizedName,
+          name: displayName,
           day: dayName,
           timeEt,
           impact,
           forecast: event.forecast || undefined,
           previous: event.previous || undefined,
           actual: event.actual || undefined,
-          reaction: EVENT_REACTIONS[normalizedName],
+          reaction: normalizedName ? EVENT_REACTIONS[normalizedName] : undefined,
         });
       }
     });
   }
 
   // 2. Fallback: si la API no trae nada usable, usar JSON manual como base
-  if (base.size === 0) {
+  const usedStaticFallback = base.size === 0;
+
+  if (usedStaticFallback) {
     const jsonEvents = economicEvents as WeeklyScheduleEventDraft[];
     jsonEvents.forEach((event) => {
       const key = `${event.day}-${event.name}`;
@@ -970,7 +1032,7 @@ async function buildWeeklyScheduleMerged(): Promise<WeeklyScheduleDay[]> {
 
   const allEvents = Array.from(base.values());
 
-  return days.map<WeeklyScheduleDay>((day, idx) => ({
+  const scheduleDays = days.map<WeeklyScheduleDay>((day, idx) => ({
     day,
     dateKey: getEtDateKey(getEtDateForWeekday(monday, idx)),
     dateLabel: new Intl.DateTimeFormat("es-US", {
@@ -991,6 +1053,8 @@ async function buildWeeklyScheduleMerged(): Promise<WeeklyScheduleDay[]> {
         status: "upcoming" as const,
       })),
   }));
+
+  return { days: scheduleDays, usedStaticFallback };
 }
 
 async function buildMarketGroup(configs: InstrumentConfig[]) {
@@ -1842,7 +1906,21 @@ function buildGdeltRadarQuery(regimes: TenXRegime[]) {
     .join(" OR ")})`;
 }
 
+// GDELT rate-limita fuerte ("limit requests to one every 5 seconds"), y con
+// varios usuarios/refrescos golpeando el mismo endpoint es facil quedar
+// bloqueado. Igual que con Forex Factory: cacheamos y reusamos el ultimo
+// resultado bueno en vez de mostrar "0 coincidencias" en cada bloqueo.
+const GDELT_CACHE_TTL_MS = 20 * 60 * 1000;
+let cachedGdeltArticles: GdeltArticle[] = [];
+let cachedGdeltArticlesAt = 0;
+
 async function fetchRadarArticles(regimes: TenXRegime[]) {
+  const now = Date.now();
+
+  if (cachedGdeltArticles.length > 0 && now - cachedGdeltArticlesAt < GDELT_CACHE_TTL_MS) {
+    return cachedGdeltArticles;
+  }
+
   const query = buildGdeltRadarQuery(regimes);
   const url = new URL("https://api.gdeltproject.org/api/v2/doc/doc");
   url.searchParams.set("query", query);
@@ -1856,21 +1934,32 @@ async function fetchRadarArticles(regimes: TenXRegime[]) {
     const response = await fetch(url, {
       cache: "no-store",
       signal: AbortSignal.timeout(9000),
+      headers: {
+        "User-Agent": "Mozilla/5.0 (compatible; consultor-macro/1.0)",
+      },
     });
 
     if (!response.ok) {
-      return [];
+      return cachedGdeltArticles;
     }
 
     const text = await response.text();
     if (!text.trim().startsWith("{")) {
-      return [];
+      // GDELT responde texto plano ("Please limit requests...") cuando rate-limita.
+      return cachedGdeltArticles;
     }
 
     const payload = JSON.parse(text) as GdeltArticleListResponse;
-    return payload.articles ?? [];
+    const articles = payload.articles ?? [];
+
+    if (articles.length > 0) {
+      cachedGdeltArticles = articles;
+      cachedGdeltArticlesAt = now;
+    }
+
+    return articles;
   } catch {
-    return [];
+    return cachedGdeltArticles;
   }
 }
 
@@ -1984,17 +2073,25 @@ export async function getDashboardData(): Promise<DashboardData> {
   const session = getMarketSessionSummary(fetchedAt);
   const condition = applySessionGuard(rawCondition, session);
 
-  const [macroContext, futures, weeklySchedule] = await Promise.all([
+  const [macroContext, futures, weeklyScheduleResult] = await Promise.all([
     buildMarketGroup(CONTEXT_VARIABLES),
     buildMarketGroup(FUTURES_VARIABLES),
     buildWeeklyScheduleMerged(),
   ]);
+
+  const { days: weeklySchedule, usedStaticFallback } = weeklyScheduleResult;
 
   const unavailable = [...coreVariables, ...macroContext, ...futures]
     .filter((snapshot) => !snapshot.available)
     .map((snapshot) => snapshot.label);
 
   const warnings = buildDashboardWarnings(condition, session, unavailable, futures);
+
+  if (usedStaticFallback) {
+    warnings.push(
+      "Calendario económico en modo respaldo: Forex Factory no respondió (posible rate limit). Mostrando dataset manual, puede no ser el de esta semana.",
+    );
+  }
 
   return {
     fetchedAt: fetchedAt.toISOString(),
