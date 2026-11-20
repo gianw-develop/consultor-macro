@@ -4,7 +4,7 @@ import { Brand } from "./brand";
 
 type Step = "email" | "code";
 const NOTICE: Record<string, string> = {
-  "enlace-invalido": "El enlace de acceso no es válido o ha caducado. Pide un código nuevo.",
+  "enlace-invalido": "Enlace caducado. Pide otro.",
 };
 
 export function AccessForm({ configured, destination = "/annienexus", notice }: { configured: boolean; destination?: string; notice?: string }) {
@@ -21,7 +21,7 @@ export function AccessForm({ configured, destination = "/annienexus", notice }: 
       if (!response.ok) throw new Error(result.error);
       return result as { ok?: boolean; message?: string };
     } catch (error) {
-      setMessage(error instanceof Error && error.message ? error.message : "No se pudo conectar. Inténtalo de nuevo.");
+      setMessage(error instanceof Error && error.message ? error.message : "Sin conexión.");
       return null;
     } finally { setBusy(false); }
   }
@@ -32,7 +32,7 @@ export function AccessForm({ configured, destination = "/annienexus", notice }: 
       const address = String(form.get("email") ?? "").trim();
       setEmail(address);
       const result = await send({ action: "send-code", email: address });
-      if (result) { setStep("code"); setMessage(result.message ?? ""); }
+      if (result) setStep("code");
       return;
     }
     const result = await send({ action: "verify-code", email, code: String(form.get("code") ?? "") });
@@ -41,17 +41,14 @@ export function AccessForm({ configured, destination = "/annienexus", notice }: 
 
   return <main className="main-content access-page" id="main-content"><section className="panel access-panel">
     <span className="brand"><Brand /></span>
-    <h1>{step === "code" ? "Escribe tu código" : "Vuelve a tu lectura del mercado"}</h1>
-    <p className="lead">{step === "code" ? `Te enviamos un código a ${email}. Caduca en unos minutos.` : "Sin contraseñas: escribe tu correo y te llegará un acceso de un solo uso."}</p>
-    {!configured ? <p role="status">El acceso se está configurando. Vuelve cuando esté disponible.</p> :
+    <h1>{step === "code" ? "Revisa tu correo" : "Acceso"}</h1>
+    {!configured ? <p role="status">Acceso no disponible.</p> :
       <form onSubmit={submit}>
-        {step !== "code" && <label>Correo autorizado<input type="email" name="email" autoComplete="email" defaultValue={email} required disabled={busy} /></label>}
-        {step === "code" && <label>Código de acceso<input type="text" name="code" inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6,10}" maxLength={10} required autoFocus disabled={busy} /></label>}
-        <button className="button primary" disabled={busy}>{busy ? "Conectando…" : step === "email" ? "Enviarme un código" : "Entrar"}</button>
+        {step !== "code" && <label>Correo<input type="email" name="email" autoComplete="email" defaultValue={email} required disabled={busy} /></label>}
+        {step === "code" && <label>Código<input type="text" name="code" inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6,10}" maxLength={10} required autoFocus disabled={busy} /></label>}
+        <button className="button primary" disabled={busy}>{busy ? "…" : step === "email" ? "Enviar código" : "Entrar"}</button>
         <p role="status">{message}</p>
-        {step === "code" && <p className="small muted">¿Te llegó un enlace en vez de un código? Ábrelo desde este mismo dispositivo y entrarás directamente.</p>}
-        {step === "code" && <button className="access-switch" type="button" disabled={busy} onClick={() => { setMessage(""); setStep("email"); }}>Pedir un código nuevo</button>}
-        <p className="small muted">El acceso caduca al usarse o a los 10 minutos. No se pueden crear cuentas nuevas.</p>
+        {step === "code" && <button className="access-switch" type="button" disabled={busy} onClick={() => { setMessage(""); setStep("email"); }}>Pedir otro</button>}
       </form>}
   </section></main>;
 }
