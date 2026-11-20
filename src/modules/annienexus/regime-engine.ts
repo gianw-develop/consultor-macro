@@ -50,7 +50,7 @@ export function phaseOf(x: number, y: number): Phase {
   if (x >= 0) return y >= 0 ? "inflationary_expansion" : "disinflationary_expansion";
   return y >= 0 ? "stagflation" : "deflationary_crisis";
 }
-function crossTo(phase: Phase, axis: "growth" | "inflation"): Phase {
+export function crossTo(phase: Phase, axis: "growth" | "inflation"): Phase {
   const growthUp = phase === "inflationary_expansion" || phase === "disinflationary_expansion";
   const pricesUp = phase === "inflationary_expansion" || phase === "stagflation";
   return axis === "growth" ? phaseOf(growthUp ? -1 : 1, pricesUp ? 1 : -1) : phaseOf(growthUp ? 1 : -1, pricesUp ? -1 : 1);

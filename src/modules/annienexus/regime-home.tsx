@@ -1,0 +1,135 @@
+"use client";
+import { useState } from "react";
+import { PHASE_LABEL, BORDER_ZONE, crossTo, type Phase, type RegimeReading } from "./regime-engine";
+import type { SignalRow } from "./regime-signals";
+import type { MacroSnapshot } from "./macro-data";
+import { madridEventTime, type EconomicEvent } from "./economic-calendar";
+import { ResultsMonitor } from "./results-monitor";
+import { DataAvailability } from "./data-availability";
+import { EconomicContext } from "./economic-context";
+import { YieldCurve } from "./curve";
+import "./regime.css";
+
+const TONE: Record<Phase, string> = {
+  inflationary_expansion: "expansion", disinflationary_expansion: "disinflation",
+  stagflation: "stagflation", deflationary_crisis: "contraction",
+};
+const STAGE: Record<RegimeReading["stage"], string> = {
+  transition: "EN TRANSICIÓN", early: "RECIÉN INICIADA", mature: "MADURA", consolidated: "CONSOLIDADA",
+};
+const MONTHS = ["ENE", "FEB", "MAR", "ABR", "MAY", "JUN", "JUL", "AGO", "SEP", "OCT", "NOV", "DIC"];
+const month = (period: string) => MONTHS[Number(period.slice(5, 7)) - 1] ?? period;
+const num = (v: number) => v.toLocaleString("es-ES", { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+const signed = (v: number) => `${v > 0 ? "+" : v < 0 ? "−" : ""}${num(Math.abs(v))}`;
+const SCALE = 35; // ±1 = 35 % desde el centro: deja libres las esquinas para los nombres
+const pos = (v: number) => 50 + v * SCALE;
+const MARK = { driver: "◆", true: "✓", false: "✕", null: "○" } as const;
+
+function Distance({ label, value, velocity, nearest }: { label: string; value: number; velocity: number; nearest: boolean }) {
+  const d = Math.abs(value), close = d < BORDER_ZONE;
+  const state = close ? "cerca de cruzar" : nearest ? "frontera más cercana" : "lejos de cruzar";
+  const toward = Math.sign(velocity) === -Math.sign(value) && velocity !== 0;
+  return <div className={`rg-distance${close ? " close" : nearest ? " nearest" : ""}`}>
+    <div className="rg-distance-head"><span>{label}</span><span className="rg-num">{num(d)} · {state}</span></div>
+    <div className="rg-bar" role="img" aria-label={`${label}: ${num(d)} sobre 1, ${state}`}><span style={{ width: `${Math.min(100, d * 100)}%` }} /><i style={{ left: `${BORDER_ZONE * 100}%` }} /></div>
+    <p>Último mes: {velocity > 0 ? "▲" : velocity < 0 ? "▼" : "="} {signed(velocity)}. {velocity === 0 ? "Sin cambio." : toward ? "Se acerca a la frontera." : "Se aleja de la frontera."}</p>
+  </div>;
+}
+
+export function RegimeHome({ reading, signals, snapshot, now, cutLabel, overdue }: { reading: RegimeReading; signals: SignalRow[]; snapshot: MacroSnapshot | null; now: string; cutLabel: string; overdue: EconomicEvent[] }) {
+  const [open, setOpen] = useState(false);
+  const { point, trail, stage, monthsInPhase, nearestBorder, velocity, confidence } = reading;
+  const prev = trail.at(-2);
+  const crossed = prev && prev.phase !== point.phase;
+  const groups = [
+    { id: "growth", title: "Crecimiento", tone: "expansion" },
+    { id: "inflation", title: "Inflación", tone: "stagflation" },
+    { id: "market", title: "Mercado", tone: "disinflation" },
+  ] as const;
+  const market = signals.filter(s => s.axis === "market" && s.agrees !== null);
+  const marketText = market.length === 0 ? "Sin datos de mercado conectados." : market.every(s => s.agrees) ? "El mercado confirma la lectura." : market.some(s => s.agrees) ? "El mercado confirma solo en parte." : "El mercado todavía no confirma la lectura.";
+  return <main id="main-content" className="main-content rg">
+    <div className="rg-status" role="status">
+      <span>Datos hasta <b>{month(point.period)}</b> · corte del {cutLabel}</span>
+      {overdue.length > 0 && <span className="warn">{overdue.length} publicaciones sin incorporar: {overdue.slice(-3).reverse().map(e => `${e.title.split(" · ")[0]} (${madridEventTime(e.scheduledAt).split(",")[0]})`).join(", ")}</span>}
+    </div>
+
+    <div className="rg-hero">
+      <section className="rg-map-wrap" aria-labelledby="rg-map-title">
+        <h2 id="rg-map-title" className="rg-eyebrow">Dónde está la economía · EE. UU.</h2>
+        <p className="rg-axis top">Inflación acelera ↑</p>
+        <div className="rg-map-row">
+          <p className="rg-axis left">← Crecimiento se frena</p>
+          <div className="rg-map" role="img" aria-label={`Mapa de régimen. ${month(point.period)}: ${PHASE_LABEL[point.phase]}, a ${num(Math.abs(point.x))} del eje de crecimiento y ${num(Math.abs(point.y))} del de inflación.${crossed ? ` El mes anterior estaba en ${PHASE_LABEL[prev.phase].toLowerCase()}.` : ""}`}>
+            <span className="q stagflation" /><span className="q expansion" /><span className="q contraction" /><span className="q disinflation" />
+            <span className="band v" style={{ left: `${pos(-BORDER_ZONE)}%`, width: `${BORDER_ZONE * SCALE * 2}%` }} />
+            <span className="band h" style={{ top: `${pos(-BORDER_ZONE)}%`, height: `${BORDER_ZONE * SCALE * 2}%` }} />
+            <span className="axis v" /><span className="axis h" />
+            <b className="ql tl stagflation">Estanflación</b><b className="ql tr expansion">Expansión inflacionaria</b>
+            <b className="ql bl contraction">Crisis deflacionaria</b><b className="ql br disinflation">Expansión desinflacionaria</b>
+            <svg viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true"><polyline points={trail.map(p => `${pos(p.x)},${pos(-p.y)}`).join(" ")} /></svg>
+            {trail.map((p, i) => {
+              const last = i === trail.length - 1;
+              return <span key={p.period} className={`pt${last ? " now" : ""}`} style={{ left: `${pos(p.x)}%`, top: `${pos(-p.y)}%` }}>
+                <span className="dot" />{last && <span className="halo" />}
+                <span className={`lbl${i % 2 ? " alt" : ""}`}>{month(p.period)}{last ? " · HOY" : ""}</span>
+              </span>;
+            })}
+          </div>
+          <p className="rg-axis right">Crecimiento acelera →</p>
+        </div>
+        <p className="rg-axis bottom">Inflación se modera ↓</p>
+        <p className="rg-caption">Horizontal: impulso del CLI G7 (cambio en 3 meses). Vertical: IPC de 3 meses anualizado frente al anual. Franja rayada: a menos de {num(BORDER_ZONE)} de cruzar.</p>
+      </section>
+
+      <section className="rg-diagnosis" aria-labelledby="rg-phase">
+        <h2 className="rg-eyebrow">Diagnóstico</h2>
+        <h1 id="rg-phase" className={TONE[point.phase]}>{PHASE_LABEL[point.phase]}</h1>
+        <div className="rg-chips">
+          <span className={`chip ${TONE[point.phase]}`}>{STAGE[stage]} · {monthsInPhase} {monthsInPhase === 1 ? "MES" : "MESES"}</span>
+          <span className="chip">{confidence.agree} DE {confidence.total} SEÑALES CONFIRMAN</span>
+        </div>
+        <p className="rg-lead">{reading.detail}</p>
+        <div className="rg-block">
+          <h3 className="rg-eyebrow">Qué tan cerca está de cambiar</h3>
+          <Distance label="Crecimiento" value={point.x} velocity={velocity.x} nearest={nearestBorder.axis === "growth"} />
+          <Distance label="Inflación" value={point.y} velocity={velocity.y} nearest={nearestBorder.axis === "inflation"} />
+        </div>
+        <div className="rg-scenarios">
+          {(["inflation", "growth"] as const).map(axis => {
+            const next = crossTo(point.phase, axis);
+            return <div key={axis} className={TONE[next]}>
+              <p className="rg-eyebrow">Si {axis === "inflation" ? "la inflación" : "el crecimiento"} cambia de sentido</p>
+              <p>→ {PHASE_LABEL[next]}</p>
+            </div>;
+          })}
+        </div>
+      </section>
+    </div>
+
+    <section className="rg-signals" aria-labelledby="rg-signals-title">
+      <div className="rg-signals-head"><h2 id="rg-signals-title" className="rg-eyebrow">Las señales · qué mueve el punto y qué lo confirma</h2><span>◆ mueve el punto · ✓ confirma · ✕ contradice · ○ sin datos</span></div>
+      <div className="rg-cols">
+        {groups.map(gr => <div key={gr.id}>
+          <h3 className={gr.tone}>{gr.title}</h3>
+          <ul>{signals.filter(s => s.axis === gr.id).map(s => {
+            const mark = s.role === "driver" ? MARK.driver : MARK[String(s.agrees) as "true" | "false" | "null"];
+            const state = s.role === "driver" ? "driver" : s.agrees === null ? "none" : s.agrees ? "yes" : "no";
+            return <li key={s.id} data-state={state}>
+              <span className="mk" aria-label={state === "driver" ? "Mueve el punto" : state === "yes" ? "Confirma" : state === "no" ? "Contradice" : "Sin datos"}>{mark}</span>
+              <span><b>{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{s.label}</a> : s.label}</b><small>{s.reading} · {s.note}</small></span>
+              <span className="rg-num">{s.value}</span>
+            </li>;
+          })}</ul>
+          {gr.id === "market" && <p className="rg-market">{marketText}</p>}
+        </div>)}
+      </div>
+    </section>
+
+    <details className="rg-all" open={open} onToggle={e => setOpen(e.currentTarget.open)}>
+      <summary>Todos los datos, agenda y fuentes <span>＋</span></summary>
+      {open && <div className="rg-all-body"><ResultsMonitor snapshot={snapshot} now={now} /><DataAvailability now={now} /><EconomicContext now={now} /><YieldCurve data={snapshot?.treasury ?? null} now={now} /></div>}
+    </details>
+    <p className="rg-foot">Método v1: el punto solo lo mueven el CLI G7 y el IPC; las demás señales confirman o contradicen. Describe el presente, no predice fechas. Sin operaciones automáticas.</p>
+  </main>;
+}
