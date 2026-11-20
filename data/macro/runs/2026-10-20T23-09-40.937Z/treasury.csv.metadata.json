@@ -1,0 +1,8 @@
+{
+  "name": "Tesoro de Estados Unidos · curva par diaria",
+  "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?_format=csv&field_tdr_date_value=2026&page=&type=daily_treasury_yield_curve",
+  "fetchedAt": "2026-10-20T23:09:41.546Z",
+  "publishedAt": null,
+  "sha256": "5a14c3594b7d1ea446ed9e401813b75d447aaff24ebf4b0601dcceef6adfaf12",
+  "mode": "connector"
+}

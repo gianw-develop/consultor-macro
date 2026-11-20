@@ -1,0 +1,206 @@
+{
+  "checkedAt": "2026-10-15T09:07:17Z",
+  "events": [
+    {
+      "id": "cpi",
+      "title": "IPC · inflación de EE. UU.",
+      "period": "Septiembre de 2026",
+      "scheduledAt": "2026-10-14T12:30:00Z",
+      "source": "BLS",
+      "url": "https://www.bls.gov/news.release/archives/cpi_10142026.htm",
+      "relevance": "Precios pagados por los consumidores. Separar variación mensual ajustada por estacionalidad y variación anual oficial.",
+      "result": {
+        "publishedAt": "2026-10-14T12:30:00Z",
+        "verifiedAt": "2026-10-15T09:07:17Z",
+        "headline": "General: +0,6 % mensual · +3,7 % anual",
+        "details": [
+          "Agosto → septiembre: general mensual +0,4 % → +0,6 %; anual 3,4 % → 3,7 %.",
+          "Sin alimentos ni energía: +0,3 % mensual, igual que agosto; anual 2,4 % → 2,6 %. Gasolina: +9,1 % mensual."
+        ],
+        "reading": "La inflación general acelera en el mes y en el año. La subyacente mantiene el ritmo mensual y aumenta en la comparación anual."
+      }
+    },
+    {
+      "id": "ppi",
+      "title": "IPP · precios al productor",
+      "period": "Septiembre de 2026",
+      "scheduledAt": "2026-10-15T12:30:00Z",
+      "source": "BLS",
+      "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
+      "relevance": "Precios recibidos por productores. Permite contrastar costes; no es el IPC pagado por los hogares."
+    },
+    {
+      "id": "retail",
+      "title": "Ventas minoristas · avance",
+      "period": "Septiembre de 2026",
+      "scheduledAt": "2026-10-15T12:30:00Z",
+      "source": "Census",
+      "url": "https://www.census.gov/retail/release_schedule.html",
+      "relevance": "Ventas nominales, antes de descontar inflación. Revisar también agosto antes de calcular ventas reales con el IPC del mismo mes."
+    },
+    {
+      "id": "claims",
+      "title": "Solicitudes semanales de subsidio",
+      "period": "Semana terminada el 10 de octubre de 2026 · iniciales previstas",
+      "scheduledAt": "2026-10-15T12:30:00Z",
+      "source": "DOL",
+      "url": "https://www.dol.gov/ui/data.pdf",
+      "relevance": "Revisar nuevas solicitudes, media de cuatro semanas y correcciones del dato anterior. Último informe incorporado: 8/10."
+    },
+    {
+      "id": "import-prices",
+      "title": "Precios de importación y exportación",
+      "period": "Septiembre de 2026",
+      "scheduledAt": "2026-10-16T12:30:00Z",
+      "source": "BLS",
+      "url": "https://www.bls.gov/schedule/2026/10_sched.htm",
+      "relevance": "Precios del comercio exterior, para contrastar presiones de costes."
+    },
+    {
+      "id": "industrial-production",
+      "title": "Producción industrial",
+      "period": "Septiembre de 2026",
+      "scheduledAt": "2026-10-16T13:15:00Z",
+      "source": "Reserva Federal",
+      "url": "https://www.federalreserve.gov/newsevents/2026-october.htm",
+      "relevance": "Producción de fábricas, minas y servicios públicos. Contraste de actividad presente y utilización de capacidad."
+    }
+  ],
+  "previous": [
+    {
+      "id": "ism-services",
+      "title": "ISM · servicios",
+      "period": "Septiembre de 2026",
+      "scheduledAt": "2026-10-05T14:00:00Z",
+      "source": "ISM",
+      "url": "https://www.ismworld.org/supply-management-news-and-reports/reports/ism-pmi-reports/services/september/",
+      "relevance": "Encuesta a empresas de servicios: actividad y extensión de las subidas de costes.",
+      "result": {
+        "publishedAt": "2026-10-05T14:00:00Z",
+        "verifiedAt": "2026-10-07T11:25:36Z",
+        "headline": "Actividad: 54,9 · precios pagados: 74,0",
+        "details": [
+          "Septiembre frente a agosto: actividad 54,9 frente a 55,4; baja 0,5 puntos. Precios pagados 74,0 frente a 72,6; sube 1,4 puntos.",
+          "Son índices de encuesta, no tasas de crecimiento ni de inflación. En actividad, superar 50 indica expansión del sector; en precios, indica predominio de aumentos de costes.",
+          "Comparación con agosto según esta publicación; no se identifica una revisión de esos dos datos previos."
+        ],
+        "reading": "Los servicios siguen expandiéndose, con un índice menor que en agosto, mientras las subidas de costes se extienden. Es una descripción del informe, no un diagnóstico nuevo del régimen."
+      }
+    },
+    {
+      "id": "trade",
+      "title": "Comercio exterior · bienes y servicios",
+      "period": "Agosto de 2026",
+      "scheduledAt": "2026-10-06T12:30:00Z",
+      "source": "BEA / Census",
+      "url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-august-2026",
+      "relevance": "Diferencia entre lo que EE. UU. vende y compra al exterior; déficit significa que las importaciones superan las exportaciones.",
+      "result": {
+        "publishedAt": "2026-10-06T12:30:00Z",
+        "verifiedAt": "2026-10-07T11:25:36Z",
+        "headline": "Déficit: 105.600 millones de dólares",
+        "details": [
+          "Agosto: déficit de 105.600 millones de dólares, frente a 92.800 millones en julio revisado. El saldo comercial es negativo; aquí se muestra el tamaño del déficit.",
+          "Exportaciones: +1,4 % mensual. Importaciones: +4,3 % mensual. Importes nominales —sin descontar inflación— y ajustados por patrones estacionales.",
+          "El dato previo de julio está revisado en la publicación del 6 de octubre. No se sustituye por una cifra de un calendario anterior."
+        ],
+        "reading": "El déficit se amplía porque las importaciones aumentan más que las exportaciones. Por sí solo no determina la dirección del Dow, S&P 500 o Nasdaq."
+      }
+    },
+    {
+      "id": "fed-minutes",
+      "title": "Fed · actas de la reunión",
+      "period": "Reunión del 15–16 de septiembre de 2026",
+      "scheduledAt": "2026-10-07T18:00:00Z",
+      "source": "Reserva Federal",
+      "url": "https://www.federalreserve.gov/monetarypolicy/fomcminutes20260916.htm",
+      "relevance": "Las actas explican la discusión de una reunión pasada. No son una nueva decisión sobre los tipos de interés.",
+      "result": {
+        "publishedAt": "2026-10-07T18:00:00Z",
+        "verifiedAt": "2026-10-15T09:07:17Z",
+        "headline": "Actas publicadas · reunión de septiembre",
+        "details": [
+          "La reunión del 15–16/09 elevó el rango objetivo en 0,25 puntos porcentuales, hasta 3,75–4,00 %. Las actas del 7/10 explican esa decisión; no son una subida adicional.",
+          "La mayoría de participantes consideraba probable otra subida antes de finalizar el año, condicionada a los datos. Es la discusión de septiembre, no una decisión tomada hoy."
+        ],
+        "reading": "La inflación seguía siendo una preocupación. Separar las estimaciones disponibles en aquella reunión de las publicaciones posteriores."
+      }
+    },
+    {
+      "id": "consumer-credit",
+      "title": "Crédito al consumo",
+      "period": "Agosto de 2026 · preliminar",
+      "scheduledAt": "2026-10-07T19:00:00Z",
+      "source": "Reserva Federal",
+      "url": "https://www.federalreserve.gov/releases/g19/current/",
+      "relevance": "Dinero prestado a consumidores, como tarjetas y préstamos para vehículos o estudios; no incluye hipotecas. Separar el cambio mensual de una tasa anualizada al publicarse.",
+      "result": {
+        "publishedAt": "2026-10-07T19:00:00Z",
+        "verifiedAt": "2026-10-15T09:07:17Z",
+        "headline": "Crédito: +1,9 % a tasa anualizada",
+        "details": [
+          "Agosto preliminar frente a julio revisado: crecimiento total anualizado 1,9 % frente a 4,1 %. No es un aumento mensual de 1,9 %.",
+          "Crédito renovable, como tarjetas: −4,2 % anualizado frente a +2,5 %. No renovable: +4,1 % frente a +4,7 %. Excluye hipotecas."
+        ],
+        "reading": "El crédito total aumenta a menor ritmo, con caída del componente renovable. No equivale directamente a gasto de consumo."
+      }
+    },
+    {
+      "id": "claims",
+      "title": "Solicitudes semanales de subsidio",
+      "period": "Semana terminada el 3 de octubre de 2026 · solicitudes iniciales previstas",
+      "scheduledAt": "2026-10-08T12:30:00Z",
+      "source": "DOL",
+      "url": "https://www.dol.gov/ui/data.pdf",
+      "relevance": "Nuevas peticiones de ayuda por desempleo. Es un dato semanal, distinto del NFP —creación mensual de empleo no agrícola—. Revisar también la media de cuatro semanas y las correcciones del dato anterior.",
+      "result": {
+        "publishedAt": "2026-10-08T12:30:00Z",
+        "verifiedAt": "2026-10-15T09:07:17Z",
+        "headline": "Iniciales: 197.000 · media de 4 semanas: 198.000",
+        "details": [
+          "Semana terminada el 3/10: 197.000 iniciales, −2.000 frente a 199.000 de la semana anterior revisada. El 26/09 pasa de 197.000 a 199.000.",
+          "Media de 4 semanas: 198.000 frente a 200.500 revisado (antes 200.000). Ambas series ajustadas por estacionalidad."
+        ],
+        "reading": "Bajan las nuevas solicitudes y su media. Es una señal semanal de despidos, no una medición completa de la contratación."
+      }
+    },
+    {
+      "id": "wholesale",
+      "title": "Ventas e inventarios mayoristas",
+      "period": "Agosto de 2026",
+      "scheduledAt": "2026-10-08T14:00:00Z",
+      "source": "Census",
+      "url": "https://www.census.gov/wholesale/current/index.html",
+      "relevance": "Ventas y mercancías almacenadas por distribuidores mayoristas. Leer ambas juntas: más existencias no equivalen automáticamente a más demanda.",
+      "result": {
+        "publishedAt": "2026-10-08T14:00:00Z",
+        "verifiedAt": "2026-10-15T09:07:17Z",
+        "headline": "Ventas: +1,8 % · inventarios: +0,5 % mensual",
+        "details": [
+          "Agosto: ventas 817.500 millones de dólares, +1,8 % mensual; inventarios 964.200 millones, +0,5 %. Datos nominales, ajustados por estacionalidad.",
+          "Ventas de julio revisadas de +0,8 % a +1,0 %. Inventarios de agosto revisados de +0,7 % a +0,5 %. Relación inventarios/ventas: 1,18."
+        ],
+        "reading": "Las ventas crecen más que las existencias. Al no descontar inflación, no se interpreta como crecimiento real del mismo tamaño."
+      }
+    },
+    {
+      "id": "michigan",
+      "title": "Michigan · confianza y expectativas de inflación",
+      "period": "Octubre de 2026 · estimación preliminar",
+      "scheduledAt": "2026-10-09T14:00:00Z",
+      "source": "Universidad de Michigan",
+      "url": "https://www.sca.isr.umich.edu/",
+      "relevance": "Encuesta a hogares sobre su situación y el futuro. Las expectativas de inflación son lo que esperan que suban los precios, no inflación ya medida. La fuente primaria confirma viernes 9, no jueves 8.",
+      "result": {
+        "publishedAt": "2026-10-09T14:00:00Z",
+        "verifiedAt": "2026-10-15T09:07:17Z",
+        "headline": "Confianza: 46,3 · inflación esperada a un año: 4,7 %",
+        "details": [
+          "Octubre preliminar: confianza 46,3 frente a 48,1 en septiembre. Condiciones actuales 44,7 frente a 50,9; expectativas 47,3 frente a 46,3.",
+          "Inflación esperada a un año: 4,7 % frente a 4,6 %. A largo plazo: 3,5 % frente a 3,4 %. Son expectativas de hogares, no inflación realizada."
+        ],
+        "reading": "Menor confianza agregada y expectativas de inflación más altas. El resultado final está previsto para el 23/10."
+      }
+    }
+  ]
+}

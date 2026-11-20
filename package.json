@@ -6,22 +6,34 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test:foundation": "tsc -p tsconfig.foundation.json && node --test tests/foundation.test.cjs",
+    "test:quadrant": "tsc -p tsconfig.foundation.json && node --test tests/quadrant.test.cjs",
+    "data:refresh": "tsc -p tsconfig.foundation.json && node scripts/refresh-macro.mjs",
+    "test:macro": "tsc -p tsconfig.foundation.json && node --test tests/macro.test.cjs",
+    "preview": "ANNIENEXUS_LOCAL_PREVIEW=1 next start --hostname 127.0.0.1 --port 3017",
+    "test:notebook": "tsc -p tsconfig.foundation.json && node --test tests/notebook.test.cjs"
   },
   "dependencies": {
-    "lightweight-charts": "^5.2.0",
-    "next": "16.2.7",
+    "@supabase/ssr": "^0.12.7",
+    "@supabase/supabase-js": "^2.117.2",
+    "next": "16.3.7",
     "react": "19.2.4",
-    "react-dom": "19.2.4"
+    "react-dom": "19.2.4",
+    "react-markdown": "10.1.0",
+    "remark-gfm": "4.0.1",
+    "three": "0.186.1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",
+    "@types/three": "0.186.0",
     "eslint": "^9",
-    "eslint-config-next": "16.2.7",
+    "eslint-config-next": "16.3.7",
     "tailwindcss": "^4",
+    "three-mesh-bvh": "0.9.15",
     "typescript": "^5"
   }
 }

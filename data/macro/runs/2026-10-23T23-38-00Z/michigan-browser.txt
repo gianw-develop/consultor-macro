@@ -1,0 +1,100 @@
+					23 Contenido HTML Surveys of Consumers, URL: sca.isr.umich.edu/
+						24 link Surveys of Consumers Logo, Value: sca.isr.umich.edu/
+						25 lista de contenidos
+							26 link HOME, Value: sca.isr.umich.edu/
+							27 link TABLES, Value: sca.isr.umich.edu/tables.html
+							28 link CHARTS, Value: sca.isr.umich.edu/charts.html
+							29 link REPORTS, Value: sca.isr.umich.edu/reports.html
+							30 link CONTACT, Value: sca.isr.umich.edu/contact.html
+							31 link DATA SITE, Value: data.sca.isr.umich.edu/
+						32 container
+							33 encabezado Final Results for October 2026, Value: 1
+								34 texto Final Results for October 2026
+							35 container
+								36 container Oct
+									37 texto Oct
+								38 container Sep
+									39 texto Sep
+								40 container Oct
+									41 texto Oct
+								42 container M-M
+									43 texto M-M
+								44 container Y-Y
+									45 texto Y-Y
+							46 container
+								47 container 2026
+									48 texto 2026
+								49 container 2026
+									50 texto 2026
+								51 container 2025
+									52 texto 2025
+								53 container Change
+									54 texto Change
+								55 container Change
+									56 texto Change
+							57 container
+								58 container Index of Consumer Sentiment
+									59 texto Index of Consumer Sentiment
+								60 container 48.0
+									61 texto 48.0
+								62 container 48.1
+									63 texto 48.1
+								64 container 53.6
+									65 texto 53.6
+								66 container -0.2%
+									67 texto -0.2%
+								68 container -10.4%
+									69 texto -10.4%
+							70 container
+								71 container Current Economic Conditions
+									72 texto Current Economic Conditions
+								73 container 46.7
+									74 texto 46.7
+								75 container 50.9
+									76 texto 50.9
+								77 container 58.6
+									78 texto 58.6
+								79 container -8.3%
+									80 texto -8.3%
+								81 container -20.3%
+									82 texto -20.3%
+							83 container
+								84 container Index of Consumer Expectations
+									85 texto Index of Consumer Expectations
+								86 container 48.8
+									87 texto 48.8
+								88 container 46.3
+									89 texto 46.3
+								90 container 50.3
+									91 texto 50.3
+								92 container +5.4%
+									93 texto +5.4%
+								94 container -3.0%
+									95 texto -3.0%
+							96 encabezado Featured Chart (Image | PDF | Excel), Value: 3
+								97 texto Featured Chart (
+								98 link Image, Value: sca.isr.umich.edu/files/featured-chart_large-db95b75b.png
+								99 texto  |
+								100 link PDF, Value: sca.isr.umich.edu/files/featured-chart.pdf
+								101 texto  |
+								102 link Excel, Value: sca.isr.umich.edu/files/featured-chart.xlsx
+								103 texto )
+							104 link Featured Chart, Value: sca.isr.umich.edu/files/featured-chart_large-db95b75b.png
+							105 text Read our special reports: 10/23/26
+							106 link Risks of Entrenchment: Long-Run Inflation Expectations in Recent and Longer Historical Context, Value: data.sca.isr.umich.edu/fetchdoc.php?docid=82238
+							107 texto 10/9/26
+							108 link Gasoline Prices and Expected Consumer Spending, Value: data.sca.isr.umich.edu/fetchdoc.php?docid=82236
+							109 texto 7/10/26
+							110 link Sentiment, Web-Based Data Collection, and Partisanship, Value: data.sca.isr.umich.edu/fetchdoc.php?docid=81444
+							111 texto 5/22/26
+							112 link National Estimates Continue to Align With Views of Independents, Value: data.sca.isr.umich.edu/fetchdoc.php?docid=81125
+							113 texto 5/8/26
+							114 link Confidence in Financial Institutions, Value: data.sca.isr.umich.edu/fetchdoc.php?docid=81063
+							115 texto Next data release: Friday, November 6, 2026 for Preliminary November data at 10am ET
+							116 encabezado Surveys of Consumers Director Joanne Hsu, Value: 2
+								117 texto Surveys of Consumers Director Joanne Hsu
+							118 container
+								119 text ﻿Consumer sentiment held steady this month, registering a scant one-tenth of an index point below September. Increases in sentiment among Republicans and Democrats were balanced by declines among independents. While year-ahead business conditions improved about 14%, they stand 16% less than last October’s read. This month’s decline in the Current Conditions subindex was driven entirely by buying conditions for durables, which plunged 18% on the basis of higher interest rates and rising concerns about the af Year-ahead inflation expectations ticked up from 4.6% last month to 4.7% this month. The current reading substantially exceeds the 3.4% seen in February before the Iran conflict began, along with all 2024 readings. Long-run inflation expectations also stepped up from 3.4% in September to 3.5%, notably higher than their 2024 range of 2.8% to 3.2%. Inflation expectations over both time horizons increased for the second straight month to their highest readings since May. See
+								120 link today’s special report, Value: data.sca.isr.umich.edu/fetchdoc.php?docid=82238
+								121 texto  for additional historical context for long-run inflation expectations.
+						122 texto Copyright © 2026, The Regents of the University of Michigan. All Rights Reserved.

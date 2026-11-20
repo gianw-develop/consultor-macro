@@ -1,0 +1,5 @@
+# Original course archives stay local; only the reviewed selection is deployed.
+private/learning/
+src/modules/annienexus/library.json
+src/modules/annienexus/learning-resources.json
+private/learning-sources/

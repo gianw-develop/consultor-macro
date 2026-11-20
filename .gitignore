@@ -40,3 +40,9 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+
+# material privado de formación (no publicar en repo público)
+/private/
+# logs locales
+dev.log
+dev_run.log

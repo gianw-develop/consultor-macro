@@ -1,178 +1,68 @@
-# Consultor Macro
+# AnnieNexus — acceso privado
 
-Dashboard pre-market personal para swing trading de índices con lectura macro de flujo institucional.
+Estado 01/10/2026 14:23 Madrid: **publicada en https://consultormacro.com/acceso**. Dominio y protección anónima comprobados por HTTP. Pendientes primera cuenta/confirmación del usuario y QA visual de producción: conexión Chrome no disponible. **No subir biblioteca ni rama completa al remoto público.** Véase `docs/annienexus/release-2026-10-01.md`.
 
-## Qué hace
+Aplicación de inteligencia visual de mercado con cuatro pestañas: Principal, Cerebro, Formación y Radar. Desarrollo aislado sobre el repositorio histórico Consultor Macro. Publicada con acceso privado.
 
-- Evalúa si el entorno está en `EXPANSIÓN`, `CAÍDA` o `NEUTRAL`
-- Usa Yahoo Finance como fuente principal sin API key
-- Refresca datos cada 5 minutos
-- Protege el acceso con password simple y cookie HttpOnly de 30 días
-- Muestra contexto adicional de petróleo, futuros y calendario económico semanal
-- Integra el módulo privado `10X Stock Screener` en una vista separada
-- Guarda un historial liviano de condiciones en `localStorage`
+## Ejecutar
 
-## Stack
-
-- Next.js 16 App Router
-- TypeScript
-- Tailwind CSS 4
-
-## Variables de entorno
-
-Crea un archivo `.env.local`:
-
-```bash
-SITE_PASSWORD="macro2026"
-```
-
-Si no defines `SITE_PASSWORD`, el proyecto usa `macro2026` como valor por defecto para facilitar el primer arranque local.
-
-Para cargar el `10X Stock Screener` desde Supabase en vez del dataset local:
-
-```bash
-SUPABASE_URL="https://tu-proyecto.supabase.co"
-SUPABASE_SERVICE_ROLE_KEY="..."
-SUPABASE_TENX_TABLE="tenx_companies"
-```
-
-Si no defines Supabase, el dashboard usa `src/data/tenx-screener.json`.
-
-## Desarrollo local
-
-```bash
-npm install
-npm run dev
-```
-
-Abre `http://localhost:3000`.
-
-## Build de producción
-
-```bash
+```sh
+npm ci --ignore-scripts
 npm run build
-npm start
+npm run preview
 ```
 
-## Fuente de datos
+Abrir http://127.0.0.1:3017/annienexus. Para desarrollo: `ANNIENEXUS_LOCAL_PREVIEW=1 npm run dev -- --hostname 127.0.0.1`. El modo local debe usarse solo en este equipo; no configurar esa variable en un despliegue. En Vercel ese modo se ignora. El acceso privado exige Supabase configurado, correo confirmado y ANNIENEXUS_ALLOWED_EMAILS; si falta configuración cierra con 503, si falta sesión redirige al acceso o devuelve 401.
 
-Símbolos usados desde Yahoo Finance:
+## Implementado
 
-- `^TNX` → US10Y
-- `DX-Y.NYB` → DXY
-- `USDJPY=X` → USDJPY
-- `^VIX` → VIX
-- `CL=F` → WTI
-- `BZ=F` → Brent
-- `ES=F` → ES
-- `NQ=F` → NQ
-- `YM=F` → YM
+- Marco común oscuro, navegación superior, cuatro horizontes y modo real inicial / ejemplo didáctico explícito.
+- Principal: brújulas CLI G7/G20, LEI, CEI y NFP; cortes oficiales de OCDE/BLS/Tesoro, cambios a 1/3/6m, medias de empleo y comparación de curva por fecha. LEI/CEI proceden de una publicación revisada. [Método y actualización](docs/annienexus/macro-data.md). Tesis de índices sin evaluar. CLI G7/G20 se solapan; NFP forma parte del CEI.
+- Brújula de régimen abierta al entrar, con minimizar/restaurar. Mapa completo del PDF original en el tema oscuro común: cuatro zonas, curvas, características y activos. Estimación descriptiva con CLI de EE. UU. e IPC reales hasta agosto; consulta guardada el 30/09/2026, 17:28 CEST. Punto sectorial orientativo, sin cruce confirmado ni trayectoria real. Pulsar el indicador abre método, fuentes y contradicciones; no hay bloques de contenido debajo del cuadrante. DEMO mantiene siete fechas inventadas y giro ilustrativo independiente.
+- Cerebro: geometría 3D real con Three.js, giro, pausa, controles de cámara, canales causales y movimiento reducido. Modelo HRA descargado localmente y atribuido; no imagen estática ni medición financiera.
+- Formación: 12 documentos existentes de Master, Gregory y Hunab, búsqueda y procedencia. Son copias fechadas, no sincronización automática. Originales conservados. 21 enlaces internos resueltos y 16 recursos originales importados, incluidas diez imágenes; lectura bajo demanda y manifiesto de procedencia.
+- Radar: interfaz de exploración de acciones/índices y cripto al contado, filtros, mapa, evidencia pendiente y apuntes. Motor descriptivo integrado con 24 pruebas: velas diarias completas de BTC/ETH/SOL al contado en Coinbase, y registros explícitamente no disponibles para bolsa. La API requiere identidad real todavía no configurada; la pantalla no recibe cotizaciones actuales. No hay oportunidades calculadas.
+- Apuntes compartidos entre Radar y Formación: Supabase por usuario en producción; navegador en vista previa local. Copia JSON y recuperación sin reemplazar apuntes existentes. No se importan notas locales automáticamente.
 
-Si Yahoo no responde o algún símbolo falla, la UI mantiene el dashboard operativo y muestra mensajes de disponibilidad parcial.
+## Límites de esta entrega
 
-## Calendario económico semanal
+Hay conectores públicos de actualización local, no un flujo en vivo. No hay puntuaciones de régimen, backtests ni suscripciones. La identidad Supabase está implementada y pendiente de la primera cuenta real autorizada. El cuadrante conserva su corte independiente y no confirma un régimen. Los demás paneles distinguen observaciones, ejemplos y ausencias.
 
-El calendario está en:
+El acceso privado protege páginas y recursos. Solo el código estático de interfaz, fuentes y rutas de acceso son públicos. La biblioteca se entrega desde servidor y private/learning. La contraseña/cookie histórica no autoriza. La publicación privada está realizada en el proyecto Vercel existente; correo inicial configurado. No publicar recursos ni historial en GitHub público.
 
-- `src/data/economic-events.json`
+## Verificación
 
-Puedes actualizarlo manualmente cada semana sin tocar lógica de la app. Mantén solo eventos relevantes para tu proceso:
-
-- CPI
-- PPI
-- NFP
-- PCE
-- FOMC
-- GDP
-- Jobless Claims
-- Bond Auctions
-- Fed Speeches
-
-## 10X Stock Screener
-
-La vista separada esta en:
-
-- `/10x`
-
-Desde el dashboard principal puedes abrirla en otra pestana con el boton `Abrir 10X`.
-
-El módulo sigue la documentación privada de `/Users/gianw/Documents/10X Stock Screener`:
-
-- Score total sobre `100`
-- Supervivencia / riesgo: `30`
-- Calidad / crecimiento: `40`
-- Potencial / catalizadores: `30`
-- Prioridad tematica dentro de potencial para IA/semiconductores, defensa/ciber, biotech y energia
-- Clasificaciones: `Candidata prioritaria`, `Investigar a fondo`, `Watchlist`, `Descartar`
-
-La herramienta no emite recomendaciones de compra o venta. Ordena candidatos para investigación adicional y muestra fortalezas, riesgos, alertas y datos faltantes.
-
-La pagina `/10x` se refresca automaticamente cada 5 minutos. Si usa Supabase, cada refresh vuelve a leer la tabla. Si usa `src/data/tenx-screener.json`, solo cambiara cuando edites ese archivo y el servidor vuelva a servir esos datos.
-
-El olfato de regimen vive en:
-
-- `src/data/tenx-regimes.json`
-
-Cada regimen tiene `status`, `priority`, `thesis`, `keywords` y `marketProxies`. Usa:
-
-- `active` para temas dominantes ahora.
-- `watch` para temas que solo deben sumar si hay catalizador.
-- `inactive` para apagar un tema sin borrarlo.
-
-Ejemplo: si aparece una pandemia, cambia `pandemic_biotech` de `watch` a `active`. Si IA deja de liderar, cambia `ai_infrastructure` a `watch` o baja su `priority`.
-
-La vista `/10x` calcula un `Macro Regime Radar` combinando:
-
-- Noticias globales recientes por keyword via GDELT DOC API.
-- Confirmacion de mercado usando proxies/ETFs desde Yahoo Finance.
-- Prioridad manual del regimen.
-
-El endpoint protegido `/api/10x/radar` refresca esa lectura. Si GDELT limita o no responde, la vista degrada usando proxies de mercado y configuracion local.
-
-La tabla Supabase esperada puede usar columnas snake_case equivalentes al CSV documentado: `ticker`, `company_name`, `exchange`, `sector`, `industry`, `market_cap_usd`, `enterprise_value_usd`, `avg_daily_volume_usd`, `share_price`, `revenue_growth_yoy_pct`, `gross_margin_pct`, `ebitda_margin_trend`, `net_margin_trend`, `free_cash_flow_trend`, `roic_trend`, `cash_usd`, `total_debt_usd`, `cash_runway_months`, `shares_outstanding_growth_pct`, `drawdown_12m_pct`, `delisting_risk`, `bankruptcy_risk`, `insider_ownership_pct`, `recent_insider_buying`, `recent_insider_selling`, `tam_estimate_usd`, `ev_to_sales`, `catalysts`, `notes`, `data_source`, `data_date`.
-
-## Flujo de autenticación
-
-- Pantalla de login minimalista
-- Password enviada a `POST /api/auth/login`
-- Cookie HttpOnly válida por 30 días
-- `POST /api/auth/logout` elimina la sesión
-
-## Crear repo en GitHub y subir el proyecto
-
-1. Crea un repositorio nuevo en GitHub
-2. Copia la URL remota del repo
-3. Ejecuta:
-
-```bash
-git remote add origin <TU_URL_DE_GITHUB>
-git push -u origin main
+```sh
+npm run lint
+npm run test:foundation
+npm run test:quadrant
+npm run test:macro
+npm run test:notebook
+node tests/radar/run.mjs
+npm run build
+npm audit
 ```
 
-## Conectar a Vercel
+La suite verifica ausencia de evidencia, permisos, caducidad, errores del proveedor y rechazo de cookies/cabeceras arbitrarias. Las interacciones y tamaños de pantalla se verifican adicionalmente en navegador; no son datos de mercado validados.
 
-1. Entra a Vercel
-2. Importa el repositorio de GitHub
-3. Framework detectado: Next.js
-4. Añade la variable de entorno:
+## Estructura y coordinación
 
-```bash
-SITE_PASSWORD=tu_password_real
-```
+`src/shared/ui/` contiene el marco común y el cuaderno; `src/contracts/` define datos y disponibilidad; `src/modules/annienexus/` contiene las tres vistas propias. `src/modules/radar/` contiene el motor descriptivo y el adaptador Coinbase. `RadarWorkspace` consume sus resultados a través de la API protegida sin duplicar el marco.
 
-5. Despliega
+Ver [estado de integración](docs/annienexus/integration-status.md), [modelo lógico](docs/annienexus/data-schema.md), [procedencia de apuntes](docs/annienexus/learning-provenance.json) y [pendientes de indicadores](docs/annienexus/indicator-readiness.md).
 
-## Apuntar el dominio `consultormacro.com`
+El mapa completo del PDF original de Gregory, mentoría 8, y la brújula central están documentados en [brújula de régimen](docs/annienexus/quadrant.md). El PDF se conserva íntegro con su huella; su contenido docente y el giro de demostración se distinguen del corte manual fechado.
 
-1. Abre tu proyecto en Vercel
-2. Ve a `Settings` → `Domains`
-3. Añade `consultormacro.com`
-4. Añade también `www.consultormacro.com` si quieres redirección
-5. Configura en tu DNS los registros que Vercel indique
-6. Espera la validación SSL automática
+## Corrección visual del 30/09/2026
 
-## Notas operativas
+La primera entrega funcional fue rechazada por básica. Esta revisión recupera las proporciones, títulos, tipografía local Source Sans 3 (SIL OFL), colores y composición de las cuatro referencias aprobadas. Principal conserva la excepción solicitada de las brújulas. Formación reúne los apuntes reales y Radar incorpora lista/mapa, mercados y notas. Las capturas y comparación se guardan en el proyecto compartido, `output/annienexus/fidelidad-2026-09-30/`. La revisión técnica no sustituye la aceptación visual del usuario.
 
-- La hora siempre se muestra en ET
-- El historial de condiciones se guarda en el navegador del usuario
-- La app está optimizada para una sola pantalla y uso móvil
+## Modelo tridimensional
+
+Kristen Browne y Heidi Schlehlein, Human Reference Atlas, Brain Male v1.3 (2023), a partir de Allen Human Reference Atlas. [Fuente y DOI](https://doi.org/10.48539/HBM929.XKCL.339), [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). Materiales, escala, iluminación y conexiones adaptados por AnnieNexus. Las 204 conexiones se proyectan sobre la superficie mediante `node scripts/build-brain-paths.mjs`; three-mesh-bvh es solo una dependencia de desarrollo para generar el recurso. Las regiones cerebrales no equivalen científicamente a variables financieras.
+
+Procedencia y huella del archivo en `public/annienexus/brain-provenance.json`; metadatos originales conservados junto al modelo. La superficie precalculada y comprimida conserva exactamente 656.268 triángulos: descarga de 10,7 MB y búfer geométrico de 15,7 MB frente a 47,3 MB antes. Pausa y visibilidad detienen el renderizado continuo; movimiento limitado a 30 fps. Véanse brain-optimization.json y brain-equivalence.json. Falta evaluación en dispositivos físicos de poca potencia.
+
+## Recuperación
+
+Rama local `codex/annienexus-rebuild-20260930`. Etiqueta local `archive/consultor-macro-before-annienexus-20260930` conserva el estado publicado anterior, commit `7d26dc8c5f4eb10fa1e2aee7e3a98bf68a094c73`. El código histórico retirado de esta rama permanece en Git. No se modifica main ni se hace push al remoto público. Despliegue local realizado; primer registro y confirmación pendientes del usuario.

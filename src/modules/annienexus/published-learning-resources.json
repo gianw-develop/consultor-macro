@@ -1,0 +1,40 @@
+{
+  "source-14": {},
+  "source-12": {},
+  "source-3": {},
+  "source-4": {},
+  "source-5": {},
+  "source-13": {},
+  "source-0": {
+    "sources/course-images/gregory/mentoria-8/mapa-cuatro-regimenes.jpg": {
+      "kind": "image",
+      "url": "/api/learning/c9d6dc8789af766c.jpg"
+    }
+  },
+  "source-1": {
+    "model/repasos/imagenes/gregory-mentoria-9/01-cpi-vs-sp500-1960-1983.jpg": {
+      "kind": "image",
+      "url": "/api/learning/f6214e136a74771e.jpg"
+    },
+    "model/repasos/imagenes/gregory-mentoria-9/02-sticky-ex-food-energy-shelter.jpg": {
+      "kind": "image",
+      "url": "/api/learning/8fc33c5b36a64241.jpg"
+    },
+    "model/repasos/imagenes/gregory-mentoria-9/03-sticky-ex-food-energy-shelter-wide.jpg": {
+      "kind": "image",
+      "url": "/api/learning/980ea7d65e5e0132.jpg"
+    },
+    "model/repasos/imagenes/gregory-mentoria-9/04-fed-funds-vs-wilshire-1971-1978.jpg": {
+      "kind": "image",
+      "url": "/api/learning/6183666c006b54c4.jpg"
+    },
+    "model/repasos/imagenes/gregory-mentoria-9/05-slide-sticky-price.jpg": {
+      "kind": "image",
+      "url": "/api/learning/1476e9e2f27f70e2.jpg"
+    },
+    "model/repasos/imagenes/gregory-mentoria-9/06-slide-politica-fiscal.jpg": {
+      "kind": "image",
+      "url": "/api/learning/d6e8c8cad8044fe1.jpg"
+    }
+  }
+}

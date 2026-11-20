@@ -1,0 +1,11 @@
+{
+  "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/output/qqq-cfd-calculator",
+  "version": "index.html + compact.js",
+  "files": {
+    "README.txt": "2e1324033d97d13816cdad10310c019ea5320301f718947756921aed83107885",
+    "index.html": "75500e2fe247dcf63ea5789dcd5b9ed469084955ad5fe448499eaea566f027af",
+    "compact.js": "e4c31876af4afa735cedc2aa55b6e8c3cf61913fd9233c53bbf833fa8696aa77"
+  },
+  "referenceDate": "2026-10-12",
+  "note": "Se conservan los valores suministrados; son referencias fechadas, no cotizaciones de bróker actuales. advanced.html, advanced.js y calc.js no se integran."
+}

@@ -1,0 +1,58 @@
+{
+  "source-12": [
+    [
+      "- Combinar macro y derivados sin interpretar automáticamente el posicionamiento de opciones como apuesta direccional.\n",
+      ""
+    ],
+    [
+      "- Estas imágenes no contienen la comparación intradía GDOW → Dow Jones; esa afirmación pertenece a otro fragmento de la clase y permanece registrada como hipótesis separada.\n",
+      ""
+    ],
+    [
+      "- En otro pasaje, Gregory afirma que el GDOW a veces se mueve primero y puede anticipar aproximadamente veinte minutos un movimiento posterior del Dow Jones Industrial Average. Se registra como una hipótesis intradía atribuida a Gregory, no como una relación ya demostrada ni como una ventaja constante.\n",
+      ""
+    ],
+    [
+      "- Probar la afirmación intradía GDOW → Dow Jones de aproximadamente veinte minutos.\n",
+      ""
+    ],
+    [
+      "- Finalmente: derivados y precio para confirmar; reglas de riesgo para ejecutar.",
+      "- Finalmente: precio para confirmar; reglas de riesgo para ejecutar."
+    ],
+    [
+      " También plantea combinar la lectura macro de Gregory con la información de derivados del segundo mentor para estudiar el posicionamiento de participantes grandes.",
+      ""
+    ],
+    [
+      "4. ¿Qué muestran sectores, amplitud y derivados?",
+      "4. ¿Qué muestran sectores y amplitud —cuántas acciones acompañan el movimiento—?"
+    ],
+    [
+      "- Añadir un detector de divergencias entre narrativa, datos, precio, sectores y derivados.",
+      "- Añadir un detector de divergencias entre narrativa, datos, precio y sectores."
+    ],
+    [
+      "- Detector de divergencias entre datos, narrativa, precio, sectores y derivados.",
+      "- Detector de divergencias entre datos, narrativa, precio y sectores."
+    ],
+    [
+      "- **GDOW:** índice global Dow. Gregory lo usa de dos formas distintas: como referencia amplia internacional frente al CLI del G20 y, en operativa intradía, como posible aviso previo del Dow Jones Industrial Average.",
+      "- **GDOW:** índice global Dow; referencia amplia internacional frente al CLI del G20."
+    ],
+    [
+      "- Mantener separadas dos lecturas: CLI G20 ↔ GDOW para el ciclo global de varios meses; GDOW → Dow Jones como hipótesis intradía de unos veinte minutos que requiere validación antes de generar alertas.",
+      "- CLI G20 ↔ GDOW: contraste del ciclo global de varios meses; requiere validación."
+    ],
+    [
+      "9. Mantener separadas las lecturas por horizonte: ciclo global de meses e hipótesis intradía como GDOW → Dow Jones.",
+      "9. Mantener explícito el horizonte del ciclo global de meses."
+    ]
+  ],
+  "source-13": [
+    [
+      "ETF diario 2x/3x, CFD, futuros y opciones con la misma unidad de riesgo.",
+      "ETF diario 2x/3x, CFD y futuros con la misma unidad de riesgo."
+    ]
+  ]
+}

@@ -1,0 +1,161 @@
+Chrome · consulta 2026-10-29T08:57:06Z
+					23 Contenido HTML Federal Reserve Board - Federal Reserve issues FOMC statement, URL: federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm
+						24 container
+							25 link Skip to main content, Value: federalreserve.gov/newsevents/pressreleases/monetary20261028a.htm#content
+							26 imagen US Flag
+							27 texto An official website of the United States Government
+							28 botón Here's how you know Expand More
+							29 container
+								30 imagen .gov icon
+								31 texto Official websites use .gov
+								32 texto A
+								33 texto .gov
+								34 texto  website belongs to an official government organization in the United States.
+								35 Imagen sin descripción HTTPS icon. Para obtener las descripciones de las imágenes, abre el menú contextual.
+								36 texto Secure .gov websites use HTTPS
+								37 texto A
+								38 texto lock
+								39 texto  (
+								40 imagen Locked padlock icon
+								41 texto ) or
+								42 texto https://
+								43 texto  means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
+							44 lista de contenidos
+								45 container
+									46 text Stay Connected ·
+								47 container
+									48 link Recent Postings, Value: federalreserve.gov/recentpostings.htm
+									49 text ·
+								50 container
+									51 link Calendar, Value: federalreserve.gov/newsevents/calendar.htm
+									52 text ·
+								53 container
+									54 link Publications, Value: federalreserve.gov/publications.htm
+									55 text ·
+								56 container
+									57 link Site Map, Value: federalreserve.gov/sitemap.htm
+									58 text ·
+								59 container
+									60 link A-Z index, Value: federalreserve.gov/azindex.htm
+									61 text ·
+								62 container
+									63 link Careers, Value: federalreserve.gov/careers.htm
+									64 text ·
+								65 container
+									66 link FAQs, Value: federalreserve.gov/faqs.htm
+									67 text ·
+								68 container
+									69 link Videos, Value: federalreserve.gov/videos.htm
+									70 text ·
+								71 container
+									72 link Contact, Value: federalreserve.gov/aboutthefed/contact-us-topics.htm
+							73 container
+								74 texto Search
+								75 campo de texto (settable) Search
+								76 botón Submit Search Button
+								77 link Advanced, Value: fedsearch.org/board_public/
+							78 link Help: Link to Home Page, Value: federalreserve.gov/default.htm, Board of Governors of the Federal Reserve System The Federal Reserve, the central bank of the United States, provides the nation with a safe, flexible, and stable monetary and financial system.
+							79 barra de menús
+								80 About the Fed
+									81 link About the Fed, Value: federalreserve.gov/aboutthefed.htm
+								82 News & Events
+									83 link News & Events, Value: federalreserve.gov/newsevents.htm
+								84 Monetary Policy
+									85 link Monetary Policy, Value: federalreserve.gov/monetarypolicy.htm
+								86 Supervision & Regulation
+									87 link Supervision & Regulation, Value: federalreserve.gov/supervisionreg.htm
+								88 Financial Stability
+									89 link Financial Stability, Value: federalreserve.gov/financial-stability.htm
+								90 Payment Systems
+									91 link Payment Systems, Value: federalreserve.gov/paymentsystems.htm
+								92 Economic Research
+									93 link Economic Research, Value: federalreserve.gov/econres.htm
+								94 Data
+									95 link Data, Value: federalreserve.gov/data.htm
+								96 Consumers & Communities
+									97 link Consumers & Communities, Value: federalreserve.gov/consumerscommunities.htm
+							98 lista de contenidos
+								99 link Home, Value: federalreserve.gov/default.htm
+								100 container
+									101 texto >
+									102 link News & Events, Value: federalreserve.gov/newsevents.htm
+								103 container
+									104 texto >
+									105 link Press Releases, Value: federalreserve.gov/newsevents/pressreleases.htm
+							106 container
+								107 encabezado Press Release, Value: 2
+									108 texto Press Release
+								109 link   PDF, Value: federalreserve.gov/monetarypolicy/files/monetary20261028a1.pdf
+							110 container
+								111 texto October 28, 2026
+								112 encabezado Federal Reserve issues FOMC statement, Value: 3
+									113 texto Federal Reserve issues FOMC statement
+								114 texto For release at 2:00 p.m. EDT
+								115 lista de contenidos
+									116 botón Share
+								117 texto The Federal Open Market Committee approved the following statement for release by a 10 – 2 vote:
+								118 texto The Committee decided to maintain the target range for the federal funds rate at 3-3/4 to 4 percent, in support of the Federal Reserve's dual mandate. The Committee is continuing its policy of maintaining ample reserves in the banking system.
+								119 texto Economic activity is expanding at a strong pace. While uncertainty remains elevated owing, in part, to geopolitical developments, domestic spending has been resilient. Productivity growth is strong, and capital investment is robust. Job gains have kept pace with the workforce, and the unemployment rate has changed little.
+								120 container
+									121 text Inflation remains elevated. The accumulation of more information will help the Committee determine the policy stance appropriate to ensure a timely return of inflation to the Committee's 2 percent goal. The Committee will deliver price stability.
+								122 texto Voting against the monetary policy action were Lisa D. Cook and Beth M. Hammack, who preferred to raise the target range for the federal funds rate by 1/4 percentage point at this meeting.
+								123 container
+									124 texto For media inquiries, please email
+									125 link media@frb.gov, Value: mailto:media@frb.gov
+									126 texto  or call 202-452-2955.
+								127 link Implementation Note issued October 28, 2026, Value: federalreserve.gov/newsevents/pressreleases/monetary20261028a1.htm
+							128 texto Last Update: October 28, 2026
+							129 container
+								130 encabezado BOARD OF GOVERNORS of the FEDERAL RESERVE SYSTEM, Value: 6
+									131 text BOARD OF GOVERNORS
+									132 texto of the
+									133 text FEDERAL RESERVE SYSTEM
+								134 lista de contenidos
+									135 link About the Fed, Value: federalreserve.gov/aboutthefed.htm
+									136 link News & Events, Value: federalreserve.gov/newsevents.htm
+									137 link Monetary Policy, Value: federalreserve.gov/monetarypolicy.htm
+									138 link Supervision & Regulation, Value: federalreserve.gov/supervisionreg.htm
+									139 link Financial Stability, Value: federalreserve.gov/financial-stability.htm
+									140 link Payment Systems, Value: federalreserve.gov/paymentsystems.htm
+									141 link Economic Research, Value: federalreserve.gov/econres.htm
+									142 link Data, Value: federalreserve.gov/data.htm
+									143 link Consumers & Communities, Value: federalreserve.gov/consumerscommunities.htm
+									144 link Connect with the Board, Value: federalreserve.gov/aboutthefed/aroundtheboard/stayconnected-qr-code-2.htm
+							145 container
+								146 encabezado TOOLS AND INFORMATION, Value: 6
+									147 texto TOOLS AND INFORMATION
+								148 lista de contenidos
+									149 link Contact, Value: federalreserve.gov/aboutthefed/contact-us-topics.htm
+									150 link Publications, Value: federalreserve.gov/publications.htm
+									151 link Freedom of Information (FOIA), Value: federalreserve.gov/foia/about_foia.htm
+									152 link Office of Inspector General, Value: oig.federalreserve.gov/
+									153 container
+										154 link Budget & Performance, Value: federalreserve.gov/publications/annual-report.htm
+										155 texto  |
+										156 link Audit, Value: federalreserve.gov/regreform/audit.htm
+									157 link No FEAR Act, Value: federalreserve.gov/eeo.htm
+									158 link Español, Value: federalreserve.gov/espanol.htm
+									159 container
+										160 link Website Policies, Value: federalreserve.gov/website-linking-policies.htm
+										161 texto  |
+										162 link Privacy Program, Value: federalreserve.gov/privacy.htm
+									163 link Accessibility, Value: federalreserve.gov/accessibility.htm
+							164 container
+								165 encabezado STAY CONNECTED, Value: 6
+									166 texto STAY CONNECTED
+								167 link Federal Reserve Facebook Page, Value: facebook.com/federalreserve
+								168 link Federal Reserve Instagram Page, Value: instagram.com/federalreserveboard/
+								169 link Federal Reserve YouTube Page, Value: youtube.com/federalreserve
+								170 link Federal Reserve Flickr Page, Value: flickr.com/photos/federalreserve/
+								171 link Federal Reserve LinkedIn Page, Value: linkedin.com/company/federal-reserve-board
+								172 link Federal Reserve Threads Page, Value: threads.net/@federalreserveboard
+								173 link Link to Federal Reserve X Page, Value: x.com/federalreserve
+								174 link Link to Federal Reserve Bluesky Page, Value: bsky.app/profile/federalreserve.gov
+								175 link Subscribe to RSS, Value: federalreserve.gov/feeds/feeds.htm
+								176 link Subscribe to Email, Value: federalreserve.gov/subscribe.htm
+								177 link Link to USA.gov, Value: usa.gov/
+								178 link Link to Open.gov, Value: federalreserve.gov/open/open.htm
+							179 container
+								180 texto BOARD OF GOVERNORS
+								181 texto of the
+								182 text  FEDERAL RESERVE SYSTEM ● 20th Street and Constitution Avenue N.W., Washington, DC 20551

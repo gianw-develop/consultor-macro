@@ -1,0 +1,49 @@
+/* Shared AWNexus terminal finish, approved 21 October 2026. */
+@font-face{font-family:'IBM Plex Mono';src:url('/fonts/ibm-plex-mono-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Mono';src:url('/fonts/ibm-plex-mono-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Sans Condensed';src:url('/fonts/ibm-plex-sans-condensed-latin-400-normal.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:'IBM Plex Sans Condensed';src:url('/fonts/ibm-plex-sans-condensed-latin-500-normal.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap}
+.terminal-theme{--bg:#07090b;--surface:#101418;--surface-2:#1b1e22;--text:#f0f2f4;--muted:#bac5cf;--line:#34434e;--blue:#53c5e8;--amber:#ffad33;--green:#56dba0;--red:#ff7c83;--font-sans:'IBM Plex Sans Condensed',Arial,sans-serif;--font-mono:'IBM Plex Mono',ui-monospace,monospace;background:var(--bg);font:400 16px/1.45 var(--font-sans);color:var(--text)}
+.terminal-theme .workspace :is(h1,h2,h3,h4,h5,h6),.terminal-theme .workspace .story-title{font-family:var(--font-sans);font-weight:500;letter-spacing:0;text-shadow:none}
+.terminal-theme .workspace h1{font-size:32px}
+.terminal-theme .workspace h2{font-size:23px}
+.terminal-theme .workspace h3{font-size:19px}
+.terminal-theme .panel{background:var(--bg);border-color:var(--line);border-radius:2px;box-shadow:none}
+.terminal-theme .app-header{height:54px;padding:0 20px;background:var(--bg);border-color:var(--line);gap:18px}
+.terminal-theme .brand svg{width:190px;max-width:100%}
+.terminal-theme .app-header nav{gap:8px}
+.terminal-theme .app-header nav a{font:400 14px var(--font-mono);padding:0 12px;color:var(--muted)}
+.terminal-theme .app-header nav a[aria-current=page]{color:var(--amber)}
+.terminal-theme .app-header nav a[aria-current=page]:after{background:var(--amber);box-shadow:none}
+.terminal-theme .demo-badge{color:var(--amber);border-color:#80591f;border-radius:2px;padding:5px 9px;font:400 10px var(--font-mono);box-shadow:none}
+.terminal-theme .session-exit{font-size:12px}
+.terminal-theme .main-content{max-width:1720px;padding:16px 20px}
+.terminal-theme .app-footer{border-top:1px solid var(--line);padding:10px 20px;font:400 11px var(--font-mono)}
+.terminal-theme .button,.terminal-theme .segmented button,.terminal-theme .horizon-group button,.terminal-theme .compact-tabs button{font-family:var(--font-mono);font-size:13px;border-radius:2px;background:var(--surface);box-shadow:none;border-color:var(--line)}
+.terminal-theme .button:hover,.terminal-theme .button:focus-visible{border-color:var(--amber);background:#ffad3318;color:var(--amber);box-shadow:none}
+.terminal-theme :is(.segmented,.horizon-group,.compact-tabs,.reading-tabs) button[aria-pressed=true]{background:var(--amber);color:#07090b;border-color:var(--amber);box-shadow:none}
+.terminal-theme :is(a,button,summary,input,textarea,select):focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.terminal-theme ::selection{background:var(--amber);color:#07090b}
+.terminal-theme :is(input,textarea,select){background:var(--surface);border-color:var(--line);border-radius:2px}
+.terminal-theme .section-heading h2,.terminal-theme .eyebrow{color:var(--amber)}
+.terminal-theme .tag{border-radius:2px;font-size:11px;box-shadow:none;background:transparent}
+.terminal-theme .tag.amber{color:var(--amber);background:#ffad330b;border-color:#80591f}
+.terminal-theme :is(.pillar-table-wrap,.signal-evidence,.radar-universe) table{font-family:var(--font-mono);font-size:12px}
+.terminal-theme :is(.pillar-table-wrap,.signal-evidence,.radar-universe) th{font-weight:400}
+.terminal-theme table tbody tr{transition:background-color 120ms}
+.terminal-theme table tbody tr:focus-within{background:#ffad3321;box-shadow:inset 2px 0 var(--amber)}
+.terminal-theme :is(.library-items button,.sector-choice,.map-factor,.map-asset){border-radius:2px;box-shadow:none;background:var(--surface)}
+.terminal-theme :is(.library-items button[aria-current=true],.sector-choice[aria-pressed=true],.map-factor[aria-pressed=true],.map-asset[aria-pressed=true]){border-color:var(--amber);background:#ffad331a;box-shadow:inset 2px 0 var(--amber)}
+.terminal-theme .sector-choice[aria-pressed=true] small{color:var(--amber)}
+.terminal-theme :is(.ticker-numeric,.sector-big-number,.pillar-metrics strong,.signal-value strong){font-family:var(--font-mono);font-variant-numeric:tabular-nums}
+.terminal-theme :is(.brain-legend,.brain-inspector,.inspector-evidence,.chain-list li,.radar-filters,.detail-box,.regime-atlas,.published-ticker){border-radius:2px;background:var(--surface);box-shadow:none}
+.terminal-theme .markdown-reading :is(p,li){font-size:16px}
+.terminal-theme .learning-page .page-heading h1{font-size:32px}
+@media(hover:hover){
+ .terminal-theme .app-header nav a:hover{background:#ffad3310;color:var(--amber)}
+ .terminal-theme table tbody tr:hover{background:#ffad3315;box-shadow:inset 2px 0 var(--amber)}
+ .terminal-theme :is(.library-items button,.sector-choice,.map-factor,.map-asset):hover{background:#ffad3315;border-color:var(--amber)}
+}
+@media(max-width:1100px){.terminal-theme .app-header{height:auto;display:grid;grid-template-columns:1fr auto;padding:10px 16px 0;gap:8px}.terminal-theme .app-header nav{grid-row:2;grid-column:1/-1;overflow-x:auto;justify-content:space-between;gap:0}.terminal-theme .app-header nav a{white-space:nowrap;flex-shrink:0;padding:10px 8px;font-size:13px}.terminal-theme .session-controls .demo-badge span{display:none}}
+@media(max-width:600px){.terminal-theme .main-content{padding:12px}.terminal-theme .brand svg{width:148px}.terminal-theme .app-header{padding:9px 12px 0}.terminal-theme .demo-badge{font-size:9px}.terminal-theme .session-exit{font-size:11px;padding:5px}.terminal-theme .app-header nav a{font-size:12px}.terminal-theme .app-footer{padding:12px;font-size:10px}}
+@media(prefers-reduced-motion:reduce){.terminal-theme table tbody tr{transition:none}}

@@ -1,0 +1,51 @@
+{
+  "checkedAt": "2026-11-04T15:52:00Z",
+  "title": "El PIB acelera; el consumo mensual pierde impulso.",
+  "lead": "PIB del tercer trimestre +3,4 % anualizado. El gasto real de septiembre apenas avanza y el PCE sigue mostrando presión de precios.",
+  "summary": "ISM manufacturero 55,5 y servicios 54,5 en octubre. PIB +3,4 % anualizado; PCE de septiembre +3,6 % anual. CLI del G7: último dato confirmado septiembre, pendiente de nueva comprobación.",
+  "driver": "La presión de precios frente a un crecimiento desigual",
+  "chain": "Costes y precios al alza → presión sobre márgenes y expectativas de tipos → coste de financiación → beneficios y valoraciones de los índices.",
+  "horizons": {
+    "today": "Corte del 04/11: servicios ISM 54,5, frente a 54,9; déficit comercial de septiembre 105.000 millones de dólares. Son publicaciones verificadas; no se ha medido la reacción intradía del SPX.",
+    "week": "ISM manufacturero 55,5 y servicios 54,5: ambos superan 50. JOLTS de septiembre: 7,5 millones de vacantes. Productividad y solicitudes previstas el 5/11; empleo y Michigan el 6/11. Tesoro del 03/11: 2 años 4,61 % y 10 años 4,95 %.",
+    "one_to_three_months": "El PIB del tercer trimestre acelera, pero el consumo real PCE casi no avanza en septiembre. Las encuestas de octubre siguen en expansión con costes elevados. Comparar actividad, empleo y precios sin confundir sus ventanas.",
+    "three_to_six_months": "La expansión necesita sostenerse en empleo, consumo y beneficios. La Fed mantiene 3,75–4,00 %. El PIB es una primera estimación revisable; el CLI del G7 sigue pendiente de nueva comprobación. La actualización de datos no renueva el diagnóstico del Cerebro ni del reloj."
+  },
+  "supports": "El PIB acelera de +2,2 % a +3,4 % anualizado. ISM manufacturero y de servicios superan 50. Iniciales del 24/10 bajan a 194.000 frente a 195.000 revisado. El CLI G7 conserva septiembre (100,9370): el acceso OCDE del 04/11 pide verificación humana; no se afirma que sea la última publicación disponible.",
+  "contradictions": "El gasto real PCE de septiembre aumenta menos del 0,1 % mensual, frente a +0,5 % en agosto revisado; no es la serie de ventas minoristas reales. PCE general +3,6 % anual y subyacente +3,1 %. Servicios pierde impulso en la encuesta de octubre y el empleo mensual de septiembre sigue débil. Son periodos distintos; no se suman como votos.",
+  "changes": "Deterioro persistente y amplio de actividad, o alivio sostenido de precios acompañado de empleo y consumo. Confirmarlo con varias ventanas, sin sumar indicadores que comparten componentes.",
+  "sources": [
+    {
+      "label": "BEA · PIB 3T",
+      "url": "https://www.bea.gov/news/2026/gdp-advance-estimate-3rd-quarter-2026"
+    },
+    {
+      "label": "BEA · PCE septiembre",
+      "url": "https://www.bea.gov/news/2026/personal-income-and-outlays-september-2026"
+    },
+    {
+      "label": "DOL · solicitudes 29 oct",
+      "url": "https://www.dol.gov/ui/data.pdf"
+    },
+    {
+      "label": "ISM · manufacturas",
+      "url": "https://www.prnewswire.com/news-releases/manufacturing-pmi-at-55-5-october-2026-ism-manufacturing-pmi-report-302925617.html"
+    },
+    {
+      "label": "ISM · servicios",
+      "url": "https://www.prnewswire.com/news-releases/services-pmi-at-54-5-october-2026-ism-services-pmi-report-302928112.html"
+    },
+    {
+      "label": "BLS · JOLTS",
+      "url": "https://www.bls.gov/news.release/jolts.nr0.htm"
+    },
+    {
+      "label": "BEA · comercio septiembre",
+      "url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-september-2026"
+    },
+    {
+      "label": "Tesoro · 3 nov",
+      "url": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
+    }
+  ]
+}

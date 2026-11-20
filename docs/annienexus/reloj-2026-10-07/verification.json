@@ -1,0 +1,36 @@
+{
+  "commit": "9007d0a",
+  "deployment": "dpl_6KFs4KkV2krJ9QQT8KE7z2BcPcoR",
+  "readyState": "READY",
+  "url": "https://consultormacro.com/annienexus#economic-quadrant",
+  "testsPassed": 70,
+  "reviewCut": "2026-10-07T11:50:31Z",
+  "reviewBy": "2026-10-08T12:30:00Z",
+  "checks": [
+    "Chrome escritorio: aguja amarilla discontinua visible",
+    "Chrome móvil 390: aguja, fecha y botón visibles",
+    "Chrome tablet 900 local: separación corregida",
+    "Detalle abre y cierra; contradicciones y fuentes desplegables",
+    "No giro automático; pruebas de caducidad y revisión de insumos"
+  ],
+  "deploymentIssue": "Primer despliegue reutilizó estilos desactualizados. Reconstrucción Vercel --force sin caché resolvió la ausencia visual de la aguja; se comprobó nuevamente el dominio real.",
+  "evidenceSHA256": {
+    "local-console.txt": "29d301fd8cf9ce1d418bb9f7cfac833c0216f02cf3c7aca48d5fb152537352f2",
+    "local-mobile-pointer.png": "3b8470756126e3cfb74a1a4cdbe318bea9ef89c9660b6d5771eabd71613727e8",
+    "local-tablet-final.png": "2e0a0ceddbf1f23c41ad99c6c20902ee34c97d55c04a6cfe17377b4237950d3c",
+    "local-mobile-clock.png": "40913774fea844813be20679b186b0a6dd699f5f069422e16aa40ab9f95d6326",
+    "production-detail.png": "3861220289778688b23b9eda5de3c0c1632e17f879d5ca98865e1bcb5107019d",
+    "local-mobile.png": "fe38733fffdd2d26f5f236e66971cdd4902f00250f415dba5d2650d797700d1c",
+    "local-detail.txt": "b488713b8a2b729b5bd027a6ac3586863cdb67955f3aa7f6e1670341210dfb26",
+    "source-bea-pce.txt": "f812d846cfdd6fe22cd3f191db5db6a5250435624c074d28df1dd1b02a3aa527",
+    "production-sources.txt": "37b2a4ba2f84181dbf191d48067fd41167200e00d0c5dfbf8f4c99af656aaab1",
+    "local-tablet.png": "9e9c05b9ca7ca44024e75a22a632d77d9643054c869d59abcdc038b8fd265651",
+    "production-detail.txt": "f91dc4e64964071adfa6e3d40c3a5d323063d9976333d78169ca0d40b1ed311a",
+    "production.txt": "c2a93803661375d219e8d3d994de2b129714f7155e59f73b2142a6578a0ed597",
+    "source-bls-cpi.txt": "2c9e14d10fa393610bcfa68960bcb4ebf1830d13a8e0038785662c18a7151a27",
+    "local-detail.png": "baf53cb142486202a97328e18e94277b8b8704a8685068f1764b51d84021cf3a",
+    "production-mobile.png": "cd53c6feb24b3d72bfdaf2d96cdbb4b611fd12bf50bb0bfd38c971dcf20835eb",
+    "production-desktop.png": "21e202300b666109f9273d4ee1dccec86bfcb33704d2bd865cf36179118250c7",
+    "local-desktop.png": "ec14e267083bc21caa19561590e19249892608a656781c711db1f9e6f7d3d292"
+  }
+}

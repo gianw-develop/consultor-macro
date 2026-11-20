@@ -1,0 +1,101 @@
+{
+  "importedAt": "2026-09-30T16:12:47.892Z",
+  "resources": [
+    {
+      "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/model/repasos/imagenes/gregory-mentoria-9/07-arbol-regimen-inflacion-fed-lideres.jpg",
+      "url": "/annienexus/learning/29ad2bb63b0425e9.jpg",
+      "sha256": "29ad2bb63b0425e969d170a78d45b6b7d0f1b591adfdf2c4eb4af83d0edfc28a",
+      "bytes": 2802577
+    },
+    {
+      "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/model/repasos/imagenes/gregory-mentoria-9/08-mapa-proyeccion-2027-sin-verificar.jpg",
+      "url": "/annienexus/learning/c1973eb7e5ec587e.jpg",
+      "sha256": "c1973eb7e5ec587ef96d456303eaa9b42a7a9f01e24246436b80fd92c056b406",
+      "bytes": 6513273
+    },
+    {
+      "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/research/gregory-course/CIERRE-MENTORIA-5.md",
+      "url": "/annienexus/learning/cb04ba08441fcbf5.md",
+      "sha256": "cb04ba08441fcbf566a9b9eb2b24d2dddde9812a681ae5edaffb3cd9b890c37d",
+      "bytes": 3656
+    },
+    {
+      "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/sources/course-images/hunab/mentoria-3/01-definicion.jpg",
+      "url": "/annienexus/learning/85ea44dc548ef54b.jpg",
+      "sha256": "85ea44dc548ef54b10ec89ac70e92690c03b0e59f1addebddcd50db84952fdd7",
+      "bytes": 2257108
+    },
+    {
+      "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/sources/course-images/hunab/mentoria-3/02-importancia.jpg",
+      "url": "/annienexus/learning/82580e89402c9ec0.jpg",
+      "sha256": "82580e89402c9ec0314579cd554485e55779beb460936ad010af27dc7c79df33",
+      "bytes": 5807801
+    },
+    {
+      "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/sources/course-images/hunab/mentoria-3/03-bid-ask.jpg",
+      "url": "/annienexus/learning/716ce9d88bf43b26.jpg",
+      "sha256": "716ce9d88bf43b26a731149f28125ee5910a34b8fe21df9e107e2e37d3a8437d",
+      "bytes": 4460733
+    },
+    {
+      "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/sources/course-images/hunab/mentoria-3/04-participantes.jpg",
+      "url": "/annienexus/learning/40f2287915da941d.jpg",
+      "sha256": "40f2287915da941d1b91dffc0b8dc331a4eff28a335e70948b7b4e556d2cc161",
+      "bytes": 5252475
+    },
+    {
+      "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/sources/course-images/hunab/mentoria-3/05-ejemplos-bolsas-dmm.jpg",
+      "url": "/annienexus/learning/122b243c641844fd.jpg",
+      "sha256": "122b243c641844fd4a90829322cdaefa98b65bdfcbc79b2370fa4265d5247d46",
+      "bytes": 5257244
+    },
+    {
+      "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/sources/course-images/hunab/mentoria-3/06-funciones.jpg",
+      "url": "/annienexus/learning/8a4653bf4990d01d.jpg",
+      "sha256": "8a4653bf4990d01df4c789417322e7c8ba79d5e962799312c1d65e1d6d48aabe",
+      "bytes": 6221577
+    },
+    {
+      "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/sources/course-images/hunab/mentoria-3/07-tipos-market-maker.jpg",
+      "url": "/annienexus/learning/3b8211dab63e85d9.jpg",
+      "sha256": "3b8211dab63e85d963561514dc7fa2b4b46ec8d24dd2f2fa2b1e0137313b1302",
+      "bytes": 5482050
+    },
+    {
+      "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/sources/course-images/hunab/mentoria-3/08-tareas-market-maker.jpg",
+      "url": "/annienexus/learning/dcf2d11ac610682e.jpg",
+      "sha256": "dcf2d11ac610682e37dec27cd68a941fa942a722bbee26b63aadadc4591a4443",
+      "bytes": 5468521
+    },
+    {
+      "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/model/FUENTES-Y-EVIDENCIA.md",
+      "url": "/annienexus/learning/3c97ff212bbcb517.md",
+      "sha256": "3c97ff212bbcb51744d2b236a81792e430976666ae02a38883006f8a9bddedd7",
+      "bytes": 11746
+    },
+    {
+      "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/AGENTS.md",
+      "url": "/annienexus/learning/0a5fe24ac7f101e7.md",
+      "sha256": "0a5fe24ac7f101e78542c18fef5626a5a8286541c4e7d6122b42ec31b9c2c363",
+      "bytes": 11647
+    },
+    {
+      "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/chats/00-MASTER-MARKET-MODEL.txt",
+      "url": "/annienexus/learning/74e3811a06ded9a6.txt",
+      "sha256": "74e3811a06ded9a6a956588361e79f3193d3c99da30084f9b06b853f66f2674a",
+      "bytes": 3551
+    },
+    {
+      "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/sources/Plan-original-del-proyecto.md",
+      "url": "/annienexus/learning/282fbecd79b1313b.md",
+      "sha256": "282fbecd79b1313ba97e2b7c1a9e418595adb41943b9b048b4e1b9ec05b95dc1",
+      "bytes": 17799
+    },
+    {
+      "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/model/CHANGELOG.md",
+      "url": "/annienexus/learning/0ec6a982793dad77.md",
+      "sha256": "0ec6a982793dad77de3036d846e4243687f7c42de05968ec82d9e23830efe519",
+      "bytes": 3733
+    }
+  ]
+}

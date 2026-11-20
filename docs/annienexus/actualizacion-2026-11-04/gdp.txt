@@ -1,0 +1,260 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- banner:
+  - img "U.S. flag"
+  - paragraph: An official website of the United States government
+  - link "homepage link":
+    - /url: /
+  - navigation:
+    - heading "Main navigation" [level=3]
+    - list:
+      - link "Data":
+        - /url: /data
+        - text: Data
+      - link "Tools":
+        - /url: /tools
+        - text: Tools
+      - link "News":
+        - /url: /news
+        - text: News
+      - link "Research":
+        - /url: /research
+        - text: Research
+      - link "Resources":
+        - /url: /resources
+        - text: Resources
+      - link "About":
+        - /url: /about
+        - text: About
+      - link "Help":
+        - /url: /help
+        - text: Help
+  - search:
+    - searchbox "Search"
+    - button "Search":
+      - generic: 
+- main:
+  - heading "Home | News | GDP (Advance Estimate), 3rd Quarter 2026":
+    - list:
+      - link "Home":
+        - /url: /index.php/
+      - text: "|"
+      - link "News":
+        - /url: /index.php/news
+      - listitem: "| GDP (Advance Estimate), 3rd Quarter 2026"
+  - article:
+    - heading "News Release" [level=1]
+    - link "Explore Product View":
+      - /url: /data/gdp/gross-domestic-product
+    - list:
+      - link "News Release":
+        - /url: "#home"
+      - link "Related Materials":
+        - /url: "#menu1"
+      - link "Contacts":
+        - /url: "#menu2"
+    - generic: EMBARGOED UNTIL RELEASE AT 8:30 a.m. EDT, Thursday, October 29, 2026
+    - generic: BEA 26—45
+    - heading "GDP (Advance Estimate), 3rd Quarter 2026" [level=1]
+    - paragraph:
+      - link "Real gross domestic product (GDP) increased at an annual rate of 3.4 percent":
+        - /url: https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDNdLCJkYXRhIjpbWyJjYXRlZ29yaWVzIiwiU3VydmV5Il0sWyJOSVBBX1RhYmxlX0xpc3QiLCIxIl1dfQ==
+        - strong: Real gross domestic product
+        - strong: (GDP)
+        - text: increased at an annual rate of 3.4 percent
+      - text: in the third quarter of 2026 (July, August, and September), according to the advance estimate released today by the U.S. Bureau of Economic Analysis (BEA). In the second quarter, real GDP increased 2.2 percent.
+    - link "Real GDP, Percent Change From Preceding Quarter":
+      - /url: /system/files/gdp3q26-adv-chart-01.png
+      - img "Real GDP, Percent Change From Preceding Quarter"
+    - paragraph:
+      - text: The
+      - link "contributors to the increase in real GDP":
+        - /url: https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDNdLCJkYXRhIjpbWyJjYXRlZ29yaWVzIiwiU3VydmV5Il0sWyJOSVBBX1RhYmxlX0xpc3QiLCIzMiJdXX0=
+        - text: contributors to the increase in
+        - strong: real GDP
+      - text: in the third quarter were increases in investment, consumer spending, and government spending that were partly offset by a decrease in exports. Imports, which are a subtraction in the calculation of GDP, increased. For more information, refer to the "
+      - link "Technical Notes":
+        - /url: "#TechNote"
+      - text: "\" below."
+    - link "Contributions to Percent Change in Real GDP":
+      - /url: /system/files/gdp3q26-adv-chart-02.png
+      - img "Contributions to Percent Change in Real GDP"
+    - paragraph:
+      - text: Compared to the second quarter, the acceleration in
+      - strong: real GDP
+      - text: in the third quarter primarily reflected an acceleration in investment and an upturn in government spending that were partly offset by a downturn in exports. Imports increased more in the third quarter than in the second quarter.
+    - paragraph:
+      - link "Real final sales to private domestic purchasers, the sum of consumer spending and gross private fixed investment, increased 4.9 percent":
+        - /url: https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey&_gl=1*vvt0u8*_ga*MTQ3OTgwNDE4LjE2NzY5OTYyNTM.*_ga_J4698JNNFT*MTc0NjQ3NDIyMS4xMjc2LjEuMTc0NjQ3NDYxNC40OS4wLjA.#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDNdLCJkYXRhIjpbWyJjYXRlZ29yaWVzIiwiU3VydmV5Il0sWyJOSVBBX1RhYmxlX0xpc3QiLCIyNiJdXX0=
+        - strong: Real final sales to private domestic purchasers
+        - text: ", the sum of consumer spending and gross private fixed investment, increased 4.9 percent"
+      - text: in the third quarter, compared with an increase of 4.6 percent in the second quarter.
+    - paragraph:
+      - text: The
+      - link "price index for gross domestic purchases increased 3.0 percent":
+        - /url: https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDNdLCJkYXRhIjpbWyJjYXRlZ29yaWVzIiwiU3VydmV5Il0sWyJOSVBBX1RhYmxlX0xpc3QiLCIzOCJdXX0=
+        - strong: price index for gross domestic purchases
+        - text: increased 3.0 percent
+      - text: in the third quarter, compared with an increase of 5.6 percent in the second quarter. The
+      - strong: personal consumption expenditures (PCE) price index
+      - text: increased 2.1 percent, compared with an increase of 5.0 percent, and the
+      - strong: PCE price index, excluding food and energy
+      - text: increased 2.5 percent, compared with an increase of 3.3 percent.
+    - link "Quarter-to-Quarter Change in Prices":
+      - /url: /system/files/gdp3q26-adv-chart-03.png
+      - img "Quarter-to-Quarter Change in Prices"
+    - table:
+      - rowgroup:
+        - row "Real GDP and Related Measures [Percent change (SAAR) from 2026:Q2 to 2026:Q3]":
+          - columnheader "Real GDP and Related Measures [Percent change (SAAR) from 2026:Q2 to 2026:Q3]":
+            - text: Real GDP and Related Measures
+            - text: "[Percent change (SAAR) from 2026:Q2 to 2026:Q3]"
+        - row "Advance Estimate":
+          - columnheader
+          - columnheader "Advance Estimate"
+      - rowgroup:
+        - row "Real GDP 3.4":
+          - cell "Real GDP"
+          - cell "3.4"
+        - row "Current-dollar GDP 5.6":
+          - cell "Current-dollar GDP"
+          - cell "5.6"
+        - row "Real final sales to private domestic purchasers 4.9":
+          - cell "Real final sales to private domestic purchasers"
+          - cell "4.9"
+        - row "Gross domestic purchases price index 3.0":
+          - cell "Gross domestic purchases price index"
+          - cell "3.0"
+        - row "PCE price index 2.1":
+          - cell "PCE price index"
+          - cell "2.1"
+        - row "PCE price index, excluding food and energy 2.5":
+          - cell "PCE price index, excluding food and energy"
+          - cell "2.5"
+        - row "SAAR seasonally adjusted at annual rates U.S. Bureau of Economic Analysis":
+          - cell "SAAR seasonally adjusted at annual rates U.S. Bureau of Economic Analysis":
+            - text: SAAR seasonally adjusted at annual rates
+            - text: U.S. Bureau of Economic Analysis
+    - text: For definitions, statistical conventions, updates to GDP, and more information about national statistics, visit “
+    - link "Additional Information":
+      - /url: https://www.bea.gov/news/gdp-release-additional-information
+    - text: .”
+    - paragraph:
+      - text: "Next release: November 25, 2026, at 8:30 a.m. EST"
+      - text: GDP (Second Estimate) and Corporate Profits, 3rd Quarter 2026
+    - paragraph:
+      - text: The full release schedule for 2027 is available on
+      - link "BEA's website":
+        - /url: https://www.bea.gov/news/schedule/next-year
+      - text: .
+    - separator
+    - heading "Technical Notes" [level=2]:
+      - strong: Technical Notes
+    - heading "Sources of change for real GDP" [level=3]
+    - paragraph:
+      - text: Real GDP increased at an annual rate of 3.4 percent (0.8 percent at a quarterly rate
+      - link "1":
+        - /url: "#_ftn1"
+        - superscript: "1"
+      - text: ) in the third quarter, reflecting increases in investment, consumer spending, and government spending that were partly offset by a decrease in exports. Imports, which are a subtraction in the calculation of GDP, increased.
+    - paragraph:
+      - text: More information on the source data and BEA assumptions that underlie the third-quarter estimate is shown in the
+      - link "key source data and assumptions":
+        - /url: https://www.bea.gov/sites/default/files/2026-10/gdpkeysource-3q26-adv.xlsx
+      - text: table.
+    - list:
+      - text: The increase in investment primarily reflected increases in private inventory investment and in equipment.
+      - list:
+        - listitem: The largest contributors to the increase in private inventory investment were wholesale trade and manufacturing (both led by nondurable goods industries), based primarily on Census Bureau inventory book value data.
+        - listitem: Within equipment, the increase was led by information processing equipment (mainly computers and peripheral equipment), based primarily on data for imports from the U.S. Census Bureau-BEA U.S. International Trade in Goods and Services report and the Census Bureau Advance Economic Indicators Report for September.
+      - text: The increase in consumer spending reflected increases in both services and goods.
+      - list:
+        - listitem: Within services, the increase was led by health care (mainly hospitals and outpatient services), based primarily on U.S. Bureau of Labor Statistics’ Current Employment Statistics, and food services and accommodations (mainly purchased meals and beverages), based on Census Bureau Monthly Retail Trade Survey (MRTS) data.
+        - listitem: Within goods, the increase was led by other nondurable goods (mainly prescription drugs), based on Census Bureau MRTS data.
+      - listitem: Within government spending, the increase was more than accounted for by federal government spending, led by nondefense consumption expenditures. The pattern of nondefense spending primarily reflected sales of crude oil from the Strategic Petroleum Reserve, based on data from the U.S. Department of Energy. Within the National Economic Accounts, sales are deducted from government consumption expenditures. In the third quarter, sales from the Strategic Petroleum Reserve were less than sales in the second quarter, resulting in an increase in consumption expenditures. Because the oil sold by the government is reflected as an increase in other components of GDP, there is no direct effect on GDP.
+      - listitem: Exports and imports primarily reflected Census Bureau-BEA U.S. International Trade in Goods and Services data as well as the Census Bureau Advance Economic Indicators Report for September. The decrease in exports primarily reflected a decrease in goods (led by petroleum and related products). The largest contributor to imports was capital goods, except automotive.
+    - separator
+    - heading "Related Data Tables" [level=2]:
+      - strong: Related Data Tables
+    - paragraph:
+      - text: For the estimates highlighted in this release, as well as historical time series for these estimates, see the following data tables in
+      - link "BEA’s Interactive Data Application":
+        - /url: https://www.bea.gov/itable/national-gdp-and-personal-income
+      - text: .
+    - paragraph:
+      - link "Table 1.1.1. Percent Change From Preceding Period in Real Gross Domestic Product":
+        - /url: https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDNdLCJkYXRhIjpbWyJjYXRlZ29yaWVzIiwiU3VydmV5Il0sWyJOSVBBX1RhYmxlX0xpc3QiLCIxIl1dfQ==
+      - link "Table 1.5.2. Contributions to Percent Change in Real Gross Domestic Product, Expanded Detail":
+        - /url: https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDNdLCJkYXRhIjpbWyJjYXRlZ29yaWVzIiwiU3VydmV5Il0sWyJOSVBBX1RhYmxlX0xpc3QiLCIzMiJdXX0=
+      - link "Table 1.4.1. Percent Change From Preceding Period in Real Gross Domestic Product, Real Gross Domestic Purchases, and Real Final Sales to Domestic Purchasers":
+        - /url: https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDNdLCJkYXRhIjpbWyJjYXRlZ29yaWVzIiwiU3VydmV5Il0sWyJOSVBBX1RhYmxlX0xpc3QiLCIyNiJdXX0=
+      - link "Table 1.6.7. Percent Change From Preceding Period in Prices for Gross Domestic Purchases":
+        - /url: https://apps.bea.gov/iTable/?reqid=19&step=2&isuri=1&categories=survey#eyJhcHBpZCI6MTksInN0ZXBzIjpbMSwyLDNdLCJkYXRhIjpbWyJjYXRlZ29yaWVzIiwiU3VydmV5Il0sWyJOSVBBX1RhYmxlX0xpc3QiLCIzOCJdXX0=
+    - paragraph:
+      - strong: Note.
+      - text: With the next release of GDP, today’s data will be superseded, and the links above will reflect the latest data. The original data featured in this release can then be accessed in
+      - link "BEA’s Data Archive":
+        - /url: https://apps.bea.gov/histdatacore/histChildLevels.html?HMI=7&oldDiv=National%20Accounts
+      - text: .
+    - separator
+    - paragraph:
+      - link "1":
+        - /url: "#_ftnref1"
+        - superscript: "1"
+      - text: Percent changes in quarterly seasonally adjusted series are displayed at annual rates, unless otherwise specified. For more information, refer to the FAQ “
+      - link "Why does BEA publish percent changes in quarterly series at annual rates?":
+        - /url: https://www.bea.gov/help/faq/122
+      - text: ”.
+- link "Download Acrobat Reader":
+  - /url: http://get.adobe.com/reader/
+- img "(link is external)"
+- generic: Page last modified on 10/29/26
+- contentinfo:
+  - heading "Bureau of Economic Analysis 4600 Silver Hill Road • Suitland, MD 20746" [level=4]
+  - list:
+    - link "Contact Us":
+      - /url: /contact-us
+    - link "Working at BEA":
+      - /url: /about/working-at-bea
+    - link "Frequently Asked Questions":
+      - /url: /help/faq
+    - link "Our Policies":
+      - /url: /about/policies-and-information
+    - link "Privacy":
+      - /url: /privacy
+  - list:
+    - link "Commitment to Scientific Integrity":
+      - /url: /statement-commitment-scientific-integrity-principal-statistical-agencies
+    - link "Data Dissemination Practices":
+      - /url: /about/policies-and-information/data-dissemination
+    - link "Open Data":
+      - /url: /open-data
+    - link "USA.gov":
+      - /url: https://www.usa.gov/
+    - link "Business USA":
+      - /url: https://business.usa.gov
+    - link "No FEAR Act":
+      - /url: https://www.commerce.gov/cr/reports-and-resources/no-fear-act
+    - link "FOIA":
+      - /url: https://www.commerce.gov/opog
+    - link "U.S. Department of Commerce":
+      - /url: https://www.commerce.gov/
+    - link "Emergency Status":
+      - /url: https://apps.bea.gov/status/
+  - list:
+    - link "The BEA Wire | BEA's Official Blog":
+      - /url: /news/blog
+    - link "News Release Feed (RSS)":
+      - /url: https://apps.bea.gov/rss/rss.xml
+    - link "Sign up for Email Notifications":
+      - /url: /_subscribe/
+  - link "(opens in a new window)":
+    - /url: https://x.com/bea_news
+  - link "(opens in a new window)":
+    - /url: https://www.linkedin.com/company/bureau-of-economic-analysis
+  - link "(opens in a new window)":
+    - /url: https://www.youtube.com/channel/UCCP9QD1x_z__duUivA6Yb5w
+  - link "(opens in a new window)":
+    - /url: https://www.instagram.com/usbeagov/
+  - link "(opens in a new window)":
+    - /url: https://www.facebook.com/usbeagov

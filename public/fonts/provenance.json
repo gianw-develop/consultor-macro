@@ -1,0 +1,7 @@
+{
+  "family": "Source Sans 3",
+  "source": "https://github.com/google/fonts/tree/main/ofl/sourcesans3",
+  "license": "SIL Open Font License 1.1",
+  "licenseFile": "SourceSans3-OFL.txt",
+  "use": "Local variable font; no runtime Google Fonts requests."
+}

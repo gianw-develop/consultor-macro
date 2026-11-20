@@ -1,0 +1,37 @@
+[
+  {
+    "name": "Inflación",
+    "title": "El origen de la inflación",
+    "sourceId": "source-1",
+    "fragmentId": "source-1-L22",
+    "sourceStart": 22,
+    "excerpts": [
+      "Inflación de demanda y liquidez: hogares y empresas disponen de dinero y crédito barato, compran con fuerza y mantienen la presión sobre los precios.",
+      "Inflación de oferta o energía: el petróleo encarece transporte, maquinaria, alimentos y producción."
+    ]
+  },
+  {
+    "name": "Fed",
+    "title": "La relación cambia según el régimen",
+    "sourceId": "source-1",
+    "fragmentId": "source-1-L511",
+    "sourceStart": 511,
+    "excerpts": [
+      "con inflación baja y estable, una caída de tipos puede apoyar valoraciones;",
+      "cuando los recortes responden a una crisis, tipos y bolsa pueden caer juntos;",
+      "en un ciclo inflacionario, el mercado puede centrarse más en el pico de inflación que en la subida tardía de la Fed;",
+      "después del pico inflacionario, la bolsa puede anticipar desinflación aunque la Fed todavía mantenga o suba tipos."
+    ]
+  },
+  {
+    "name": "Bonos",
+    "title": "Precio frente a rendimiento",
+    "sourceId": "source-13",
+    "fragmentId": "source-13-L130",
+    "sourceStart": 130,
+    "excerpts": [
+      "Distingue el precio del bono de su rendimiento y explica que normalmente se mueven en sentidos opuestos.",
+      "Si aumenta la demanda por un bono, su precio sube y su rendimiento baja; si aumenta la oferta o disminuye el apetito, su precio baja y el rendimiento sube."
+    ]
+  }
+]

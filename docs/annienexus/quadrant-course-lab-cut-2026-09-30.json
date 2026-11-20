@@ -1,0 +1,270 @@
+{
+  "schema_version": "1.0",
+  "title": "AnnieNexus - lectura actual del cuadrante de Estados Unidos",
+  "as_of": "2026-09-30T15:02:16+02:00",
+  "as_of_et": "2026-09-30T09:02:16-04:00",
+  "status": "provisional_primary_sources",
+  "quadrant": {
+    "confirmed_label": null,
+    "display_label": "Expansion bajo presion",
+    "display_state": "mixed_unresolved_region",
+    "candidate_boundary": null,
+    "growth_direction": "mixed_with_deceleration_bias",
+    "growth_level": "expanding",
+    "inflation_direction": "mixed_with_short_term_upward_pressure",
+    "inflation_level": "above_fed_target",
+    "exact_coordinates": null,
+    "probabilities": null,
+    "operating_signal": null,
+    "summary_es": "Actividad presente expansiva, impulso adelantado enfriandose e inflacion sobre el objetivo con direccion no uniforme."
+  },
+  "marker": {
+    "color": "yellow",
+    "state": "mixed_no_point",
+    "exact_position": null,
+    "movement_scale": null,
+    "interpretation_es": "Ambos ejes tienen direccion mixta. No se coloca un punto; se muestra una region central de incertidumbre.",
+    "stagflation_risk_supports": [
+      "LEI mensual negativo",
+      "confianza del consumidor deteriorandose",
+      "produccion industrial plana y manufactura mas debil",
+      "Fed mas restrictiva y rendimientos largos altos"
+    ],
+    "contradictions": [
+      "PIB y GDI reales siguen creciendo",
+      "consumo real de agosto fue fuerte",
+      "CEI y nominas siguen expandiendose",
+      "inflacion anual PCE no acelero e IPC subyacente anual bajo"
+    ],
+    "stagflation_risk_is_scenario": true,
+    "cross_to_stagflation_requires": [
+      "deterioro adelantado acompañado por debilidad contemporanea en actividad o empleo",
+      "inflacion general y subyacente acelerandose de forma persistente mas alla de energia",
+      "beneficios o credito confirmando menor crecimiento con financiacion restrictiva"
+    ],
+    "move_away_requires": [
+      "adelantados y confianza estabilizandose",
+      "actividad y beneficios ampliando la expansion",
+      "inflacion mensual y anual moderandose de forma amplia",
+      "rendimientos bajando por desinflacion sin estres de credito"
+    ],
+    "news_rule": "Noticias y titulares se registran como riesgos hasta que cambien una variable medida o su canal causal.",
+    "observed_path_style": null,
+    "scenario_style": "dashed",
+    "scenario_direction": "toward_stagflation_if_conditions_confirm"
+  },
+  "observations": [
+    {
+      "id": "bea_real_gdp_q2_2026_third",
+      "provider": "BEA",
+      "family": "growth",
+      "period": "2026-Q2",
+      "released_at_et": "2026-09-30T08:30:00-04:00",
+      "value": 2.2,
+      "unit": "percent_saar_qoq",
+      "comparison": {
+        "period": "2026-Q1",
+        "value": 2.5,
+        "unit": "percent_saar_qoq"
+      },
+      "revision": {
+        "previous_q2_estimate": 1.5,
+        "change_percentage_points": 0.7
+      },
+      "inference": "expanding_but_slightly_slower_than_q1",
+      "source": "https://www.bea.gov/news/2026/gdp-third-estimate-industries-corporate-profits-state-gdp-and-state-personal-income-2nd"
+    },
+    {
+      "id": "bea_real_gdi_q2_2026",
+      "provider": "BEA",
+      "family": "growth",
+      "period": "2026-Q2",
+      "released_at_et": "2026-09-30T08:30:00-04:00",
+      "value": 2.6,
+      "unit": "percent_saar_qoq",
+      "inference": "current_activity_expanding",
+      "source": "https://www.bea.gov/news/2026/gdp-third-estimate-industries-corporate-profits-state-gdp-and-state-personal-income-2nd"
+    },
+    {
+      "id": "bea_real_pce_aug_2026",
+      "provider": "BEA",
+      "family": "growth",
+      "period": "2026-08",
+      "released_at_et": "2026-09-30T08:30:00-04:00",
+      "value": 0.6,
+      "unit": "percent_mom",
+      "comparison": {
+        "period": "2026-07",
+        "value": 0.1,
+        "unit": "percent_mom"
+      },
+      "inference": "consumer_demand_strengthened_in_august",
+      "source": "https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026"
+    },
+    {
+      "id": "tcb_us_lei_aug_2026",
+      "provider": "Conference Board",
+      "family": "growth_leading",
+      "period": "2026-08",
+      "released_at_et": "2026-09-18T10:00:00-04:00",
+      "value": -0.1,
+      "unit": "percent_mom",
+      "index_level": 99.5,
+      "six_month_change": -0.1,
+      "recession_signal_triggered": false,
+      "inference": "forward_growth_momentum_weakened",
+      "source": "https://www.conference-board.org/topics/us-leading-indicators/index.cfm"
+    },
+    {
+      "id": "tcb_us_cei_aug_2026",
+      "provider": "Conference Board",
+      "family": "growth_coincident",
+      "period": "2026-08",
+      "released_at_et": "2026-09-18T10:00:00-04:00",
+      "value": 0.1,
+      "unit": "percent_mom",
+      "six_month_change": 0.4,
+      "inference": "current_activity_expanding",
+      "source": "https://www.conference-board.org/topics/us-leading-indicators/index.cfm"
+    },
+    {
+      "id": "tcb_consumer_confidence_sep_2026",
+      "provider": "Conference Board",
+      "family": "growth_leading",
+      "period": "2026-09",
+      "survey_window": "2026-09-01/2026-09-23",
+      "released_at_et": "2026-09-29",
+      "value": 81.9,
+      "unit": "index_1985_100",
+      "comparison": {
+        "period": "2026-08",
+        "value": 88.6,
+        "unit": "index_1985_100"
+      },
+      "expectations_index": 63.6,
+      "inference": "consumer_outlook_deteriorated",
+      "source": "https://www.conference-board.org/topics/tags.cfm?parent=consumer-confidence"
+    },
+    {
+      "id": "bls_payrolls_aug_2026",
+      "provider": "BLS",
+      "family": "growth_coincident_lagging",
+      "period": "2026-08",
+      "released_at_et": "2026-09-04T08:30:00-04:00",
+      "value": 162000,
+      "unit": "jobs_mom",
+      "unemployment_rate": 4.1,
+      "inference": "employment_expanding_but_one_month_is_not_a_trend",
+      "source": "https://www.bls.gov/news.release/empsit.htm"
+    },
+    {
+      "id": "fed_ip_aug_2026",
+      "provider": "Federal Reserve",
+      "family": "growth_coincident",
+      "period": "2026-08",
+      "released_at_et": "2026-09-18T09:15:00-04:00",
+      "value": 0.0,
+      "unit": "percent_mom",
+      "manufacturing_change": -0.3,
+      "capacity_utilization": 76.3,
+      "inference": "industrial_activity_flat_and_manufacturing_weaker",
+      "source": "https://www.federalreserve.gov/releases/g17/20260918/g17.pdf"
+    },
+    {
+      "id": "bea_pce_inflation_aug_2026",
+      "provider": "BEA",
+      "family": "inflation",
+      "period": "2026-08",
+      "released_at_et": "2026-09-30T08:30:00-04:00",
+      "headline_mom": 0.3,
+      "headline_yoy": 3.4,
+      "core_mom": 0.2,
+      "core_yoy": 3.0,
+      "previous_month": {
+        "headline_mom": 0.1,
+        "headline_yoy": 3.4,
+        "core_mom": 0.1,
+        "core_yoy": 3.0
+      },
+      "inference": "annual_rates_flat_monthly_impulse_firmer",
+      "source": "https://www.bea.gov/news/2026/personal-income-and-outlays-august-2026"
+    },
+    {
+      "id": "bls_cpi_aug_2026",
+      "provider": "BLS",
+      "family": "inflation",
+      "period": "2026-08",
+      "released_at_et": "2026-09-11T08:30:00-04:00",
+      "headline_mom": 0.4,
+      "headline_yoy": 3.4,
+      "core_mom": 0.3,
+      "core_yoy": 2.4,
+      "previous_month": {
+        "headline_mom": 0.1,
+        "headline_yoy": 3.4,
+        "core_mom": 0.2,
+        "core_yoy": 2.5
+      },
+      "energy_mom": 2.1,
+      "energy_yoy": 16.3,
+      "inference": "headline_short_term_pressure_energy_led_core_yoy_eased",
+      "source": "https://www.bls.gov/news.release/archives/cpi_09112026.htm"
+    },
+    {
+      "id": "fomc_sep_2026",
+      "provider": "Federal Reserve",
+      "family": "policy_confirmation",
+      "period": "2026-09-16",
+      "released_at_et": "2026-09-16T14:00:00-04:00",
+      "target_range_low": 3.75,
+      "target_range_high": 4.0,
+      "change_basis_points": 25,
+      "inference": "policy_restrictive_due_to_elevated_inflation",
+      "source": "https://www.federalreserve.gov/newsevents/pressreleases/monetary20260916a.htm"
+    },
+    {
+      "id": "ust_curve_2026_09_29",
+      "provider": "U.S. Treasury",
+      "family": "financial_confirmation",
+      "period": "2026-09-29",
+      "unit": "percent_yield",
+      "values": {
+        "3m": 4.25,
+        "2y": 4.89,
+        "5y": 5.06,
+        "10y": 5.26,
+        "20y": 5.64,
+        "30y": 5.59
+      },
+      "spreads_basis_points": {
+        "10y_minus_2y": 37,
+        "10y_minus_3m": 101
+      },
+      "shape": "ascending",
+      "inference": "high_financing_costs_no_current_inversion",
+      "source": "https://home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026"
+    }
+  ],
+  "contradictions": [
+    "GDP, GDI, real consumption, CEI and payrolls show expansion while LEI, confidence and manufacturing weaken.",
+    "Annual PCE inflation is flat and core CPI inflation eased, while monthly inflation momentum strengthened.",
+    "The curve is ascending, but the high level of long yields tightens financial conditions."
+  ],
+  "superseded_pdf_fields": {
+    "pdf": "output/pdf/aninexus-regimen-estados-unidos-2026-09-28.pdf",
+    "gdp_q2_old": 1.5,
+    "gdp_q2_current": 2.2,
+    "pce_headline_old": 3.7,
+    "pce_headline_current": 3.4,
+    "pce_core_old": 3.3,
+    "pce_core_current": 3.0,
+    "oecd_cli_100_96": "not_reused_entity_not_identified",
+    "note": "The BEA annual update released September 30 superseded earlier GDP and PCE values."
+  },
+  "local_audit_artifacts": [
+    "research/quadrant-verification-2026-09-30/gdp.html",
+    "research/quadrant-verification-2026-09-30/gdp.txt",
+    "research/quadrant-verification-2026-09-30/pce.html",
+    "research/quadrant-verification-2026-09-30/pce.txt"
+  ]
+}

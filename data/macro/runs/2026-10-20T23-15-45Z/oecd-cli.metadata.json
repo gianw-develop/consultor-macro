@@ -1,0 +1,9 @@
+{
+  "name": "OCDE · CLI ajustado por amplitud · exportación oficial Excel",
+  "url": "https://data-explorer.oecd.org/vis?df[ds]=DisseminateFinalDMZ&df[id]=DSD_STES%40DF_CLI&df[ag]=OECD.SDD.STES&dq=.M.LI...AA...H&lom=LASTNPERIODS&lo=10&to[TIME_PERIOD]=false&vw=tb",
+  "fetchedAt": "2026-10-20T23:15:45Z",
+  "publishedAt": null,
+  "sha256": "a0afa3dd40bc3b96a6fa201bf7a1ef0d2d3a8ec2ef4d66dad956ecd79d4c7dac",
+  "mode": "reviewed_release",
+  "note": "Exportación oficial desde Chrome; ventana completa diciembre 2025–septiembre 2026 reconfirmada el 21/10 Madrid. API HTTP 500; recuperación manual verificada."
+}

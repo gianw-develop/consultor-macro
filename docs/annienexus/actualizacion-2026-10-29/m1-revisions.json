@@ -1,0 +1,81 @@
+{
+  "checkedAt": "2026-10-29T08:57:06Z",
+  "release": "2026-10-27",
+  "nominalRevisions": [
+    {
+      "period": "2025-08",
+      "previous": 18840.8,
+      "current": 18820.1
+    },
+    {
+      "period": "2025-09",
+      "previous": 18904.7,
+      "current": 18883.8
+    },
+    {
+      "period": "2025-10",
+      "previous": 18985.2,
+      "current": 18964.7
+    },
+    {
+      "period": "2025-11",
+      "previous": 19018.2,
+      "current": 18998.1
+    },
+    {
+      "period": "2025-12",
+      "previous": 19092.7,
+      "current": 19072.5
+    },
+    {
+      "period": "2026-01",
+      "previous": 19185.7,
+      "current": 19165.1
+    },
+    {
+      "period": "2026-02",
+      "previous": 19366.5,
+      "current": 19346
+    },
+    {
+      "period": "2026-03",
+      "previous": 19401.8,
+      "current": 19381.2
+    },
+    {
+      "period": "2026-04",
+      "previous": 19490.1,
+      "current": 19469
+    },
+    {
+      "period": "2026-05",
+      "previous": 19710.7,
+      "current": 19689.2
+    },
+    {
+      "period": "2026-06",
+      "previous": 19793.0,
+      "current": 19771.1
+    },
+    {
+      "period": "2026-07",
+      "previous": 19886.5,
+      "current": 19863.6
+    },
+    {
+      "period": "2026-08",
+      "previous": 19991.1,
+      "current": 19967.3
+    }
+  ],
+  "newPeriod": {
+    "period": "2026-09",
+    "value": 20061.2
+  },
+  "cpi": {
+    "period": "2026-09",
+    "value": 336.298
+  },
+  "sixMonthGrowth": 1.6602865658864374,
+  "augustRevisedSixMonthGrowth": 1.1508756248458152
+}

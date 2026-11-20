@@ -1,0 +1,15 @@
+{
+  "retrievedAt": "2026-10-01T15:01:45.972012+00:00",
+  "sources": [
+    {
+      "id": "RSAFS",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=RSAFS&cosd=2025-08-01&coed=2026-08-31",
+      "sha256": "ffdfe2e5533d4c7d5d3ad42c7a896ab671a3d35e699063b0732d6dd4cafc973e"
+    },
+    {
+      "id": "CPIAUCSL",
+      "url": "https://fred.stlouisfed.org/graph/fredgraph.csv?id=CPIAUCSL&cosd=2025-08-01&coed=2026-08-31",
+      "sha256": "d025f530b3282f8feecc8437c92d9891baca5f05be0f193b664bae9ccbd4f293"
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "CommonJS", "moduleResolution": "Node",
+    "lib": ["ES2022", "DOM"], "strict": true, "skipLibCheck": true,
+    "outDir": ".foundation-test-build", "rootDir": "src", "esModuleInterop": true, "resolveJsonModule": true
+  },
+  "include": ["src/contracts/**/*.ts", "src/shared/**/*.ts", "src/modules/annienexus/**/*.ts", "src/app/api/annienexus/**/*.ts", "src/app/api/radar/**/*.ts"]
+}

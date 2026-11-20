@@ -1,0 +1,74 @@
+[
+  {
+    "id": "source-0",
+    "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/model/repasos/notas-en-vivo/2026-09-27-gregory-mentoria-8.md",
+    "sha256": "bad64ab89c761cb24b6adfffe771bb067c9bf42771ec7e64b88a07467f982a30",
+    "bytes": 22355
+  },
+  {
+    "id": "source-1",
+    "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/model/repasos/notas-en-vivo/2026-09-28-gregory-mentoria-9.md",
+    "sha256": "8bfc2ecf60524701ebfe514dfa19634384f5c1b9386ef79d208fa79b5c05c9dc",
+    "bytes": 48488
+  },
+  {
+    "id": "source-2",
+    "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/model/repasos/notas-en-vivo/2026-09-29-hunab-mentoria-10.md",
+    "sha256": "15757ee4cc7d79a0485fea787e543eb2d44c8d0f0e6f646289092d8162475e03",
+    "bytes": 13112
+  },
+  {
+    "id": "source-3",
+    "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/research/gregory-course/gregory/2026-09-20-mentoria-3.md",
+    "sha256": "d92115109ceb801c834f32da89106300bd8f291120e57c55defdeb80a6e8ae8b",
+    "bytes": 54512
+  },
+  {
+    "id": "source-4",
+    "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/research/gregory-course/gregory/2026-09-21-mentoria-4.md",
+    "sha256": "b1c63ca016775cfdbc113a8a74714d42ca1521b9f7beaa81feed8b6b9a292fae",
+    "bytes": 37772
+  },
+  {
+    "id": "source-5",
+    "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/research/gregory-course/gregory/2026-09-22-mentoria-5.md",
+    "sha256": "1702a892049e83094b0b871cca12a24333b6a302ea035f3536de8cd3ece76f4d",
+    "bytes": 26704
+  },
+  {
+    "id": "source-6",
+    "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/research/gregory-course/gregory/TAREAS-MENTORIA-5-CURVA-Y-BACKTEST.md",
+    "sha256": "e768cb1bcfac6968cdd235f78c676d8a9fed262632dc1022b8ccbb4df276f454",
+    "bytes": 9432
+  },
+  {
+    "id": "source-7",
+    "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/research/gregory-course/hunab/2026-09-20-mentoria-3.md",
+    "sha256": "962bcfc9f525e1362e5dbacb4cf47e03771db8f3a42d0ba5a98f1cf685933ac4",
+    "bytes": 35967
+  },
+  {
+    "id": "source-8",
+    "source": "/Users/gianw/Documents/Wall Street Visual Intelligence/research/gregory-course/hunab/2026-09-22-market-makers-opex-spotgamma.md",
+    "sha256": "891da09270db31e26385e7627e7309c9c2286b7f867cfc9dadb210d17c511c41",
+    "bytes": 18589
+  },
+  {
+    "id": "source-9",
+    "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/model/MASTER-MARKET-MODEL.md",
+    "sha256": "7a163f0a373af72db0c4c1a86c15a45e64cadfe95166971140a1e690fc4fa596",
+    "bytes": 64946
+  },
+  {
+    "id": "source-10",
+    "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/model/VALIDACION-Y-PROPUESTAS.md",
+    "sha256": "a91f14ff53fcb2d0212cdcc8e0b6bd948630a854f49f92e81004d9e6da58ed3f",
+    "bytes": 11149
+  },
+  {
+    "id": "source-11",
+    "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/research/ANNIENEXUS-INDICADORES-CONFIRMADOS-COURSE-LAB.md",
+    "sha256": "da22bac3173fb6cb82bdf0d774ecda5f34c22b2eddb2075f86fd7df59118b606",
+    "bytes": 12060
+  }
+]

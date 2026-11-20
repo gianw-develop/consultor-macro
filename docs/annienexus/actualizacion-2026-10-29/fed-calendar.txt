@@ -1,0 +1,322 @@
+Chrome · consulta 2026-10-29T08:57:06Z
+					23 Contenido HTML Federal Reserve Board - Calendar: October 2026, URL: federalreserve.gov/newsevents/2026-october.htm
+						24 container
+							25 link Skip to main content, Value: federalreserve.gov/newsevents/2026-october.htm#content
+							26 imagen US Flag
+							27 texto An official website of the United States Government
+							28 botón Here's how you know Expand More
+							29 container
+								30 imagen .gov icon
+								31 texto Official websites use .gov
+								32 texto A
+								33 texto .gov
+								34 texto  website belongs to an official government organization in the United States.
+								35 Imagen sin descripción HTTPS icon. Para obtener las descripciones de las imágenes, abre el menú contextual.
+								36 texto Secure .gov websites use HTTPS
+								37 texto A
+								38 texto lock
+								39 texto  (
+								40 imagen Locked padlock icon
+								41 texto ) or
+								42 texto https://
+								43 texto  means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
+							44 lista de contenidos
+								45 container
+									46 text Stay Connected ·
+								47 container
+									48 link Recent Postings, Value: federalreserve.gov/recentpostings.htm
+									49 text ·
+								50 container
+									51 link Calendar, Value: federalreserve.gov/newsevents/calendar.htm
+									52 text ·
+								53 container
+									54 link Publications, Value: federalreserve.gov/publications.htm
+									55 text ·
+								56 container
+									57 link Site Map, Value: federalreserve.gov/sitemap.htm
+									58 text ·
+								59 container
+									60 link A-Z index, Value: federalreserve.gov/azindex.htm
+									61 text ·
+								62 container
+									63 link Careers, Value: federalreserve.gov/careers.htm
+									64 text ·
+								65 container
+									66 link FAQs, Value: federalreserve.gov/faqs.htm
+									67 text ·
+								68 container
+									69 link Videos, Value: federalreserve.gov/videos.htm
+									70 text ·
+								71 container
+									72 link Contact, Value: federalreserve.gov/aboutthefed/contact-us-topics.htm
+							73 container
+								74 texto Search
+								75 campo de texto (settable) Search
+								76 botón Submit Search Button
+								77 link Advanced, Value: fedsearch.org/board_public/
+							78 link Help: Link to Home Page, Value: federalreserve.gov/default.htm, Board of Governors of the Federal Reserve System The Federal Reserve, the central bank of the United States, provides the nation with a safe, flexible, and stable monetary and financial system.
+							79 barra de menús
+								80 About the Fed
+									81 link About the Fed, Value: federalreserve.gov/aboutthefed.htm
+								82 News & Events
+									83 link News & Events, Value: federalreserve.gov/newsevents.htm
+								84 Monetary Policy Monetary Policy
+									85 link Monetary Policy, Value: federalreserve.gov/monetarypolicy.htm
+									86 container Monetary Policy, Secondary Actions: Cancel
+										87 lista de contenidos
+											88 texto Federal Open Market Committee
+											89 link About the FOMC, Value: federalreserve.gov/monetarypolicy/fomc.htm
+											90 link Meeting calendars and information, Value: federalreserve.gov/monetarypolicy/fomccalendars.htm
+											91 link Transcripts and other historical materials, Value: federalreserve.gov/monetarypolicy/fomc_historical.htm
+											92 link FAQs, Value: federalreserve.gov/monetarypolicy/fomc_projectionsfaqs.htm
+											93 texto Monetary Policy Principles and Practice
+											94 link Notes, Value: federalreserve.gov/monetarypolicy/monetary-policy-principles-and-practice.htm
+										95 lista de contenidos
+											96 texto Policy Implementation
+											97 link Policy Normalization, Value: federalreserve.gov/monetarypolicy/policy-normalization.htm
+											98 link Policy Tools, Value: federalreserve.gov/monetarypolicy/policytools.htm
+											99 texto Reports
+											100 link Monetary Policy Report, Value: federalreserve.gov/monetarypolicy/publications/mpr_default.htm
+											101 link Beige Book, Value: federalreserve.gov/monetarypolicy/publications/beige-book-default.htm
+											102 link Federal Reserve Balance Sheet Developments, Value: federalreserve.gov/monetarypolicy/publications/balance-sheet-developments-report.htm
+											103 texto Review of Monetary Policy Strategy, Tools, and Communications
+											104 link Overview, Value: federalreserve.gov/monetarypolicy/review-of-monetary-policy-strategy-tools-and-communications-2025.htm
+								105 Supervision & Regulation
+									106 link Supervision & Regulation, Value: federalreserve.gov/supervisionreg.htm
+								107 Financial Stability
+									108 link Financial Stability, Value: federalreserve.gov/financial-stability.htm
+								109 Payment Systems
+									110 link Payment Systems, Value: federalreserve.gov/paymentsystems.htm
+								111 Economic Research
+									112 link Economic Research, Value: federalreserve.gov/econres.htm
+								113 Data
+									114 link Data, Value: federalreserve.gov/data.htm
+								115 Consumers & Communities
+									116 link Consumers & Communities, Value: federalreserve.gov/consumerscommunities.htm
+							117 lista de contenidos
+								118 link Home, Value: federalreserve.gov/default.htm
+								119 container
+									120 texto >
+									121 link News & Events, Value: federalreserve.gov/newsevents.htm
+								122 container
+									123 texto >
+									124 link Calendar, Value: federalreserve.gov/newsevents/calendar.htm
+							125 encabezado Calendar, Value: 2
+								126 texto Calendar
+							127 container
+								128 encabezado October 2026, Value: 4
+									129 texto October 2026
+								130 container
+									131 link Previous, Value: federalreserve.gov/newsevents/2026-november.htm
+									132 link Next, Value: federalreserve.gov/newsevents/2026-september.htm
+								133 encabezado Speeches, Value: 4
+									134 texto Speeches
+								135 encabezado Time:, Value: 6
+									136 texto Time:
+								137 encabezado Release Date(s):, Value: 6
+									138 texto Release Date(s):
+								139 container
+									140 texto 11:30 p.m.
+									141 texto Discussion - Chairman Kevin Warsh
+									142 texto Conversation between IMF Managing Director Georgieva and Federal Reserve Chairman Warsh
+									143 texto At the Fireside Chat with International Monetary Fund (IMF) Managing Director Kristalina Georgieva, Bangkok, Thailand
+									144 texto 15
+								145 container
+									146 texto 10:55 p.m.
+									147 texto Speech - Vice Chair for Supervision Michelle W. Bowman
+									148 texto Supervision and Regulation
+									149 texto At the Bangkok Economic Festival 2026
+									150 texto 14
+								151 container
+									152 texto 5:40 a.m.
+									153 texto Discussion - Vice Chair for Supervision Michelle W. Bowman
+									154 texto Supervision and Regulation
+									155 texto At the 2026 IIF Annual Membership Summit, Bangkok, Thailand
+									156 texto 14
+								157 container
+									158 texto 3:45 a.m.
+									159 texto Discussion - Governor Christopher J. Waller
+									160 texto AI
+									161 texto At the Bloomberg New Economy Forum 2026, New Delhi, India
+									162 texto 13
+								163 container
+									164 texto 4:30 a.m.
+									165 texto Speech - Governor Christopher J. Waller
+									166 texto Economic Outlook
+									167 texto At the Central Bank of the Republic of Türkiye (TCMB) İstanbul Economic Forum, Ümraniye/İstanbul, Türkiye
+									168 texto 8
+								169 container
+									170 texto 10:45 a.m.
+									171 texto Speech - Vice Chair for Supervision Michelle W. Bowman
+									172 texto Modernizing Regulation and Supervision
+									173 texto At the 2026 Community Banking Research Conference, St. Louis, Missouri
+									174 texto 6
+								175 container
+									176 texto 3:30 p.m.
+									177 texto Discussion - Governor Lisa D. Cook
+									178 texto Global Central Banking
+									179 texto At the Central Banking Seminar (Virtual)
+									180 texto 1
+								181 container
+									182 texto 3:00 p.m.
+									183 texto Speech - Vice Chair for Supervision Michelle W. Bowman
+									184 texto Modernizing Financial Regulation: Initial Observations from eSLR
+									185 texto At the Atlantic Council’s Conversation with Michelle W. Bowman, Washington, D.C.
+									186 texto 1
+								187 container
+									188 texto 1:30 p.m.
+									189 texto Speech - Vice Chair Philip N. Jefferson
+									190 texto U.S. Economy and Monetary Policy
+									191 texto At a Talk and Q&A with Federal Reserve Board Vice Chair Philip N. Jefferson, Charlottesville, Va.
+									192 texto 1
+								193 container
+									194 texto 10:00 a.m.
+									195 texto Speech - Governor Christopher J. Waller
+									196 texto Federal Reserve Economic Data
+									197 texto At FRED Con: Navigating Trust, AI & Storytelling in a World of Data, St. Louis, Mo.
+									198 texto 1
+								199 encabezado FOMC Meetings, Value: 4
+									200 texto FOMC Meetings
+								201 encabezado Time:, Value: 6
+									202 texto Time:
+								203 encabezado Release Date(s):, Value: 6
+									204 texto Release Date(s):
+								205 container
+									206 texto 2:00 p.m.
+									207 texto FOMC Minutes
+									208 texto Meeting of September 15-16
+									209 texto 7
+								210 container
+									211 texto 2:30 p.m.
+									212 link FOMC Press Conference, Value: federalreserve.gov/live-broadcast.htm
+									213 texto 28
+								214 container
+									215 texto 2:00 p.m.
+									216 texto FOMC Meeting
+									217 texto Two-day meeting, October 27 - 28
+									218 texto Press Conference
+									219 texto 28
+								220 encabezado Beige Book, Value: 4
+									221 texto Beige Book
+								222 encabezado Time:, Value: 6
+									223 texto Time:
+								224 encabezado Release Date(s):, Value: 6
+									225 texto Release Date(s):
+								226 container
+									227 texto 2:00 p.m.
+									228 texto Beige Book
+									229 texto 14
+								230 encabezado Statistical Releases, Value: 4
+									231 texto Statistical Releases
+								232 encabezado Time:, Value: 6
+									233 texto Time:
+								234 encabezado Release Date(s):, Value: 6
+									235 texto Release Date(s):
+								236 container
+									237 texto 4:15 p.m.
+									238 texto G.5 - Foreign Exchange Rates
+									239 texto 1
+								240 container
+									241 texto G.20 - Finance Companies
+									242 texto Publication date for this release is approximate.
+									243 texto 30
+								244 container
+									245 texto 3:00 p.m.
+									246 texto G.19 - Consumer Credit
+									247 texto 7
+								248 container
+									249 texto 9:15 a.m.
+									250 texto G.17 - Industrial Production and Capacity Utilization
+									251 texto 16
+								252 container
+									253 texto 4:30 p.m.
+									254 texto H.4.1 - Factors Affecting Reserve Balances
+									255 texto 1, 8, 15, 22, 29
+								256 container
+									257 texto 1:00 p.m.
+									258 texto H.6 - Money Stock Measures
+									259 texto 27
+								260 container
+									261 texto 4:15 p.m.
+									262 texto H.10 - Foreign Exchange Rates
+									263 texto 5, 13, 19, 26
+								264 container
+									265 texto 4:15 p.m.
+									266 texto H.8 - Assets and Liabilities of Commercial Banks in the U.S.
+									267 texto 2, 9, 16, 23, 30
+								268 container
+									269 texto 1:00 p.m.
+									270 texto CP - Commercial Paper
+									271 texto 1, 2, 5, 6, 7, 8, 9, 13, 14, 15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30
+								272 container
+									273 texto 4:15 p.m.
+									274 texto H.15 - Selected Interest Rates
+									275 texto 1, 2, 5, 6, 7, 8, 9, 13, 14, 15, 16, 19, 20, 21, 22, 23, 26, 27, 28, 29, 30
+								276 encabezado Other, Value: 4
+									277 texto Other
+								278 encabezado Time:, Value: 6
+									279 texto Time:
+								280 encabezado Release Date(s):, Value: 6
+									281 texto Release Date(s):
+								282 container
+									283 texto Holiday - Columbus Day
+									284 texto The daily and weekly statistical releases scheduled for today will be released on Tuesday, October 13.
+									285 texto 12
+								286 container
+									287 link Previous, Value: federalreserve.gov/newsevents/2026-november.htm
+									288 link Next, Value: federalreserve.gov/newsevents/2026-september.htm
+							289 texto Last Update: June 24, 2025
+							290 container
+								291 encabezado BOARD OF GOVERNORS of the FEDERAL RESERVE SYSTEM, Value: 6
+									292 text BOARD OF GOVERNORS
+									293 texto of the
+									294 text FEDERAL RESERVE SYSTEM
+								295 lista de contenidos
+									296 link About the Fed, Value: federalreserve.gov/aboutthefed.htm
+									297 link News & Events, Value: federalreserve.gov/newsevents.htm
+									298 link Monetary Policy, Value: federalreserve.gov/monetarypolicy.htm
+									299 link Supervision & Regulation, Value: federalreserve.gov/supervisionreg.htm
+									300 link Financial Stability, Value: federalreserve.gov/financial-stability.htm
+									301 link Payment Systems, Value: federalreserve.gov/paymentsystems.htm
+									302 link Economic Research, Value: federalreserve.gov/econres.htm
+									303 link Data, Value: federalreserve.gov/data.htm
+									304 link Consumers & Communities, Value: federalreserve.gov/consumerscommunities.htm
+									305 link Connect with the Board, Value: federalreserve.gov/aboutthefed/aroundtheboard/stayconnected-qr-code-2.htm
+							306 container
+								307 encabezado TOOLS AND INFORMATION, Value: 6
+									308 texto TOOLS AND INFORMATION
+								309 lista de contenidos
+									310 link Contact, Value: federalreserve.gov/aboutthefed/contact-us-topics.htm
+									311 link Publications, Value: federalreserve.gov/publications.htm
+									312 link Freedom of Information (FOIA), Value: federalreserve.gov/foia/about_foia.htm
+									313 link Office of Inspector General, Value: oig.federalreserve.gov/
+									314 container
+										315 link Budget & Performance, Value: federalreserve.gov/publications/annual-report.htm
+										316 texto  |
+										317 link Audit, Value: federalreserve.gov/regreform/audit.htm
+									318 link No FEAR Act, Value: federalreserve.gov/eeo.htm
+									319 link Español, Value: federalreserve.gov/espanol.htm
+									320 container
+										321 link Website Policies, Value: federalreserve.gov/website-linking-policies.htm
+										322 texto  |
+										323 link Privacy Program, Value: federalreserve.gov/privacy.htm
+									324 link Accessibility, Value: federalreserve.gov/accessibility.htm
+							325 container
+								326 encabezado STAY CONNECTED, Value: 6
+									327 texto STAY CONNECTED
+								328 link Federal Reserve Facebook Page, Value: facebook.com/federalreserve
+								329 link Federal Reserve Instagram Page, Value: instagram.com/federalreserveboard/
+								330 link Federal Reserve YouTube Page, Value: youtube.com/federalreserve
+								331 link Federal Reserve Flickr Page, Value: flickr.com/photos/federalreserve/
+								332 link Federal Reserve LinkedIn Page, Value: linkedin.com/company/federal-reserve-board
+								333 link Federal Reserve Threads Page, Value: threads.net/@federalreserveboard
+								334 link Link to Federal Reserve X Page, Value: x.com/federalreserve
+								335 link Link to Federal Reserve Bluesky Page, Value: bsky.app/profile/federalreserve.gov
+								336 link Subscribe to RSS, Value: federalreserve.gov/feeds/feeds.htm
+								337 link Subscribe to Email, Value: federalreserve.gov/subscribe.htm
+								338 link Link to USA.gov, Value: usa.gov/
+								339 link Link to Open.gov, Value: federalreserve.gov/open/open.htm
+							340 container
+								341 texto BOARD OF GOVERNORS
+								342 texto of the
+								343 text  FEDERAL RESERVE SYSTEM ● 20th Street and Constitution Avenue N.W., Washington, DC 20551

@@ -1,0 +1,220 @@
+Chrome · consulta 2026-10-29T08:57:06Z
+					24 Contenido HTML URL: fred.stlouisfed.org/series/CPIAUCSL, Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (CPIAUCSL) | FRED | St. Louis Fed
+						25 container
+							26 link Skip to main content, Value: fred.stlouisfed.org/series/CPIAUCSL#content-container
+							27 container
+								28 link Federal Reserve Bank of St. Louis, Value: stlouisfed.org/
+								29 link FRED homepage, Value: fred.stlouisfed.org/
+								30 container
+									31 botón combinado (settable) Search
+										32 campo para buscar texto (settable) Search, Placeholder: Search FRED Data...
+									33 botón Submit Search
+								34 lista de contenidos
+									35 botón emergente Toggle Explore Our Apps Menu
+										36 imagen Toggle Explore Our Apps Menu
+									37 container
+										38 botón Open Login Modal; User Is Not Signed In
+								39 lista de contenidos
+									40 link RELEASE CALENDAR, Value: fred.stlouisfed.org/releases/calendar
+									41 botón emergente TOOLS 
+										42 texto TOOLS
+										43 texto 
+									44 link NEWS, Value: news.research.stlouisfed.org/category/fred-announcements/
+									45 link BLOG, Value: fredblog.stlouisfed.org/
+									46 botón emergente ABOUT 
+										47 texto ABOUT
+										48 texto 
+							49 container site breadcrumbs
+								50 container
+									51 link Home, Value: fred.stlouisfed.org/
+									52 text >
+									53 link Categories, Value: fred.stlouisfed.org/categories
+									54 text >
+									55 link Prices, Value: fred.stlouisfed.org/categories/32455
+									56 text >
+									57 link Consumer Price Indexes (CPI and PCE), Value: fred.stlouisfed.org/categories/9
+							58 container
+								59 container CPIAUCSL
+								60 encabezado Value: 1, Add to favorites Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (CPIAUCSL)
+									61 enlace Add to favorites
+										62 texto 
+									63 text Consumer Price Index for All Urban Consumers: All Items in U.S. City Average  (CPIAUCSL)
+								64 container
+									65 botón Observations
+									66 container
+										67 text Sep 2026: 336.298
+									68 container Oct 14, 2026 8:08 AM CDT
+										69 text Updated:  Oct 14, 2026 8:08 AM CDT
+									70 link Next Release Date: Nov 10, 2026, Value: fred.stlouisfed.org/releases/calendar?rid=10&y=2026
+									71 texto Units:
+									72 container
+										73 text Index 1982-1984=100 ,
+									74 texto Seasonally Adjusted
+									75 texto Frequency:
+									76 texto Monthly
+									77 container
+										78 container
+											79 container 1 year date range
+												80 texto 1Y
+											81 container 5 year date range
+												82 texto 5Y
+											83 container 10 year date range
+												84 texto 10Y
+											85 container max date range
+												86 texto Max
+										87 container
+											88 texto From
+											89 campo de texto (settable) Change start date, Value: 1947-01-01
+											90 texto to
+											91 campo de texto (settable) Change end date, Value: 2026-09-01
+									92 botón Edit Graph  
+									93 botón Download
+								94 container
+									95 container
+										96 container FRED Graph
+											97 container
+												98 text Chart Line chart with 957 data points.
+												99 botón View as data table, Chart
+												100 text The chart has 1 X axis displaying xAxis. Data ranges from 1947-01-01 1:00:00 to 2026-09-01 2:00:00. The chart has 2 Y axes displaying Index 1982-1984=100 and yAxisRight.
+											101 container
+												102 container Toggle series visibility, Chart
+													103 lista de contenidos
+														104 botón de activación Show Consumer Price Index for All Urban Consumers: All Items in U.S. City Average, Value: 1
+												105 container Interactive FRED Graph, Help: Created with Highcharts 10.3.3
+													106 container Consumer Price Index for All Urban Consumers: All Items in U.S. City Average series with 957 points
+											107 texto End of interactive chart.
+										108 botón combinado (settable) customize your graph data by combining other series with your existing series.
+									109 container Full screen
+										110 texto Fullscreen
+										111 texto 
+								112 container
+									113 botón Share Graph 
+									114 botón Account Tools  
+									115 container
+										116 link Share on X, Value: fred.stlouisfed.org/graph/share.php
+										117 link Post on Facebook, Value: fred.stlouisfed.org/graph/share.php
+										118 link Share on Reddit, Value: fred.stlouisfed.org/graph/share.php
+										119 link Post to Linkedin, Value: fred.stlouisfed.org/graph/share.php
+								120 container
+									121 encabezado Notes, Value: 2
+										122 texto Notes
+									123 container
+										124 texto Source:
+										125 link U.S. Bureau of Labor Statistics , Value: bls.gov/
+										126 texto Release:
+										127 link Consumer Price Index , Value: bls.gov/cpi/
+										128 texto Units:
+										129 text Index 1982-1984=100 , Seasonally Adjusted
+										130 texto Frequency:
+										131 text Monthly
+										132 encabezado Notes:, Value: 4
+											133 texto Notes:
+										134 text The Consumer Price Index for All Urban Consumers: All Items (CPIAUCSL) is a price index of a basket of goods and services paid by urban consumers. Percent changes in the price index measure the inflation rate between any two time periods. The most common inflation metric is the percent change from one year ago. It can also represent the buying habits of urban consumers. This particular index includes roughly 88 percent of the total population, accounting for wage earners, clerical workers, technical workers The CPIs are based on prices for food, clothing, shelter, and fuels; transportation fares; service fees (e.g., water and sewer service); and sales taxes. Prices are collected monthly from about 4,000 housing units and approximately 26,000 retail establishments across 87 urban areas. To calculate the index, price changes are averaged with weights representing their importance in the spending of the particular group. The index measures price changes (as a percent change) from a predetermined reference date. I The CPI can be used to recognize periods of inflation and deflation. Significant increases in the CPI within a short time frame might indicate a period of inflation, and significant decreases in CPI within a short time frame might indicate a period of deflation. However, because the CPI includes volatile food and oil prices, it might not be a reliable measure of inflationary and deflationary periods. For a more accurate detection, the core CPI (
+										135 link CPILFESL, Value: fred.stlouisfed.org/series/CPILFESL
+										136 text ) is often used. When using the CPI, please note that it is not applicable to all consumers and should not be used to determine relative living costs. Additionally, the CPI is a statistical measure vulnerable to sampling error since it is based on a sample of prices and not the complete average. For more information on the CPI, see the
+										137 link Handbook of Methods, Value: bls.gov/opub/hom/cpi/
+										138 texto , the
+										139 link release notes and announcements, Value: bls.gov/cpi/
+										140 texto , and the
+										141 link Frequently Asked Questions, Value: bls.gov/cpi/questions-and-answers.htm
+										142 texto  (FAQs).
+										143 encabezado Suggested Citation:, Value: 4
+											144 texto Suggested Citation:
+										145 text U.S. Bureau of Labor Statistics, Consumer Price Index for All Urban Consumers: All Items in U.S. City Average [CPIAUCSL], retrieved from FRED, Federal Reserve Bank of St. Louis; https://fred.stlouisfed.org/series/CPIAUCSL,  October 29, 2026 .
+									146 encabezado Release Tables, Value: 2
+										147 texto Release Tables
+									148 container
+										149 texto Consumer Price Index
+										150 lista de contenidos
+											151 link Link to release table: Consumer Price Index, CPI for U.S. City Average: Monthly, Seasonally Adjusted, Value: fred.stlouisfed.org/release/tables?rid=10&eid=34483#snid=34484
+									152 encabezado Related Data and Content, Value: 2
+										153 texto Related Data and Content
+									154 container
+										155 encabezado Data Suggestions Based On Your Search, Value: 3
+											156 texto Data Suggestions Based On Your Search
+										157 link Unemployment Rate. Para obtener las descripciones de las imágenes, abre el menú contextual., Value: fred.stlouisfed.org/series/UNRATE
+										158 container
+											159 texto ...
+											160 link Unemployment Rate, Value: fred.stlouisfed.org/series/UNRATE
+										161 link Inflation, consumer prices for the United States, Value: fred.stlouisfed.org/series/FPCPITOTLZGUSA
+										162 container
+											163 texto ...
+											164 link Inflation, consumer prices for the United States, Value: fred.stlouisfed.org/series/FPCPITOTLZGUSA
+										165 link Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average, Value: fred.stlouisfed.org/series/CPILFESL
+										166 container
+											167 texto ...
+											168 link Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average, Value: fred.stlouisfed.org/series/CPILFESL
+										169 link Real Gross Domestic Product, Value: fred.stlouisfed.org/series/GDPC1
+										170 container
+											171 texto ...
+											172 link Real Gross Domestic Product, Value: fred.stlouisfed.org/series/GDPC1
+										173 botón click to see more
+										174 encabezado Content Suggestions, Value: 3
+											175 texto Content Suggestions
+										176 link Demystifying the producer price index, Value: fred.stlouisfed.org/blog/2025/10/demystifying-the-producer-price-index/
+										177 texto FRED Blog
+										178 container
+											179 texto ...
+											180 link Demystifying the producer price index, Value: fred.stlouisfed.org/blog/2025/10/demystifying-the-producer-price-index/
+										181 link Long-term price trends, Value: fred.stlouisfed.org/blog/2025/11/long-term-price-trends/
+										182 texto FRED Blog
+										183 container
+											184 texto ...
+											185 link Long-term price trends, Value: fred.stlouisfed.org/blog/2025/11/long-term-price-trends/
+										186 link The harmonized consumer price index, Value: fred.stlouisfed.org/blog/2025/11/the-harmonized-consumer-price-index/
+										187 texto FRED Blog
+										188 container
+											189 texto ...
+											190 link The harmonized consumer price index, Value: fred.stlouisfed.org/blog/2025/11/the-harmonized-consumer-price-index/
+										191 link Consumer Price Index for All Urban Consumers: All Items in U.S. City Average, Value: alfred.stlouisfed.org/series?seid=CPIAUCSL&utm_source=series_page&utm_medium=related_content&utm_term=related_resources&utm_campaign=alfred
+										192 texto ALFRED Vintage Series
+										193 container
+											194 texto ...
+											195 link Consumer Price Index for All Urban Consumers: All Items in U.S. City Average, Value: alfred.stlouisfed.org/series?seid=CPIAUCSL&utm_source=series_page&utm_medium=related_content&utm_term=related_resources&utm_campaign=alfred
+										196 botón click to see more
+										197 encabezado Other Formats, Value: 3
+											198 texto Other Formats
+										199 link Monthly, Not Seasonally Adjusted, Value: fred.stlouisfed.org/series/CPIAUCNS
+										200 link Semiannual, Not Seasonally Adjusted, Value: fred.stlouisfed.org/series/CUUS0000SA0
+										201 encabezado Related Categories, Value: 3
+											202 texto Related Categories
+										203 link Consumer Price Indexes (CPI and PCE), Value: fred.stlouisfed.org/categories/9
+										204 link Prices, Value: fred.stlouisfed.org/categories/32455
+										205 encabezado Releases, Value: 3
+											206 texto Releases
+										207 link More Series from Consumer Price Index, Value: fred.stlouisfed.org/release?rid=10
+										208 encabezado Tags, Value: 3
+											209 texto Tags
+										210 link Headline Figure, Value: fred.stlouisfed.org/tags/series?t=headline%20figure
+										211 link Average, Value: fred.stlouisfed.org/tags/series?t=average
+										212 link All Items, Value: fred.stlouisfed.org/tags/series?t=all%20items
+										213 link Urban, Value: fred.stlouisfed.org/tags/series?t=urban
+										214 link Consumer, Value: fred.stlouisfed.org/tags/series?t=consumer
+										215 link Consumer Price Index, Value: fred.stlouisfed.org/tags/series?t=cpi
+										216 link Inflation, Value: fred.stlouisfed.org/tags/series?t=inflation
+										217 link Price Index, Value: fred.stlouisfed.org/tags/series?t=price%20index
+										218 link Indexes, Value: fred.stlouisfed.org/tags/series?t=indexes
+										219 link Seasonally Adjusted, Value: fred.stlouisfed.org/tags/series?t=sa
+										220 link Price, Value: fred.stlouisfed.org/tags/series?t=price
+										221 link Bureau of Labor Statistics, Value: fred.stlouisfed.org/tags/series?t=bls
+										222 link Monthly, Value: fred.stlouisfed.org/tags/series?t=monthly
+										223 link Nation, Value: fred.stlouisfed.org/tags/series?t=nation
+										224 link Public Domain: Citation Requested, Value: fred.stlouisfed.org/tags/series?t=public%20domain%3A%20citation%20requested
+										225 link United States of America, Value: fred.stlouisfed.org/tags/series?t=usa
+							226 encabezado SUBSCRIBE TO THE FRED NEWSLETTER, Value: 3
+								227 texto SUBSCRIBE TO THE FRED NEWSLETTER
+							228 container
+								229 campo de texto (settable) email, Placeholder: Email
+								230 botón Subscribe
+							231 encabezado FOLLOW US, Value: 3
+								232 texto FOLLOW US
+							233 link Saint Louis Fed linkedin page, Value: bit.ly/d056zL
+							234 link Saint Louis Fed facebook page, Value: facebook.com/stlfed
+							235 link Saint Louis Fed X page, Value: bit.ly/9ngC3L
+							236 link Saint Louis Fed YouTube page, Value: bit.ly/aY9TVF
+							237 encabezado NEED HELP?, Value: 3
+								238 texto NEED HELP?
+							239 link Questions or Comments, Value: fred.stlouisfed.org/contactus/
+							240 link FRED Help, Value: fredhelp.stlouisfed.org/
+							241 link Legal, Value: fred.stlouisfed.org/legal/
+							242 link Privacy Notice & Policy, Value: stlouisfed.org/about-us/privacy-policy/online-notice

@@ -1,0 +1,8 @@
+{
+  "name": "BLS · empleo no agrícola, ajustado por estacionalidad",
+  "url": "https://api.bls.gov/publicAPI/v2/timeseries/data/",
+  "fetchedAt": "2026-10-15T09:07:26.604Z",
+  "publishedAt": null,
+  "sha256": "8696e8eeb5c255b4e2f6efcd591c049aab718f5371e557a53c16d1a9ae2168ab",
+  "mode": "connector"
+}

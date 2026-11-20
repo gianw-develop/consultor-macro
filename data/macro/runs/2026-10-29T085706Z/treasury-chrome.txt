@@ -1,0 +1,1057 @@
+Chrome · consulta 2026-10-29T08:57:06Z
+					24 Contenido HTML Daily Treasury Rates | U.S. Department of the Treasury, URL: home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026
+						25 container
+							26 link Skip to main content, Value: home.treasury.gov/resource-center/data-chart-center/interest-rates/TextView?type=daily_treasury_yield_curve&field_tdr_date_value=2026#main-content
+							27 container Official website of the United States government
+								28 container
+									29 imagen U.S. flag
+									30 botón Here’s how you know
+							31 container
+								32 encabezado Seal of the U.S. Department of the Treasury, 1789 U.S. DEPARTMENT OF THE TREASURY, Value: 1
+									33 link Seal of the U.S. Department of the Treasury, 1789 U.S. DEPARTMENT OF THE TREASURY, Help: Home, Value: home.treasury.gov/
+							34 container
+								35 link Seal of the U.S. Department of the Treasury, 1789, Help: Home, Value: home.treasury.gov/
+								36 lista de contenidos
+									37 link ABOUT TREASURY, Value: home.treasury.gov/about-treasury
+									38 link POLICY ISSUES, Value: home.treasury.gov/policy-issues
+									39 link DATA, Value: home.treasury.gov/data
+									40 link SERVICES, Value: home.treasury.gov/services
+									41 link NEWS, Value: home.treasury.gov/news/press-releases
+									42 link WHISTLEBLOWER RESOURCES, Value: home.treasury.gov/whistleblower
+									43 link WORKING FAMILIES TAX CUTS, Value: home.treasury.gov/wftc
+									44 link SEARCH, Value: home.treasury.gov/search
+							45 container BREADCRUMB
+								46 texto BREADCRUMB
+								47 lista de contenidos
+									48 container
+										49 link HOME, Value: home.treasury.gov/
+									50 container
+										51 text POLICY ISSUES
+									52 container
+										53 link FINANCING THE GOVERNMENT, Value: home.treasury.gov/policy-issues/financing-the-government
+									54 container
+										55 link INTEREST RATE STATISTICS, Value: home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics
+									56 container
+										57 text DAILY TREASURY RATES
+							58 container
+								59 encabezado Daily Treasury Rates, Value: 2
+									60 texto Daily Treasury Rates
+								61 encabezado RESOURCES, Value: 3
+									62 texto RESOURCES
+								63 lista de contenidos
+									64 link Subscribe to Developer Notice Updates, Value: public.govdelivery.com/accounts/USTREAS/subscriber/new?topic_id=USTREAS_1153
+									65 link Developer Notice on Changes to the XML Feeds, Value: home.treasury.gov/developer-notice-xml-changes
+									66 link Interest Rates - Frequently Asked Questions, Value: home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/interest-rates-frequently-asked-questions
+									67 link Treasury Daily Interest Rate XML Feed, Value: home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/interest-rate-xml-files
+									68 link Treasury Yield Curve Methodology, Value: home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology
+								69 container
+									70 texto Select Type of Interest Rate Data
+									71 botón emergente Select Type of Interest Rate Data, Value: Daily Treasury Par Yield Curve Rates
+										72 (selected) Daily Treasury Par Yield Curve Rates
+									73 container Select Time Period, Help: For daily rates prior to 2023, please View Daily Treasury Archives.
+										74 texto Select Time Period
+										75 container
+											76 botón de selección Current Month, Value: 0
+											77 texto Current Month
+											78 botón de selección 2026, Value: 1
+											79 texto 2026
+											80 botón de selección 2025, Value: 0
+											81 texto 2025
+											82 botón de selección 2024, Value: 0
+											83 texto 2024
+										84 container
+											85 texto For daily rates prior to 2023, please
+											86 link View Daily Treasury Archives, Value: home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rate-archives
+											87 texto .
+									88 botón (disabled) Apply
+								89 link Subscribe to updates for this content via GovDelivery, Value: public.govdelivery.com/accounts/USTREAS/subscriber/new?topic_id=USTREAS_10
+								90 encabezado Daily Treasury Par Yield Curve Rates, Value: 4
+									91 texto Daily Treasury Par Yield Curve Rates
+								92 link Download CSV, Help: Resource Center, Value: home.treasury.gov/resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv
+								93 link Render XML, Value: home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026
+								94 link Render XML for Daily Treasury Par Yield Curve Rates, Value: home.treasury.gov/resource-center/data-chart-center/interest-rates/pages/xmlview?data=daily_treasury_yield_curve&field_tdr_date_value=2026
+								95 container
+									96 container
+										97 texto Show
+										98 botón emergente Show entries, Value: 25
+											99 (selected) 25
+										100 texto  entries
+									101 tabla
+										102 row
+											103 encabezado de columna Date: activate to sort column ascending
+												104 texto ↓
+												105 texto Date
+											106 encabezado de columna 1 Mo: activate to sort column ascending
+												107 texto ↕
+												108 texto 1 Mo
+											109 encabezado de columna 1.5 Mo: activate to sort column ascending
+												110 texto ↕
+												111 texto 1.5 Mo
+											112 encabezado de columna 2 Mo: activate to sort column ascending
+												113 texto ↕
+												114 texto 2 Mo
+											115 encabezado de columna 3 Mo: activate to sort column ascending
+												116 texto ↕
+												117 texto 3 Mo
+											118 encabezado de columna 4 Mo: activate to sort column ascending
+												119 texto ↕
+												120 texto 4 Mo
+											121 encabezado de columna 6 Mo: activate to sort column ascending
+												122 texto ↕
+												123 texto 6 Mo
+											124 encabezado de columna 1 Yr: activate to sort column ascending
+												125 texto ↕
+												126 texto 1 Yr
+											127 encabezado de columna 2 Yr: activate to sort column ascending
+												128 texto ↕
+												129 texto 2 Yr
+											130 encabezado de columna 3 Yr: activate to sort column ascending
+												131 texto ↕
+												132 texto 3 Yr
+											133 encabezado de columna 5 Yr: activate to sort column ascending
+												134 texto ↕
+												135 texto 5 Yr
+											136 encabezado de columna 7 Yr: activate to sort column ascending
+												137 texto ↕
+												138 texto 7 Yr
+											139 encabezado de columna 10 Yr: activate to sort column ascending
+												140 texto ↕
+												141 texto 10 Yr
+											142 encabezado de columna 20 Yr: activate to sort column ascending
+												143 texto ↕
+												144 texto 20 Yr
+											145 encabezado de columna 30 Yr: activate to sort column ascending
+												146 texto ↕
+												147 texto 30 Yr
+									148 tabla
+										149 row
+											150 encabezado de columna Date: activate to sort column descending
+												151 texto Date
+											152 encabezado de columna 1 Mo: activate to sort column ascending
+												153 texto 1 Mo
+											154 encabezado de columna 1.5 Mo: activate to sort column ascending
+												155 texto 1.5 Mo
+											156 encabezado de columna 2 Mo: activate to sort column ascending
+												157 texto 2 Mo
+											158 encabezado de columna 3 Mo: activate to sort column ascending
+												159 texto 3 Mo
+											160 encabezado de columna 4 Mo: activate to sort column ascending
+												161 texto 4 Mo
+											162 encabezado de columna 6 Mo: activate to sort column ascending
+												163 texto 6 Mo
+											164 encabezado de columna 1 Yr: activate to sort column ascending
+												165 texto 1 Yr
+											166 encabezado de columna 2 Yr: activate to sort column ascending
+												167 texto 2 Yr
+											168 encabezado de columna 3 Yr: activate to sort column ascending
+												169 texto 3 Yr
+											170 encabezado de columna 5 Yr: activate to sort column ascending
+												171 texto 5 Yr
+											172 encabezado de columna 7 Yr: activate to sort column ascending
+												173 texto 7 Yr
+											174 encabezado de columna 10 Yr: activate to sort column ascending
+												175 texto 10 Yr
+											176 encabezado de columna 20 Yr: activate to sort column ascending
+												177 texto 20 Yr
+											178 encabezado de columna 30 Yr: activate to sort column ascending
+												179 texto 30 Yr
+										180 row
+											181 celda
+												182 texto 10/28/2026
+											183 celda
+												184 texto 4.07
+											185 celda
+												186 texto 4.10
+											187 celda
+												188 texto 4.16
+											189 celda
+												190 texto 4.18
+											191 celda
+												192 texto 4.22
+											193 celda
+												194 texto 4.32
+											195 celda
+												196 texto 4.47
+											197 celda
+												198 texto 4.67
+											199 celda
+												200 texto 4.80
+											201 celda
+												202 texto 4.85
+											203 celda
+												204 texto 4.95
+											205 celda
+												206 texto 5.05
+											207 celda
+												208 texto 5.41
+											209 celda
+												210 texto 5.37
+										211 row
+											212 celda
+												213 texto 10/27/2026
+											214 celda
+												215 texto 4.10
+											216 celda
+												217 texto 4.11
+											218 celda
+												219 texto 4.18
+											220 celda
+												221 texto 4.22
+											222 celda
+												223 texto 4.31
+											224 celda
+												225 texto 4.34
+											226 celda
+												227 texto 4.50
+											228 celda
+												229 texto 4.70
+											230 celda
+												231 texto 4.80
+											232 celda
+												233 texto 4.82
+											234 celda
+												235 texto 4.91
+											236 celda
+												237 texto 4.99
+											238 celda
+												239 texto 5.34
+											240 celda
+												241 texto 5.30
+										242 row
+											243 celda
+												244 texto 10/26/2026
+											245 celda
+												246 texto 4.11
+											247 celda
+												248 texto 4.13
+											249 celda
+												250 texto 4.18
+											251 celda
+												252 texto 4.22
+											253 celda
+												254 texto 4.32
+											255 celda
+												256 texto 4.35
+											257 celda
+												258 texto 4.47
+											259 celda
+												260 texto 4.68
+											261 celda
+												262 texto 4.79
+											263 celda
+												264 texto 4.84
+											265 celda
+												266 texto 4.91
+											267 celda
+												268 texto 5.00
+											269 celda
+												270 texto 5.35
+											271 celda
+												272 texto 5.31
+										273 row
+											274 celda
+												275 texto 10/23/2026
+											276 celda
+												277 texto 4.11
+											278 celda
+												279 texto 4.11
+											280 celda
+												281 texto 4.16
+											282 celda
+												283 texto 4.22
+											284 celda
+												285 texto 4.30
+											286 celda
+												287 texto 4.30
+											288 celda
+												289 texto 4.44
+											290 celda
+												291 texto 4.69
+											292 celda
+												293 texto 4.75
+											294 celda
+												295 texto 4.82
+											296 celda
+												297 texto 4.89
+											298 celda
+												299 texto 5.00
+											300 celda
+												301 texto 5.37
+											302 celda
+												303 texto 5.33
+										304 row
+											305 celda
+												306 texto 10/22/2026
+											307 celda
+												308 texto 4.11
+											309 celda
+												310 texto 4.10
+											311 celda
+												312 texto 4.16
+											313 celda
+												314 texto 4.22
+											315 celda
+												316 texto 4.29
+											317 celda
+												318 texto 4.29
+											319 celda
+												320 texto 4.41
+											321 celda
+												322 texto 4.65
+											323 celda
+												324 texto 4.72
+											325 celda
+												326 texto 4.78
+											327 celda
+												328 texto 4.86
+											329 celda
+												330 texto 4.96
+											331 celda
+												332 texto 5.32
+											333 celda
+												334 texto 5.29
+										335 row
+											336 celda
+												337 texto 10/21/2026
+											338 celda
+												339 texto 4.09
+											340 celda
+												341 texto 4.12
+											342 celda
+												343 texto 4.16
+											344 celda
+												345 texto 4.25
+											346 celda
+												347 texto 4.34
+											348 celda
+												349 texto 4.35
+											350 celda
+												351 texto 4.52
+											352 celda
+												353 texto 4.81
+											354 celda
+												355 texto 4.89
+											356 celda
+												357 texto 4.95
+											358 celda
+												359 texto 5.03
+											360 celda
+												361 texto 5.13
+											362 celda
+												363 texto 5.47
+											364 celda
+												365 texto 5.42
+										366 row
+											367 celda
+												368 texto 10/20/2026
+											369 celda
+												370 texto 4.10
+											371 celda
+												372 texto 4.13
+											373 celda
+												374 texto 4.17
+											375 celda
+												376 texto 4.26
+											377 celda
+												378 texto 4.34
+											379 celda
+												380 texto 4.36
+											381 celda
+												382 texto 4.51
+											383 celda
+												384 texto 4.79
+											385 celda
+												386 texto 4.86
+											387 celda
+												388 texto 4.94
+											389 celda
+												390 texto 5.02
+											391 celda
+												392 texto 5.12
+											393 celda
+												394 texto 5.47
+											395 celda
+												396 texto 5.42
+										397 row
+											398 celda
+												399 texto 10/19/2026
+											400 celda
+												401 texto 4.11
+											402 celda
+												403 texto 4.14
+											404 celda
+												405 texto 4.17
+											406 celda
+												407 texto 4.27
+											408 celda
+												409 texto 4.34
+											410 celda
+												411 texto 4.37
+											412 celda
+												413 texto 4.50
+											414 celda
+												415 texto 4.77
+											416 celda
+												417 texto 4.85
+											418 celda
+												419 texto 4.94
+											420 celda
+												421 texto 5.04
+											422 celda
+												423 texto 5.15
+											424 celda
+												425 texto 5.53
+											426 celda
+												427 texto 5.48
+										428 row
+											429 celda
+												430 texto 10/16/2026
+											431 celda
+												432 texto 4.12
+											433 celda
+												434 texto 4.14
+											435 celda
+												436 texto 4.17
+											437 celda
+												438 texto 4.26
+											439 celda
+												440 texto 4.32
+											441 celda
+												442 texto 4.34
+											443 celda
+												444 texto 4.46
+											445 celda
+												446 texto 4.74
+											447 celda
+												448 texto 4.82
+											449 celda
+												450 texto 4.89
+											451 celda
+												452 texto 4.98
+											453 celda
+												454 texto 5.09
+											455 celda
+												456 texto 5.47
+											457 celda
+												458 texto 5.43
+										459 row
+											460 celda
+												461 texto 10/15/2026
+											462 celda
+												463 texto 4.17
+											464 celda
+												465 texto 4.15
+											466 celda
+												467 texto 4.19
+											468 celda
+												469 texto 4.28
+											470 celda
+												471 texto 4.35
+											472 celda
+												473 texto 4.35
+											474 celda
+												475 texto 4.49
+											476 celda
+												477 texto 4.77
+											478 celda
+												479 texto 4.85
+											480 celda
+												481 texto 4.91
+											482 celda
+												483 texto 5.00
+											484 celda
+												485 texto 5.10
+											486 celda
+												487 texto 5.48
+											488 celda
+												489 texto 5.43
+										490 row
+											491 celda
+												492 texto 10/14/2026
+											493 celda
+												494 texto 4.11
+											495 celda
+												496 texto 4.15
+											497 celda
+												498 texto 4.15
+											499 celda
+												500 texto 4.28
+											501 celda
+												502 texto 4.36
+											503 celda
+												504 texto 4.37
+											505 celda
+												506 texto 4.53
+											507 celda
+												508 texto 4.82
+											509 celda
+												510 texto 4.92
+											511 celda
+												512 texto 5.00
+											513 celda
+												514 texto 5.09
+											515 celda
+												516 texto 5.19
+											517 celda
+												518 texto 5.57
+											519 celda
+												520 texto 5.52
+										521 row
+											522 celda
+												523 texto 10/13/2026
+											524 celda
+												525 texto 4.10
+											526 celda
+												527 texto 4.15
+											528 celda
+												529 texto 4.15
+											530 celda
+												531 texto 4.26
+											532 celda
+												533 texto 4.32
+											534 celda
+												535 texto 4.34
+											536 celda
+												537 texto 4.48
+											538 celda
+												539 texto 4.79
+											540 celda
+												541 texto 4.90
+											542 celda
+												543 texto 5.00
+											544 celda
+												545 texto 5.11
+											546 celda
+												547 texto 5.21
+											548 celda
+												549 texto 5.60
+											550 celda
+												551 texto 5.56
+										552 row
+											553 celda
+												554 texto 10/09/2026
+											555 celda
+												556 texto 4.13
+											557 celda
+												558 texto 4.13
+											559 celda
+												560 texto 4.13
+											561 celda
+												562 texto 4.25
+											563 celda
+												564 texto 4.29
+											565 celda
+												566 texto 4.32
+											567 celda
+												568 texto 4.47
+											569 celda
+												570 texto 4.80
+											571 celda
+												572 texto 4.89
+											573 celda
+												574 texto 5.02
+											575 celda
+												576 texto 5.13
+											577 celda
+												578 texto 5.24
+											579 celda
+												580 texto 5.65
+											581 celda
+												582 texto 5.60
+										583 row
+											584 celda
+												585 texto 10/08/2026
+											586 celda
+												587 texto 4.14
+											588 celda
+												589 texto 4.14
+											590 celda
+												591 texto 4.13
+											592 celda
+												593 texto 4.23
+											594 celda
+												595 texto 4.29
+											596 celda
+												597 texto 4.30
+											598 celda
+												599 texto 4.44
+											600 celda
+												601 texto 4.75
+											602 celda
+												603 texto 4.85
+											604 celda
+												605 texto 4.99
+											606 celda
+												607 texto 5.11
+											608 celda
+												609 texto 5.22
+											610 celda
+												611 texto 5.64
+											612 celda
+												613 texto 5.60
+										614 row
+											615 celda
+												616 texto 10/07/2026
+											617 celda
+												618 texto 4.07
+											619 celda
+												620 texto 4.13
+											621 celda
+												622 texto 4.14
+											623 celda
+												624 texto 4.22
+											625 celda
+												626 texto 4.28
+											627 celda
+												628 texto 4.28
+											629 celda
+												630 texto 4.42
+											631 celda
+												632 texto 4.77
+											633 celda
+												634 texto 4.87
+											635 celda
+												636 texto 5.03
+											637 celda
+												638 texto 5.15
+											639 celda
+												640 texto 5.28
+											641 celda
+												642 texto 5.71
+											643 celda
+												644 texto 5.67
+										645 row
+											646 celda
+												647 texto 10/06/2026
+											648 celda
+												649 texto 4.06
+											650 celda
+												651 texto 4.12
+											652 celda
+												653 texto 4.13
+											654 celda
+												655 texto 4.21
+											656 celda
+												657 texto 4.26
+											658 celda
+												659 texto 4.28
+											660 celda
+												661 texto 4.46
+											662 celda
+												663 texto 4.79
+											664 celda
+												665 texto 4.88
+											666 celda
+												667 texto 5.03
+											668 celda
+												669 texto 5.15
+											670 celda
+												671 texto 5.27
+											672 celda
+												673 texto 5.68
+											674 celda
+												675 texto 5.64
+										676 row
+											677 celda
+												678 texto 10/05/2026
+											679 celda
+												680 texto 4.05
+											681 celda
+												682 texto 4.10
+											683 celda
+												684 texto 4.13
+											685 celda
+												686 texto 4.22
+											687 celda
+												688 texto 4.27
+											689 celda
+												690 texto 4.30
+											691 celda
+												692 texto 4.47
+											693 celda
+												694 texto 4.84
+											695 celda
+												696 texto 4.97
+											697 celda
+												698 texto 5.06
+											699 celda
+												700 texto 5.19
+											701 celda
+												702 texto 5.31
+											703 celda
+												704 texto 5.70
+											705 celda
+												706 texto 5.66
+										707 row
+											708 celda
+												709 texto 10/02/2026
+											710 celda
+												711 texto 4.04
+											712 celda
+												713 texto 4.09
+											714 celda
+												715 texto 4.11
+											716 celda
+												717 texto 4.19
+											718 celda
+												719 texto 4.26
+											720 celda
+												721 texto 4.27
+											722 celda
+												723 texto 4.46
+											724 celda
+												725 texto 4.83
+											726 celda
+												727 texto 4.96
+											728 celda
+												729 texto 5.06
+											730 celda
+												731 texto 5.17
+											732 celda
+												733 texto 5.28
+											734 celda
+												735 texto 5.67
+											736 celda
+												737 texto 5.63
+										738 row
+											739 celda
+												740 texto 10/01/2026
+											741 celda
+												742 texto 4.06
+											743 celda
+												744 texto 4.10
+											745 celda
+												746 texto 4.13
+											747 celda
+												748 texto 4.17
+											749 celda
+												750 texto 4.26
+											751 celda
+												752 texto 4.27
+											753 celda
+												754 texto 4.44
+											755 celda
+												756 texto 4.78
+											757 celda
+												758 texto 4.91
+											759 celda
+												760 texto 5.01
+											761 celda
+												762 texto 5.12
+											763 celda
+												764 texto 5.24
+											765 celda
+												766 texto 5.64
+											767 celda
+												768 texto 5.61
+										769 row
+											770 celda
+												771 texto 09/30/2026
+											772 celda
+												773 texto 4.02
+											774 celda
+												775 texto 4.13
+											776 celda
+												777 texto 4.16
+											778 celda
+												779 texto 4.20
+											780 celda
+												781 texto 4.29
+											782 celda
+												783 texto 4.33
+											784 celda
+												785 texto 4.54
+											786 celda
+												787 texto 4.88
+											788 celda
+												789 texto 5.00
+											790 celda
+												791 texto 5.09
+											792 celda
+												793 texto 5.19
+											794 celda
+												795 texto 5.29
+											796 celda
+												797 texto 5.68
+											798 celda
+												799 texto 5.64
+										800 row
+											801 celda
+												802 texto 09/29/2026
+											803 celda
+												804 texto 4.04
+											805 celda
+												806 texto 4.14
+											807 celda
+												808 texto 4.18
+											809 celda
+												810 texto 4.25
+											811 celda
+												812 texto 4.30
+											813 celda
+												814 texto 4.36
+											815 celda
+												816 texto 4.58
+											817 celda
+												818 texto 4.89
+											819 celda
+												820 texto 4.98
+											821 celda
+												822 texto 5.06
+											823 celda
+												824 texto 5.16
+											825 celda
+												826 texto 5.26
+											827 celda
+												828 texto 5.64
+											829 celda
+												830 texto 5.59
+										831 row
+											832 celda
+												833 texto 09/28/2026
+											834 celda
+												835 texto 4.04
+											836 celda
+												837 texto 4.14
+											838 celda
+												839 texto 4.20
+											840 celda
+												841 texto 4.28
+											842 celda
+												843 texto 4.33
+											844 celda
+												845 texto 4.41
+											846 celda
+												847 texto 4.59
+											848 celda
+												849 texto 4.92
+											850 celda
+												851 texto 5.01
+											852 celda
+												853 texto 5.06
+											854 celda
+												855 texto 5.15
+											856 celda
+												857 texto 5.24
+											858 celda
+												859 texto 5.60
+											860 celda
+												861 texto 5.56
+										862 row
+											863 celda
+												864 texto 09/25/2026
+											865 celda
+												866 texto 4.04
+											867 celda
+												868 texto 4.14
+											869 celda
+												870 texto 4.20
+											871 celda
+												872 texto 4.24
+											873 celda
+												874 texto 4.32
+											875 celda
+												876 texto 4.33
+											877 celda
+												878 texto 4.50
+											879 celda
+												880 texto 4.81
+											881 celda
+												882 texto 4.94
+											883 celda
+												884 texto 4.98
+											885 celda
+												886 texto 5.06
+											887 celda
+												888 texto 5.17
+											889 celda
+												890 texto 5.54
+											891 celda
+												892 texto 5.49
+										893 row
+											894 celda
+												895 texto 09/24/2026
+											896 celda
+												897 texto 4.01
+											898 celda
+												899 texto 4.10
+											900 celda
+												901 texto 4.18
+											902 celda
+												903 texto 4.24
+											904 celda
+												905 texto 4.33
+											906 celda
+												907 texto 4.34
+											908 celda
+												909 texto 4.51
+											910 celda
+												911 texto 4.87
+											912 celda
+												913 texto 4.99
+											914 celda
+												915 texto 5.03
+											916 celda
+												917 texto 5.10
+											918 celda
+												919 texto 5.18
+											920 celda
+												921 texto 5.53
+											922 celda
+												923 texto 5.47
+										924 row
+											925 celda
+												926 texto 09/23/2026
+											927 celda
+												928 texto 3.99
+											929 celda
+												930 texto 4.07
+											931 celda
+												932 texto 4.10
+											933 celda
+												934 texto 4.19
+											935 celda
+												936 texto 4.30
+											937 celda
+												938 texto 4.31
+											939 celda
+												940 texto 4.49
+											941 celda
+												942 texto 4.85
+											943 celda
+												944 texto 4.97
+											945 celda
+												946 texto 4.99
+											947 celda
+												948 texto 5.05
+											949 celda
+												950 texto 5.11
+											951 celda
+												952 texto 5.45
+											953 celda
+												954 texto 5.40
+									955 texto Showing 1 to 25 of 207 entries
+									956 enlace 1
+										957 texto 1
+									958 enlace 2
+										959 texto 2
+									960 enlace 3
+										961 texto 3
+									962 enlace 4
+										963 texto 4
+									964 enlace 5
+										965 texto 5
+									966 texto …
+									967 enlace 9
+										968 texto 9
+									969 enlace Next >
+										970 texto Next >
+								971 texto Wednesday Oct 28, 2026
+								972 container
+									973 text *Series Break - Treasury updated its methodology for deriving yield curves. On 12/6/2021, Treasury began using a monotone convex spline (MC) method for deriving its official par yield curves and discontinued the use of the quasi-cubic Hermite spline (HS) methodology.  All Treasury yield curve rates derived from yield curves that used the HS methodology - prior to implementation of the MC method - remain official.  See the
+									974 link Yield Curve Methodology Change Information Sheet, Value: home.treasury.gov/policy-issues/financing-the-government/yield-curve-methodology-change-information-sheet
+									975 texto  for more details.
+								976 texto ** The 1.5-month constant maturity series began on February 18, 2025, with the first auction of a 6-week Treasury bill as a benchmark Treasury security. Prior to this date, Treasury had issued Treasury bills with 6-week maturities as cash management bills.
+								977 texto ** The 4-month constant maturity series began on October 19, 2022, with the first auction of a 17-week Treasury bill as a benchmark Treasury security. Prior to this date, Treasury had issued Treasury bills with 17-week maturities as cash management bills.
+								978 texto The 2-month constant maturity series began on October 16, 2018, with the first auction of the 8-week Treasury bill.
+								979 texto 30-year Treasury constant maturity series was discontinued on February 18, 2002 and reintroduced on February 9, 2006. From February 18, 2002 to February 8, 2006, Treasury published alternatives to a 30-year rate. See Long-Term Average Rate for more information.
+								980 texto Treasury discontinued the 20-year constant maturity series at the end of calendar year 1986 and reinstated that series on October 1, 1993. As a result, there are no 20-year rates available for the time-period January 1, 1987 through September 30, 1993.
+								981 container
+									982 text Treasury Par Yield Curve Rates:  These rates are commonly referred to as "Constant Maturity Treasury" rates, or CMTs. Yields are interpolated by the Treasury from the daily par yield curve. This curve, which relates the yield on a security to its time to maturity, is based on the closing market bid prices on the most recently auctioned Treasury securities in the over-the-counter market. These par yields are derived from indicative, bid-side market price quotations (not actual transactions) obtained by the Federal Reserve Bank of New York
+								983 container
+									984 text Treasury Par Yield Curve Methodology:  The Treasury par yield curve is estimated daily using a monotone convex spline method. Inputs to the model are indicative bid-side prices for the most recently auctioned nominal Treasury securities. Treasury reserves the option to make changes to the yield curve as appropriate and in its sole discretion.
+									985 link See our Treasury Yield Curve Methodology page, Value: home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology
+									986 texto  for details.
+								987 container
+									988 text Negative Yields and Nominal Constant Maturity Treasury Series Rates (CMTs):  At times, financial market conditions, in conjunction with extraordinarily low levels of interest rates, may result in negative yields for some Treasury securities trading in the secondary market. Negative yields for Treasury securities most often reflect highly technical factors in Treasury markets related to the cash and repurchase agreement markets and are at times unrelated to the time value of money.
+								989 texto At such times, Treasury will not restrict the use of prices that correspond to negative yields as inputs to the monotone convex spline method. However, the derived par yield curve from these input prices for the Treasury nominal Constant Maturity Treasury series (CMTs) will be floored at zero. This decision is consistent with Treasury not accepting negative yields in Treasury nominal security auctions.
+								990 texto In addition, given that CMTs are used in many statutorily and regulatory determined loan and credit programs as well as for setting interest rates on non-marketable government securities, establishing a floor of zero more accurately reflects borrowing costs related to various programs.
+								991 container
+									992 texto For more information regarding these statistics contact the Office of Debt Management by email at
+									993 link debt.management@do.treas.gov, Value: mailto:debt.management@do.treas.gov
+								994 texto For other Public Debt information contact (202) 504-3550
+							995 container
+								996 container
+									997 container block-portalfooter-menu
+										998 encabezado BUREAUS, Value: 3
+											999 texto BUREAUS
+										1000 lista de contenidos
+											1001 link Alcohol and Tobacco Tax and Trade (TTB), Value: ttb.gov/
+											1002 link Bureau of Engraving and Printing (BEP), Value: bep.gov/
+											1003 link Bureau of the Fiscal Service (BFS), Value: fiscal.treasury.gov/
+											1004 link Financial Crimes Enforcement Network (FinCEN), Value: fincen.gov/
+											1005 link Internal Revenue Service (IRS), Value: irs.gov/
+											1006 link Office of the Comptroller of the Currency (OCC), Value: occ.gov/
+											1007 link U.S. Mint, Value: usmint.gov/
+									1008 container block-portalfooter-2-menu
+										1009 encabezado INSPECTOR GENERAL SITES, Value: 3
+											1010 texto INSPECTOR GENERAL SITES
+										1011 lista de contenidos
+											1012 link Office of Inspector General (OIG), Value: oig.treasury.gov/
+											1013 link Treasury Inspector General for Tax Administration (TIGTA), Value: treasury.gov/tigta
+											1014 link Report Scams, Fraud, Waste & Abuse, Value: home.treasury.gov/services/report-fraud-waste-and-abuse
+											1015 link Special Inspector General for Pandemic Recovery (SIGPR), Value: sigpr.gov/
+									1016 container block-portalfooter-3-menu
+										1017 encabezado U.S. GOVERNMENT SHARED SERVICES, Value: 3
+											1018 texto U.S. GOVERNMENT SHARED SERVICES
+										1019 lista de contenidos
+											1020 link Center for Financial Management, Value: fiscal.treasury.gov/financial-management-solutions/financial-management-shared-services
+											1021 link Treasury Direct Services for Governments, Value: treasurydirect.gov/government/
+											1022 link Financial Management (FM) Marketplace Catalog, Value: tfx.treasury.gov/fmqsmo/marketplace-catalog
+									1023 container block-portalfooter-4-menu
+										1024 encabezado ADDITIONAL RESOURCES, Value: 3
+											1025 texto ADDITIONAL RESOURCES
+										1026 lista de contenidos
+											1027 link Privacy Act, Value: home.treasury.gov/footer/privacy-act
+											1028 link Small Business Contacts, Value: home.treasury.gov/policy-issues/small-business-programs/small-and-disadvantaged-business-utilization/how-to-contact-us
+											1029 link Budget and Performance, Value: home.treasury.gov/about/budget-financial-reporting-planning-and-performance
+											1030 link TreasuryDirect.gov Securities/Bonds, Value: treasurydirect.gov/
+											1031 link Freedom of Information Act (FOIA), Value: home.treasury.gov/footer/freedom-of-information-act
+											1032 link No FEAR Act Data, Value: home.treasury.gov/footer/no-fear-act
+											1033 link Whistleblower Protection, Value: home.treasury.gov/footer/prohibited-personnel-practices-and-whistleblower-protection
+									1034 container block-portalfooter-5-menu
+										1035 encabezado OTHER GOVERNMENT SITES, Value: 3
+											1036 texto OTHER GOVERNMENT SITES
+										1037 lista de contenidos
+											1038 link USA.gov, Value: usa.gov/
+											1039 link USAJOBS.gov, Value: usajobs.gov/
+											1040 link OPM.gov, Value: opm.gov/
+											1041 link MyMoney.gov, Value: mymoney.gov/
+											1042 link Data.gov, Value: data.gov/
+											1043 link Forms.gov, Value: usa.gov/forms
+											1044 link Regulations.gov, Value: regulations.gov/
+											1045 link PaymentAccuracy.gov, Value: paymentaccuracy.gov/
+											1046 link my Social Security, Value: socialsecurity.gov/myaccount/
+											1047 link Vote.gov, Value: vote.gov/
+								1048 container
+									1049 container block-utilityfooter-menu
+										1050 lista de contenidos
+											1051 container
+												1052 link Privacy Policy, Value: home.treasury.gov/subfooter/privacy-policy
+												1053 text •
+											1054 container
+												1055 link Google Privacy, Value: home.treasury.gov/subfooter/google-privacy-policy
+												1056 text •
+											1057 container
+												1058 link Site Policies and Notices, Value: home.treasury.gov/subfooter/site-policies-and-notices
+												1059 text •
+											1060 container
+												1061 link FAQs, Value: home.treasury.gov/faqs
+												1062 text •
+											1063 container
+												1064 link Feedback, Value: treasury.gov/pages/tgovproblemsfeedbackform.aspx
+												1065 text •
+											1066 container
+												1067 link Careers, Value: home.treasury.gov/careers
+												1068 text •
+											1069 container
+												1070 link Accessibility, Value: home.treasury.gov/utility/accessibility
+												1071 text •
+											1072 container
+												1073 link Contact, Value: home.treasury.gov/utility/contact
+										1074 container
+											1075 texto Required Plug-ins
+											1076 link Adobe® Reader®, Value: get.adobe.com/reader/
+									1077 lista de contenidos
+										1078 link Twitter, Value: twitter.com/USTreasury
+										1079 link Facebook, Value: facebook.com/USTreasuryDept

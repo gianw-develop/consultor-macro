@@ -1,30 +1,8 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
-
-export const metadata: Metadata = {
-  title: "Consultor Macro",
-  description: "Dashboard macro pre-market para swing trading de índices.",
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  return (
-    <html lang="es" className={`${inter.variable} h-full antialiased`}>
-      <body
-        className="min-h-full bg-[var(--app-bg)] text-[var(--app-fg)]"
-        suppressHydrationWarning
-      >
-        {children}
-      </body>
-    </html>
-  );
-}
+import "../shared/ui/terminal.css";
+import { AppShell } from "../shared/ui/app-shell";
+import { localPreview } from "../shared/server/auth-config";
+export const dynamic="force-dynamic";
+export const metadata: Metadata = { title: "AWNexus · Entender antes de decidir", description: "Inteligencia macroeconómica visual con fuentes y fechas.", robots: {index:false,follow:false} };
+export default function RootLayout({children}:{children:React.ReactNode}){return <html lang="es"><body className="terminal-theme"><AppShell local={localPreview()}>{children}</AppShell></body></html>;}

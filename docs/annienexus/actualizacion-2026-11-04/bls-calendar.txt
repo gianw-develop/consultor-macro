@@ -1,0 +1,411 @@
+- banner:
+  - link "Skip to Content":
+    - /url: "#startcontent"
+  - img "U.S. flag"
+  - paragraph:
+    - text: An official website of the United States government
+    - button "select": Here is how you know
+  - link "Department of Labor Logo United States Department of Labor":
+    - /url: https://www.dol.gov/
+    - img "Department of Labor Logo"
+    - text: United States Department of Labor
+  - link "U.S. Bureau of Labor Statistics":
+    - /url: https://www.bls.gov/
+  - link "Release Calendar":
+    - /url: /schedule/news_release/
+  - text: "|"
+  - link "Subscribe to BLS E-mail Updates":
+    - /url: javascript:window.open('https://public.govdelivery.com/accounts/USDOLBLS/subscriber/new ','Popup','width=800,height=500,toolbar=no,scrollbars=yes,resizable=yes'); void('');
+    - text: Subscribe
+  - button "Search button"
+  - textbox "Search:": Search BLS.gov
+- navigation "top-level navigation menu":
+  - list:
+    - button "Home": Home
+    - text: ">> >> >>"
+    - button "Subjects": Subjects
+    - text: ">> >> >> >> >> >> >> >> >> >>"
+    - button "Data Tools": Data Tools
+    - text: ">> >> >> >>"
+    - button "Publications": Publications
+    - text: ">>"
+    - button "Economic Releases": Economic Releases
+    - text: ">> >> >> >> >> >> >> >> >> >>"
+    - button "Classroom": Classroom
+    - text: ">>"
+    - button "Beta": Beta
+    - text: ">>"
+- main:
+  - list:
+    - link "Bureau of Labor Statistics":
+      - /url: /
+    - link "Economic News Release":
+      - /url: /bls/newsrels.htm
+    - link "Schedule for News Releases":
+      - /url: /schedule/
+  - heading "Release Calendar" [level=1]:
+    - link "Release Calendar":
+      - /url: /schedule/news_release/
+  - link "PRINT:Print":
+    - /url: "#"
+    - text: "PRINT:"
+    - img "Print"
+  - link "Calendar Calendar Calendar Links":
+    - /url: "#modal-box"
+    - text: Calendar
+    - img "Calendar Calendar Links"
+  - table:
+    - rowgroup:
+      - row:
+        - cell "BY MONTH OCTOBER 2026 NOVEMBER 2026 DECEMBER 2026 JANUARY 2027 FEBRUARY 2027 MARCH 2027 APRIL 2027 MAY 2027 JUNE 2027 JULY 2027 AUGUST 2027 SEPTEMBER 2027 OCTOBER 2027 NOVEMBER 2027 DECEMBER 2027 ENTIRE YEAR, 2026 ENTIRE YEAR, 2027 PRIOR YEARS BY NEWS RELEASE BUSINESS EMPLOYMENT DYNAMICS CONSUMER PRICE INDEX COUNTY EMPLOYMENT AND WAGES EMPLOYMENT COST INDEX EMPLOYMENT SITUATION JOB OPENINGS AND LABOR TURNOVER PRODUCER PRICE INDEX PRODUCTIVITY AND COSTS REAL EARNINGS U.S. EXPORT AND IMPORT PRICE INDEXES METROPOLITAN AREA EMPLOYMENT AND UNEMPLOYMENT STATE EMPLOYMENT AND UNEMPLOYMENT":
+          - list:
+            - link "BY MONTH":
+              - /url: /schedule/news_release/
+          - list:
+            - link "OCTOBER 2026":
+              - /url: /schedule/2026/10_sched.htm
+            - link "NOVEMBER 2026":
+              - /url: /schedule/2026/11_sched.htm
+            - link "DECEMBER 2026":
+              - /url: /schedule/2026/12_sched.htm
+            - link "JANUARY 2027":
+              - /url: /schedule/2027/01_sched.htm
+            - link "FEBRUARY 2027":
+              - /url: /schedule/2027/02_sched.htm
+            - link "MARCH 2027":
+              - /url: /schedule/2027/03_sched.htm
+            - link "APRIL 2027":
+              - /url: /schedule/2027/04_sched.htm
+            - link "MAY 2027":
+              - /url: /schedule/2027/05_sched.htm
+            - link "JUNE 2027":
+              - /url: /schedule/2027/06_sched.htm
+            - link "JULY 2027":
+              - /url: /schedule/2027/07_sched.htm
+            - link "AUGUST 2027":
+              - /url: /schedule/2027/08_sched.htm
+            - link "SEPTEMBER 2027":
+              - /url: /schedule/2027/09_sched.htm
+            - link "OCTOBER 2027":
+              - /url: /schedule/2027/10_sched.htm
+            - link "NOVEMBER 2027":
+              - /url: /schedule/2027/11_sched.htm
+            - link "DECEMBER 2027":
+              - /url: /schedule/2027/12_sched.htm
+            - link "ENTIRE YEAR, 2026":
+              - /url: /schedule/2026/home.htm
+            - link "ENTIRE YEAR, 2027":
+              - /url: /schedule/2027/home.htm
+            - link "PRIOR YEARS":
+              - /url: /bls/archived_sched.htm
+          - list:
+            - listitem: BY NEWS RELEASE
+            - link "BUSINESS EMPLOYMENT DYNAMICS":
+              - /url: /schedule/news_release/cewbd.htm
+            - link "CONSUMER PRICE INDEX":
+              - /url: /schedule/news_release/cpi.htm
+            - link "COUNTY EMPLOYMENT AND WAGES":
+              - /url: /schedule/news_release/cew.htm
+            - link "EMPLOYMENT COST INDEX":
+              - /url: /schedule/news_release/eci.htm
+            - link "EMPLOYMENT SITUATION":
+              - /url: /schedule/news_release/empsit.htm
+            - link "JOB OPENINGS AND LABOR TURNOVER":
+              - /url: /schedule/news_release/jolts.htm
+            - link "PRODUCER PRICE INDEX":
+              - /url: /schedule/news_release/ppi.htm
+            - link "PRODUCTIVITY AND COSTS":
+              - /url: /schedule/news_release/prod2.htm
+            - link "REAL EARNINGS":
+              - /url: /schedule/news_release/realer.htm
+            - link "U.S. EXPORT AND IMPORT PRICE INDEXES":
+              - /url: /schedule/news_release/ximpim.htm
+            - link "METROPOLITAN AREA EMPLOYMENT AND UNEMPLOYMENT":
+              - /url: /schedule/news_release/metro.htm
+            - link "STATE EMPLOYMENT AND UNEMPLOYMENT":
+              - /url: /schedule/news_release/laus.htm
+        - cell:
+          - heading "November 2026" [level=1]
+          - paragraph:
+            - text: Month View |
+            - link "List View":
+              - /url: /schedule/2026/11_sched_list.htm
+          - table:
+            - rowgroup:
+              - row "Monday Tuesday Wednesday Thursday Friday":
+                - columnheader "Monday"
+                - columnheader "Tuesday"
+                - columnheader "Wednesday"
+                - columnheader "Thursday"
+                - columnheader "Friday"
+            - rowgroup:
+              - row "2 3 Job Openings and Labor Turnover Survey September 2026 10:00 AM 4 5 Productivity and Costs (P) Third Quarter 2026 08:30 AM 6 Employment Situation October 2026 08:30 AM":
+                - cell "2":
+                  - paragraph: "2"
+                  - paragraph
+                - cell "3 Job Openings and Labor Turnover Survey September 2026 10:00 AM":
+                  - paragraph: "3"
+                  - paragraph:
+                    - strong: Job Openings and Labor Turnover Survey
+                    - text: September 2026
+                    - text: 10:00 AM
+                - cell "4":
+                  - paragraph: "4"
+                  - paragraph
+                - cell "5 Productivity and Costs (P) Third Quarter 2026 08:30 AM":
+                  - paragraph: "5"
+                  - paragraph:
+                    - strong: Productivity and Costs (P)
+                    - text: Third Quarter 2026
+                    - text: 08:30 AM
+                - cell "6 Employment Situation October 2026 08:30 AM":
+                  - paragraph: "6"
+                  - paragraph:
+                    - strong: Employment Situation
+                    - text: October 2026
+                    - text: 08:30 AM
+              - row "9 10 Consumer Price Index October 2026 08:30 AM Real Earnings October 2026 08:30 AM 11 Veterans Day Holiday 12 13 Producer Price Index October 2026 08:30 AM":
+                - cell "9":
+                  - paragraph: "9"
+                  - paragraph
+                - cell "10 Consumer Price Index October 2026 08:30 AM Real Earnings October 2026 08:30 AM":
+                  - paragraph: "10"
+                  - paragraph:
+                    - strong: Consumer Price Index
+                    - text: October 2026
+                    - text: 08:30 AM
+                  - paragraph:
+                    - strong: Real Earnings
+                    - text: October 2026
+                    - text: 08:30 AM
+                - cell "11 Veterans Day Holiday":
+                  - paragraph: "11"
+                  - paragraph:
+                    - strong: Veterans Day
+                    - text: Holiday
+                - cell "12":
+                  - paragraph: "12"
+                  - paragraph
+                - cell "13 Producer Price Index October 2026 08:30 AM":
+                  - paragraph: "13"
+                  - paragraph:
+                    - strong: Producer Price Index
+                    - text: October 2026
+                    - text: 08:30 AM
+              - row "16 17 U.S. Import and Export Price Indexes October 2026 08:30 AM 18 Employer-Reported Workplace Injuries and Illnesses (Annual) 2025 10:00 AM 19 20 State Employment and Unemployment (Monthly) October 2026 10:00 AM Total Factor Productivity for Major Industries Annual 2025 10:00 AM":
+                - cell "16":
+                  - paragraph: "16"
+                  - paragraph
+                - cell "17 U.S. Import and Export Price Indexes October 2026 08:30 AM":
+                  - paragraph: "17"
+                  - paragraph:
+                    - strong: U.S. Import and Export Price Indexes
+                    - text: October 2026
+                    - text: 08:30 AM
+                - cell "18 Employer-Reported Workplace Injuries and Illnesses (Annual) 2025 10:00 AM":
+                  - paragraph: "18"
+                  - paragraph:
+                    - strong: Employer-Reported Workplace Injuries and Illnesses (Annual)
+                    - text: "2025"
+                    - text: 10:00 AM
+                - cell "19":
+                  - paragraph: "19"
+                  - paragraph
+                - cell "20 State Employment and Unemployment (Monthly) October 2026 10:00 AM Total Factor Productivity for Major Industries Annual 2025 10:00 AM":
+                  - paragraph: "20"
+                  - paragraph:
+                    - strong: State Employment and Unemployment (Monthly)
+                    - text: October 2026
+                    - text: 10:00 AM
+                  - paragraph:
+                    - strong: Total Factor Productivity for Major Industries
+                    - text: Annual 2025
+                    - text: 10:00 AM
+              - row "23 24 25 26 Thanksgiving Day Holiday 27":
+                - cell "23":
+                  - paragraph: "23"
+                  - paragraph
+                - cell "24":
+                  - paragraph: "24"
+                  - paragraph
+                - cell "25":
+                  - paragraph: "25"
+                  - paragraph
+                - cell "26 Thanksgiving Day Holiday":
+                  - paragraph: "26"
+                  - paragraph:
+                    - strong: Thanksgiving Day
+                    - text: Holiday
+                - cell "27":
+                  - paragraph: "27"
+                  - paragraph
+              - row "30 1 Job Openings and Labor Turnover Survey October 2026 10:00 AM 2 County Employment and Wages Second Quarter 2026 10:00 AM Metropolitan Area Employment and Unemployment (Monthly) October 2026 10:00 AM 3 4 Employment Situation November 2026 08:30 AM":
+                - cell "30":
+                  - paragraph: "30"
+                  - paragraph
+                - cell "1 Job Openings and Labor Turnover Survey October 2026 10:00 AM":
+                  - paragraph: "1"
+                  - paragraph:
+                    - strong: Job Openings and Labor Turnover Survey
+                    - text: October 2026
+                    - text: 10:00 AM
+                - cell "2 County Employment and Wages Second Quarter 2026 10:00 AM Metropolitan Area Employment and Unemployment (Monthly) October 2026 10:00 AM":
+                  - paragraph: "2"
+                  - paragraph:
+                    - strong: County Employment and Wages
+                    - text: Second Quarter 2026
+                    - text: 10:00 AM
+                  - paragraph:
+                    - strong: Metropolitan Area Employment and Unemployment (Monthly)
+                    - text: October 2026
+                    - text: 10:00 AM
+                - cell "3":
+                  - paragraph: "3"
+                  - paragraph
+                - cell "4 Employment Situation November 2026 08:30 AM":
+                  - paragraph: "4"
+                  - paragraph:
+                    - strong: Employment Situation
+                    - text: November 2026
+                    - text: 08:30 AM
+          - paragraph:
+            - strong: "NOTE: All times on calendar are Eastern Time."
+          - paragraph:
+            - strong: "Last Modified Date:"
+            - text: November 03, 2026
+          - paragraph
+          - generic: Subscribe to the BLS Online Calendar
+          - paragraph:
+            - strong: Online calendar subscription — automatically updated
+            - text: ":"
+          - paragraph:
+            - text: If you use a recent version of an electronic calendar, you may be able to subscribe to the BLS Online Calendar.
+            - text: See details below for users of different types of calendars.
+          - list:
+            - strong: "Instructions for Outlook and Apple iCal Users:"
+            - list:
+              - text: Simply click on the
+              - link "link":
+                - /url: webcal://www.bls.gov/schedule/news_release/bls.ics
+                - strong: link
+              - text: "(Note: Link may seem to be broken if you do not have Outlook or Apple iCal installed.)"
+              - text: If the
+              - link "link":
+                - /url: webcal://www.bls.gov/schedule/news_release/bls.ics
+                - strong: link
+              - text: doesn't work for you, try downloading the file at
+              - link "www.bls.gov":
+                - /url: https://www.bls.gov/schedule/news_release/bls.ics
+              - text: and then open it as a new calendar or import its items into your calendar.
+          - list:
+            - strong: "Instructions for Google Calendar, Mozilla, and Evolution Users:"
+            - list:
+              - text: Copy and paste the URL address
+              - strong: https://www.bls.gov/schedule/news_release/bls.ics
+              - text: into your calendar.
+          - paragraph: "NOTE: We do not recommend using this online calendar with Outlook 2003 or older versions. The calendar will not update automatically in those applications."
+          - paragraph: The BLS calendar contains publication dates for most news releases scheduled to be issued by the BLS national office in upcoming months. It is updated as needed with additional news releases, usually at least a week before their scheduled publication date.
+          - paragraph
+          - paragraph
+          - paragraph
+          - paragraph
+          - paragraph
+  - generic: select
+  - generic: select
+  - generic: select
+  - generic: select
+- contentinfo:
+  - list:
+    - link "Home":
+      - /url: https://www.bls.gov/
+    - link "Subjects":
+      - /url: /bls/proghome.htm
+    - link "Data Tools":
+      - /url: /data/
+    - link "Publications":
+      - /url: /opub/
+    - link "Economic Releases":
+      - /url: /bls/newsrels.htm
+    - link "Classroom":
+      - /url: /k12/
+    - link "Beta":
+      - /url: /beta/
+  - link "Help improve this site":
+    - /url: "#"
+    - generic: Help improve this site
+  - img "U.S. Bureau of Labor Statistics Logo"
+  - strong: U.S. Bureau of Labor Statistics
+  - generic: Office of Publications and Special Studies
+  - generic: Suitland Federal Center
+  - generic: Floor 7
+  - generic: 4600 Silver Hill Road
+  - generic: Washington, DC 20212-0002
+  - 'link "Telephone: 202-691-5200"':
+    - /url: tel:12026915200
+    - generic: "Telephone:"
+    - generic: 202-691-5200
+  - 'link "Telecommunications Relay Service: 7-1-1 If you are deaf, hard of hearing, or have a speech disability, please dial 7-1-1 to access telecommunications relay services"':
+    - /url: tel:711
+    - generic: "Telecommunications Relay Service:"
+    - generic: 7-1-1
+  - link "www.bls.gov":
+    - /url: /home.htm
+  - link "Contact Us":
+    - /url: https://data.bls.gov/forms/opb.htm?/schedule/2026/11_sched.htm
+  - strong: resources
+  - text: "[+]"
+  - list:
+    - link "Inspector General (OIG) Inspector General (OIG) Office of Inspector General (OIG) website":
+      - /url: https://www.oig.dol.gov/
+      - text: Inspector General (OIG)
+    - link "Budget and Performance":
+      - /url: /bls/bls_budget_and_performance.htm
+    - link "Department of Labor Grants":
+      - /url: https://www.dol.gov/grants
+    - link "No Fear Act":
+      - /url: /bls/no_fear_act.htm
+    - link "USA.gov website":
+      - /url: https://www.usa.gov/
+      - text: USA.gov
+  - strong: about the site
+  - text: "[+]"
+  - list:
+    - link "Sitemap":
+      - /url: /bls/sitemap.htm
+    - link "Freedom of Information Act":
+      - /url: /bls/blsfoia.htm
+    - link "Privacy and Security Statement":
+      - /url: /bls/pss.htm
+    - link "Disclaimers":
+      - /url: /bls/disclaimer.htm
+    - link "Linking and Copyright Info Linking and Copyright Information":
+      - /url: /bls/linksite.htm
+      - text: Linking and Copyright Info
+    - link "Important Website Notices":
+      - /url: /bls/website-policies.htm
+    - link "Help and Tutorials":
+      - /url: /help/
+    - link "Accessibility Statement":
+      - /url: /bls/ada.htm
+  - text: Connect With BLS
+  - link "Bluesky":
+    - /url: https://bsky.app/profile/usbls.bsky.social
+    - generic: Bluesky
+  - link "Instagram":
+    - /url: https://www.instagram.com/usbls_gov/
+    - generic: Instagram
+  - link "LinkedIn":
+    - /url: https://www.linkedin.com/company/bureau-of-labor-statistics/
+    - generic: LinkedIn
+  - link "Threads":
+    - /url: https://www.threads.net/@usbls_gov
+    - generic: Threads
+  - link "Visit BLS on X":
+    - /url: https://x.com/BLS_gov
+    - generic: Visit BLS on X
+  - link "Youtube":
+    - /url: https://www.youtube.com/channel/UCijn3WBpHtx4AvSya7NER9Q
+    - generic: Youtube
+  - link "Email":
+    - /url: javascript:window.open('https://public.govdelivery.com/accounts/USDOLBLS/subscriber/new ','Popup','width=800,height=500,toolbar=no,scrollbars=yes,resizable=yes'); void('');
+    - generic: Email

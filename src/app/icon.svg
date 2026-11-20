@@ -1,0 +1,4 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 64 64"><rect width="64" height="64" rx="12" fill="#06202d"/><g transform="translate(4 22) scale(.097)" color="#f1f7f8"><path fill="#2dbbea" d="M212 190 291 54H321L242 190Z"/>
+<path fill="currentColor" d="M0 190 108 5Q111 0 117 0H124Q130 0 133 6L232 190H205L118 22 13 190Z"/>
+<path fill="currentColor" d="M64 116H166L172 126H59Z"/>
+<path fill="currentColor" d="M179 54H204Q210 54 213 60L275 180H286L376 6Q379 0 385 0H406L311 184Q308 190 301 190H266Q259 190 256 184Z"/><path d="M422 190V5H425L562 185V0" fill="none" stroke="currentColor" stroke-width="24"/></g></svg>

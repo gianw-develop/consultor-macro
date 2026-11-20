@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "target": "ES2022", "module": "CommonJS", "moduleResolution": "Node",
+    "lib": ["ES2022", "DOM"], "strict": true, "skipLibCheck": true,
+    "rootDir": "../../src", "esModuleInterop": true
+  },
+  "include": ["../../src/contracts/**/*.ts", "../../src/modules/radar/**/*.ts"]
+}

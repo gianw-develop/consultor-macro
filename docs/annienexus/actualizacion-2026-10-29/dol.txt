@@ -1,0 +1,30 @@
+Chrome · consulta 2026-10-29T08:57:06Z
+					23 Contenido HTML dol.gov/ui/data.pdf
+						24 Contenido HTML chrome-extension://mhjfbmdgcfjbbpaeojofohoefgiehjai/index.html
+							25 container
+								26 botón Mostrar u ocultar barra lateral
+								27 texto News Release
+								28 campo de texto (settable) Número de página, Value: 1
+								29 text / 9
+								30 botón Reducir
+								31 campo de texto (settable) Nivel de zoom, Value: 100%
+								32 botón Acercar
+								33 botón Ajustar a página
+								34 botón Girar hacia la izquierda
+								35 botón de activación Añadir anotaciones de texto, Value: 0
+								36 botón de activación Dibujar, Value: 0
+								37 botón (disabled) Deshacer
+								38 botón (disabled) Rehacer
+								39 botón Guardar en Google Drive
+								40 botón Descargar
+								41 botón Imprimir
+								42 botón Más acciones
+								43 Contenido HTML
+									44 container Documento PDF que contiene 9 páginas
+										45 container No se puede acceder a este PDF. No se han podido descargar los archivos de extracción de texto. Inténtalo de nuevo más tarde.
+											46 texto No se puede acceder a este PDF. No se han podido descargar los archivos de extracción de texto. Inténtalo de nuevo más tarde.
+										47 container Página 1
+											48 texto 1
+
+											49 encabezado 2
+												50 texto News Release

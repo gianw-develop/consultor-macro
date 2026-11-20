@@ -1,0 +1,36 @@
+{
+  "sources": [
+    {
+      "file": "employment-summary.html",
+      "url": "https://www.bls.gov/news.release/empsit.nr0.htm",
+      "savedAt": "2026-10-02T12:33:07.996353+00:00",
+      "sha256": "dcfce9809c2be0c13a8825065520ce8c4fa13ee57e75114770ea5e1b750f94fd",
+      "bytes": 61940,
+      "period": "2026-09",
+      "publishedAt": "2026-10-02T12:30:00Z"
+    },
+    {
+      "file": "employment-a1.html",
+      "url": "https://www.bls.gov/news.release/empsit.t01.htm",
+      "savedAt": "2026-10-02T12:33:08.408639+00:00",
+      "sha256": "34186c7332fb9d44948f10f47746b5bd841a8dfdea9b480ea5434ad2cf04d37f",
+      "bytes": 114988,
+      "period": "2026-09",
+      "publishedAt": "2026-10-02T12:30:00Z"
+    },
+    {
+      "file": "employment-b1.html",
+      "url": "https://www.bls.gov/news.release/empsit.t17.htm",
+      "savedAt": "2026-10-02T12:33:08.173612+00:00",
+      "sha256": "0e4ce95bd4e454b144604d95e1b1b0967c224ece8f1b7fd2e7db7d3f008a5463",
+      "bytes": 277084,
+      "period": "2026-09",
+      "publishedAt": "2026-10-02T12:30:00Z"
+    }
+  ],
+  "archiveAttempt": {
+    "url": "https://www.bls.gov/news.release/archives/empsit_10022026.htm",
+    "status": 403,
+    "note": "The unverified archive URL is not linked by the application. Live BLS release and saved source bytes are used."
+  }
+}

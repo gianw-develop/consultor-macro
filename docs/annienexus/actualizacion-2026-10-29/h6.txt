@@ -1,0 +1,1328 @@
+Chrome · consulta 2026-10-29T08:57:06Z
+					23 Contenido HTML Federal Reserve Board - Money Stock Measures - H.6 - October 27, 2026, URL: …
+						24 container
+							25 link Skip to main content, Value: federalreserve.gov/releases/h6/current/default.htm#content
+							26 imagen US Flag
+							27 texto An official website of the United States Government
+							28 botón Here's how you know Expand More
+							29 container
+								30 imagen .gov icon
+								31 texto Official websites use .gov
+								32 texto A
+								33 texto .gov
+								34 texto  website belongs to an official government organization in the United States.
+								35 Imagen sin descripción HTTPS icon. Para obtener las descripciones de las imágenes, abre el menú contextual.
+								36 texto Secure .gov websites use HTTPS
+								37 texto A
+								38 texto lock
+								39 texto  (
+								40 imagen Locked padlock icon
+								41 texto ) or
+								42 texto https://
+								43 texto  means you've safely connected to the .gov website. Share sensitive information only on official, secure websites.
+							44 lista de contenidos
+								45 container
+									46 text Stay Connected ·
+								47 container
+									48 link Recent Postings, Value: federalreserve.gov/recentpostings.htm
+									49 text ·
+								50 container
+									51 link Calendar, Value: federalreserve.gov/newsevents/calendar.htm
+									52 text ·
+								53 container
+									54 link Publications, Value: federalreserve.gov/publications.htm
+									55 text ·
+								56 container
+									57 link Site Map, Value: federalreserve.gov/sitemap.htm
+									58 text ·
+								59 container
+									60 link A-Z index, Value: federalreserve.gov/azindex.htm
+									61 text ·
+								62 container
+									63 link Careers, Value: federalreserve.gov/careers.htm
+									64 text ·
+								65 container
+									66 link FAQs, Value: federalreserve.gov/faqs.htm
+									67 text ·
+								68 container
+									69 link Videos, Value: federalreserve.gov/videos.htm
+									70 text ·
+								71 container
+									72 link Contact, Value: federalreserve.gov/aboutthefed/contact-us-topics.htm
+							73 container
+								74 texto Search
+								75 campo de texto (settable) Search
+								76 botón Submit Search Button
+								77 link Advanced, Value: fedsearch.org/board_public
+							78 link Help: Link to Home Page, Value: federalreserve.gov/default.htm, Board of Governors of the Federal Reserve System The Federal Reserve, the central bank of the United States, provides the nation with a safe, flexible, and stable monetary and financial system.
+							79 barra de menús
+								80 About the Fed
+									81 link About the Fed, Value: federalreserve.gov/aboutthefed.htm
+								82 News & Events
+									83 link News & Events, Value: federalreserve.gov/newsevents.htm
+								84 Monetary Policy
+									85 link Monetary Policy, Value: federalreserve.gov/monetarypolicy.htm
+								86 Supervision & Regulation
+									87 link Supervision & Regulation, Value: federalreserve.gov/supervisionreg.htm
+								88 Financial Stability
+									89 link Financial Stability, Value: federalreserve.gov/financial-stability.htm
+								90 Payment Systems
+									91 link Payment Systems, Value: federalreserve.gov/paymentsystems.htm
+								92 Economic Research
+									93 link Economic Research, Value: federalreserve.gov/econres.htm
+								94 Data
+									95 link Data, Value: federalreserve.gov/data.htm
+								96 Consumers & Communities
+									97 link Consumers & Communities, Value: federalreserve.gov/consumerscommunities.htm
+							98 lista de contenidos
+								99 link Home, Value: federalreserve.gov/default.htm
+								100 container
+									101 texto >
+									102 link Data, Value: federalreserve.gov/data.htm
+							103 encabezado Money Stock Measures - H.6 Release, Value: 2
+								104 texto Money Stock Measures - H.6 Release
+							105 lista de contenidos
+								106 link Current Release, Value: federalreserve.gov/releases/h6/current/default.htm
+								107 link Release Dates, Value: federalreserve.gov/releases/h6/default.htm
+								108 link About, Value: federalreserve.gov/releases/h6/about.htm
+								109 link Announcements, Value: federalreserve.gov/feeds/h6.html
+								110 link Technical Q&As, Value: federalreserve.gov/releases/h6/h6_technical_qa.htm
+							111 container
+								112 text During the week of November 9, the “Build Your Package” feature in the Data Download Program (DDP) will be removed in preparation for the  eventual retirement of the DDP . Users can access data and expanded download options through the Federal Reserve Bank of St. Louis's
+								113 link Federal Reserve Economic Data (FRED), Value: fred.stlouisfed.org/collection/federal-reserve-board-data
+								114 texto . Learn more about the
+								115 link DDP and FRED partnership, Value: federalreserve.gov/data/data-download-fred-information.htm
+								116 texto .
+							117 encabezado Current Release RSS Data Download FRED XML, Value: 3
+								118 texto Current Release
+								119 link  RSS, Value: federalreserve.gov/feeds
+								120 link  Data Download, Help: Data Download Program, Value: federalreserve.gov/datadownload/Choose.aspx?rel=H6
+								121 link  FRED, Value: fred.stlouisfed.org/release?rid=21
+								122 link  XML, Value: federalreserve.gov/releases/h6/data/FRB_h6_xml.zip
+							123 texto Release Date: October 27, 2026
+							124 encabezado Table 1, Value: 4
+								125 texto Table 1
+							126 container
+								127 texto Money Stock Measures. Billions of dollars unless otherwise noted.
+								128 link Make Full Screen, Value: federalreserve.gov/releases/h6/current/default.htm#
+								129 tabla Table 1
+									130 row
+										131 encabezado de columna 0-2
+											132 texto Date
+										133 encabezado de columna 1-2
+											134 texto Seasonally adjusted
+										135 encabezado de columna 3-10
+											136 texto Not seasonally adjusted
+									137 row
+										138 encabezado de columna 1-2
+											139 texto M1
+											140 link 1, Help: footnote 1, Value: federalreserve.gov/releases/h6/current/default.htm#t1tg1f1
+										141 encabezado de columna 1-2
+											142 texto M2
+											143 link 2, Help: footnote 2, Value: federalreserve.gov/releases/h6/current/default.htm#t1tg1f2
+										144 encabezado de columna 3-5
+											145 texto Monetary base
+										146 encabezado de columna 1-2
+											147 texto M1
+											148 texto 1
+										149 encabezado de columna 1-2
+											150 texto M2
+											151 texto 2
+										152 encabezado de columna 8-10
+											153 texto Memorandum: Reserves
+									154 row
+										155 encabezado de columna
+											156 texto Currency in circulation
+											157 link 3, Help: footnote 3, Value: federalreserve.gov/releases/h6/current/default.htm#t1tg1f3
+										158 encabezado de columna
+											159 texto Reserve balances
+											160 link 4, Help: footnote 4, Value: federalreserve.gov/releases/h6/current/default.htm#t1tg1f4
+										161 encabezado de columna
+											162 texto Monetary base
+											163 link 5, Help: footnote 5, Value: federalreserve.gov/releases/h6/current/default.htm#t1tg1f5
+										164 encabezado de columna
+											165 texto Total reserves
+											166 link 6, Help: footnote 6, Value: federalreserve.gov/releases/h6/current/default.htm#t1tg1f6
+										167 encabezado de columna
+											168 texto Total ($M) borrowings
+											169 link 7, Help: footnote 7, Value: federalreserve.gov/releases/h6/current/default.htm#t1tg1f7
+										170 encabezado de columna
+											171 texto Nonborrowed reserves
+											172 link 8, Help: footnote 8, Value: federalreserve.gov/releases/h6/current/default.htm#t1tg1f8
+									173 row
+										174 encabezado de fila
+											175 texto May 2025
+										176 celda
+											177 texto 18,641.7
+										178 celda
+											179 texto 21,808.8
+										180 celda
+											181 texto 2,385.1
+										182 celda
+											183 texto 3,263.0
+										184 celda
+											185 texto 5,648.1
+										186 celda
+											187 texto 18,569.1
+										188 celda
+											189 texto 21,726.4
+										190 celda
+											191 texto 3,263.0
+										192 celda
+											193 texto 4,096.1
+										194 celda
+											195 texto 3,258.9
+									196 row
+										197 encabezado de fila
+											198 texto June 2025
+										199 celda
+											200 texto 18,726.2
+										201 celda
+											202 texto 21,916.1
+										203 celda
+											204 texto 2,392.3
+										205 celda
+											206 texto 3,356.0
+										207 celda
+											208 texto 5,748.2
+										209 celda
+											210 texto 18,709.3
+										211 celda
+											212 texto 21,881.3
+										213 celda
+											214 texto 3,356.0
+										215 celda
+											216 texto 6,200.7
+										217 celda
+											218 texto 3,349.8
+									219 row
+										220 encabezado de fila
+											221 texto July 2025
+										222 celda
+											223 texto 18,782.7
+										224 celda
+											225 texto 21,998.1
+										226 celda
+											227 texto 2,399.6
+										228 celda
+											229 texto 3,340.3
+										230 celda
+											231 texto 5,740.0
+										232 celda
+											233 texto 18,746.1
+										234 celda
+											235 texto 21,938.2
+										236 celda
+											237 texto 3,340.3
+										238 celda
+											239 texto 7,287.7
+										240 celda
+											241 texto 3,333.0
+									242 row
+										243 encabezado de fila
+											244 texto Aug. 2025
+										245 celda
+											246 texto 18,820.1
+										247 celda
+											248 texto 22,065.9
+										249 celda
+											250 texto 2,404.2
+										251 celda
+											252 texto 3,281.9
+										253 celda
+											254 texto 5,686.1
+										255 celda
+											256 texto 18,786.0
+										257 celda
+											258 texto 22,006.4
+										259 celda
+											260 texto 3,281.9
+										261 celda
+											262 texto 6,367.6
+										263 celda
+											264 texto 3,275.5
+									265 row
+										266 encabezado de fila
+											267 texto Sept. 2025
+										268 celda
+											269 texto 18,883.8
+										270 celda
+											271 texto 22,149.2
+										272 celda
+											273 texto 2,409.9
+										274 celda
+											275 texto 3,068.1
+										276 celda
+											277 texto 5,478.0
+										278 celda
+											279 texto 18,845.3
+										280 celda
+											281 texto 22,084.6
+										282 celda
+											283 texto 3,068.1
+										284 celda
+											285 texto 6,517.9
+										286 celda
+											287 texto 3,061.6
+									288 row
+										289 encabezado de fila
+											290 texto Oct. 2025
+										291 celda
+											292 texto 18,964.7
+										293 celda
+											294 texto 22,223.1
+										295 celda
+											296 texto 2,416.9
+										297 celda
+											298 texto 2,944.9
+										299 celda
+											300 texto 5,361.8
+										301 celda
+											302 texto 18,913.8
+										303 celda
+											304 texto 22,152.3
+										305 celda
+											306 texto 2,944.9
+										307 celda
+											308 texto 6,545.9
+										309 celda
+											310 texto 2,938.3
+									311 row
+										312 encabezado de fila
+											313 texto Nov. 2025
+										314 celda
+											315 texto 18,998.1
+										316 celda
+											317 texto 22,253.2
+										318 celda
+											319 texto 2,422.6
+										320 celda
+											321 texto 2,879.4
+										322 celda
+											323 texto 5,302.1
+										324 celda
+											325 texto 18,997.0
+										326 celda
+											327 texto 22,242.5
+										328 celda
+											329 texto 2,879.4
+										330 celda
+											331 texto 7,058.0
+										332 celda
+											333 texto 2,872.4
+									334 row
+										335 encabezado de fila
+											336 texto Dec. 2025
+										337 celda
+											338 texto 19,072.5
+										339 celda
+											340 texto 22,328.8
+										341 celda
+											342 texto 2,432.0
+										343 celda
+											344 texto 2,941.7
+										345 celda
+											346 texto 5,373.7
+										347 celda
+											348 texto 19,225.4
+										349 celda
+											350 texto 22,476.6
+										351 celda
+											352 texto 2,941.7
+										353 celda
+											354 texto 8,656.2
+										355 celda
+											356 texto 2,933.0
+									357 row
+										358 encabezado de fila
+											359 texto Jan. 2026
+										360 celda
+											361 texto 19,165.1
+										362 celda
+											363 texto 22,386.6
+										364 celda
+											365 texto 2,434.6
+										366 celda
+											367 texto 2,967.9
+										368 celda
+											369 texto 5,402.5
+										370 celda
+											371 texto 19,170.2
+										372 celda
+											373 texto 22,432.8
+										374 celda
+											375 texto 2,967.9
+										376 celda
+											377 texto 5,482.6
+										378 celda
+											379 texto 2,962.4
+									380 row
+										381 encabezado de fila
+											382 texto Feb. 2026
+										383 celda
+											384 texto 19,346.0
+										385 celda
+											386 texto 22,572.3
+										387 celda
+											388 texto 2,431.4
+										389 celda
+											390 texto 2,956.6
+										391 celda
+											392 texto 5,388.0
+										393 celda
+											394 texto 19,226.9
+										395 celda
+											396 texto 22,484.3
+										397 celda
+											398 texto 2,956.6
+										399 celda
+											400 texto 4,646.6
+										401 celda
+											402 texto 2,952.0
+									403 row
+										404 encabezado de fila
+											405 texto Mar. 2026
+										406 celda
+											407 texto 19,381.2
+										408 celda
+											409 texto 22,613.9
+										410 celda
+											411 texto 2,442.4
+										412 celda
+											413 texto 3,016.1
+										414 celda
+											415 texto 5,458.6
+										416 celda
+											417 texto 19,476.0
+										418 celda
+											419 texto 22,753.2
+										420 celda
+											421 texto 3,016.1
+										422 celda
+											423 texto 5,097.6
+										424 celda
+											425 texto 3,011.0
+									426 row
+										427 encabezado de fila
+											428 texto Apr. 2026
+										429 celda
+											430 texto 19,469.0
+										431 celda
+											432 texto 22,728.0
+										433 celda
+											434 texto 2,452.4
+										435 celda
+											436 texto 3,018.1
+										437 celda
+											438 texto 5,470.4
+										439 celda
+											440 texto 19,584.7
+										441 celda
+											442 texto 22,864.0
+										443 celda
+											444 texto 3,018.1
+										445 celda
+											446 texto 5,840.5
+										447 celda
+											448 texto 3,012.2
+									449 row
+										450 encabezado de fila
+											451 texto May 2026
+										452 celda
+											453 texto 19,689.2
+										454 celda
+											455 texto 22,980.9
+										456 celda
+											457 texto 2,460.1
+										458 celda
+											459 texto 3,078.8
+										460 celda
+											461 texto 5,538.9
+										462 celda
+											463 texto 19,618.4
+										464 celda
+											465 texto 22,897.3
+										466 celda
+											467 texto 3,078.8
+										468 celda
+											469 texto 6,116.7
+										470 celda
+											471 texto 3,072.7
+									472 row
+										473 encabezado de fila
+											474 texto June 2026
+										475 celda
+											476 texto 19,771.1
+										477 celda
+											478 texto 23,077.7
+										479 celda
+											480 texto 2,469.6
+										481 celda
+											482 texto 3,018.8
+										483 celda
+											484 texto 5,488.4
+										485 celda
+											486 texto 19,761.0
+										487 celda
+											488 texto 23,047.1
+										489 celda
+											490 texto 3,018.8
+										491 celda
+											492 texto 6,841.7
+										493 celda
+											494 texto 3,012.0
+									495 row
+										496 encabezado de fila
+											497 texto July 2026
+										498 celda
+											499 texto 19,863.6
+										500 celda
+											501 texto 23,177.4
+										502 celda
+											503 texto 2,472.3
+										504 celda
+											505 texto 3,051.5
+										506 celda
+											507 texto 5,523.9
+										508 celda
+											509 texto 19,827.8
+										510 celda
+											511 texto 23,117.0
+										512 celda
+											513 texto 3,051.5
+										514 celda
+											515 texto 5,946.0
+										516 celda
+											517 texto 3,045.6
+									518 row
+										519 encabezado de fila
+											520 texto Aug. 2026
+										521 celda
+											522 texto 19,967.3
+										523 celda
+											524 texto 23,300.9
+										525 celda
+											526 texto 2,475.6
+										527 celda
+											528 texto 2,936.0
+										529 celda
+											530 texto 5,411.6
+										531 celda
+											532 texto 19,932.1
+										533 celda
+											534 texto 23,242.5
+										535 celda
+											536 texto 2,936.0
+										537 celda
+											538 texto 5,501.1
+										539 celda
+											540 texto 2,930.5
+									541 row
+										542 encabezado de fila
+											543 texto Sept. 2026
+										544 celda
+											545 texto 20,061.2
+										546 celda
+											547 texto 23,413.9
+										548 celda
+											549 texto 2,483.0
+										550 celda
+											551 texto 2,966.8
+										552 celda
+											553 texto 5,449.8
+										554 celda
+											555 texto 20,009.7
+										556 celda
+											557 texto 23,339.6
+										558 celda
+											559 texto 2,966.8
+										560 celda
+											561 texto 6,295.0
+										562 celda
+											563 texto 2,960.5
+								564 encabezado Footnotes, Value: 3
+									565 texto Footnotes
+								566 texto Components may not add to totals due to rounding.
+								567 lista de contenidos
+									568 container
+										569 AXListMarker 1.
+										570 texto M1 consists of (1) currency outside the U.S. Treasury, Federal Reserve Banks, and the vaults of depository institutions; (2) demand deposits at commercial banks (excluding those amounts held by depository institutions, the U.S. government, and foreign banks and official institutions) less cash items in the process of collection and Federal Reserve float; and (3) other liquid deposits, consisting of other checkable deposits (or OCDs, which comprise negotiable order of withdrawal, or NOW, and automatic transf
+									571 container
+										572 AXListMarker 2.
+										573 texto M2 consists of M1 plus (1) small-denomination time deposits (time deposits in amounts of less than $100,000) and (2) balances in retail money market funds (MMFs), less individual retirement account (IRA) and Keogh account balances at depository institutions and MMFs. Seasonally adjusted M2 is constructed by summing small-denomination time deposits and retail MMFs, each seasonally adjusted separately, and adding the result to seasonally adjusted M1, and then subtracting not seasonally adjusted IRA and Keogh
+									574 container
+										575 AXListMarker 3.
+										576 texto Currency in circulation consists of Federal Reserve notes and coin outside the U.S. Treasury and Federal Reserve Banks.
+									577 container
+										578 AXListMarker 4.
+										579 texto Reserve balances are balances held by depository institutions in master accounts and excess balance accounts at Federal Reserve Banks.
+									580 container
+										581 AXListMarker 5.
+										582 texto Monetary base equals currency in circulation plus reserve balances.
+									583 container
+										584 AXListMarker 6.
+										585 texto Total reserves equal reserve balances plus, before April 2020, vault cash used to satisfy reserve requirements.
+									586 container
+										587 AXListMarker 7.
+										588 texto Total borrowings in millions of dollars from the Federal Reserve are borrowings from the discount window's primary, secondary, and seasonal credit programs and other borrowings from emergency lending facilities. For borrowings included, see "Loans" in table 1 of the
+										589 link H.4.1 statistical release, Value: federalreserve.gov/releases/h41/current/default.htm
+										590 texto .
+									591 container
+										592 AXListMarker 8.
+										593 texto Nonborrowed reserves equal total reserves less total borrowings from the Federal Reserve.
+							594 encabezado Table 2, Value: 4
+								595 texto Table 2
+							596 container
+								597 texto Seasonally Adjusted Components of M1 and M2, unless otherwise noted. Billions of dollars.
+								598 link Make Full Screen, Value: federalreserve.gov/releases/h6/current/default.htm#
+								599 tabla Table 2
+									600 row
+										601 encabezado de columna 0-2
+											602 texto Date
+										603 encabezado de columna 1-6
+											604 texto M2
+											605 link 1, Help: footnote 1, Value: federalreserve.gov/releases/h6/current/default.htm#t2tg1f1
+									606 row
+										607 encabezado de columna 1-3
+											608 texto M1
+											609 link 2, Help: footnote 2, Value: federalreserve.gov/releases/h6/current/default.htm#t2tg1f2
+										610 encabezado de columna 1-2
+											611 text Small- denomination time deposits
+											612 link 6, Help: footnote 6, Value: federalreserve.gov/releases/h6/current/default.htm#t2tg1f6
+										613 encabezado de columna 1-2
+											614 text Retail money market funds
+										615 encabezado de columna 1-2
+											616 text Less: Total IRA and Keogh account balances (NSA)
+											617 link 7, Help: footnote 7, Value: federalreserve.gov/releases/h6/current/default.htm#t2tg1f7
+									618 row
+										619 encabezado de columna
+											620 texto Currency
+											621 link 3, Help: footnote 3, Value: federalreserve.gov/releases/h6/current/default.htm#t2tg1f3
+										622 encabezado de columna
+											623 text Demand deposits
+											624 link 4, Help: footnote 4, Value: federalreserve.gov/releases/h6/current/default.htm#t2tg1f4
+										625 encabezado de columna
+											626 text Other liquid deposits
+											627 link 5, Help: footnote 5, Value: federalreserve.gov/releases/h6/current/default.htm#t2tg1f5
+									628 row
+										629 encabezado de fila
+											630 texto May 2025
+										631 celda
+											632 texto 2,293.8
+										633 celda
+											634 texto 5,555.4
+										635 celda
+											636 texto 10,792.4
+										637 celda
+											638 texto 1,524.1
+										639 celda
+											640 texto 2,807.5
+										641 celda
+											642 texto 1,164.6
+									643 row
+										644 encabezado de fila
+											645 texto June 2025
+										646 celda
+											647 texto 2,301.0
+										648 celda
+											649 texto 5,616.5
+										650 celda
+											651 texto 10,808.7
+										652 celda
+											653 texto 1,517.3
+										654 celda
+											655 texto 2,844.9
+										656 celda
+											657 texto 1,172.3
+									658 row
+										659 encabezado de fila
+											660 texto July 2025
+										661 celda
+											662 texto 2,310.4
+										663 celda
+											664 texto 5,611.0
+										665 celda
+											666 texto 10,861.3
+										667 celda
+											668 texto 1,517.1
+										669 celda
+											670 texto 2,877.4
+										671 celda
+											672 texto 1,179.1
+									673 row
+										674 encabezado de fila
+											675 texto Aug. 2025
+										676 celda
+											677 texto 2,318.2
+										678 celda
+											679 texto 5,644.9
+										680 celda
+											681 texto 10,857.0
+										682 celda
+											683 texto 1,520.8
+										684 celda
+											685 texto 2,910.2
+										686 celda
+											687 texto 1,185.3
+									688 row
+										689 encabezado de fila
+											690 texto Sept. 2025
+										691 celda
+											692 texto 2,324.6
+										693 celda
+											694 texto 5,693.1
+										695 celda
+											696 texto 10,866.2
+										697 celda
+											698 texto 1,522.8
+										699 celda
+											700 texto 2,934.1
+										701 celda
+											702 texto 1,191.5
+									703 row
+										704 encabezado de fila
+											705 texto Oct. 2025
+										706 celda
+											707 texto 2,331.6
+										708 celda
+											709 texto 5,704.8
+										710 celda
+											711 texto 10,928.3
+										712 celda
+											713 texto 1,514.5
+										714 celda
+											715 texto 2,944.0
+										716 celda
+											717 texto 1,200.0
+									718 row
+										719 encabezado de fila
+											720 texto Nov. 2025
+										721 celda
+											722 texto 2,336.8
+										723 celda
+											724 texto 6,236.3
+										725 celda
+											726 texto 10,424.9
+										727 celda
+											728 texto 1,505.9
+										729 celda
+											730 texto 2,960.8
+										731 celda
+											732 texto 1,211.6
+									733 row
+										734 encabezado de fila
+											735 texto Dec. 2025
+										736 celda
+											737 texto 2,342.3
+										738 celda
+											739 texto 6,623.8
+										740 celda
+											741 texto 10,106.4
+										742 celda
+											743 texto 1,498.2
+										744 celda
+											745 texto 2,981.4
+										746 celda
+											747 texto 1,223.2
+									748 row
+										749 encabezado de fila
+											750 texto Jan. 2026
+										751 celda
+											752 texto 2,351.5
+										753 celda
+											754 texto 6,668.9
+										755 celda
+											756 texto 10,144.7
+										757 celda
+											758 texto 1,495.3
+										759 celda
+											760 texto 2,955.7
+										761 celda
+											762 texto 1,229.4
+									763 row
+										764 encabezado de fila
+											765 texto Feb. 2026
+										766 celda
+											767 texto 2,356.4
+										768 celda
+											769 texto 6,781.8
+										770 celda
+											771 texto 10,207.8
+										772 celda
+											773 texto 1,494.1
+										774 celda
+											775 texto 2,961.0
+										776 celda
+											777 texto 1,228.9
+									778 row
+										779 encabezado de fila
+											780 texto Mar. 2026
+										781 celda
+											782 texto 2,358.9
+										783 celda
+											784 texto 6,793.8
+										785 celda
+											786 texto 10,228.5
+										787 celda
+											788 texto 1,490.3
+										789 celda
+											790 texto 2,970.7
+										791 celda
+											792 texto 1,228.3
+									793 row
+										794 encabezado de fila
+											795 texto Apr. 2026
+										796 celda
+											797 texto 2,363.8
+										798 celda
+											799 texto 6,827.2
+										800 celda
+											801 texto 10,278.0
+										802 celda
+											803 texto 1,494.6
+										804 celda
+											805 texto 2,993.8
+										806 celda
+											807 texto 1,229.4
+									808 row
+										809 encabezado de fila
+											810 texto May 2026
+										811 celda
+											812 texto 2,368.0
+										813 celda
+											814 texto 6,948.2
+										815 celda
+											816 texto 10,373.0
+										817 celda
+											818 texto 1,497.5
+										819 celda
+											820 texto 3,027.0
+										821 celda
+											822 texto 1,232.8
+									823 row
+										824 encabezado de fila
+											825 texto June 2026
+										826 celda
+											827 texto 2,376.6
+										828 celda
+											829 texto 7,031.0
+										830 celda
+											831 texto 10,363.5
+										832 celda
+											833 texto 1,495.6
+										834 celda
+											835 texto 3,047.2
+										836 celda
+											837 texto 1,236.2
+									838 row
+										839 encabezado de fila
+											840 texto July 2026
+										841 celda
+											842 texto 2,383.1
+										843 celda
+											844 texto 7,090.4
+										845 celda
+											846 texto 10,390.2
+										847 celda
+											848 texto 1,499.2
+										849 celda
+											850 texto 3,052.8
+										851 celda
+											852 texto 1,238.2 e
+									853 row
+										854 encabezado de fila
+											855 texto Aug. 2026
+										856 celda
+											857 texto 2,389.5
+										858 celda
+											859 texto 7,130.2
+										860 celda
+											861 texto 10,447.5
+										862 celda
+											863 texto 1,497.9
+										864 celda
+											865 texto 3,073.9
+										866 celda
+											867 texto 1,238.2 e
+									868 row
+										869 encabezado de fila
+											870 texto Sept. 2026
+										871 celda
+											872 texto 2,397.2
+										873 celda
+											874 texto 7,219.9
+										875 celda
+											876 texto 10,444.1
+										877 celda
+											878 texto 1,506.0
+										879 celda
+											880 texto 3,085.0
+										881 celda
+											882 texto 1,238.2 e
+								883 encabezado Footnotes, Value: 3
+									884 texto Footnotes
+								885 text Components may not add to totals due to rounding. e estimated
+								886 lista de contenidos
+									887 container
+										888 AXListMarker 1.
+										889 texto Seasonally adjusted M2 is constructed by summing small-denomination time deposits and retail money market funds (MMFs), each seasonally adjusted separately, and adding the result to seasonally adjusted M1, and then subtracting not seasonally adjusted individual retirement account (IRA) and Keogh account balances at depository institutions and MMFs.
+									890 container
+										891 AXListMarker 2.
+										892 texto Seasonally adjusted M1 is constructed by summing currency, demand deposits, and other liquid deposits, each seasonally adjusted separately.
+									893 container
+										894 AXListMarker 3.
+										895 texto Currency consists of Federal Reserve notes and coin outside the U.S. Treasury, Federal Reserve Banks, and the vaults of depository institutions.
+									896 container
+										897 AXListMarker 4.
+										898 texto Demand deposits at domestically chartered commercial banks, U.S. branches and agencies of foreign banks, and Edge Act corporations (excluding those amounts held by depository institutions, the U.S. government, and foreign banks and official institutions) less cash items in the process of collection and Federal Reserve float.
+									899 container
+										900 AXListMarker 5.
+										901 texto Other liquid deposits consist of negotiable order of withdrawal (NOW) and automatic transfer service (ATS) balances at depository institutions, share draft accounts at credit unions, demand deposits at thrift institutions, and savings deposits, including money market deposit accounts.
+									902 container
+										903 AXListMarker 6.
+										904 texto Small-denomination time deposits are those issued in amounts of less than $100,000.
+									905 container
+										906 AXListMarker 7.
+										907 texto Total individual retirement account (IRA) and Keogh account balances include those held at depository institutions and money market funds (MMFs). The not seasonally adjusted total IRA and Keogh account balance component is subtracted in the construction of seasonally adjusted M2.
+							908 encabezado Table 3, Value: 4
+								909 texto Table 3
+							910 container
+								911 texto Not Seasonally Adjusted Components of M1 and M2. Billions of dollars.
+								912 link Make Full Screen, Value: federalreserve.gov/releases/h6/current/default.htm#
+								913 tabla Table 3
+									914 row
+										915 encabezado de columna 0-2
+											916 texto Date
+										917 encabezado de columna 1-6
+											918 texto M2
+											919 link 1, Help: footnote 1, Value: federalreserve.gov/releases/h6/current/default.htm#t3tg1f1
+										920 encabezado de columna 7-8
+											921 text Memorandum: IRA and Keogh account balances
+									922 row
+										923 encabezado de columna 1-3
+											924 texto M1
+											925 link 2, Help: footnote 2, Value: federalreserve.gov/releases/h6/current/default.htm#t3tg1f2
+										926 encabezado de columna 1-2
+											927 text Small- denomination time deposits
+											928 link 6, Help: footnote 6, Value: federalreserve.gov/releases/h6/current/default.htm#t3tg1f6
+										929 encabezado de columna 1-2
+											930 text Retail money market funds
+										931 encabezado de columna 1-2
+											932 text Less: Total IRA and Keogh account balances
+											933 link 7, Help: footnote 7, Value: federalreserve.gov/releases/h6/current/default.htm#t3tg1f7
+										934 encabezado de columna 1-2
+											935 text At depository institutions
+										936 encabezado de columna 1-2
+											937 text At money market funds
+									938 row
+										939 encabezado de columna
+											940 texto Currency
+											941 link 3, Help: footnote 3, Value: federalreserve.gov/releases/h6/current/default.htm#t3tg1f3
+										942 encabezado de columna
+											943 text Demand deposits
+											944 link 4, Help: footnote 4, Value: federalreserve.gov/releases/h6/current/default.htm#t3tg1f4
+										945 encabezado de columna
+											946 text Other liquid deposits
+											947 link 5, Help: footnote 5, Value: federalreserve.gov/releases/h6/current/default.htm#t3tg1f5
+									948 row
+										949 encabezado de fila
+											950 texto May 2025
+										951 celda
+											952 texto 2,300.5
+										953 celda
+											954 texto 5,561.4
+										955 celda
+											956 texto 10,707.1
+										957 celda
+											958 texto 1,526.3
+										959 celda
+											960 texto 2,795.6
+										961 celda
+											962 texto 1,164.6
+										963 celda
+											964 texto 464.9
+										965 celda
+											966 texto 699.6
+									967 row
+										968 encabezado de fila
+											969 texto June 2025
+										970 celda
+											971 texto 2,306.0
+										972 celda
+											973 texto 5,625.3
+										974 celda
+											975 texto 10,778.1
+										976 celda
+											977 texto 1,525.6
+										978 celda
+											979 texto 2,818.6
+										980 celda
+											981 texto 1,172.3
+										982 celda
+											983 texto 464.2
+										984 celda
+											985 texto 708.1
+									986 row
+										987 encabezado de fila
+											988 texto July 2025
+										989 celda
+											990 texto 2,313.9
+										991 celda
+											992 texto 5,614.1
+										993 celda
+											994 texto 10,818.0
+										995 celda
+											996 texto 1,529.6
+										997 celda
+											998 texto 2,841.7
+										999 celda
+											1000 texto 1,179.1
+										1001 celda
+											1002 texto 464.5
+										1003 celda
+											1004 texto 714.6
+									1005 row
+										1006 encabezado de fila
+											1007 texto Aug. 2025
+										1008 celda
+											1009 texto 2,318.9
+										1010 celda
+											1011 texto 5,646.7
+										1012 celda
+											1013 texto 10,820.3
+										1014 celda
+											1015 texto 1,538.0
+										1016 celda
+											1017 texto 2,867.7
+										1018 celda
+											1019 texto 1,185.3
+										1020 celda
+											1021 texto 465.6
+										1022 celda
+											1023 texto 719.7
+									1024 row
+										1025 encabezado de fila
+											1026 texto Sept. 2025
+										1027 celda
+											1028 texto 2,323.9
+										1029 celda
+											1030 texto 5,668.7
+										1031 celda
+											1032 texto 10,852.7
+										1033 celda
+											1034 texto 1,538.2
+										1035 celda
+											1036 texto 2,892.6
+										1037 celda
+											1038 texto 1,191.5
+										1039 celda
+											1040 texto 466.6
+										1041 celda
+											1042 texto 724.9
+									1043 row
+										1044 encabezado de fila
+											1045 texto Oct. 2025
+										1046 celda
+											1047 texto 2,330.3
+										1048 celda
+											1049 texto 5,680.0
+										1050 celda
+											1051 texto 10,903.5
+										1052 celda
+											1053 texto 1,519.3
+										1054 celda
+											1055 texto 2,919.2
+										1056 celda
+											1057 texto 1,200.0
+										1058 celda
+											1059 texto 469.2
+										1060 celda
+											1061 texto 730.8
+									1062 row
+										1063 encabezado de fila
+											1064 texto Nov. 2025
+										1065 celda
+											1066 texto 2,335.8
+										1067 celda
+											1068 texto 6,202.6
+										1069 celda
+											1070 texto 10,458.5
+										1071 celda
+											1072 texto 1,502.9
+										1073 celda
+											1074 texto 2,954.2
+										1075 celda
+											1076 texto 1,211.6
+										1077 celda
+											1078 texto 473.7
+										1079 celda
+											1080 texto 737.8
+									1081 row
+										1082 encabezado de fila
+											1083 texto Dec. 2025
+										1084 celda
+											1085 texto 2,344.4
+										1086 celda
+											1087 texto 6,712.9
+										1088 celda
+											1089 texto 10,168.1
+										1090 celda
+											1091 texto 1,489.1
+										1092 celda
+											1093 texto 2,985.2
+										1094 celda
+											1095 texto 1,223.2
+										1096 celda
+											1097 texto 478.4
+										1098 celda
+											1099 texto 744.9
+									1100 row
+										1101 encabezado de fila
+											1102 texto Jan. 2026
+										1103 celda
+											1104 texto 2,343.7
+										1105 celda
+											1106 texto 6,666.5
+										1107 celda
+											1108 texto 10,160.0
+										1109 celda
+											1110 texto 1,481.5
+										1111 celda
+											1112 texto 3,010.5
+										1113 celda
+											1114 texto 1,229.4
+										1115 celda
+											1116 texto 480.4
+										1117 celda
+											1118 texto 749.0
+									1119 row
+										1120 encabezado de fila
+											1121 texto Feb. 2026
+										1122 celda
+											1123 texto 2,345.2
+										1124 celda
+											1125 texto 6,688.9
+										1126 celda
+											1127 texto 10,192.8
+										1128 celda
+											1129 texto 1,479.3
+										1130 celda
+											1131 texto 3,007.0
+										1132 celda
+											1133 texto 1,228.9
+										1134 celda
+											1135 texto 479.4
+										1136 celda
+											1137 texto 749.4
+									1138 row
+										1139 encabezado de fila
+											1140 texto Mar. 2026
+										1141 celda
+											1142 texto 2,357.9
+										1143 celda
+											1144 texto 6,823.5
+										1145 celda
+											1146 texto 10,294.6
+										1147 celda
+											1148 texto 1,478.8
+										1149 celda
+											1150 texto 3,026.7
+										1151 celda
+											1152 texto 1,228.3
+										1153 celda
+											1154 texto 478.4
+										1155 celda
+											1156 texto 749.9
+									1157 row
+										1158 encabezado de fila
+											1159 texto Apr. 2026
+										1160 celda
+											1161 texto 2,367.7
+										1162 celda
+											1163 texto 6,884.2
+										1164 celda
+											1165 texto 10,332.8
+										1166 celda
+											1167 texto 1,488.9
+										1168 celda
+											1169 texto 3,019.7
+										1170 celda
+											1171 texto 1,229.4
+										1172 celda
+											1173 texto 477.7
+										1174 celda
+											1175 texto 751.6
+									1176 row
+										1177 encabezado de fila
+											1178 texto May 2026
+										1179 celda
+											1180 texto 2,374.6
+										1181 celda
+											1182 texto 6,948.5
+										1183 celda
+											1184 texto 10,295.3
+										1185 celda
+											1186 texto 1,496.4
+										1187 celda
+											1188 texto 3,015.3
+										1189 celda
+											1190 texto 1,232.8
+										1191 celda
+											1192 texto 477.6
+										1193 celda
+											1194 texto 755.2
+									1195 row
+										1196 encabezado de fila
+											1197 texto June 2026
+										1198 celda
+											1199 texto 2,382.2
+										1200 celda
+											1201 texto 7,042.5
+										1202 celda
+											1203 texto 10,336.2
+										1204 celda
+											1205 texto 1,500.7
+										1206 celda
+											1207 texto 3,021.6
+										1208 celda
+											1209 texto 1,236.2
+										1210 celda
+											1211 texto 477.5
+										1212 celda
+											1213 texto 758.7
+									1214 row
+										1215 encabezado de fila
+											1216 texto July 2026
+										1217 celda
+											1218 texto 2,386.3
+										1219 celda
+											1220 texto 7,091.9
+										1221 celda
+											1222 texto 10,349.6
+										1223 celda
+											1224 texto 1,510.7
+										1225 celda
+											1226 texto 3,016.7
+										1227 celda
+											1228 texto 1,238.2 e
+										1229 celda
+											1230 texto 477.5 e
+										1231 celda
+											1232 texto 760.8 e
+									1233 row
+										1234 encabezado de fila
+											1235 texto Aug. 2026
+										1236 celda
+											1237 texto 2,390.3
+										1238 celda
+											1239 texto 7,130.9
+										1240 celda
+											1241 texto 10,410.9
+										1242 celda
+											1243 texto 1,516.8
+										1244 celda
+											1245 texto 3,031.7
+										1246 celda
+											1247 texto 1,238.2 e
+										1248 celda
+											1249 texto 477.5 e
+										1250 celda
+											1251 texto 760.8 e
+									1252 row
+										1253 encabezado de fila
+											1254 texto Sept. 2026
+										1255 celda
+											1256 texto 2,397.1
+										1257 celda
+											1258 texto 7,183.2
+										1259 celda
+											1260 texto 10,429.3
+										1261 celda
+											1262 texto 1,524.1
+										1263 celda
+											1264 texto 3,044.0
+										1265 celda
+											1266 texto 1,238.2 e
+										1267 celda
+											1268 texto 477.5 e
+										1269 celda
+											1270 texto 760.8 e
+								1271 encabezado Footnotes, Value: 3
+									1272 texto Footnotes
+								1273 text Components may not add to totals due to rounding. e estimated
+								1274 lista de contenidos
+									1275 container
+										1276 AXListMarker 1.
+										1277 texto M2 is constructed by summing M1, small-denomination time deposits, and retail money market funds (MMFs), and then subtracting individual retirement account (IRA) and Keogh account balances at depository institutions and MMFs.
+									1278 container
+										1279 AXListMarker 2.
+										1280 texto M1 is constructed by summing currency, demand deposits, and other liquid deposits.
+									1281 container
+										1282 AXListMarker 3.
+										1283 texto Currency consists of Federal Reserve notes and coin outside the U.S. Treasury, Federal Reserve Banks, and the vaults of depository institutions.
+									1284 container
+										1285 AXListMarker 4.
+										1286 texto Demand deposits at domestically chartered commercial banks, U.S. branches and agencies of foreign banks, and Edge Act corporations (excluding those amounts held by depository institutions, the U.S. government, and foreign banks and official institutions) less cash items in the process of collection and Federal Reserve float.
+									1287 container
+										1288 AXListMarker 5.
+										1289 texto Other liquid deposits consist of negotiable order of withdrawal (NOW) and automatic transfer service (ATS) balances at depository institutions, share draft accounts at credit unions, demand deposits at thrift institutions, and savings deposits, including money market deposit accounts.
+									1290 container
+										1291 AXListMarker 6.
+										1292 texto Small-denomination time deposits are those issued in amounts of less than $100,000.
+									1293 container
+										1294 AXListMarker 7.
+										1295 texto Total individual retirement account (IRA) and Keogh account balances include those held at depository institutions and money market funds (MMFs). This component is subtracted in the construction of M2.
+							1296 texto Last Update: October 27, 2026
+							1297 link Back to Top, Help: Scroll To Top, Value: federalreserve.gov/releases/h6/current/default.htm#
+							1298 container
+								1299 encabezado BOARD OF GOVERNORS of the FEDERAL RESERVE SYSTEM, Value: 6
+									1300 text BOARD OF GOVERNORS
+									1301 texto of the
+									1302 text FEDERAL RESERVE SYSTEM
+								1303 lista de contenidos
+									1304 link About the Fed, Value: federalreserve.gov/aboutthefed.htm
+									1305 link News & Events, Value: federalreserve.gov/newsevents.htm
+									1306 link Monetary Policy, Value: federalreserve.gov/monetarypolicy.htm
+									1307 link Supervision & Regulation, Value: federalreserve.gov/supervisionreg.htm
+									1308 link Financial Stability, Value: federalreserve.gov/financial-stability.htm
+									1309 link Payment Systems, Value: federalreserve.gov/paymentsystems.htm
+									1310 link Economic Research, Value: federalreserve.gov/econres.htm
+									1311 link Data, Value: federalreserve.gov/data.htm
+									1312 link Consumers & Communities, Value: federalreserve.gov/consumerscommunities.htm
+							1313 container
+								1314 encabezado TOOLS AND INFORMATION, Value: 6
+									1315 texto TOOLS AND INFORMATION
+								1316 lista de contenidos
+									1317 link Contact, Value: federalreserve.gov/aboutthefed/contact-us-topics.htm
+									1318 link Publications, Value: federalreserve.gov/publications.htm
+									1319 link Freedom of Information (FOIA), Value: federalreserve.gov/foia/about_foia.htm
+									1320 link Office of Inspector General, Value: oig.federalreserve.gov/
+									1321 container
+										1322 link Budget & Performance, Value: federalreserve.gov/publications/annual-report.htm
+										1323 texto  |
+										1324 link Audit, Value: federalreserve.gov/regreform/audit.htm
+									1325 link No FEAR Act, Value: federalreserve.gov/eeo.htm
+									1326 link Español, Value: federalreserve.gov/espanol.htm
+									1327 container
+										1328 link Website Policies, Value: federalreserve.gov/website-linking-policies.htm
+										1329 texto  |
+										1330 link Privacy Program, Value: federalreserve.gov/privacy.htm
+									1331 link Accessibility, Value: federalreserve.gov/accessibility.htm
+							1332 container
+								1333 encabezado STAY CONNECTED, Value: 6
+									1334 texto STAY CONNECTED
+								1335 link Federal Reserve Facebook Page, Value: facebook.com/federalreserve
+								1336 link Federal Reserve Instagram Page, Value: instagram.com/federalreserveboard/
+								1337 link Federal Reserve YouTube Page, Value: youtube.com/federalreserve
+								1338 link Federal Reserve Flickr Page, Value: flickr.com/photos/federalreserve/
+								1339 link Federal Reserve LinkedIn Page, Value: linkedin.com/company/federal-reserve-board
+								1340 link Federal Reserve Threads Page, Value: threads.net/@federalreserveboard
+								1341 link Link to Federal Reserve Twitter Page, Value: twitter.com/federalreserve
+								1342 link Subscribe to RSS, Value: federalreserve.gov/feeds/feeds.htm
+								1343 link Subscribe to Email, Value: federalreserve.gov/subscribe.htm
+								1344 link Link to USA.gov, Value: usa.gov/
+								1345 link Link to Open.gov, Value: federalreserve.gov/open/open.htm
+							1346 container
+								1347 texto BOARD OF GOVERNORS
+								1348 texto of the
+								1349 text  FEDERAL RESERVE SYSTEM ●  20th Street and Constitution Avenue N.W., Washington, DC 20551

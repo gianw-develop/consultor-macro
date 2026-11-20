@@ -1,0 +1,58 @@
+{
+  "checkedAt": "2026-10-07T11:25:36Z",
+  "method": "Native Google Chrome accessibility text via CUA; originals retained locally in shared output directory",
+  "files": [
+    {
+      "file": "source-bea-trade.txt",
+      "sha256": "cabc518ff6e12e60657e8f60377555093fc73d14426ecd2f9770e50024c040b9",
+      "bytes": 16989
+    },
+    {
+      "file": "source-bls-calendar.txt",
+      "sha256": "54518ae7fc3cd15b8325f74eb6853301ccf1b61cc587c4aea87b95e6c940397a",
+      "bytes": 67839
+    },
+    {
+      "file": "source-dol-calendar.txt",
+      "sha256": "04f3f72c385d0662bde08a0b1c16c05df15364ffecec3610b89ce88685d33344",
+      "bytes": 39572
+    },
+    {
+      "file": "source-fed-calendar.txt",
+      "sha256": "f11b6c10757efecc83014d3f32cd3f5372f6ddaffea37fc2a9d0716089687d98",
+      "bytes": 15971
+    },
+    {
+      "file": "source-fed-credit-current.txt",
+      "sha256": "f2f712aa628daf49ebd50a56af39ade2490a3c7e692d45ebe51e3920640713c7",
+      "bytes": 67809
+    },
+    {
+      "file": "source-fed-credit.txt",
+      "sha256": "518f51bbaa1387f686826b4e3307af1dddd8816d4c7a6610f9133a1ba423e4e4",
+      "bytes": 30517
+    },
+    {
+      "file": "source-ism-services-body.txt",
+      "sha256": "b04d65c9eb184e463ecad0c60ff788f84a94f071d2314818f02711b5e3d7984c",
+      "bytes": 67713
+    },
+    {
+      "file": "source-ism-services.txt",
+      "sha256": "4b8d0934deb0c3e0765c4d4171688c7c69ef6a77c5822b23fc3b0182467ab79a",
+      "bytes": 4579
+    },
+    {
+      "file": "source-michigan.txt",
+      "sha256": "7dbfba444147de757e0b3db5fd43d3eb0cb544acf8d716c3f219549d3b266195",
+      "bytes": 7442
+    },
+    {
+      "file": "source-wholesale-calendar.txt",
+      "sha256": "ee1604b0fa3c8e5cc3493b71d6dc5521a5b3dada1edaa0050a8e95968354a635",
+      "bytes": 9260
+    }
+  ],
+  "ismDiscrepancy": "Browser title says September 2025; report heading and tables explicitly September 2026, 54.9/55.4 and prices 74.0/72.6. Third business day rule at 10am ET gives October 5.",
+  "calendar": "Madrid: Fed minutes Oct7 20:00, consumer credit 21:00; claims Oct8 14:30; wholesale Oct8 16:00; Michigan Oct9 16:00; CPI Oct14 14:30."
+}

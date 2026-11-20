@@ -1,0 +1,63 @@
+{
+  "source": "/Users/gianw/Library/Mobile Documents/com~apple~CloudDocs/PDF LEER/gregory-mentoria-8-resumen-final.pdf",
+  "copy": "public/annienexus/gregory-mentoria-8-resumen-final.pdf",
+  "relevantPage": 3,
+  "contentPages": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "sha256": "95cc219dcf3f272e04c3fa9b7a1cdc037651253555c49e645b3d6949d79f7c23",
+  "purpose": "Definitive user-selected visual and teaching reference. Full four-zone map, curves, characteristics and assets. No historical course figures become current data.",
+  "supersedesVisualReference": {
+    "source": "/Users/gianw/Documents/ChatGPT/Wall Street Visual Intelligence/output/pdf/aninexus-regimen-estados-unidos-2026-09-28.pdf",
+    "sha256": "6237c6bbc7d35199851daa56fdb4d20201aeda58a61338aabdfe136cbfc7d8a7",
+    "reportDate": "2026-09-28"
+  },
+  "manualCut": {
+    "source": "research/ANNIENEXUS-CUADRANTE-LECTURA-ACTUAL.json",
+    "copy": "docs/annienexus/quadrant-course-lab-cut-2026-09-30.json",
+    "sha256": "9754dfd678c20285fcc6db3f83df61516c2dd40ffa8e805396cc112dc9a3f647",
+    "asOf": "2026-09-30T15:02:16+02:00",
+    "status": "provisional_manual_mixed_no_point",
+    "verifiedRenderedSources": [
+      "BEA GDP 30/09/2026",
+      "BEA Personal Income and Outlays 30/09/2026",
+      "BLS CPI 11/09/2026",
+      "Conference Board LEI/CEI 18/09/2026",
+      "Federal Reserve FOMC 16/09/2026"
+    ],
+    "localBeaEvidence": "research/quadrant-verification-2026-09-30/",
+    "automaticUpdates": false
+  },
+  "phaseClock": {
+    "actualOrientation": "categorical sector center from us-cli-cpi-three-month-sector-v1; currently 135 degrees; not magnitude or confidence",
+    "actualMovement": null,
+    "centerMeansEquilibrium": false,
+    "demoAngle": "atan2(growth change, inflation change), degrees clockwise from top; direction only",
+    "illustrativeRoll": {
+      "kind": "demonstration_scenario",
+      "fromDegrees": 35,
+      "toDegrees": -35,
+      "durationSeconds": 5,
+      "repeat": "user-triggered only",
+      "economicDate": null,
+      "realDestination": null
+    },
+    "reducedMotion": "system preference plus persistent local interface toggle",
+    "dateAndSource": "Visible beneath the dial and linked via aria-describedby",
+    "evidenceAccess": "native modal dialog from the circle or source button"
+  },
+  "theme": "AnnieNexus dark palette, preserving the approved full-map geometry",
+  "descriptiveEstimate": {
+    "inputCopy": "docs/annienexus/quadrant-estimate-inputs-2026-09-30.json",
+    "method": "us-cli-cpi-three-month-sector-v1",
+    "observedMonth": "2026-08",
+    "asOf": "2026-09-30T17:28:06+02:00",
+    "confirmedRegime": false,
+    "automaticUpdates": false,
+    "replacesEditorialCut": false
+  }
+}

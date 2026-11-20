@@ -1,20 +1,24 @@
-import { NextResponse } from "next/server";
-import type { NextRequest } from "next/server";
-import { SESSION_COOKIE, validateSessionToken } from "@/lib/auth";
-
-// Red de seguridad ademas del chequeo que ya hace cada route handler:
-// si se agrega una ruta nueva bajo /api y alguien olvida copiar el
-// chequeo de sesion, esto la protege igual.
-export function proxy(request: NextRequest) {
-  const token = request.cookies.get(SESSION_COOKIE)?.value;
-
-  if (!validateSessionToken(token)) {
-    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-  }
-
-  return NextResponse.next();
+import { NextRequest, NextResponse } from "next/server";
+import { applicationOrigin, localPreview } from "./shared/server/auth-config";
+import { authorizedUser, requestAuth } from "./shared/server/supabase-request";
+import { safePostLoginPath } from "./shared/auth-destination";
+export async function proxy(request: NextRequest) {
+  const path = request.nextUrl.pathname;
+  if (localPreview() && ["127.0.0.1","localhost","[::1]"].includes(request.nextUrl.hostname)) return NextResponse.next();
+  // Only UI code, fonts and access routes are public. Private documents are server assets.
+  if (path.startsWith("/_next/static/") || path.startsWith("/fonts/") || path.startsWith("/brand/") || path === "/icon.svg" || path === "/acceso" || path === "/auth/callback" || path === "/api/auth/entry" || path === "/api/auth/logout") return NextResponse.next();
+  const auth=requestAuth(request);
+  if (!auth) return new NextResponse("AWNexus: acceso pendiente de configuración.",{status:503,headers:{"Cache-Control":"no-store"}});
+  try {
+    const user=await authorizedUser(auth);
+    if (!user) {
+      const accessUrl = new URL("/acceso", applicationOrigin(request));
+      accessUrl.searchParams.set("next", safePostLoginPath(path));
+      const response=path.startsWith("/api/") || path.startsWith("/_next/") || /\.[a-z0-9]+$/i.test(path)
+        ? NextResponse.json({error:"Se requiere una cuenta autorizada."},{status:401})
+        : NextResponse.redirect(accessUrl);
+      return auth.apply(response);
+    }
+    return auth.apply(NextResponse.next({request:auth.input}));
+  } catch { return auth.apply(NextResponse.json({error:"No se pudo verificar el acceso."},{status:503})); }
 }
-
-export const config = {
-  matcher: ["/api/dashboard/:path*", "/api/liquidaciones/:path*", "/api/10x/:path*"],
-};

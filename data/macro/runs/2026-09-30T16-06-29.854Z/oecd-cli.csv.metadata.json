@@ -1,0 +1,8 @@
+{
+  "name": "OCDE · CLI ajustado por amplitud",
+  "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI/.M.LI...AA...H?startPeriod=2025-01&dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+  "fetchedAt": "2026-09-30T16:06:30.156Z",
+  "publishedAt": null,
+  "sha256": "902965a40242469ae746156e3a7a92c32145bcae135e5bc6582af92f5bae402a",
+  "mode": "connector"
+}

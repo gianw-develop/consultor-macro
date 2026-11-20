@@ -1,0 +1,18 @@
+[
+  {
+    "file": "dol-2026-10-01.pdf",
+    "url": "https://www.dol.gov/ui/data.pdf",
+    "sha256": "e33ba5adcf0eb213d1d60ee96b55b9486d9a871250a99e28d6258a424cc0294e",
+    "bytes": 538666
+  },
+  {
+    "url": "https://www.bls.gov/news.release/archives/cpi_09112026.htm",
+    "error": "HTTP Error 403: Forbidden",
+    "verifiedVia": "web tool"
+  },
+  {
+    "url": "https://www.census.gov/retail/index.html",
+    "error": "HTTP Error 403: Forbidden",
+    "verifiedVia": "web tool"
+  }
+]

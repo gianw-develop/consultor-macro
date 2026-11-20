@@ -1,0 +1,509 @@
+- link "Skip to main content":
+  - /url: "#main-content"
+- banner
+- region "Official website of the United States government":
+  - img "U.S. flag"
+  - paragraph: An official website of the United States government
+  - button "Here’s how you know"
+- banner:
+  - heading "Seal of the U.S. Department of the Treasury, 1789U.S. Department of the Treasury" [level=1]:
+    - link "Seal of the U.S. Department of the Treasury, 1789U.S. Department of the Treasury":
+      - /url: /
+      - img "Seal of the U.S. Department of the Treasury, 1789"
+      - text: U.S. Department of the Treasury
+- link "Seal of the U.S. Department of the Treasury, 1789":
+  - /url: /
+  - img "Seal of the U.S. Department of the Treasury, 1789"
+- navigation:
+  - list:
+    - link "About Treasury":
+      - /url: /about-treasury
+    - link "Policy Issues":
+      - /url: /policy-issues
+    - link "Data":
+      - /url: /data
+    - link "Services":
+      - /url: /services
+    - link "News":
+      - /url: /news/press-releases
+    - link "Whistleblower Resources":
+      - /url: /whistleblower
+    - link "Working Families Tax Cuts":
+      - /url: /wftc
+    - link "Search":
+      - /url: /search
+- navigation "Breadcrumb":
+  - generic: Breadcrumb
+  - list:
+    - link "Home":
+      - /url: /
+    - listitem: Policy Issues
+    - link "Financing the Government":
+      - /url: /policy-issues/financing-the-government
+    - link "Interest Rate Statistics":
+      - /url: /policy-issues/financing-the-government/interest-rate-statistics
+    - listitem: Daily Treasury Rates
+- main:
+  - heading "Daily Treasury Rates" [level=2]
+  - heading "Resources" [level=3]
+  - list:
+    - link "Subscribe to Developer Notice Updates":
+      - /url: https://public.govdelivery.com/accounts/USTREAS/subscriber/new?topic_id=USTREAS_1153
+      - text: Subscribe to Developer Notice Updates
+    - link "Developer Notice on Changes to the XML Feeds":
+      - /url: /developer-notice-xml-changes
+    - link "Interest Rates - Frequently Asked Questions":
+      - /url: /policy-issues/financing-the-government/interest-rate-statistics/interest-rates-frequently-asked-questions
+    - link "Treasury Daily Interest Rate XML Feed":
+      - /url: /policy-issues/financing-the-government/interest-rate-statistics/interest-rate-xml-files
+    - link "Treasury Yield Curve Methodology":
+      - /url: /policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology
+  - generic: Select Type of Interest Rate Data
+  - combobox "Select Type of Interest Rate Data":
+    - option "Daily Treasury Par Yield Curve Rates" [selected]
+    - option "Daily Treasury Bill Rates"
+    - option "Daily Treasury Long-Term Rates"
+    - option "Daily Treasury Par Real Yield Curve Rates"
+    - option "Daily Treasury Real Long-Term Rates"
+  - group "Select Time Period":
+    - generic: Select Time Period
+    - radio "Current Month"
+    - generic: Current Month
+    - radio "2026" [checked]
+    - generic: "2026"
+    - radio "2025"
+    - generic: "2025"
+    - radio "2024"
+    - generic: "2024"
+    - text: For daily rates prior to 2023, please
+    - link "View Daily Treasury Archives":
+      - /url: /resource-center/data-chart-center/interest-rates/daily-treasury-rate-archives
+    - text: .
+  - button "Apply" [disabled]
+  - link "Subscribe to updates for this content via GovDelivery":
+    - /url: https://public.govdelivery.com/accounts/USTREAS/subscriber/new?topic_id=USTREAS_10
+    - img "GovDelivery logo"
+    - text: Get updates to this content
+  - separator
+  - heading "Daily Treasury Par Yield Curve Rates" [level=4]
+  - link "Download CSV":
+    - /url: /resource-center/data-chart-center/interest-rates/daily-treasury-rates.csv/2026/all?type=daily_treasury_yield_curve&field_tdr_date_value=2026&page&_format=csv
+  - link "Render XML":
+    - /url: /resource-center/data-chart-center/interest-rates/pages/xml?data=daily_treasury_yield_curve&field_tdr_date_value=2026
+    - text: View XML feed
+  - link "Render XML for Daily Treasury Par Yield Curve Rates":
+    - /url: /resource-center/data-chart-center/interest-rates/pages/xmlview?data=daily_treasury_yield_curve&field_tdr_date_value=2026
+    - text: Render XML
+  - text: Show
+  - combobox "Show entries":
+    - option "10"
+    - option "25" [selected]
+    - option "50"
+    - option "100"
+  - text: entries
+  - table:
+    - rowgroup:
+      - 'row "Date: activate to sort column ascending 1 Mo: activate to sort column ascending 1.5 Mo: activate to sort column ascending 2 Mo: activate to sort column ascending 3 Mo: activate to sort column ascending 4 Mo: activate to sort column ascending 6 Mo: activate to sort column ascending 1 Yr: activate to sort column ascending 2 Yr: activate to sort column ascending 3 Yr: activate to sort column ascending 5 Yr: activate to sort column ascending 7 Yr: activate to sort column ascending 10 Yr: activate to sort column ascending 20 Yr: activate to sort column ascending 30 Yr: activate to sort column ascending"':
+        - 'columnheader "Date: activate to sort column ascending"': ↕ Date
+        - text: ↕ ↕ ↕ ↕ ↕ ↕ ↕ ↕ ↕ ↕ ↕
+        - 'columnheader "1 Mo: activate to sort column ascending"': ↕ 1 Mo
+        - 'columnheader "1.5 Mo: activate to sort column ascending"': ↕ 1.5 Mo
+        - 'columnheader "2 Mo: activate to sort column ascending"': ↕ 2 Mo
+        - 'columnheader "3 Mo: activate to sort column ascending"': ↕ 3 Mo
+        - 'columnheader "4 Mo: activate to sort column ascending"': ↕ 4 Mo
+        - 'columnheader "6 Mo: activate to sort column ascending"': ↕ 6 Mo
+        - 'columnheader "1 Yr: activate to sort column ascending"': ↕ 1 Yr
+        - 'columnheader "2 Yr: activate to sort column ascending"': ↕ 2 Yr
+        - 'columnheader "3 Yr: activate to sort column ascending"': ↕ 3 Yr
+        - 'columnheader "5 Yr: activate to sort column ascending"': ↕ 5 Yr
+        - 'columnheader "7 Yr: activate to sort column ascending"': ↕ 7 Yr
+        - 'columnheader "10 Yr: activate to sort column ascending"': ↕ 10 Yr
+        - 'columnheader "20 Yr: activate to sort column ascending"': ↕ 20 Yr
+        - 'columnheader "30 Yr: activate to sort column ascending"': ↕ 30 Yr
+  - table:
+    - rowgroup:
+      - 'row "Date: activate to sort column ascending 1 Mo: activate to sort column ascending 1.5 Mo: activate to sort column ascending 2 Mo: activate to sort column ascending 3 Mo: activate to sort column ascending 4 Mo: activate to sort column ascending 6 Mo: activate to sort column ascending 1 Yr: activate to sort column ascending 2 Yr: activate to sort column ascending 3 Yr: activate to sort column ascending 5 Yr: activate to sort column ascending 7 Yr: activate to sort column ascending 10 Yr: activate to sort column ascending 20 Yr: activate to sort column ascending 30 Yr: activate to sort column ascending"':
+        - 'columnheader "Date: activate to sort column ascending"':
+          - generic: Date
+        - 'columnheader "1 Mo: activate to sort column ascending"':
+          - generic: 1 Mo
+        - 'columnheader "1.5 Mo: activate to sort column ascending"':
+          - generic: 1.5 Mo
+        - 'columnheader "2 Mo: activate to sort column ascending"':
+          - generic: 2 Mo
+        - 'columnheader "3 Mo: activate to sort column ascending"':
+          - generic: 3 Mo
+        - 'columnheader "4 Mo: activate to sort column ascending"':
+          - generic: 4 Mo
+        - 'columnheader "6 Mo: activate to sort column ascending"':
+          - generic: 6 Mo
+        - 'columnheader "1 Yr: activate to sort column ascending"':
+          - generic: 1 Yr
+        - 'columnheader "2 Yr: activate to sort column ascending"':
+          - generic: 2 Yr
+        - 'columnheader "3 Yr: activate to sort column ascending"':
+          - generic: 3 Yr
+        - 'columnheader "5 Yr: activate to sort column ascending"':
+          - generic: 5 Yr
+        - 'columnheader "7 Yr: activate to sort column ascending"':
+          - generic: 7 Yr
+        - 'columnheader "10 Yr: activate to sort column ascending"':
+          - generic: 10 Yr
+        - 'columnheader "20 Yr: activate to sort column ascending"':
+          - generic: 20 Yr
+        - 'columnheader "30 Yr: activate to sort column ascending"':
+          - generic: 30 Yr
+    - rowgroup:
+      - row "10/20/2026 4.10 4.13 4.17 4.26 4.34 4.36 4.51 4.79 4.86 4.94 5.02 5.12 5.47 5.42":
+        - cell "10/20/2026":
+          - time: 10/20/2026
+        - cell "4.10"
+        - cell "4.13"
+        - cell "4.17"
+        - cell "4.26"
+        - cell "4.34"
+        - cell "4.36"
+        - cell "4.51"
+        - cell "4.79"
+        - cell "4.86"
+        - cell "4.94"
+        - cell "5.02"
+        - cell "5.12"
+        - cell "5.47"
+        - cell "5.42"
+      - row "10/21/2026 4.09 4.12 4.16 4.25 4.34 4.35 4.52 4.81 4.89 4.95 5.03 5.13 5.47 5.42":
+        - cell "10/21/2026":
+          - time: 10/21/2026
+        - cell "4.09"
+        - cell "4.12"
+        - cell "4.16"
+        - cell "4.25"
+        - cell "4.34"
+        - cell "4.35"
+        - cell "4.52"
+        - cell "4.81"
+        - cell "4.89"
+        - cell "4.95"
+        - cell "5.03"
+        - cell "5.13"
+        - cell "5.47"
+        - cell "5.42"
+      - row "10/22/2026 4.11 4.10 4.16 4.22 4.29 4.29 4.41 4.65 4.72 4.78 4.86 4.96 5.32 5.29":
+        - cell "10/22/2026":
+          - time: 10/22/2026
+        - cell "4.11"
+        - cell "4.10"
+        - cell "4.16"
+        - cell "4.22"
+        - cell "4.29"
+        - cell "4.29"
+        - cell "4.41"
+        - cell "4.65"
+        - cell "4.72"
+        - cell "4.78"
+        - cell "4.86"
+        - cell "4.96"
+        - cell "5.32"
+        - cell "5.29"
+      - row "10/23/2026 4.11 4.11 4.16 4.22 4.30 4.30 4.44 4.69 4.75 4.82 4.89 5.00 5.37 5.33":
+        - cell "10/23/2026":
+          - time: 10/23/2026
+        - cell "4.11"
+        - cell "4.11"
+        - cell "4.16"
+        - cell "4.22"
+        - cell "4.30"
+        - cell "4.30"
+        - cell "4.44"
+        - cell "4.69"
+        - cell "4.75"
+        - cell "4.82"
+        - cell "4.89"
+        - cell "5.00"
+        - cell "5.37"
+        - cell "5.33"
+      - row "10/26/2026 4.11 4.13 4.18 4.22 4.32 4.35 4.47 4.68 4.79 4.84 4.91 5.00 5.35 5.31":
+        - cell "10/26/2026":
+          - time: 10/26/2026
+        - cell "4.11"
+        - cell "4.13"
+        - cell "4.18"
+        - cell "4.22"
+        - cell "4.32"
+        - cell "4.35"
+        - cell "4.47"
+        - cell "4.68"
+        - cell "4.79"
+        - cell "4.84"
+        - cell "4.91"
+        - cell "5.00"
+        - cell "5.35"
+        - cell "5.31"
+      - row "10/27/2026 4.10 4.11 4.18 4.22 4.31 4.34 4.50 4.70 4.80 4.82 4.91 4.99 5.34 5.30":
+        - cell "10/27/2026":
+          - time: 10/27/2026
+        - cell "4.10"
+        - cell "4.11"
+        - cell "4.18"
+        - cell "4.22"
+        - cell "4.31"
+        - cell "4.34"
+        - cell "4.50"
+        - cell "4.70"
+        - cell "4.80"
+        - cell "4.82"
+        - cell "4.91"
+        - cell "4.99"
+        - cell "5.34"
+        - cell "5.30"
+      - row "10/28/2026 4.07 4.10 4.16 4.18 4.22 4.32 4.47 4.67 4.80 4.85 4.95 5.05 5.41 5.37":
+        - cell "10/28/2026":
+          - time: 10/28/2026
+        - cell "4.07"
+        - cell "4.10"
+        - cell "4.16"
+        - cell "4.18"
+        - cell "4.22"
+        - cell "4.32"
+        - cell "4.47"
+        - cell "4.67"
+        - cell "4.80"
+        - cell "4.85"
+        - cell "4.95"
+        - cell "5.05"
+        - cell "5.41"
+        - cell "5.37"
+      - row "10/29/2026 4.06 4.08 4.17 4.18 4.21 4.28 4.42 4.61 4.73 4.78 4.87 4.98 5.35 5.32":
+        - cell "10/29/2026":
+          - time: 10/29/2026
+        - cell "4.06"
+        - cell "4.08"
+        - cell "4.17"
+        - cell "4.18"
+        - cell "4.21"
+        - cell "4.28"
+        - cell "4.42"
+        - cell "4.61"
+        - cell "4.73"
+        - cell "4.78"
+        - cell "4.87"
+        - cell "4.98"
+        - cell "5.35"
+        - cell "5.32"
+      - row "10/30/2026 4.06 4.09 4.16 4.16 4.18 4.25 4.36 4.56 4.65 4.71 4.80 4.94 5.34 5.31":
+        - cell "10/30/2026":
+          - time: 10/30/2026
+        - cell "4.06"
+        - cell "4.09"
+        - cell "4.16"
+        - cell "4.16"
+        - cell "4.18"
+        - cell "4.25"
+        - cell "4.36"
+        - cell "4.56"
+        - cell "4.65"
+        - cell "4.71"
+        - cell "4.80"
+        - cell "4.94"
+        - cell "5.34"
+        - cell "5.31"
+      - row "11/02/2026 4.05 4.09 4.16 4.21 4.19 4.25 4.38 4.59 4.65 4.70 4.79 4.91 5.31 5.28":
+        - cell "11/02/2026":
+          - time: 11/02/2026
+        - cell "4.05"
+        - cell "4.09"
+        - cell "4.16"
+        - cell "4.21"
+        - cell "4.19"
+        - cell "4.25"
+        - cell "4.38"
+        - cell "4.59"
+        - cell "4.65"
+        - cell "4.70"
+        - cell "4.79"
+        - cell "4.91"
+        - cell "5.31"
+        - cell "5.28"
+      - row "11/03/2026 4.03 4.09 4.15 4.21 4.18 4.26 4.40 4.61 4.68 4.74 4.83 4.95 5.35 5.32":
+        - cell "11/03/2026":
+          - time: 11/03/2026
+        - cell "4.03"
+        - cell "4.09"
+        - cell "4.15"
+        - cell "4.21"
+        - cell "4.18"
+        - cell "4.26"
+        - cell "4.40"
+        - cell "4.61"
+        - cell "4.68"
+        - cell "4.74"
+        - cell "4.83"
+        - cell "4.95"
+        - cell "5.35"
+        - cell "5.32"
+  - status: Showing 201 to 211 of 211 entries
+  - link "< Previous"
+  - link "1"
+  - text: …
+  - link "5"
+  - link "6"
+  - link "7"
+  - link "8"
+  - link "9"
+  - separator
+  - paragraph: Tuesday Nov 03, 2026
+  - paragraph:
+    - text: "*Series Break - Treasury updated its methodology for deriving yield curves. On 12/6/2021, Treasury began using a monotone convex spline (MC) method for deriving its official par yield curves and discontinued the use of the quasi-cubic Hermite spline (HS) methodology. All Treasury yield curve rates derived from yield curves that used the HS methodology - prior to implementation of the MC method - remain official. See the"
+    - link "Yield Curve Methodology Change Information Sheet":
+      - /url: /policy-issues/financing-the-government/yield-curve-methodology-change-information-sheet
+    - text: for more details.
+  - paragraph: "** The 1.5-month constant maturity series began on February 18, 2025, with the first auction of a 6-week Treasury bill as a benchmark Treasury security. Prior to this date, Treasury had issued Treasury bills with 6-week maturities as cash management bills."
+  - paragraph: "** The 4-month constant maturity series began on October 19, 2022, with the first auction of a 17-week Treasury bill as a benchmark Treasury security. Prior to this date, Treasury had issued Treasury bills with 17-week maturities as cash management bills."
+  - paragraph: The 2-month constant maturity series began on October 16, 2018, with the first auction of the 8-week Treasury bill.
+  - paragraph: 30-year Treasury constant maturity series was discontinued on February 18, 2002 and reintroduced on February 9, 2006. From February 18, 2002 to February 8, 2006, Treasury published alternatives to a 30-year rate. See Long-Term Average Rate for more information.
+  - paragraph: Treasury discontinued the 20-year constant maturity series at the end of calendar year 1986 and reinstated that series on October 1, 1993. As a result, there are no 20-year rates available for the time-period January 1, 1987 through September 30, 1993.
+  - paragraph: "Treasury Par Yield Curve Rates: These rates are commonly referred to as \"Constant Maturity Treasury\" rates, or CMTs. Yields are interpolated by the Treasury from the daily par yield curve. This curve, which relates the yield on a security to its time to maturity, is based on the closing market bid prices on the most recently auctioned Treasury securities in the over-the-counter market. These par yields are derived from indicative, bid-side market price quotations (not actual transactions) obtained by the Federal Reserve Bank of New York at or near 3:30 PM each trading day. The CMT yield values are read from the par yield curve at fixed maturities, currently 1, 1.5, 2, 3, 4 and 6 months and 1, 2, 3, 5, 7, 10, 20, and 30 years. This method provides a par yield for a 10-year maturity, for example, even if no outstanding security has exactly 10 years remaining to maturity."
+  - paragraph:
+    - text: "Treasury Par Yield Curve Methodology: The Treasury par yield curve is estimated daily using a monotone convex spline method. Inputs to the model are indicative bid-side prices for the most recently auctioned nominal Treasury securities. Treasury reserves the option to make changes to the yield curve as appropriate and in its sole discretion."
+    - link "See our Treasury Yield Curve Methodology page":
+      - /url: https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics/treasury-yield-curve-methodology
+    - text: for details.
+  - paragraph: "Negative Yields and Nominal Constant Maturity Treasury Series Rates (CMTs): At times, financial market conditions, in conjunction with extraordinarily low levels of interest rates, may result in negative yields for some Treasury securities trading in the secondary market. Negative yields for Treasury securities most often reflect highly technical factors in Treasury markets related to the cash and repurchase agreement markets and are at times unrelated to the time value of money."
+  - paragraph: At such times, Treasury will not restrict the use of prices that correspond to negative yields as inputs to the monotone convex spline method. However, the derived par yield curve from these input prices for the Treasury nominal Constant Maturity Treasury series (CMTs) will be floored at zero. This decision is consistent with Treasury not accepting negative yields in Treasury nominal security auctions.
+  - paragraph: In addition, given that CMTs are used in many statutorily and regulatory determined loan and credit programs as well as for setting interest rates on non-marketable government securities, establishing a floor of zero more accurately reflects borrowing costs related to various programs.
+  - paragraph:
+    - text: For more information regarding these statistics contact the Office of Debt Management by email at
+    - link "debt.management@do.treas.gov":
+      - /url: mailto:debt.management@do.treas.gov
+  - paragraph: For other Public Debt information contact (202) 504-3550
+- contentinfo:
+  - navigation "block-portalfooter-menu":
+    - heading "Bureaus" [level=3]
+    - list:
+      - link "Alcohol and Tobacco Tax and Trade (TTB)":
+        - /url: http://www.ttb.gov/
+      - link "Bureau of Engraving and Printing (BEP)":
+        - /url: https://www.bep.gov/
+      - link "Bureau of the Fiscal Service (BFS)":
+        - /url: http://www.fiscal.treasury.gov/
+      - link "Financial Crimes Enforcement Network (FinCEN)":
+        - /url: http://www.fincen.gov/
+      - link "Internal Revenue Service (IRS)":
+        - /url: http://www.irs.gov/
+      - link "Office of the Comptroller of the Currency (OCC)":
+        - /url: http://www.occ.gov/
+      - link "U.S. Mint":
+        - /url: http://www.usmint.gov/
+  - navigation "block-portalfooter-2-menu":
+    - heading "Inspector General Sites" [level=3]
+    - list:
+      - link "Office of Inspector General (OIG)":
+        - /url: https://oig.treasury.gov/
+      - link "Treasury Inspector General for Tax Administration (TIGTA)":
+        - /url: http://www.treasury.gov/tigta
+      - link "Report Scams, Fraud, Waste & Abuse":
+        - /url: /services/report-fraud-waste-and-abuse
+      - link "Special Inspector General for Pandemic Recovery (SIGPR)":
+        - /url: https://www.sigpr.gov/
+  - navigation "block-portalfooter-3-menu":
+    - heading "U.S. Government Shared Services" [level=3]
+    - list:
+      - link "Center for Financial Management":
+        - /url: https://fiscal.treasury.gov/financial-management-solutions/financial-management-shared-services
+      - link "Treasury Direct Services for Governments":
+        - /url: https://www.treasurydirect.gov/government/
+      - link "Financial Management (FM) Marketplace Catalog":
+        - /url: https://tfx.treasury.gov/fmqsmo/marketplace-catalog
+  - navigation "block-portalfooter-4-menu":
+    - heading "Additional Resources" [level=3]
+    - list:
+      - link "Privacy Act":
+        - /url: /footer/privacy-act
+      - link "Small Business Contacts":
+        - /url: /policy-issues/small-business-programs/small-and-disadvantaged-business-utilization/how-to-contact-us
+      - link "Budget and Performance":
+        - /url: /about/budget-financial-reporting-planning-and-performance
+      - link "TreasuryDirect.gov Securities/Bonds":
+        - /url: http://www.treasurydirect.gov/
+      - link "Freedom of Information Act (FOIA)":
+        - /url: /footer/freedom-of-information-act
+      - link "No FEAR Act Data":
+        - /url: /footer/no-fear-act
+      - link "Whistleblower Protection":
+        - /url: /footer/prohibited-personnel-practices-and-whistleblower-protection
+  - navigation "block-portalfooter-5-menu":
+    - heading "Other Government Sites" [level=3]
+    - list:
+      - link "USA.gov":
+        - /url: http://www.usa.gov/
+      - link "USAJOBS.gov":
+        - /url: http://www.usajobs.gov/
+      - link "OPM.gov":
+        - /url: http://www.opm.gov/
+      - link "MyMoney.gov":
+        - /url: http://www.mymoney.gov/
+      - link "Data.gov":
+        - /url: http://www.data.gov/
+      - link "Forms.gov":
+        - /url: https://www.usa.gov/forms
+      - link "Regulations.gov":
+        - /url: http://www.regulations.gov/
+      - link "PaymentAccuracy.gov":
+        - /url: http://www.paymentaccuracy.gov/
+      - link "my Social Security":
+        - /url: http://www.socialsecurity.gov/myaccount/
+      - link "Vote.gov":
+        - /url: https://vote.gov/
+  - navigation "block-utilityfooter-menu":
+    - list:
+      - link "Privacy Policy":
+        - /url: https://home.treasury.gov/subfooter/privacy-policy
+      - text: •
+      - link "Google Privacy":
+        - /url: https://home.treasury.gov/subfooter/google-privacy-policy
+      - text: •
+      - link "Site Policies and Notices":
+        - /url: https://home.treasury.gov/subfooter/site-policies-and-notices
+      - text: •
+      - link "FAQs":
+        - /url: https://home.treasury.gov/faqs
+      - text: •
+      - link "Feedback":
+        - /url: https://www.treasury.gov/pages/tgovproblemsfeedbackform.aspx
+      - text: •
+      - link "Careers":
+        - /url: /careers
+      - text: •
+      - link "Accessibility":
+        - /url: /utility/accessibility
+      - text: •
+      - link "Contact":
+        - /url: /utility/contact
+    - text: Required Plug-ins
+    - link "Adobe® Reader®":
+      - /url: http://get.adobe.com/reader/
+  - list:
+    - link "Twitter":
+      - /url: https://twitter.com/USTreasury
+    - link "Facebook":
+      - /url: https://www.facebook.com/USTreasuryDept
+- generic "You are now leaving Treasury.gov"
+- table:
+  - rowgroup:
+    - row:
+      - columnheader: ↕ Date
+      - text: ↕ ↕ ↕ ↕ ↕ ↕ ↕ ↕ ↕ ↕ ↕
+      - columnheader: ↕ 1 Mo
+      - columnheader: ↕ 1.5 Mo
+      - columnheader: ↕ 2 Mo
+      - columnheader: ↕ 3 Mo
+      - columnheader: ↕ 4 Mo
+      - columnheader: ↕ 6 Mo
+      - columnheader: ↕ 1 Yr
+      - columnheader: ↕ 2 Yr
+      - columnheader: ↕ 3 Yr
+      - columnheader: ↕ 5 Yr
+      - columnheader: ↕ 7 Yr
+      - columnheader: ↕ 10 Yr
+      - columnheader: ↕ 20 Yr
+      - columnheader: ↕ 30 Yr

@@ -1,0 +1,127 @@
+{
+  "method": "us-cli-cpi-three-month-sector-v1",
+  "asOf": "2026-09-30T17:28:06+02:00",
+  "status": "descriptive_estimate_not_confirmed_regime",
+  "observedMonth": "2026-08",
+  "cli": [
+    {
+      "month": "2025-01",
+      "value": 99.80014
+    },
+    {
+      "month": "2025-02",
+      "value": 99.74052
+    },
+    {
+      "month": "2025-03",
+      "value": 99.64484
+    },
+    {
+      "month": "2025-04",
+      "value": 99.55639
+    },
+    {
+      "month": "2025-05",
+      "value": 99.52384
+    },
+    {
+      "month": "2025-06",
+      "value": 99.54102
+    },
+    {
+      "month": "2025-07",
+      "value": 99.57809
+    },
+    {
+      "month": "2025-08",
+      "value": 99.62407
+    },
+    {
+      "month": "2025-09",
+      "value": 99.68774
+    },
+    {
+      "month": "2025-10",
+      "value": 99.77927
+    },
+    {
+      "month": "2025-11",
+      "value": 99.90804
+    },
+    {
+      "month": "2025-12",
+      "value": 100.0671
+    },
+    {
+      "month": "2026-01",
+      "value": 100.2392
+    },
+    {
+      "month": "2026-02",
+      "value": 100.3905
+    },
+    {
+      "month": "2026-03",
+      "value": 100.5105
+    },
+    {
+      "month": "2026-04",
+      "value": 100.6141
+    },
+    {
+      "month": "2026-05",
+      "value": 100.7064
+    },
+    {
+      "month": "2026-06",
+      "value": 100.8031
+    },
+    {
+      "month": "2026-07",
+      "value": 100.8923
+    },
+    {
+      "month": "2026-08",
+      "value": 100.9563
+    }
+  ],
+  "cliPublication": "2026-09-07 per OECD dataset calendar; retrieved current vintage, not a historical vintage",
+  "cliSource": "https://www.oecd.org/en/data/datasets/oecd-composite-leading-indicators-clis.html",
+  "cliFetch": {
+    "url": "https://sdmx.oecd.org/public/rest/data/OECD.SDD.STES,DSD_STES@DF_CLI/.M.LI...AA...H?startPeriod=2025-01&dimensionAtObservation=AllDimensions&format=csvfilewithlabels",
+    "status": 200,
+    "fetchedAt": "2026-09-30T15:28:06.858507+00:00",
+    "sha256": "902965a40242469ae746156e3a7a92c32145bcae135e5bc6582af92f5bae402a"
+  },
+  "cpi": [
+    {
+      "month": "2026-03",
+      "monthlyPercent": 0.9
+    },
+    {
+      "month": "2026-04",
+      "monthlyPercent": 0.6
+    },
+    {
+      "month": "2026-05",
+      "monthlyPercent": 0.5
+    },
+    {
+      "month": "2026-06",
+      "monthlyPercent": -0.4
+    },
+    {
+      "month": "2026-07",
+      "monthlyPercent": 0.1
+    },
+    {
+      "month": "2026-08",
+      "monthlyPercent": 0.4
+    }
+  ],
+  "cpiPublication": "2026-09-11T08:30:00-04:00",
+  "cpiSource": "https://www.bls.gov/news.release/archives/cpi_09112026.htm",
+  "cpiVerification": "BLS release Table A retrieved via web tool on 2026-09-30. Direct urllib fetch returned HTTP403. No direct-fetch archive claimed. Values are seasonally adjusted, rounded to 0.1 percentage point.",
+  "confirmedCrossing": false,
+  "probabilities": null
+}

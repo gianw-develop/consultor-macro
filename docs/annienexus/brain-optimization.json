@@ -1,0 +1,14 @@
+{
+  "source": "public/annienexus/brain-hra.glb",
+  "sourceSha256": "2b9ad5b53e40e9f0936da74f7be38d2eed15604e26358c3870a0ea13499b9a35",
+  "derived": "public/annienexus/brain-surface.bin.gz",
+  "derivedSha256": "1fee3e3c567d820aacf92f36ca7b0505771e9975120803ae6b79732dee98293a",
+  "vertices": 324855,
+  "triangles": 656268,
+  "originalBytes": 11977312,
+  "derivedBytes": 10663441,
+  "uncompressedBytes": 15671752,
+  "reductionPercent": 11,
+  "method": "Lossless gzip; same indexed triangles, positions and normals; world transforms merged and normalized as in the original viewer. No decimation or quantization.",
+  "generator": "scripts/optimize-brain.mjs"
+}

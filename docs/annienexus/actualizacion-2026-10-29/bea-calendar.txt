@@ -1,0 +1,228 @@
+Chrome · consulta 2026-10-29T08:57:06Z
+					23 Contenido HTML Release Schedule | U.S. Bureau of Economic Analysis (BEA), URL: bea.gov/news/schedule
+						24 container
+							25 link Skip to main content, Value: bea.gov/news/schedule#main-content
+							26 container
+								27 imagen U.S. flag
+								28 texto An official website of the United States government
+							29 link homepage link, Value: bea.gov/
+							30 container
+								31 container
+									32 encabezado Main navigation, Value: 3
+										33 texto Main navigation
+									34 lista de contenidos
+										35 link Data , Value: bea.gov/data
+										36 link Tools , Value: bea.gov/tools
+										37 link News , Value: bea.gov/news
+										38 link Research , Value: bea.gov/research
+										39 link Resources , Value: bea.gov/resources
+										40 link About , Value: bea.gov/about
+										41 link Help , Value: bea.gov/help
+								42 container
+									43 campo para buscar texto (settable) Search
+									44 botón Search
+							45 encabezado Home |  News |  Release Schedule Release Schedule, Value: 2
+								46 lista de contenidos
+									47 link Home, Value: bea.gov/
+									48 container
+										49 text |
+										50 link News, Value: bea.gov/news
+									51 container
+										52 text |   Release Schedule
+								53 encabezado Release Schedule, Value: 1
+									54 texto Release Schedule
+							55 container
+								56 container Tabs
+									57 encabezado Primary tabs, Value: 2
+										58 texto Primary tabs
+									59 lista de contenidos
+										60 link Upcoming Releases, Value: bea.gov/news/schedule
+										61 link Full Schedule, Value: bea.gov/news/schedule/full
+										62 link 2025 Schedule, Value: bea.gov/news/schedule/full-2025
+										63 link 2027 Schedule, Value: bea.gov/news/schedule/next-year
+								64 container
+									65 texto N
+									66 texto ews Release
+									67 texto D
+									68 texto ata Release
+									69 texto V
+									70 texto isual Data
+									71 texto A
+									72 text rticle Clear
+								73 campo para buscar texto (settable) Type to search...
+								74 tabla
+									75 row Year 2026 Release
+										76 encabezado de columna
+											77 texto Year 2026
+										78 encabezado de columna
+											79 texto Release
+									80 row October 29 8:30 AM N GDP (Advance Estimate), 3rd Quarter 2026
+										81 celda
+											82 texto October 29
+											83 texto 8:30 AM
+										84 celda
+											85 texto N
+										86 celda
+											87 texto GDP (Advance Estimate), 3rd Quarter 2026
+									88 row October 29 8:30 AM N Personal Income and Outlays, September 2026
+										89 celda
+											90 texto October 29
+											91 texto 8:30 AM
+										92 celda
+											93 texto N
+										94 celda
+											95 texto Personal Income and Outlays, September 2026
+									96 row November 4 8:30 AM N U.S. International Trade in Goods and Services, September 2026
+										97 celda
+											98 texto November 4
+											99 texto 8:30 AM
+										100 celda
+											101 texto N
+										102 celda
+											103 texto U.S. International Trade in Goods and Services, September 2026
+									104 row November 18 10:00 AM N Outdoor Recreation Economic Statistics, U.S. and States, 2025
+										105 celda
+											106 texto November 18
+											107 texto 10:00 AM
+										108 celda
+											109 texto N
+										110 celda
+											111 texto Outdoor Recreation Economic Statistics, U.S. and States, 2025
+									112 row November 20 8:30 AM N Activities of U.S. Multinational Enterprises, 2024
+										113 celda
+											114 texto November 20
+											115 texto 8:30 AM
+										116 celda
+											117 texto N
+										118 celda
+											119 texto Activities of U.S. Multinational Enterprises, 2024
+									120 row November 25 8:30 AM N GDP (Second Estimate) and Corporate Profits, 3rd Quarter 2026
+										121 celda
+											122 texto November 25
+											123 texto 8:30 AM
+										124 celda
+											125 texto N
+										126 celda
+											127 texto GDP (Second Estimate) and Corporate Profits, 3rd Quarter 2026
+									128 row November 25 8:30 AM N Personal Income and Outlays, October 2026
+										129 celda
+											130 texto November 25
+											131 texto 8:30 AM
+										132 celda
+											133 texto N
+										134 celda
+											135 texto Personal Income and Outlays, October 2026
+									136 row December 2 8:30 AM N GDP by County and Personal Income by County, 2025
+										137 celda
+											138 texto December 2
+											139 texto 8:30 AM
+										140 celda
+											141 texto N
+										142 celda
+											143 texto GDP by County and Personal Income by County, 2025
+									144 row December 8 8:30 AM N U.S. International Trade in Goods and Services, October 2026
+										145 celda
+											146 texto December 8
+											147 texto 8:30 AM
+										148 celda
+											149 texto N
+										150 celda
+											151 texto U.S. International Trade in Goods and Services, October 2026
+									152 row December 10 8:30 AM N Real Personal Consumption Expenditures by State and Real Personal Income by State, 2025
+										153 celda
+											154 texto December 10
+											155 texto 8:30 AM
+										156 celda
+											157 texto N
+										158 celda
+											159 texto Real Personal Consumption Expenditures by State and Real Personal Income by State, 2025
+									160 row December 18 8:30 AM N U.S. International Transactions and Investment Position, 3rd Quarter 2026
+										161 celda
+											162 texto December 18
+											163 texto 8:30 AM
+										164 celda
+											165 texto N
+										166 celda
+											167 texto U.S. International Transactions and Investment Position, 3rd Quarter 2026
+									168 row December 23 8:30 AM N GDP (Third Estimate), Industries, Corporate Profits, State GDP, and State Personal Income, 3rd Quarter 2026
+										169 celda
+											170 texto December 23
+											171 texto 8:30 AM
+										172 celda
+											173 texto N
+										174 celda
+											175 texto GDP (Third Estimate), Industries, Corporate Profits, State GDP, and State Personal Income, 3rd Quarter 2026
+									176 row December 23 8:30 AM N Personal Income and Outlays, November 2026
+										177 celda
+											178 texto December 23
+											179 texto 8:30 AM
+										180 celda
+											181 texto N
+										182 celda
+											183 texto Personal Income and Outlays, November 2026
+							184 container
+								185 encabezado Quick Links, Value: 3
+									186 texto Quick Links
+								187 lista de contenidos
+									188 link Economy at a Glance, Value: bea.gov/news/glance
+									189 link News Releases, Value: bea.gov/news/current-releases
+									190 link Release Schedule, Value: bea.gov/news/schedule
+									191 link The BEA Wire | BEA's Official Blog, Value: bea.gov/news/blog
+									192 link Survey of Current Business, Value: bea.gov/scb
+									193 link Archive, Value: bea.gov/news/archive?field_related_product_target_id=All&created_1=All&title=
+									194 link For Journalists, Value: bea.gov/news/for-journalists
+								195 encabezado Additional Formats, Value: 3
+									196 texto Additional Formats
+								197 lista de contenidos
+									198 botón Print Schedule
+									199 container
+										200 link Online Calendar Subscription, Value: bea.gov/news/schedule/ics/online-calendar-subscription.ics
+										201 text ICS
+									202 container
+										203 link Machine-Readable Format, Value: apps.bea.gov/API/signup/release_dates.json
+										204 text JSON
+								205 container
+									206 encabezado Media Contacts, Value: 3
+										207 texto Media Contacts
+									208 lista de contenidos
+										209 container
+											210 text News Media Connie O'Connell
+											211 link (301) 278-9003, Value: tel:3012789003
+											212 link Connie.OConnell@bea.gov, Value: mailto:Connie.OConnell@bea.gov
+										213 container
+											214 text News Media Thomas Dail
+											215 link (301) 278-9003, Value: tel:301278-9003
+											216 link Thomas.Dail@bea.gov, Value: mailto:Thomas.Dail@bea.gov
+							217 container
+								218 link Download Acrobat Reader, Help: (opens in a new window), Value: get.adobe.com/reader/
+								219 imagen (link is external)
+							220 texto Page last modified on 10/29/26
+							221 container
+								222 encabezado Bureau of Economic Analysis 4600 Silver Hill Road • Suitland, MD 20746, Value: 4
+									223 text Bureau of Economic Analysis  4600 Silver Hill Road • Suitland, MD 20746
+								224 lista de contenidos
+									225 link Contact Us, Value: bea.gov/contact-us
+									226 link Working at BEA, Value: bea.gov/about/working-at-bea
+									227 link Frequently Asked Questions, Value: bea.gov/help/faq
+									228 link Our Policies, Value: bea.gov/about/policies-and-information
+									229 link Privacy, Value: bea.gov/privacy
+								230 lista de contenidos
+									231 link Commitment to Scientific Integrity, Value: bea.gov/statement-commitment-scientific-integrity-principal-statistical-agencies
+									232 link Data Dissemination Practices, Value: bea.gov/about/policies-and-information/data-dissemination
+									233 link Open Data, Value: bea.gov/open-data
+									234 link USA.gov, Value: usa.gov/
+									235 link Business USA, Value: business.usa.gov/
+									236 link No FEAR Act, Value: commerce.gov/cr/reports-and-resources/no-fear-act
+									237 link FOIA, Value: commerce.gov/opog
+									238 link U.S. Department of Commerce, Value: commerce.gov/
+									239 link Emergency Status, Value: apps.bea.gov/status/
+								240 lista de contenidos
+									241 link The BEA Wire | BEA's Official Blog, Value: bea.gov/news/blog
+									242 link News Release Feed (RSS), Help: BEA's RSS Feeds, Value: apps.bea.gov/rss/rss.xml
+									243 link Sign up for Email Notifications, Help: Email Subscription Service, Value: bea.gov/_subscribe/
+								244 container
+									245 link (opens in a new window), Value: x.com/bea_news
+									246 link (opens in a new window), Value: linkedin.com/company/bureau-of-economic-analysis
+									247 link (opens in a new window), Value: youtube.com/channel/UCCP9QD1x_z__duUivA6Yb5w
+									248 link (opens in a new window), Value: instagram.com/usbeagov/
+									249 link (opens in a new window), Value: facebook.com/usbeagov
