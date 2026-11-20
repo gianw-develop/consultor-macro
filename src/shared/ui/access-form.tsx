@@ -2,7 +2,7 @@
 import { useState, type FormEvent } from "react";
 import { Brand } from "./brand";
 
-type Step = "email" | "code" | "password";
+type Step = "email" | "code";
 const NOTICE: Record<string, string> = {
   "enlace-invalido": "El enlace de acceso no es válido o ha caducado. Pide un código nuevo.",
 };
@@ -35,28 +35,23 @@ export function AccessForm({ configured, destination = "/annienexus", notice }: 
       if (result) { setStep("code"); setMessage(result.message ?? ""); }
       return;
     }
-    const result = step === "code"
-      ? await send({ action: "verify-code", email, code: String(form.get("code") ?? "") })
-      : await send({ action: "login", email: String(form.get("email") ?? ""), password: String(form.get("password") ?? "") });
+    const result = await send({ action: "verify-code", email, code: String(form.get("code") ?? "") });
     if (result?.ok) window.location.replace(destination);
   }
 
   return <main className="main-content access-page" id="main-content"><section className="panel access-panel">
     <span className="brand"><Brand /></span>
     <h1>{step === "code" ? "Escribe tu código" : "Vuelve a tu lectura del mercado"}</h1>
-    <p className="lead">{step === "code" ? `Te enviamos un código a ${email}. Caduca en unos minutos.` : "Acceso privado: tu correo autorizado y un código que te llega al correo."}</p>
+    <p className="lead">{step === "code" ? `Te enviamos un código a ${email}. Caduca en unos minutos.` : "Sin contraseñas: escribe tu correo y te llegará un acceso de un solo uso."}</p>
     {!configured ? <p role="status">El acceso se está configurando. Vuelve cuando esté disponible.</p> :
       <form onSubmit={submit}>
         {step !== "code" && <label>Correo autorizado<input type="email" name="email" autoComplete="email" defaultValue={email} required disabled={busy} /></label>}
         {step === "code" && <label>Código de acceso<input type="text" name="code" inputMode="numeric" autoComplete="one-time-code" pattern="[0-9]{6,10}" maxLength={10} required autoFocus disabled={busy} /></label>}
-        {step === "password" && <label>Contraseña<input type="password" name="password" autoComplete="current-password" maxLength={512} required disabled={busy} /></label>}
         <button className="button primary" disabled={busy}>{busy ? "Conectando…" : step === "email" ? "Enviarme un código" : "Entrar"}</button>
         <p role="status">{message}</p>
         {step === "code" && <p className="small muted">¿Te llegó un enlace en vez de un código? Ábrelo desde este mismo dispositivo y entrarás directamente.</p>}
-        <button className="access-switch" type="button" disabled={busy} onClick={() => { setMessage(""); setStep(step === "email" ? "password" : "email"); }}>
-          {step === "email" ? "Entrar con contraseña" : "Pedir un código nuevo"}
-        </button>
-        <p className="small muted">Acceso solo por invitación. No se pueden crear cuentas nuevas desde esta página.</p>
+        {step === "code" && <button className="access-switch" type="button" disabled={busy} onClick={() => { setMessage(""); setStep("email"); }}>Pedir un código nuevo</button>}
+        <p className="small muted">El acceso caduca al usarse o a los 10 minutos. No se pueden crear cuentas nuevas.</p>
       </form>}
   </section></main>;
 }

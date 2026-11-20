@@ -42,3 +42,8 @@ test('codes must be numeric and come from an allowed email',async()=>{
  const good=await post(POST,{action:'verify-code',email:'fixture@example.invalid',code:'123456'});
  assert.equal(good.status,200);assert.deepEqual(await good.json(),{ok:true});
 });
+test('password login no longer exists',async()=>{
+ env();const {POST,calls}=loadEntry();
+ const r=await post(POST,{action:'login',email:'fixture@example.invalid',password:'anything123'});
+ assert.equal(r.status,400);assert.equal(calls.length,0);
+});
