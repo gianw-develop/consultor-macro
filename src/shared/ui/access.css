@@ -1,0 +1,34 @@
+/* Acceso · estilo terminal, centrado */
+.term-access{--t-bg:#000;--t-panel:#07090b;--t-line:#2a3138;--t-text:#e8e6e3;--t-muted:#8c98a3;--t-amber:#ffa028;--t-green:#4fd18b;--t-red:#ff6b6b;--t-mono:'IBM Plex Mono',ui-monospace,monospace;min-height:100vh;display:grid;place-items:center;padding:24px;background:var(--t-bg);color:var(--t-text);font-family:var(--t-mono)}
+.term-box{width:100%;max-width:440px;border:1px solid var(--t-line);background:var(--t-panel)}
+.term-bar,.term-foot{display:flex;justify-content:space-between;gap:12px;padding:7px 12px;font-size:11px;letter-spacing:.08em}
+.term-bar{background:var(--t-amber);color:#000;font-weight:600}
+.term-clock{font-variant-numeric:tabular-nums}
+.term-foot{border-top:1px solid var(--t-line);color:var(--t-muted)}
+.term-body{display:flex;flex-direction:column;align-items:center;text-align:center;padding:36px 28px 30px;gap:26px}
+.term-brand .awn-brand{width:200px;max-width:100%}
+.term-body form{width:100%;display:flex;flex-direction:column;align-items:center;gap:14px}
+.term-label{font-size:11px;letter-spacing:.14em;color:var(--t-muted)}
+.term-field{width:100%;display:flex;align-items:center;gap:10px;border:1px solid var(--t-line);background:#000;padding:0 14px;height:48px}
+.term-field:focus-within{border-color:var(--t-amber)}
+.term-field>span{color:var(--t-amber);font-size:16px}
+.term-field input{flex:1;min-width:0;background:transparent;border:0;outline:none;color:var(--t-text);font:400 16px var(--t-mono);text-align:center;caret-color:transparent}
+.term-caret{width:9px;height:18px;background:var(--t-amber);animation:term-blink 1s steps(1) infinite}
+@keyframes term-blink{50%{opacity:0}}
+.term-code{position:relative;width:100%}
+.term-code input{position:absolute;inset:0;width:100%;height:100%;opacity:0;font-size:16px;cursor:text}
+.term-slots{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:8px}
+.term-slots span{height:56px;display:grid;place-items:center;border:1px solid var(--t-line);background:#000;font-size:26px;color:var(--t-amber)}
+.term-slots span[data-on]{border-color:var(--t-amber);box-shadow:inset 0 -3px 0 var(--t-amber);animation:term-pulse 1s steps(1) infinite}
+@keyframes term-pulse{50%{box-shadow:inset 0 -3px 0 transparent}}
+.term-go{width:100%;height:46px;margin-top:6px;border:1px solid var(--t-amber);background:var(--t-amber);color:#000;font:600 13px var(--t-mono);letter-spacing:.1em;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:10px}
+.term-go:disabled{background:transparent;color:var(--t-muted);border-color:var(--t-line);cursor:default}
+.term-go kbd{font:inherit;font-size:12px;opacity:.7}
+.term-link{background:none;border:0;color:var(--t-muted);font:400 11px var(--t-mono);letter-spacing:.12em;cursor:pointer;padding:8px}
+.term-link:hover{color:var(--t-amber)}
+.term-status{margin:4px 0 0;font-size:12px;letter-spacing:.1em}
+.term-status.ok{color:var(--t-green)}.term-status.err{color:var(--t-red)}
+.term-access .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+@media(prefers-reduced-motion:reduce){.term-caret,.term-slots span[data-on]{animation:none}}
+@media(max-width:480px){.term-body{padding:28px 18px 24px}.term-slots{gap:6px}.term-slots span{height:50px;font-size:22px}}
+.term-access .term-field input:focus,.term-access .term-field input:focus-visible{outline:none;box-shadow:none;border:0}
