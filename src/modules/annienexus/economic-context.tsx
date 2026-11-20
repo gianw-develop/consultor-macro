@@ -45,12 +45,12 @@ export function EconomicContext({ now }: { now: string }) {
         <p className="small">Consulta qué se ha publicado y qué falta esta semana. Cada resultado separa el periodo medido, la publicación y el dato anterior, incluidas sus revisiones.</p>
         <ul className="economic-events">{ECONOMIC_EVENTS.map(event => <CalendarEvent key={`${event.id}-${event.scheduledAt}`} event={event} now={clock}/>)}</ul>
         <details className="economic-detail"><summary>Resultados anteriores · octubre <span>＋</span></summary><ul className="economic-events">{PREVIOUS_WEEK_EVENTS.map(event => <CalendarEvent key={`${event.id}-${event.scheduledAt}`} event={event} now={clock}/>)}</ul></details>
-        {NEXT_WEEK_EVENTS.length>0&&<h3>Próximas publicaciones</h3>}
+        {NEXT_WEEK_EVENTS.length>0&&<h3>{NEXT_WEEK_EVENTS.every(e=>eventStatus(e,clock)!=='Programado')?'Publicaciones de la semana siguiente':'Próximas publicaciones'}</h3>}
         <ul className="economic-events">{NEXT_WEEK_EVENTS.map(event => <CalendarEvent key={`${event.id}-${event.scheduledAt}`} event={event} now={clock}/>)}</ul>
         <p className="micro">Actualización editorial, no en vivo. Al llegar la hora, un evento pasa a «Resultado por verificar» hasta contrastar la publicación oficial. No se ha incorporado un consenso de previsiones.</p>
         <p className="micro">La agenda describe publicaciones. La lectura del Cerebro se revisa por separado con sus insumos y vencimiento visibles.</p>
       </details>
-      <p className="small muted">{summary.next ? <>Próximo evento programado: {summary.next.title} · {madridEventTime(summary.next.scheduledAt)} (Madrid).</> : "No quedan eventos programados en esta agenda."}{summary.unverified > 0 && ` Hay ${summary.unverified} resultado(s) por verificar.`}</p>
+      <p className="small muted">{summary.next ? <>Próximo evento programado: {summary.next.title} · {madridEventTime(summary.next.scheduledAt)} (Madrid).</> : "No quedan eventos programados en esta agenda: está pendiente de actualizar con la semana en curso."}{summary.unverified > 0 && ` Hay ${summary.unverified} resultado(s) por verificar.`}</p>
     </article>
   </section>;
 }

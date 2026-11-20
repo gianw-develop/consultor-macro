@@ -5,4 +5,6 @@ export const tcbData={period:"2026-09",periods:["2026-07","2026-08","2026-09"],r
 export const GDP_RELEASED_AT="2026-10-29T12:30:00Z";
 export const GDP_CHECKED_AT="2026-11-04T15:52:00Z";
 export const GDP_NEXT_LABEL="25 nov";
+// Segunda estimación del 3T según el calendario BEA (8:30 ET).
+export const GDP_NEXT_AT="2026-11-25T13:30:00Z";
 export const gdpData=[{period:"2026-Q1",value:2.5},{period:"2026-Q2",value:2.2},{period:"2026-Q3",value:3.4}];
