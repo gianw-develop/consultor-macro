@@ -46,3 +46,5 @@ next-env.d.ts
 # logs locales
 dev.log
 dev_run.log
+# salida de compilación de las pruebas
+/.foundation-test-build/
