@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { Brand } from "./brand";
+import { DotMatrix } from "./dot-matrix";
 import "./access.css";
 
 type Step = "email" | "code" | "granted";
@@ -53,6 +54,8 @@ export function AccessForm({ configured, destination = "/annienexus", notice }: 
   }
 
   return <main className="term-access" id="main-content">
+    <DotMatrix />
+    <div className="term-vignette" aria-hidden="true" />
     <section className="term-box" aria-labelledby="term-title">
       <header className="term-bar"><span>AWNEXUS TERMINAL</span><span className="term-clock" aria-label="Hora de Nueva York">NY {clock}</span></header>
       <div className="term-body">

@@ -32,3 +32,8 @@
 @media(prefers-reduced-motion:reduce){.term-caret,.term-slots span[data-on]{animation:none}}
 @media(max-width:480px){.term-body{padding:28px 18px 24px}.term-slots{gap:6px}.term-slots span{height:50px;font-size:22px}}
 .term-access .term-field input:focus,.term-access .term-field input:focus-visible{outline:none;box-shadow:none;border:0}
+/* Fondo de matriz de puntos + viñeta (inspirado en el componente elegido) */
+.term-access{position:relative;overflow:hidden}
+.term-dots{position:absolute;inset:0;width:100%;height:100%;z-index:0;display:block}
+.term-vignette{position:absolute;inset:0;z-index:1;pointer-events:none;background:radial-gradient(circle at center,rgba(0,0,0,.85) 0%,rgba(0,0,0,.55) 35%,rgba(0,0,0,0) 100%)}
+.term-box{position:relative;z-index:2;box-shadow:0 10px 40px rgba(0,0,0,.8)}
