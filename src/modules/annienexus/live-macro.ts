@@ -81,3 +81,39 @@ export async function getLiveMacro(budgetMs = 2500): Promise<{ live: LiveMacro; 
     return { live: emptyLiveMacro(), pending: null };
   }
 }
+
+// ── Mercado ahora: índices, VIX y bono a 10 años (cierres diarios) ──────────────────────────
+export type LiveMarket = { fetchedAt: string; source: string; spx: LivePoint[]; dji: LivePoint[]; ndx: LivePoint[]; vix: LivePoint[]; ust10: LivePoint[] };
+const YAHOO_6M = (s: string) => `https://query1.finance.yahoo.com/v8/finance/chart/${encodeURIComponent(s)}?range=6mo&interval=1d`;
+const FRED_6M = (id: string) => { const d = new Date(Date.now() - 200 * 864e5).toISOString().slice(0, 10); return FRED(id, d); };
+
+async function marketSeries(yahoo: string, fred: string): Promise<{ points: LivePoint[]; source: string }> {
+  const y = await text(YAHOO_6M(yahoo));
+  const fromYahoo = y ? parseYahooCloses(y) : [];
+  if (fromYahoo.length >= 30) return { points: fromYahoo, source: "Yahoo" };
+  const f = await text(FRED_6M(fred));
+  return { points: f ? parseFredCsv(f) : [], source: "FRED" };
+}
+
+export async function loadLiveMarket(): Promise<LiveMarket> {
+  const [spx, dji, ndx, vix, ust10] = await Promise.all([
+    marketSeries("^GSPC", "SP500"), marketSeries("^DJI", "DJIA"), marketSeries("^IXIC", "NASDAQCOM"),
+    marketSeries("^VIX", "VIXCLS"), marketSeries("^TNX", "DGS10"),
+  ]);
+  return { fetchedAt: new Date().toISOString(), source: [...new Set([spx, dji, ndx, vix, ust10].map(s => s.source))].join(" · "), spx: spx.points, dji: dji.points, ndx: ndx.points, vix: vix.points, ust10: ust10.points };
+}
+
+const cachedLiveMarket = unstable_cache(async () => {
+  const m = await loadLiveMarket();
+  if (m.spx.length < 30) throw new Error("sin datos de índices");
+  return m;
+}, ["live-market-v1"], { revalidate: 15 * 60 });
+
+export async function getLiveMarket(budgetMs = 2500): Promise<{ market: LiveMarket | null; pending: Promise<unknown> | null }> {
+  const job = cachedLiveMarket();
+  const timeout = new Promise<null>(resolve => setTimeout(() => resolve(null), budgetMs));
+  try {
+    const market = await Promise.race([job, timeout]);
+    return market ? { market, pending: null } : { market: null, pending: job.catch(() => null) };
+  } catch { return { market: null, pending: null }; }
+}

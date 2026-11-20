@@ -2,6 +2,7 @@
 import { useState } from "react";
 import { PHASE_LABEL, BORDER_ZONE, crossTo, type Phase, type RegimeReading } from "./regime-engine";
 import type { SignalRow } from "./regime-signals";
+import { MARKET_STATE_LABEL, type MarketReading } from "./market-stress";
 import type { MacroSnapshot } from "./macro-data";
 import { ResultsMonitor } from "./results-monitor";
 import { DataAvailability } from "./data-availability";
@@ -35,8 +36,9 @@ function Distance({ label, value, velocity, nearest }: { label: string; value: n
   </div>;
 }
 
-export function RegimeHome({ reading, signals, snapshot, now, fetchedAt, liveCount, totalCount }: { reading: RegimeReading; signals: SignalRow[]; snapshot: MacroSnapshot | null; now: string; fetchedAt: string; liveCount: number; totalCount: number }) {
+export function RegimeHome({ reading, signals, snapshot, now, fetchedAt, liveCount, totalCount, market, marketSource, coherence }: { reading: RegimeReading; signals: SignalRow[]; snapshot: MacroSnapshot | null; now: string; fetchedAt: string; liveCount: number; totalCount: number; market: MarketReading | null; marketSource: string; coherence: { agrees: boolean; text: string } | null }) {
   const [open, setOpen] = useState(false);
+  const pctf = (v: number | null) => v === null ? "—" : `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v).toLocaleString("es-ES", { minimumFractionDigits: 1, maximumFractionDigits: 1 })} %`;
   const { point, stage, monthsInPhase, nearestBorder, velocity, confidence } = reading;
   const trail = reading.trail.slice(-6); // medio año: suficiente para ver el giro sin enredar el mapa
   const prev = trail.at(-2);
@@ -46,13 +48,26 @@ export function RegimeHome({ reading, signals, snapshot, now, fetchedAt, liveCou
     { id: "inflation", title: "Inflación", tone: "stagflation" },
     { id: "market", title: "Mercado", tone: "disinflation" },
   ] as const;
-  const market = signals.filter(s => s.axis === "market" && s.agrees !== null);
-  const marketText = market.length === 0 ? "Sin datos de mercado conectados." : market.every(s => s.agrees) ? "El mercado confirma la lectura." : market.some(s => s.agrees) ? "El mercado confirma solo en parte." : "El mercado todavía no confirma la lectura.";
+  const marketSignals = signals.filter(s => s.axis === "market" && s.agrees !== null);
+  const marketText = marketSignals.length === 0 ? "Sin datos de mercado conectados." : marketSignals.every(s => s.agrees) ? "El mercado confirma la lectura." : marketSignals.some(s => s.agrees) ? "El mercado confirma solo en parte." : "El mercado todavía no confirma la lectura.";
   return <main id="main-content" className="main-content rg">
     <div className="rg-status" role="status">
       <span>Datos hasta <b>{month(point.period)}</b> · consultados el {new Date(fetchedAt).toLocaleString("es-ES", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Madrid" })} (Madrid)</span>
-      <span className={liveCount === totalCount ? "" : "warn"}>{liveCount} de {totalCount} señales con datos oficiales en vivo · se renuevan cada 6 h</span>
+      <span className={liveCount === totalCount ? "" : "warn"}>{liveCount} de {totalCount} señales con datos oficiales en vivo · se renuevan cada hora (mercado: 15 min)</span>
     </div>
+
+    {market ? <section className={`rg-market-now ${market.state}`} aria-labelledby="rg-mkt-title">
+      <div className="rg-mkt-head">
+        <h2 id="rg-mkt-title" className="rg-eyebrow">Mercado ahora · cierre {market.asOf ? new Date(market.asOf + "T12:00:00Z").toLocaleDateString("es-ES", { day: "numeric", month: "short", timeZone: "UTC" }) : "—"}</h2>
+        <span className={`rg-mkt-state ${market.state}`}>{MARKET_STATE_LABEL[market.state].toUpperCase()}</span>
+      </div>
+      <div className="rg-mkt-tiles">
+        {market.indexes.map(ix => <div key={ix.id} className="rg-mkt-tile"><span>{ix.label}</span><b className="rg-num">{ix.last.toLocaleString("es-ES", { maximumFractionDigits: 0 })}</b><small className={`rg-num ${(ix.week ?? 0) < 0 ? "dn" : "up"}`}>Semana {pctf(ix.week)}</small><small className="rg-num">Desde máximo {pctf(ix.fromHigh)}</small></div>)}
+        {market.vix && <div className="rg-mkt-tile"><span>VIX · miedo</span><b className={`rg-num ${market.vix.last >= 30 ? "dn" : market.vix.last >= 22 ? "warn" : ""}`}>{market.vix.last.toLocaleString("es-ES", { maximumFractionDigits: 1 })}</b><small className="rg-num">Semana {pctf(market.vix.week)}</small><small>{market.vix.last >= 30 ? "Pánico" : market.vix.last >= 22 ? "Tensión" : "Calma"}</small></div>}
+      </div>
+      {coherence && <p className={`rg-coherence ${coherence.agrees ? "ok" : "no"}`}><b>{coherence.agrees ? "Coherente." : "El mercado no confirma."}</b> {coherence.text}</p>}
+      <p className="rg-mkt-src">Fuente: {marketSource}. El mapa usa datos mensuales (más lentos); este bloque, cierres diarios.</p>
+    </section> : <p className="rg-mkt-src">Mercado ahora: sin datos de índices en este momento.</p>}
 
     <div className="rg-hero">
       <section className="rg-map-wrap" aria-labelledby="rg-map-title">
@@ -88,6 +103,7 @@ export function RegimeHome({ reading, signals, snapshot, now, fetchedAt, liveCou
         <div className="rg-chips">
           <span className={`chip ${TONE[point.phase]}`}>{STAGE[stage]} · {monthsInPhase} {monthsInPhase === 1 ? "MES" : "MESES"}</span>
           <span className="chip">{confidence.agree} DE {confidence.total} SEÑALES CONFIRMAN</span>
+          {coherence && !coherence.agrees && <span className="chip alert">EL MERCADO NO CONFIRMA</span>}
         </div>
         <p className="rg-lead">{reading.detail}</p>
         <div className="rg-block">

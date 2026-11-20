@@ -1,6 +1,7 @@
 import { RegimeHome } from "../../modules/annienexus/regime-home";
 import { loadMacroSnapshot } from "../../modules/annienexus/macro-loader";
-import { getLiveMacro } from "../../modules/annienexus/live-macro";
+import { getLiveMacro, getLiveMarket } from "../../modules/annienexus/live-macro";
+import { coherence, evaluateMarket } from "../../modules/annienexus/market-stress";
 import { after } from "next/server";
 import { annualRates, monthlyRates } from "../../modules/annienexus/live-parse";
 import { makeReadingInput } from "../../modules/annienexus/reading-data";
@@ -17,9 +18,11 @@ const num = (points: { period: string; value: number | null }[] | undefined) =>
   (points ?? []).flatMap(p => typeof p.value === "number" && Number.isFinite(p.value) ? [{ period: p.period, value: p.value }] : []);
 
 export default async function Page() {
-  const [snapshot, { live, pending }] = await Promise.all([loadMacroSnapshot(), getLiveMacro()]);
+  const [snapshot, { live, pending }, { market: liveMarket, pending: marketPending }] = await Promise.all([loadMacroSnapshot(), getLiveMacro(), getLiveMarket()]);
   // Si las fuentes tardan, la página no espera: la descarga sigue en segundo plano y queda en caché.
   if (pending) after(() => pending);
+  if (marketPending) after(() => marketPending);
+  const market = liveMarket ? evaluateMarket(liveMarket) : null;
   const now = new Date().toISOString(), input = makeReadingInput(snapshot);
 
   // Preferir los datos oficiales en vivo; si una fuente falla, usar el corte revisado.
@@ -42,7 +45,15 @@ export default async function Page() {
     cpi3m: (Math.pow(three, 4) - 1) * 100, cpiAnnual: cpiAnnual.at(-1)?.value ?? 0, cpiPeriod: cpiMonthly.at(-1)?.period ?? "",
     cliLive, cpiLive,
   });
+  // Mercado de esta semana como señales: con crecimiento al alza, un mercado en corrección o pánico contradice.
+  if (market) {
+    const growthUp = base.point.x >= 0, spx = market.indexes[0], calm = market.state === "normal";
+    const fmt = (v: number | null) => v === null ? "—" : `${v > 0 ? "+" : v < 0 ? "−" : ""}${Math.abs(v).toLocaleString("es-ES", { maximumFractionDigits: 1 })} %`;
+    signals.push({ id: "spx", axis: "market", role: "check", label: "S&P 500", reading: `Semana ${fmt(spx.week)} · desde máximo ${fmt(spx.fromHigh)}`, value: calm ? "estable" : market.state === "panic" ? "pánico" : "corrección", agrees: calm === growthUp, period: spx.date, url: "https://finance.yahoo.com/quote/%5EGSPC", note: "Cierres diarios", live: true });
+    if (market.vix) signals.push({ id: "vix", axis: "market", role: "check", label: "VIX", reading: "Volatilidad esperada · miedo", value: market.vix.last.toLocaleString("es-ES", { maximumFractionDigits: 1 }), agrees: (market.vix.last < 22) === growthUp, period: spx.date, url: "https://finance.yahoo.com/quote/%5EVIX", note: "22 = tensión · 30 = pánico", live: true });
+  }
   const reading = evaluateRegime(cli, cpiMonthly, cpiAnnual, signals) ?? base;
+  const coh = market ? coherence(base.point.x >= 0, market) : null;
   const liveCount = signals.filter(s => s.live).length;
-  return <RegimeHome reading={reading} signals={signals} snapshot={snapshot} now={now} fetchedAt={live.fetchedAt} liveCount={liveCount} totalCount={signals.length} />;
+  return <RegimeHome reading={reading} signals={signals} snapshot={snapshot} now={now} fetchedAt={live.fetchedAt} liveCount={liveCount} totalCount={signals.length} market={market} marketSource={liveMarket?.source ?? ""} coherence={coh} />;
 }

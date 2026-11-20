@@ -60,3 +60,21 @@
 @media(max-width:1100px){.rg-hero{grid-template-columns:1fr}.rg-map-wrap{max-width:640px;width:100%;margin:0 auto}.rg-cols{grid-template-columns:1fr 1fr}.rg-cols>div:last-child{grid-column:1/-1}}
 @media(max-width:640px){.rg{gap:22px}.rg-axis.left,.rg-axis.right{display:none}.rg-cols{grid-template-columns:1fr}.rg-scenarios{grid-template-columns:1fr}.rg-lead{font-size:17px}.rg-map .ql{font-size:13px}.rg-cols li{font-size:14px}}
 .rg-tag{font:400 10px var(--font-mono);font-style:normal;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:0 4px;margin-left:6px;vertical-align:2px}
+/* Mercado ahora */
+.rg-market-now{border:1px solid var(--line);padding:14px 16px;display:flex;flex-direction:column;gap:12px}
+.rg-market-now.correction{border-color:#80591f}.rg-market-now.panic{border-color:#7a2a30;background:#ff6b6b08}
+.rg-mkt-head{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+.rg-mkt-state{font:600 12px var(--font-mono);letter-spacing:.1em;padding:4px 10px;border:1px solid var(--green);color:var(--green)}
+.rg-mkt-state.correction{border-color:var(--amber);color:var(--amber)}.rg-mkt-state.panic{border-color:var(--red);color:#000;background:var(--red)}
+.rg-mkt-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.rg-mkt-tile{display:flex;flex-direction:column;gap:2px;border:1px solid #151b20;padding:10px 12px;background:#050708}
+.rg-mkt-tile span{font:400 11px var(--font-mono);letter-spacing:.06em;color:var(--muted);text-transform:uppercase}
+.rg-mkt-tile b{font:500 24px var(--font-mono);font-weight:500}
+.rg-mkt-tile small{font-size:13px;color:var(--muted)}
+.rg .dn{color:var(--red)!important}.rg .up{color:var(--green)!important}.rg .warn{color:var(--amber)!important}
+.rg-coherence{margin:0;font-size:17px;line-height:1.45;padding:10px 12px;border-left:3px solid var(--green)}
+.rg-coherence.no{border-left-color:var(--red);background:#ff6b6b0d}.rg-coherence b{font-weight:600}
+.rg-coherence.no b{color:var(--red)}
+.rg-mkt-src{margin:0;font:400 11px var(--font-mono);color:var(--muted)}
+.rg-chips .chip.alert{border-color:var(--red);color:#000;background:var(--red)}
+@media(max-width:900px){.rg-mkt-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}}
