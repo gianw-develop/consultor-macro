@@ -10,7 +10,7 @@ export async function POST(request:Request){
  try{const ctx=await context(request);if(ctx.error)return ctx.error;const raw=await request.text();const incoming=readNotebookBackup(raw).map(n=>({...n,at:new Date(n.at).toISOString()}));const existing=await read(ctx.auth,ctx.user.id);mergeNotebookBackup(existing,incoming);const ids=new Set(existing.map(n=>n.id));const fresh=incoming.filter(n=>!ids.has(n.id));
  if(fresh.length){const {error}=await ctx.auth.client.from("annienexus_notes").insert(fresh.map(n=>({user_id:ctx.user.id,id:n.id,text:n.text,topic:n.topic,created_at:n.at})));if(error)throw new Error("No se guardó la copia. Puede haber un límite o un cambio simultáneo; vuelve a cargar tus apuntes.");}
  return ctx.auth.apply(NextResponse.json({notes:await read(ctx.auth,ctx.user.id)}));
- }catch(error){return NextResponse.json({error:error instanceof Error&&error.message.startsWith("La copia")?error.message:"No se guardaron los apuntes. Revisa la copia, el límite de 50 y posibles versiones distintas."},{status:400,headers:{"Cache-Control":"no-store"}});}
+ }catch(error){return NextResponse.json({error:error instanceof Error&&error.message.length<=240?error.message:"No se guardaron los apuntes. Revisa la copia, el límite de 50 y posibles versiones distintas."},{status:400,headers:{"Cache-Control":"no-store"}});}
 }
 export async function DELETE(request:Request){
  if(!sameOrigin(request))return NextResponse.json({error:"Origen no permitido."},{status:403});

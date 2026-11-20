@@ -19,7 +19,7 @@ export function Brain({reading}:{reading:EconomicReading}) {
     <p className="small muted">{brief.summary}</p>
     <div className="brain-layout">
       <section className="panel brain-stage">
-        <SectionHeading title="Cerebro del mercado"><Tag tone={reading.body.tone==="green"?"green":"amber"}>DATOS CONECTADOS</Tag></SectionHeading>
+        <SectionHeading title="Cerebro del mercado">{(()=>{const age=(Date.parse(reading.evaluatedAt)-Date.parse(reading.cut))/864e5;const stale=!Number.isFinite(age)||age>10;return <Tag tone={stale?"amber":reading.body.tone==="green"?"green":"amber"}>{stale?`CORTE ANTIGUO · ${Number.isFinite(age)?Math.floor(age):"?"} DÍAS`:"DATOS CONECTADOS"}</Tag>;})()}</SectionHeading>
         <div className="brain-legend"><i style={{background:ECONOMIC_COLORS[reading.body.tone]}}/><strong>{reading.body.title}</strong><br/>Venas: cambios por familia.</div>
         <div className="brain-art">
           <BrainScene visual={visual} channel={channel} paused={paused || reduced} resetToken={reset} turn={turn} />

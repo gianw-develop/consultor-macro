@@ -4,3 +4,5 @@ src/modules/annienexus/library.json
 src/modules/annienexus/learning-resources.json
 private/learning-sources/
 /.foundation-test-build/
+# fuente del modelo 3D: solo para los scripts de optimización, no se sirve
+public/annienexus/brain-hra.glb

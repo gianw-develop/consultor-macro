@@ -63,9 +63,11 @@ export function growthAxis(cli: MonthlyValue[]): MonthlyValue[] {
 /** Y por mes: IPC 3 meses anualizado menos IPC anual, escalado. */
 export function inflationAxis(monthlyRates: MonthlyValue[], annual: MonthlyValue[]): MonthlyValue[] {
   const out: MonthlyValue[] = [];
+  const next = (period: string) => { const [y, m] = period.split("-").map(Number); return m === 12 ? `${y + 1}-01` : `${y}-${String(m + 1).padStart(2, "0")}`; };
   for (let i = 2; i < monthlyRates.length; i++) {
     const yoy = annual.find(a => a.period === monthlyRates[i].period);
-    if (!yoy) continue;
+    // Tres meses consecutivos: con un hueco en la serie no se inventa la tasa de 3 meses.
+    if (!yoy || next(monthlyRates[i - 2].period) !== monthlyRates[i - 1].period || next(monthlyRates[i - 1].period) !== monthlyRates[i].period) continue;
     const three = monthlyRates.slice(i - 2, i + 1).reduce((acc, r) => acc * (1 + r.value / 100), 1);
     const annualized = (Math.pow(three, 4) - 1) * 100;
     out.push({ period: monthlyRates[i].period, value: round(clamp((annualized - yoy.value) / INFLATION_SCALE)) });

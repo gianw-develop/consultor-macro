@@ -5,7 +5,7 @@ import { PillarChart } from "./pillar-chart";
 import { PILLARS_CHECKED_AT } from "./economic-pillars-data";
 import { useEffect, useState } from "react";
 import { SectionHeading, Tag } from "../../shared/ui/primitives";
-import { CALENDAR_CHECKED_AT, CALENDAR_WEEK, ECONOMIC_EVENTS, PREVIOUS_WEEK_EVENTS, NEXT_WEEK_EVENTS, calendarSummary, eventStatus, madridEventTime, type EconomicEvent } from "./economic-calendar";
+import { CALENDAR_CHECKED_AT, CALENDAR_WEEK, ECONOMIC_EVENTS, PREVIOUS_WEEK_EVENTS, NEXT_WEEK_EVENTS, calendarSummary, eventStatus, madridEventTime, madridEventDateTime, type EconomicEvent } from "./economic-calendar";
 
 export function EconomicContext({ now }: { now: string }) {
   const [clock, setClock] = useState(now);
@@ -41,7 +41,7 @@ export function EconomicContext({ now }: { now: string }) {
     <article id="agenda" className="panel agenda-panel agenda-compact">
       <details className="agenda-disclosure" open>
         <summary><span>Agenda · {CALENDAR_WEEK}</span><Tag tone="amber">{summary.published} publicados · {summary.scheduled} programados{summary.unverified > 0 ? ` · ${summary.unverified} por verificar` : ""}</Tag></summary>
-        <p className="small muted">Horarios de Madrid. Última incorporación verificada el {madridEventTime(CALENDAR_CHECKED_AT)} de 2026. Incorporados PIB, PCE y solicitudes del 29/10, ISM de octubre, JOLTS y comercio exterior. El CLI de la OCDE sigue pendiente de comprobación; conserva su corte anterior. Cada resultado conserva su fecha de comprobación.</p>
+        <p className="small muted">Horarios de Madrid. Última incorporación verificada el {madridEventDateTime(CALENDAR_CHECKED_AT)}. Incorporados PIB, PCE y solicitudes del 29/10, ISM de octubre, JOLTS y comercio exterior. El CLI de la OCDE sigue pendiente de comprobación; conserva su corte anterior. Cada resultado conserva su fecha de comprobación.</p>
         <p className="small">Consulta qué se ha publicado y qué falta esta semana. Cada resultado separa el periodo medido, la publicación y el dato anterior, incluidas sus revisiones.</p>
         <ul className="economic-events">{ECONOMIC_EVENTS.map(event => <CalendarEvent key={`${event.id}-${event.scheduledAt}`} event={event} now={clock}/>)}</ul>
         <details className="economic-detail"><summary>Resultados anteriores · octubre <span>＋</span></summary><ul className="economic-events">{PREVIOUS_WEEK_EVENTS.map(event => <CalendarEvent key={`${event.id}-${event.scheduledAt}`} event={event} now={clock}/>)}</ul></details>
@@ -65,7 +65,7 @@ function CalendarEvent({event, now}: {event: EconomicEvent; now: string}) {
       <details><summary>{status} · {result ? "ver datos y fuente" : "qué observar"}</summary>
         <p className="small">{event.relevance}</p>
         {result && <>{result.details.map(detail => <p className="small" key={detail}>{detail}</p>)}<p className="small"><strong>Lectura del dato:</strong> {result.reading}</p><p className="micro">Publicado: {madridEventTime(result.publishedAt)} · verificado: {madridEventTime(result.verifiedAt)} (Madrid), 2026.</p></>}
-        {!result && <p className="micro">Publicación prevista: {madridEventTime(event.scheduledAt)} (Madrid), 2026. Resultado y dato previo revisado aún sin incorporar.</p>}
+        {!result && <p className="micro">Publicación prevista: {madridEventDateTime(event.scheduledAt)} (Madrid). Resultado y dato previo revisado aún sin incorporar.</p>}
         <a className="small" href={event.url} target="_blank" rel="noreferrer">Consultar {event.source} ↗</a>
       </details>
     </div>

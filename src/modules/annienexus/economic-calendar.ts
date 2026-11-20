@@ -635,3 +635,7 @@ export function calendarSummary(events: EconomicEvent[], now: string) {
 export function madridEventTime(iso: string): string {
   return new Intl.DateTimeFormat("es-ES", { timeZone: "Europe/Madrid", day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date(iso));
 }
+/** Fecha y hora de Madrid con el año incluido (evita escribir el año a mano). */
+export function madridEventDateTime(iso: string): string {
+  return new Intl.DateTimeFormat("es-ES", { timeZone: "Europe/Madrid", day: "2-digit", month: "2-digit", year: "numeric", hour: "2-digit", minute: "2-digit", hour12: false }).format(new Date(iso));
+}

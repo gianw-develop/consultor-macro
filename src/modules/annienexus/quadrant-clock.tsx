@@ -2,7 +2,7 @@
 
 import { useId, useState, useSyncExternalStore, type CSSProperties } from "react";
 import type { ClockReading } from "./regime-clock";
-import { madridEventTime } from "./economic-calendar";
+import { madridEventDateTime } from "./economic-calendar";
 import { demoPhaseAngle, type QuadrantPoint } from "./quadrant-data";
 
 const subscribeMotion = (notify: () => void) => {
@@ -46,7 +46,7 @@ export function PhaseClock({ demo, point, playOnMount, provenance, reduceMotion,
       {(demo || angle === null) && <span className="phase-center"><span>{example ? "GIRO DIDÁCTICO" : demo ? "EJEMPLO FICTICIO" : "RÉGIMEN COMPLETO"}</span><strong>{example ? "Transición" : demo ? phaseName : "Sin posición"}</strong><small>{example ? "Sin destino real asignado" : demo ? "Punto sobre el círculo" : "Marco docente recibido"}</small></span>}
     </button>
     <div className="phase-clock-controls">
-      {!demo ? <><strong className="phase-reviewed-label">{orientation?.label ?? "Revisión no disponible"}</strong><span className="phase-reviewed-date">{orientation?.review ? `${madridEventTime(orientation.review.cut)} de 2026 · Madrid` : "Sin fecha"}</span><button onClick={onInspect} aria-haspopup="dialog">Pulsar para ver por qué</button></> : <><button onClick={play}>{playback === "idle" ? "Ver giro de ejemplo" : "Repetir giro"}</button>{animate && <button onClick={() => setPlayback(playback === "paused" ? "running" : "paused")}>{playback === "paused" ? "Reanudar" : "Pausar"}</button>}{example && <button onClick={() => setPlayback("idle")}>Volver a la fecha</button>}<button aria-pressed={reduced} disabled={systemReduced} onClick={() => { onToggleReducedMotion(); if (!reduceMotion && playback !== "idle") setPlayback("done"); }}>Reducir movimiento{systemReduced ? " · sistema" : ""}</button></>}
+      {!demo ? <><strong className="phase-reviewed-label">{orientation?.label ?? "Revisión no disponible"}</strong><span className="phase-reviewed-date">{orientation?.review ? `${madridEventDateTime(orientation.review.cut)} · Madrid` : "Sin fecha"}</span><button onClick={onInspect} aria-haspopup="dialog">Pulsar para ver por qué</button></> : <><button onClick={play}>{playback === "idle" ? "Ver giro de ejemplo" : "Repetir giro"}</button>{animate && <button onClick={() => setPlayback(playback === "paused" ? "running" : "paused")}>{playback === "paused" ? "Reanudar" : "Pausar"}</button>}{example && <button onClick={() => setPlayback("idle")}>Volver a la fecha</button>}<button aria-pressed={reduced} disabled={systemReduced} onClick={() => { onToggleReducedMotion(); if (!reduceMotion && playback !== "idle") setPlayback("done"); }}>Reducir movimiento{systemReduced ? " · sistema" : ""}</button></>}
     </div>
     <p className="phase-provenance" id={provenanceId}>{example ? "Escenario sintético sin fecha ni fuente económica real. " : ""}{provenance}</p>
     <p className="phase-clock-caption" aria-live="polite">{example ? "DEMO: boom inflacionario → estanflación. " + (reduced ? "Vista estática por movimiento reducido." : playback === "running" ? "Giro único en curso." : playback === "paused" ? "Giro pausado." : "Ejemplo terminado; no se repite solo.") : demo ? "La orientación resume las diferencias ficticias de la fecha elegida; no mide velocidad ni certeza." : (orientation?.explanation ?? "Falta una revisión de ambos ejes.")}</p>

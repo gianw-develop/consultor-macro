@@ -59,3 +59,4 @@
 .rg-foot{font:400 12px var(--font-mono);color:var(--muted);margin:0}
 @media(max-width:1100px){.rg-hero{grid-template-columns:1fr}.rg-map-wrap{max-width:640px;width:100%;margin:0 auto}.rg-cols{grid-template-columns:1fr 1fr}.rg-cols>div:last-child{grid-column:1/-1}}
 @media(max-width:640px){.rg{gap:22px}.rg-axis.left,.rg-axis.right{display:none}.rg-cols{grid-template-columns:1fr}.rg-scenarios{grid-template-columns:1fr}.rg-lead{font-size:17px}.rg-map .ql{font-size:13px}.rg-cols li{font-size:14px}}
+.rg-tag{font:400 10px var(--font-mono);font-style:normal;text-transform:uppercase;color:var(--muted);border:1px solid var(--line);padding:0 4px;margin-left:6px;vertical-align:2px}

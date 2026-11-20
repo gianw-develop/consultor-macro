@@ -19,6 +19,9 @@ export async function proxy(request: NextRequest) {
         : NextResponse.redirect(accessUrl);
       return auth.apply(response);
     }
-    return auth.apply(NextResponse.next({request:auth.input}));
+    const response=auth.apply(NextResponse.next({request:auth.input}));
+    // Recursos estáticos privados (modelo 3D, imágenes): caché solo en el navegador del usuario autorizado.
+    if(/^\/annienexus\/.+\.(gz|bin|png|jpg|webp|json|yaml)$/i.test(path)) response.headers.set("Cache-Control","private, max-age=86400");
+    return response;
   } catch { return auth.apply(NextResponse.json({error:"No se pudo verificar el acceso."},{status:503})); }
 }

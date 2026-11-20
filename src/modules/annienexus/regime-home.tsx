@@ -3,7 +3,6 @@ import { useState } from "react";
 import { PHASE_LABEL, BORDER_ZONE, crossTo, type Phase, type RegimeReading } from "./regime-engine";
 import type { SignalRow } from "./regime-signals";
 import type { MacroSnapshot } from "./macro-data";
-import { madridEventTime, type EconomicEvent } from "./economic-calendar";
 import { ResultsMonitor } from "./results-monitor";
 import { DataAvailability } from "./data-availability";
 import { EconomicContext } from "./economic-context";
@@ -36,9 +35,10 @@ function Distance({ label, value, velocity, nearest }: { label: string; value: n
   </div>;
 }
 
-export function RegimeHome({ reading, signals, snapshot, now, cutLabel, overdue }: { reading: RegimeReading; signals: SignalRow[]; snapshot: MacroSnapshot | null; now: string; cutLabel: string; overdue: EconomicEvent[] }) {
+export function RegimeHome({ reading, signals, snapshot, now, fetchedAt, liveCount, totalCount }: { reading: RegimeReading; signals: SignalRow[]; snapshot: MacroSnapshot | null; now: string; fetchedAt: string; liveCount: number; totalCount: number }) {
   const [open, setOpen] = useState(false);
-  const { point, trail, stage, monthsInPhase, nearestBorder, velocity, confidence } = reading;
+  const { point, stage, monthsInPhase, nearestBorder, velocity, confidence } = reading;
+  const trail = reading.trail.slice(-6); // medio año: suficiente para ver el giro sin enredar el mapa
   const prev = trail.at(-2);
   const crossed = prev && prev.phase !== point.phase;
   const groups = [
@@ -50,8 +50,8 @@ export function RegimeHome({ reading, signals, snapshot, now, cutLabel, overdue 
   const marketText = market.length === 0 ? "Sin datos de mercado conectados." : market.every(s => s.agrees) ? "El mercado confirma la lectura." : market.some(s => s.agrees) ? "El mercado confirma solo en parte." : "El mercado todavía no confirma la lectura.";
   return <main id="main-content" className="main-content rg">
     <div className="rg-status" role="status">
-      <span>Datos hasta <b>{month(point.period)}</b> · corte del {cutLabel}</span>
-      {overdue.length > 0 && <span className="warn">{overdue.length} publicaciones sin incorporar: {overdue.slice(-3).reverse().map(e => `${e.title.split(" · ")[0]} (${madridEventTime(e.scheduledAt).split(",")[0]})`).join(", ")}</span>}
+      <span>Datos hasta <b>{month(point.period)}</b> · consultados el {new Date(fetchedAt).toLocaleString("es-ES", { day: "numeric", month: "short", hour: "2-digit", minute: "2-digit", timeZone: "Europe/Madrid" })} (Madrid)</span>
+      <span className={liveCount === totalCount ? "" : "warn"}>{liveCount} de {totalCount} señales con datos oficiales en vivo · se renuevan cada 6 h</span>
     </div>
 
     <div className="rg-hero">
@@ -117,7 +117,7 @@ export function RegimeHome({ reading, signals, snapshot, now, cutLabel, overdue 
             const state = s.role === "driver" ? "driver" : s.agrees === null ? "none" : s.agrees ? "yes" : "no";
             return <li key={s.id} data-state={state}>
               <span className="mk" aria-label={state === "driver" ? "Mueve el punto" : state === "yes" ? "Confirma" : state === "no" ? "Contradice" : "Sin datos"}>{mark}</span>
-              <span><b>{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{s.label}</a> : s.label}</b><small>{s.reading} · {s.note}</small></span>
+              <span><b>{s.url ? <a href={s.url} target="_blank" rel="noreferrer">{s.label}</a> : s.label}</b>{!s.live && s.value !== "sin datos" && <em className="rg-tag">revisado</em>}<small>{s.reading} · {s.note}</small></span>
               <span className="rg-num">{s.value}</span>
             </li>;
           })}</ul>
@@ -130,6 +130,6 @@ export function RegimeHome({ reading, signals, snapshot, now, cutLabel, overdue 
       <summary>Todos los datos, agenda y fuentes <span>＋</span></summary>
       {open && <div className="rg-all-body"><ResultsMonitor snapshot={snapshot} now={now} /><DataAvailability now={now} /><EconomicContext now={now} /><YieldCurve data={snapshot?.treasury ?? null} now={now} /></div>}
     </details>
-    <p className="rg-foot">Método v1: el punto solo lo mueven el CLI G7 y el IPC; las demás señales confirman o contradicen. Describe el presente, no predice fechas. Sin operaciones automáticas.</p>
+    <p className="rg-foot">Método v1: el punto solo lo mueven el CLI G7 (OCDE) y el IPC (FRED). Las demás señales confirman o contradicen. «Revisado» = dato sin fuente gratuita en vivo, verificado a mano. Describe el presente, no predice fechas.</p>
   </main>;
 }
