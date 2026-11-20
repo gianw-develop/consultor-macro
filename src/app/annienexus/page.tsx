@@ -1,6 +1,7 @@
 import { RegimeHome } from "../../modules/annienexus/regime-home";
 import { loadMacroSnapshot } from "../../modules/annienexus/macro-loader";
-import { loadLiveMacro } from "../../modules/annienexus/live-macro";
+import { getLiveMacro } from "../../modules/annienexus/live-macro";
+import { after } from "next/server";
 import { annualRates, monthlyRates } from "../../modules/annienexus/live-parse";
 import { makeReadingInput } from "../../modules/annienexus/reading-data";
 import { evaluateRegime } from "../../modules/annienexus/regime-engine";
@@ -10,12 +11,15 @@ import { evaluateEconomicReading } from "../../modules/annienexus/economic-readi
 import { evaluateRegimeClock } from "../../modules/annienexus/regime-clock";
 
 export const dynamic = "force-dynamic";
+export const maxDuration = 30;
 
 const num = (points: { period: string; value: number | null }[] | undefined) =>
   (points ?? []).flatMap(p => typeof p.value === "number" && Number.isFinite(p.value) ? [{ period: p.period, value: p.value }] : []);
 
 export default async function Page() {
-  const [snapshot, live] = await Promise.all([loadMacroSnapshot(), loadLiveMacro()]);
+  const [snapshot, { live, pending }] = await Promise.all([loadMacroSnapshot(), getLiveMacro()]);
+  // Si las fuentes tardan, la página no espera: la descarga sigue en segundo plano y queda en caché.
+  if (pending) after(() => pending);
   const now = new Date().toISOString(), input = makeReadingInput(snapshot);
 
   // Preferir los datos oficiales en vivo; si una fuente falla, usar el corte revisado.
