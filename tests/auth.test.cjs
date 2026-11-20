@@ -15,3 +15,8 @@ test('direct private links preserve only allowlisted destinations after login',(
  assert.equal(safePostLoginPath('/radar'),'/radar');
  for(const value of ['https://evil.invalid','//evil.invalid','/\\evil.invalid','javascript:alert(1)','/annienexus/calculadora?next=https://evil.invalid',['/annienexus/calculadora'],undefined,null])assert.equal(safePostLoginPath(value),'/annienexus');
 });
+test('fast session check accepts only signed, non-anonymous, allowlisted sessions',async()=>{
+ configured();const {authorizedSession}=require('../.foundation-test-build/shared/server/supabase-request.js');
+ for(const c of [null,{sub:'x',email:'owner@example.invalid',is_anonymous:true},{sub:'x',email:'other@example.invalid'},{email:'owner@example.invalid'}])assert.equal(await authorizedSession({claims:async()=>c}),null);
+ assert.deepEqual(await authorizedSession({claims:async()=>({sub:'x',email:'owner@example.invalid'})}),{id:'x',email:'owner@example.invalid'});
+});

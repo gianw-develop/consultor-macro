@@ -8,16 +8,16 @@ export type SessionState =
 export interface SessionProvider {
   resolve(request: Request): Promise<SessionState>;
 }
-// Identity is verified with Supabase; only confirmed, explicitly allowed accounts enter.
+// Lectura: sesión firmada (ES256) verificada localmente y correo en la lista; sin llamada de red por petición.
 export const sessionProvider: SessionProvider = { async resolve(request) {
-  const { requestAuth, authorizedUser } = await import("./supabase-request");
+  const { requestAuth, authorizedSession } = await import("./supabase-request");
   const auth = requestAuth(request);
   if (!auth) return { state: "unconfigured" };
-  const user = await authorizedUser(auth);
-  if (!user) return { state: "anonymous" };
+  const session = await authorizedSession(auth);
+  if (!session) return { state: "anonymous" };
   const {data,error} = await auth.client.auth.getClaims();
   if(error || !data?.claims?.exp) return {state:"anonymous"};
-  return {state:"authenticated",userId:user.id,expiresAt:new Date(data.claims.exp*1000).toISOString(),capabilities:["annienexus:read","radar:read"]};
+  return {state:"authenticated",userId:session.id,expiresAt:new Date(data.claims.exp*1000).toISOString(),capabilities:["annienexus:read","radar:read"]};
 } };
 export async function authorizeRead(
   request: Request, capability: Capability,

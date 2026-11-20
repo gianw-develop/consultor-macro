@@ -20,6 +20,12 @@ export function requestAuth(request: Request) {
       response.headers.set("Pragma","no-cache");
       return response;
     },
+    /** Sesión validada localmente con la clave pública ES256 del proyecto (sin llamada de red por petición). */
+    async claims() {
+      const {data,error} = await client.auth.getClaims();
+      if (error || !data?.claims) return null;
+      return data.claims as { sub?: string; email?: string; is_anonymous?: boolean };
+    },
     async user() {
       const {data,error} = await client.auth.getUser();
       if (error || !data.user) return null;
@@ -30,4 +36,13 @@ export function requestAuth(request: Request) {
 export async function authorizedUser(auth: NonNullable<ReturnType<typeof requestAuth>>) {
   const user = await auth.user();
   return user?.email_confirmed_at && emailAllowed(user.email) ? user : null;
+}
+/**
+ * Comprobación rápida para navegar: firma del token verificada localmente (ES256) y correo en la lista.
+ * Supabase no emite sesión a correos sin confirmar y el registro está cerrado, así que no hace falta
+ * consultar al servidor en cada página. Las escrituras (apuntes) siguen usando authorizedUser.
+ */
+export async function authorizedSession(auth: NonNullable<ReturnType<typeof requestAuth>>) {
+  const claims = await auth.claims();
+  return claims?.sub && !claims.is_anonymous && emailAllowed(claims.email) ? { id: claims.sub, email: claims.email! } : null;
 }

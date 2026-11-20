@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { applicationOrigin, localPreview } from "./shared/server/auth-config";
-import { authorizedUser, requestAuth } from "./shared/server/supabase-request";
+import { authorizedSession, requestAuth } from "./shared/server/supabase-request";
 import { safePostLoginPath } from "./shared/auth-destination";
 export async function proxy(request: NextRequest) {
   const path = request.nextUrl.pathname;
@@ -10,7 +10,7 @@ export async function proxy(request: NextRequest) {
   const auth=requestAuth(request);
   if (!auth) return new NextResponse("AWNexus: acceso pendiente de configuración.",{status:503,headers:{"Cache-Control":"no-store"}});
   try {
-    const user=await authorizedUser(auth);
+    const user=await authorizedSession(auth);
     if (!user) {
       const accessUrl = new URL("/acceso", applicationOrigin(request));
       accessUrl.searchParams.set("next", safePostLoginPath(path));

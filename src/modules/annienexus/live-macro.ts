@@ -15,7 +15,7 @@ async function text(url: string): Promise<string | null> {
   // Dos intentos: la API de la OCDE devuelve 500 de forma intermitente. Solo se guardan respuestas 200.
   for (let attempt = 0; attempt < 2; attempt++) {
     try {
-      const r = await fetch(url, { headers: HEADERS, cache: "force-cache", next: { revalidate: REVALIDATE }, signal: AbortSignal.timeout(20_000) });
+      const r = await fetch(url, { headers: HEADERS, cache: "force-cache", next: { revalidate: REVALIDATE }, signal: AbortSignal.timeout(8_000) });
       if (r.ok) {
         const body = await r.text();
         return body.length > 8_000_000 ? null : body;
