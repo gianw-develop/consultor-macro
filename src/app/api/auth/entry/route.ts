@@ -23,7 +23,12 @@ export async function POST(request: Request) {
 
   if (action === "send-code") {
     if (emailAllowed(address)) {
-      await auth.client.auth.signInWithOtp({ email: address, options: { shouldCreateUser: false, emailRedirectTo: new URL("/auth/callback", applicationOrigin(request)).href } });
+      const { error } = await auth.client.auth.signInWithOtp({ email: address, options: { shouldCreateUser: false, emailRedirectTo: new URL("/auth/callback", applicationOrigin(request)).href } });
+      // Registro de diagnóstico sin datos personales (visible en los logs de Vercel).
+      console.info(error ? `[acceso] código no enviado: ${error.status ?? "?"} ${error.code ?? error.name}` : "[acceso] código enviado");
+      if (error?.status === 429) return auth.apply(NextResponse.json({ error: "Demasiados intentos. Espera unos minutos." }, { status: 429 }));
+    } else {
+      console.info("[acceso] correo no autorizado");
     }
     return auth.apply(NextResponse.json({ message: SENT }));
   }
