@@ -40,5 +40,365 @@
     "sha256": "d6e8c8cad8044fe14c350c119a936a2b53ad0ce07e6a4ea5916e1600ea34a805",
     "lessonId": "source-1",
     "source": "model/repasos/imagenes/gregory-mentoria-9/06-slide-politica-fiscal.jpg"
+  },
+  {
+    "file": "b4a0035610ff889f.jpg",
+    "sha256": "b4a0035610ff889fba2d02672b16636876877e466c8fe6c4ea6a0752530e2915",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/00-rotacion-sectorial-xlp-xli.jpg"
+  },
+  {
+    "file": "af4bebc615402a59.jpg",
+    "sha256": "af4bebc615402a59cdd5a3a4301bae1c8db5c64b6f6e756209bdae93b1f63acb",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/01-tres-reglas.jpg"
+  },
+  {
+    "file": "93ece9114697c3e0.jpg",
+    "sha256": "93ece9114697c3e03b27d02322d5879886ad49fbe3249cf60cc0eb667b414551",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/02-calculadora-interes-compuesto.jpg"
+  },
+  {
+    "file": "cb0a9cba362b0ef4.jpg",
+    "sha256": "cb0a9cba362b0ef476a28deb38976c984f20a475bd7bec93cc0df2a8e25bde23",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/03-400-dolares-35-anos.jpg"
+  },
+  {
+    "file": "733a820265b2b806.jpg",
+    "sha256": "733a820265b2b8063593c9381d089c37fe3d5893137b4eda3473317e46379103",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/04-proxima-amazon.jpg"
+  },
+  {
+    "file": "1416f7fd5a78d205.jpg",
+    "sha256": "1416f7fd5a78d205fc9428d6e16ef9d035ff1f3ce7fdc98528873d80980b6118",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/05-etf-tres-ideas.jpg"
+  },
+  {
+    "file": "0ec96a19a5a55a08.jpg",
+    "sha256": "0ec96a19a5a55a08f21e740a72a6344b2cb67318d1b10ca5295376d4f7a3100d",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/06-indice-vs-etf.jpg"
+  },
+  {
+    "file": "91246e0fce8a9f6b.jpg",
+    "sha256": "91246e0fce8a9f6bc0ad49c02f3429bec9905b4bb5d494ddbc72bc8ecfd2a26d",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/07-voo-vs-cspx.jpg"
+  },
+  {
+    "file": "8da542d9e10e7bca.jpg",
+    "sha256": "8da542d9e10e7bca92437e32bcf577cf3290aee8582fdf121646ccb4ee5f2985",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/07b-gdx-vs-oro.jpg"
+  },
+  {
+    "file": "dbc2fd08292e67a9.jpg",
+    "sha256": "dbc2fd08292e67a9e48a4776ba4ae37d6c63e12b0e66eb54be00555c25432dcb",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/08-tipos-de-etf.jpg"
+  },
+  {
+    "file": "04e29577ac41bb34.jpg",
+    "sha256": "04e29577ac41bb341dd580b213477e86807de62e1e5b62b69e6a112a5bbeb7a1",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/09-trampa-x3.jpg"
+  },
+  {
+    "file": "c48669c343a26dae.jpg",
+    "sha256": "c48669c343a26dae8deae6a7f64e12b7ece6859864714a6a68115177e051fe49",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/10-rango-de-resultados.jpg"
+  },
+  {
+    "file": "af185be576126607.jpg",
+    "sha256": "af185be57612660762d002fd180848aaf8f915df06fd94a6b26ca82a85d5283a",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/10b-caidas-reales.jpg"
+  },
+  {
+    "file": "9e557365d3f7bdaa.jpg",
+    "sha256": "9e557365d3f7bdaa0f72f60766894794490cb03683e73692ac70b18201576af4",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/10c-grafico-que-escondia-riesgo.jpg"
+  },
+  {
+    "file": "c7d258d807682ce0.jpg",
+    "sha256": "c7d258d807682ce0f09be4346e85d78c98c6f7e525c60a23950e48bd4f783389",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/11-seis-preguntas.jpg"
+  },
+  {
+    "file": "e145fb259be5ffe4.jpg",
+    "sha256": "e145fb259be5ffe487a0a4a4dacafad67564348d36865209b440a1bdea8b296c",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/12-fisica-o-sintetica.jpg"
+  },
+  {
+    "file": "0381b1e060992f41.jpg",
+    "sha256": "0381b1e060992f417b547ab0e043a5e3229be79ac354b6d6c8c5ca8668c71057",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/13-costo-ter.jpg"
+  },
+  {
+    "file": "4d8249d9425598a4.jpg",
+    "sha256": "4d8249d9425598a4327223aa299190471274ab296cbaa014ab57983d922352bb",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/14-tres-monedas.jpg"
+  },
+  {
+    "file": "b0ecda7ad4fb5933.jpg",
+    "sha256": "b0ecda7ad4fb59337d3260c174cbd6483512439005f6b1e86b1bc56e3d18c9aa",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/15-eeuu-vs-irlanda.jpg"
+  },
+  {
+    "file": "f2bb8517ecc63b96.jpg",
+    "sha256": "f2bb8517ecc63b96a0a097264205fef52fa83044feef76afb852e1015911c259",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/16-isin.jpg"
+  },
+  {
+    "file": "cb65a8af7db95605.jpg",
+    "sha256": "cb65a8af7db956055d5c7894973174f1acbb500b65d9f55db5b2a4121ca2481d",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/17-cuatro-carteras.jpg"
+  },
+  {
+    "file": "518303902a356ba4.jpg",
+    "sha256": "518303902a356ba40768786cc3da1f3cf4e1aa43a81414eb3ba6ab211a7d7d8b",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/17b-resultados-2006-2024.jpg"
+  },
+  {
+    "file": "c196c5eb2bab606d.jpg",
+    "sha256": "c196c5eb2bab606df872a427527d13975e0eb5a02985ddcc8e617a062419edba",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/18-rebalanceo.jpg"
+  },
+  {
+    "file": "35bf3211deb50b73.jpg",
+    "sha256": "35bf3211deb50b73a56512b4eecc95fa37a011a1e9b58a17ff83f9bb42c40f51",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/18b-cartera-segun-horizonte.jpg"
+  },
+  {
+    "file": "d7c9670b00ad52f4.jpg",
+    "sha256": "d7c9670b00ad52f440f248412e9e33f8769f504879910cd488044172d2ef55fd",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/19-interes-ibkr.jpg"
+  },
+  {
+    "file": "80f7a5f96f217201.jpg",
+    "sha256": "80f7a5f96f2172015cb02ee78ac4a6b28de326755edb11e03c80492fd874a337",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/19b-25000-cuenta-vs-etf-letras.jpg"
+  },
+  {
+    "file": "32419238262bdd6a.jpg",
+    "sha256": "32419238262bdd6a6b8b19ed0425bdf7fe7791bc920ac70c7ab66e10c0e3631a",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/20-ib01-vs-sgov.jpg"
+  },
+  {
+    "file": "d06e70e18d9f0855.jpg",
+    "sha256": "d06e70e18d9f0855767d1b3bb6a5505a00ecaae65953dc716399e0e95f415796",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/21-siete-pasos-ibkr.jpg"
+  },
+  {
+    "file": "0647b5e1febaa171.jpg",
+    "sha256": "0647b5e1febaa171eddff0730df720e9a745d014bde3abca42f106130360ec84",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/21b-cinco-errores.jpg"
+  },
+  {
+    "file": "f4a49ca8d954ee83.jpg",
+    "sha256": "f4a49ca8d954ee83628d63b022f888463096efa641cf31581e2e1b169f1d02dc",
+    "lessonId": "masterclass-etfs",
+    "source": "masterclass/capturas-masterclass/22-plan-30-dias.jpg"
+  },
+  {
+    "file": "9c37e37b26b25716.jpg",
+    "sha256": "9c37e37b26b25716faaec7ab8062e1676767262cafec63eefb15a8e61d17d5d7",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/01-mercado-paga-al-que-gestiona-riesgo.jpg"
+  },
+  {
+    "file": "360e9d3bb516651d.jpg",
+    "sha256": "360e9d3bb516651dea9d65b6f7b535301f65471ee2a3e705bfe49174c62f6cdb",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/02-de-la-timba-al-portafolio.jpg"
+  },
+  {
+    "file": "b3afa050f87ffcf0.jpg",
+    "sha256": "b3afa050f87ffcf0074b71c9777054d8a8cf56e4f7366d38e5772dd4531084e8",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/03-agenda.jpg"
+  },
+  {
+    "file": "f0f77c2e3c069494.jpg",
+    "sha256": "f0f77c2e3c069494b3ee60b7ee62d35d111d69c522da07d6d5770d9aa5f6c170",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/04-cuantos-pierden.jpg"
+  },
+  {
+    "file": "988324727f471686.jpg",
+    "sha256": "988324727f471686d87d745c4e7a89b37818361fe231cf9812f9519b0557e013",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/05-intradia-vs-swing.jpg"
+  },
+  {
+    "file": "453308097bd19816.jpg",
+    "sha256": "453308097bd19816fc45b22b7aad2fc8b2ecf817bc7cbfbb48528f29014a6a61",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/06-costo-se-come-objetivo.jpg"
+  },
+  {
+    "file": "adfc8051b8e9f616.jpg",
+    "sha256": "adfc8051b8e9f6163c881a82a7b54fa97bdf359734dfe827ee6b60bf2a4ca0d0",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/07-rentabilidad-segun-cuanto-opera.jpg"
+  },
+  {
+    "file": "3ed40d6c544c2440.jpg",
+    "sha256": "3ed40d6c544c244080c1e4724e29e79123376c00914e74c97e616f29c3a4957d",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/08-loteria.jpg"
+  },
+  {
+    "file": "dc400ffad0f0c292.jpg",
+    "sha256": "dc400ffad0f0c29299c5350879769d4c7d1547f4c6aed7b1e380d77df31eed0c",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/09-seis-sesgos.jpg"
+  },
+  {
+    "file": "ed8c5b7b42fcf538.jpg",
+    "sha256": "ed8c5b7b42fcf538d23720417c9b1e6ac5567109354ac5f0508d97396de02657",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/10-ciclo-del-intradia.jpg"
+  },
+  {
+    "file": "7ec0afd7310a2251.jpg",
+    "sha256": "7ec0afd7310a2251ba2689fed556b0e3dfd6f6222b2165603d26fa155bb954d7",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/11-ocho-puntos-ciegos.jpg"
+  },
+  {
+    "file": "d5619d00016807dc.jpg",
+    "sha256": "d5619d00016807dc93871075feacaebcbaf43117ee6aed6a3de44e857e75d75d",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/12-trader-vs-gestor.jpg"
+  },
+  {
+    "file": "2f4afc5ed81f701f.jpg",
+    "sha256": "2f4afc5ed81f701fd10b92adedd4841cf4efafd58befdc7b93af2ec8ff1fde52",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/13-embudo-challenge.jpg"
+  },
+  {
+    "file": "b4034cf6f3d7ae78.jpg",
+    "sha256": "b4034cf6f3d7ae78bc5d5b9acf06e32f25784b1bdc03a1eb259128a8f02f79d9",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/14-fondeo-vs-pamm.jpg"
+  },
+  {
+    "file": "39a7247ffc8152ff.jpg",
+    "sha256": "39a7247ffc8152ffb3352dc71d531b8d22e596d9faf11d3228868ae478b7d34a",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/15-fundingdreamers-800.jpg"
+  },
+  {
+    "file": "41eac7fee8503b51.jpg",
+    "sha256": "41eac7fee8503b51403275bd9cddc64676dcfbbec620eef4ca531fcd63328eee",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/16-ingreso-anual-12.jpg"
+  },
+  {
+    "file": "d5981bba751f7afe.jpg",
+    "sha256": "d5981bba751f7afecf28785672913742d68415867668a94c9a98cb7bf37bb783",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/17-cinco-escalones.jpg"
+  },
+  {
+    "file": "9cf909117c5b9c69.jpg",
+    "sha256": "9cf909117c5b9c69eaf1604395a53869f891aef96236c305ddbae6fae8b60e44",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/18-ocho-metricas.jpg"
+  },
+  {
+    "file": "21b13e8dc63d8419.jpg",
+    "sha256": "21b13e8dc63d84190a256c2aa52adf1c280be11682d51baac0f9cce4f28b8442",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/19-pamm-rentabilidad-2026.jpg"
+  },
+  {
+    "file": "c9efeaa562c455eb.jpg",
+    "sha256": "c9efeaa562c455eba8c875c0f35a9e7119eac32968acb8ce41b7a811905dba10",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/20-dos-perfiles.jpg"
+  },
+  {
+    "file": "080064c1e8330afd.jpg",
+    "sha256": "080064c1e8330afdb47d6a0af25ab45d2c6a9fa02b3a86c94e05dc93b01c72a1",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/21-vehiculos-capital.jpg"
+  },
+  {
+    "file": "7555f3bec45781d2.jpg",
+    "sha256": "7555f3bec45781d2f8e778be8ba4bf6e5e448e8a2d58047e7106bdcabb16c6e9",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/22-hedge-funds-5-64-billones.jpg"
+  },
+  {
+    "file": "3f0bdefd2edd8026.jpg",
+    "sha256": "3f0bdefd2edd802660cbbacb39b2567d3a9685d95daa649aad465d1edcd5ea81",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/23-filtros-family-office.jpg"
+  },
+  {
+    "file": "62dedb7e86f2a298.jpg",
+    "sha256": "62dedb7e86f2a298eb9e7f8a02d10de71f88c19620c12e2fe199fc88abcf6920",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/24-inflacion-latam.jpg"
+  },
+  {
+    "file": "80d1c76d751b5f6a.jpg",
+    "sha256": "80d1c76d751b5f6a9f9db4144cc741069d57ade2de2d36f5ddf4403584f8c64e",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/25-como-competimos.jpg"
+  },
+  {
+    "file": "1bffccac85b2664f.jpg",
+    "sha256": "1bffccac85b2664f9353e392dc4e6fa168e27ccee2c92566c43a9275566c3796",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/26-seis-capas-macro.jpg"
+  },
+  {
+    "file": "7caffb70292b0293.jpg",
+    "sha256": "7caffb70292b0293ad94ba5a2886e64b1e73025ccb14cec65c0286b10eba7fde",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/27-tesis-una-pagina.jpg"
+  },
+  {
+    "file": "286dacb5f89eafa8.jpg",
+    "sha256": "286dacb5f89eafa8a2874b05df0c8e6358c86b6eab70740dc258c77a7abe4336",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/28-cinco-ideas.jpg"
+  },
+  {
+    "file": "060f5e7c271c5041.jpg",
+    "sha256": "060f5e7c271c5041114a3639d09443691ed8312266743da702e11df0c77111f3",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/29-siguiente-paso.jpg"
+  },
+  {
+    "file": "253e46b1e1c1b76e.jpg",
+    "sha256": "253e46b1e1c1b76ec6cd103d05c81f976fab8549af7de4b518f64fd5fe067f43",
+    "lessonId": "masterclass-cuenta",
+    "source": "masterclass/capturas-video2/30-extra-cuatro-grandes-flujo-caja.jpg"
   }
 ]

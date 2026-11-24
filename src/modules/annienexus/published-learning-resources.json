@@ -36,5 +36,249 @@
       "kind": "image",
       "url": "/api/learning/d6e8c8cad8044fe1.jpg"
     }
+  },
+  "masterclass-etfs": {
+    "capturas-masterclass/00-rotacion-sectorial-xlp-xli.jpg": {
+      "kind": "image",
+      "url": "/api/learning/b4a0035610ff889f.jpg"
+    },
+    "capturas-masterclass/01-tres-reglas.jpg": {
+      "kind": "image",
+      "url": "/api/learning/af4bebc615402a59.jpg"
+    },
+    "capturas-masterclass/02-calculadora-interes-compuesto.jpg": {
+      "kind": "image",
+      "url": "/api/learning/93ece9114697c3e0.jpg"
+    },
+    "capturas-masterclass/03-400-dolares-35-anos.jpg": {
+      "kind": "image",
+      "url": "/api/learning/cb0a9cba362b0ef4.jpg"
+    },
+    "capturas-masterclass/04-proxima-amazon.jpg": {
+      "kind": "image",
+      "url": "/api/learning/733a820265b2b806.jpg"
+    },
+    "capturas-masterclass/05-etf-tres-ideas.jpg": {
+      "kind": "image",
+      "url": "/api/learning/1416f7fd5a78d205.jpg"
+    },
+    "capturas-masterclass/06-indice-vs-etf.jpg": {
+      "kind": "image",
+      "url": "/api/learning/0ec96a19a5a55a08.jpg"
+    },
+    "capturas-masterclass/07-voo-vs-cspx.jpg": {
+      "kind": "image",
+      "url": "/api/learning/91246e0fce8a9f6b.jpg"
+    },
+    "capturas-masterclass/07b-gdx-vs-oro.jpg": {
+      "kind": "image",
+      "url": "/api/learning/8da542d9e10e7bca.jpg"
+    },
+    "capturas-masterclass/08-tipos-de-etf.jpg": {
+      "kind": "image",
+      "url": "/api/learning/dbc2fd08292e67a9.jpg"
+    },
+    "capturas-masterclass/09-trampa-x3.jpg": {
+      "kind": "image",
+      "url": "/api/learning/04e29577ac41bb34.jpg"
+    },
+    "capturas-masterclass/10-rango-de-resultados.jpg": {
+      "kind": "image",
+      "url": "/api/learning/c48669c343a26dae.jpg"
+    },
+    "capturas-masterclass/10b-caidas-reales.jpg": {
+      "kind": "image",
+      "url": "/api/learning/af185be576126607.jpg"
+    },
+    "capturas-masterclass/10c-grafico-que-escondia-riesgo.jpg": {
+      "kind": "image",
+      "url": "/api/learning/9e557365d3f7bdaa.jpg"
+    },
+    "capturas-masterclass/11-seis-preguntas.jpg": {
+      "kind": "image",
+      "url": "/api/learning/c7d258d807682ce0.jpg"
+    },
+    "capturas-masterclass/12-fisica-o-sintetica.jpg": {
+      "kind": "image",
+      "url": "/api/learning/e145fb259be5ffe4.jpg"
+    },
+    "capturas-masterclass/13-costo-ter.jpg": {
+      "kind": "image",
+      "url": "/api/learning/0381b1e060992f41.jpg"
+    },
+    "capturas-masterclass/14-tres-monedas.jpg": {
+      "kind": "image",
+      "url": "/api/learning/4d8249d9425598a4.jpg"
+    },
+    "capturas-masterclass/15-eeuu-vs-irlanda.jpg": {
+      "kind": "image",
+      "url": "/api/learning/b0ecda7ad4fb5933.jpg"
+    },
+    "capturas-masterclass/16-isin.jpg": {
+      "kind": "image",
+      "url": "/api/learning/f2bb8517ecc63b96.jpg"
+    },
+    "capturas-masterclass/17-cuatro-carteras.jpg": {
+      "kind": "image",
+      "url": "/api/learning/cb65a8af7db95605.jpg"
+    },
+    "capturas-masterclass/17b-resultados-2006-2024.jpg": {
+      "kind": "image",
+      "url": "/api/learning/518303902a356ba4.jpg"
+    },
+    "capturas-masterclass/18-rebalanceo.jpg": {
+      "kind": "image",
+      "url": "/api/learning/c196c5eb2bab606d.jpg"
+    },
+    "capturas-masterclass/18b-cartera-segun-horizonte.jpg": {
+      "kind": "image",
+      "url": "/api/learning/35bf3211deb50b73.jpg"
+    },
+    "capturas-masterclass/19-interes-ibkr.jpg": {
+      "kind": "image",
+      "url": "/api/learning/d7c9670b00ad52f4.jpg"
+    },
+    "capturas-masterclass/19b-25000-cuenta-vs-etf-letras.jpg": {
+      "kind": "image",
+      "url": "/api/learning/80f7a5f96f217201.jpg"
+    },
+    "capturas-masterclass/20-ib01-vs-sgov.jpg": {
+      "kind": "image",
+      "url": "/api/learning/32419238262bdd6a.jpg"
+    },
+    "capturas-masterclass/21-siete-pasos-ibkr.jpg": {
+      "kind": "image",
+      "url": "/api/learning/d06e70e18d9f0855.jpg"
+    },
+    "capturas-masterclass/21b-cinco-errores.jpg": {
+      "kind": "image",
+      "url": "/api/learning/0647b5e1febaa171.jpg"
+    },
+    "capturas-masterclass/22-plan-30-dias.jpg": {
+      "kind": "image",
+      "url": "/api/learning/f4a49ca8d954ee83.jpg"
+    }
+  },
+  "masterclass-cuenta": {
+    "capturas-video2/01-mercado-paga-al-que-gestiona-riesgo.jpg": {
+      "kind": "image",
+      "url": "/api/learning/9c37e37b26b25716.jpg"
+    },
+    "capturas-video2/02-de-la-timba-al-portafolio.jpg": {
+      "kind": "image",
+      "url": "/api/learning/360e9d3bb516651d.jpg"
+    },
+    "capturas-video2/03-agenda.jpg": {
+      "kind": "image",
+      "url": "/api/learning/b3afa050f87ffcf0.jpg"
+    },
+    "capturas-video2/04-cuantos-pierden.jpg": {
+      "kind": "image",
+      "url": "/api/learning/f0f77c2e3c069494.jpg"
+    },
+    "capturas-video2/05-intradia-vs-swing.jpg": {
+      "kind": "image",
+      "url": "/api/learning/988324727f471686.jpg"
+    },
+    "capturas-video2/06-costo-se-come-objetivo.jpg": {
+      "kind": "image",
+      "url": "/api/learning/453308097bd19816.jpg"
+    },
+    "capturas-video2/07-rentabilidad-segun-cuanto-opera.jpg": {
+      "kind": "image",
+      "url": "/api/learning/adfc8051b8e9f616.jpg"
+    },
+    "capturas-video2/08-loteria.jpg": {
+      "kind": "image",
+      "url": "/api/learning/3ed40d6c544c2440.jpg"
+    },
+    "capturas-video2/09-seis-sesgos.jpg": {
+      "kind": "image",
+      "url": "/api/learning/dc400ffad0f0c292.jpg"
+    },
+    "capturas-video2/10-ciclo-del-intradia.jpg": {
+      "kind": "image",
+      "url": "/api/learning/ed8c5b7b42fcf538.jpg"
+    },
+    "capturas-video2/11-ocho-puntos-ciegos.jpg": {
+      "kind": "image",
+      "url": "/api/learning/7ec0afd7310a2251.jpg"
+    },
+    "capturas-video2/12-trader-vs-gestor.jpg": {
+      "kind": "image",
+      "url": "/api/learning/d5619d00016807dc.jpg"
+    },
+    "capturas-video2/13-embudo-challenge.jpg": {
+      "kind": "image",
+      "url": "/api/learning/2f4afc5ed81f701f.jpg"
+    },
+    "capturas-video2/14-fondeo-vs-pamm.jpg": {
+      "kind": "image",
+      "url": "/api/learning/b4034cf6f3d7ae78.jpg"
+    },
+    "capturas-video2/15-fundingdreamers-800.jpg": {
+      "kind": "image",
+      "url": "/api/learning/39a7247ffc8152ff.jpg"
+    },
+    "capturas-video2/16-ingreso-anual-12.jpg": {
+      "kind": "image",
+      "url": "/api/learning/41eac7fee8503b51.jpg"
+    },
+    "capturas-video2/17-cinco-escalones.jpg": {
+      "kind": "image",
+      "url": "/api/learning/d5981bba751f7afe.jpg"
+    },
+    "capturas-video2/18-ocho-metricas.jpg": {
+      "kind": "image",
+      "url": "/api/learning/9cf909117c5b9c69.jpg"
+    },
+    "capturas-video2/19-pamm-rentabilidad-2026.jpg": {
+      "kind": "image",
+      "url": "/api/learning/21b13e8dc63d8419.jpg"
+    },
+    "capturas-video2/20-dos-perfiles.jpg": {
+      "kind": "image",
+      "url": "/api/learning/c9efeaa562c455eb.jpg"
+    },
+    "capturas-video2/21-vehiculos-capital.jpg": {
+      "kind": "image",
+      "url": "/api/learning/080064c1e8330afd.jpg"
+    },
+    "capturas-video2/22-hedge-funds-5-64-billones.jpg": {
+      "kind": "image",
+      "url": "/api/learning/7555f3bec45781d2.jpg"
+    },
+    "capturas-video2/23-filtros-family-office.jpg": {
+      "kind": "image",
+      "url": "/api/learning/3f0bdefd2edd8026.jpg"
+    },
+    "capturas-video2/24-inflacion-latam.jpg": {
+      "kind": "image",
+      "url": "/api/learning/62dedb7e86f2a298.jpg"
+    },
+    "capturas-video2/25-como-competimos.jpg": {
+      "kind": "image",
+      "url": "/api/learning/80d1c76d751b5f6a.jpg"
+    },
+    "capturas-video2/26-seis-capas-macro.jpg": {
+      "kind": "image",
+      "url": "/api/learning/1bffccac85b2664f.jpg"
+    },
+    "capturas-video2/27-tesis-una-pagina.jpg": {
+      "kind": "image",
+      "url": "/api/learning/7caffb70292b0293.jpg"
+    },
+    "capturas-video2/28-cinco-ideas.jpg": {
+      "kind": "image",
+      "url": "/api/learning/286dacb5f89eafa8.jpg"
+    },
+    "capturas-video2/29-siguiente-paso.jpg": {
+      "kind": "image",
+      "url": "/api/learning/060f5e7c271c5041.jpg"
+    },
+    "capturas-video2/30-extra-cuatro-grandes-flujo-caja.jpg": {
+      "kind": "image",
+      "url": "/api/learning/253e46b1e1c1b76e.jpg"
+    }
   }
 }
