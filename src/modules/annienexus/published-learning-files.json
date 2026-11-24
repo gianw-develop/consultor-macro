@@ -496,5 +496,227 @@
     "sha256": "31f61a59bb51dace8f811c9dae956cb49d96a625d4b890e695a07cf54140347c",
     "lessonId": "masterclass-miedo",
     "source": "masterclass/capturas-video3/16-sox-10500.jpg"
+  },
+  {
+    "file": "ad2d7605020f6310.jpg",
+    "sha256": "ad2d7605020f6310ae01eb0b331c283c7153d9d30cffd85848ddd5f493f0f786",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/01-cuanto-pesa-esta-mania.jpg"
+  },
+  {
+    "file": "95c14a97e9790895.jpg",
+    "sha256": "95c14a97e9790895cf00fa1443a8287ec50cb81597c30627881389390e52ae27",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/02-tecnologia-gana-inversor-pierde.jpg"
+  },
+  {
+    "file": "692621a3b1eb6832.jpg",
+    "sha256": "692621a3b1eb6832737e8de3e6d3061b1790c7dd094404ebc222970e1d59a2f9",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/03-cadena-ciclo-de-capital.jpg"
+  },
+  {
+    "file": "0fbe67ef18d470ca.jpg",
+    "sha256": "0fbe67ef18d470ca9d588cf0463f5c62c26fc7bfb1a6c797d3bc9a126a8d57c0",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/04-inversion-record-caja-negativa.jpg"
+  },
+  {
+    "file": "8ff212b27124ef83.jpg",
+    "sha256": "8ff212b27124ef83fff72bb20b5d31560f1bfec66a47be78735cf51b225323a5",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/05-apalancamiento-alarma-verano.jpg"
+  },
+  {
+    "file": "659e5e96306f7ba9.jpg",
+    "sha256": "659e5e96306f7ba92d44c78cb95fd43683b59bd7c0dd7b74c4a140a1cfa26436",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/06-deuda-de-margen-1-5-billones.jpg"
+  },
+  {
+    "file": "30bbc157ba47cd8c.jpg",
+    "sha256": "30bbc157ba47cd8c8323c5dc906d9995cacb3ad1e0d13e4aefea5b0caf35f2af",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/07-siete-episodios-apalancamiento.jpg"
+  },
+  {
+    "file": "08b23993172eff8f.jpg",
+    "sha256": "08b23993172eff8f9641efeb9e6eb93821310608d518cc4355b2dac7a9bd6503",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/08-hedge-funds-desarmados.jpg"
+  },
+  {
+    "file": "1a3a156bec5ae0ba.jpg",
+    "sha256": "1a3a156bec5ae0ba74c213136c8d21e725c89a6d5e27010c78c149e204217e94",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/09-tablero-cuatro-pilares.jpg"
+  },
+  {
+    "file": "28c220e473aa1f3f.jpg",
+    "sha256": "28c220e473aa1f3f48950ea4b369898b13aa5ff5130da1f55dae6cbb1592215b",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/10-amplitud-linea-nyse.jpg"
+  },
+  {
+    "file": "813af897475f6038.jpg",
+    "sha256": "813af897475f603888b2c796f230b756185db6b683ceb471e5fcc94773a5c24c",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/11-cruces-amplitud-historicos.jpg"
+  },
+  {
+    "file": "2688a7b1afd11563.jpg",
+    "sha256": "2688a7b1afd115636874ec463c6967e74aaf429a14e49e62b09f31b36f7fdb06",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/12-septiembre-grieta.jpg"
+  },
+  {
+    "file": "69392ddbec06b259.jpg",
+    "sha256": "69392ddbec06b259bd78524b9a66d89ad26c84ec6dc1bc954c7c269c7560b5ab",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/13-bono-10-anos.jpg"
+  },
+  {
+    "file": "399d64ea9dfb38c5.jpg",
+    "sha256": "399d64ea9dfb38c53c21c9615505aac5894f07708f7644c16d3aebbfe9031536",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/14-no-toda-caida-amplitud-igual.jpg"
+  },
+  {
+    "file": "f906aaddc2f67246.jpg",
+    "sha256": "f906aaddc2f67246da8dc7104b884d3a69ca7f4c44dfb14f47b40700c332503c",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/15-rotacion-sectores.jpg"
+  },
+  {
+    "file": "ea69f0a8faee958d.jpg",
+    "sha256": "ea69f0a8faee958dc0dd147e322deeb578508a3310aeda2517f95897f8f010c1",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/16-ciclico-vs-defensivo-zona-peligro.jpg"
+  },
+  {
+    "file": "4f32ed44d4b86996.jpg",
+    "sha256": "4f32ed44d4b86996e3a45359c399760f07adb703db434979dfcb6647d4efffee",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/17-xly-xlp-diario.jpg"
+  },
+  {
+    "file": "bb052d7de402fa83.jpg",
+    "sha256": "bb052d7de402fa83e4f7424cc7c747e587595c83fe4883d1d0023856bcb608d0",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/18-epicentro-decide-tamano.jpg"
+  },
+  {
+    "file": "a6176cf2b4a0f457.jpg",
+    "sha256": "a6176cf2b4a0f4575bb3a6146c6e8a2d7ea00a786442e755e47cb72e5182f50b",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/19-credito-bonos-basura.jpg"
+  },
+  {
+    "file": "720c57227a54ef22.jpg",
+    "sha256": "720c57227a54ef226b2e691cc81033486f559abe5a05217546a5457e209055a0",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/20-cds-ia.jpg"
+  },
+  {
+    "file": "108097f3b6313de8.jpg",
+    "sha256": "108097f3b6313de800de34d758b3d5892e8ca7523f3729a11d288cac67568f83",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/21-alarmas-fuera-wall-street.jpg"
+  },
+  {
+    "file": "f653cb60953d56b2.jpg",
+    "sha256": "f653cb60953d56b223410f22573fe4eaddad0af69087bb3de50c1b3f9885f392",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/22-oro-momentum.jpg"
+  },
+  {
+    "file": "ddec1f91c6ed904b.jpg",
+    "sha256": "ddec1f91c6ed904b9075529dc970a391bac2df9f9c2a40cecd09a99bd0c7ed32",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/23-miedo-sin-capitulacion.jpg"
+  },
+  {
+    "file": "1d0cb1fcd745deec.jpg",
+    "sha256": "1d0cb1fcd745deecb79b8858d15b9a84d1e8e849fc5b376fd1a4cd9587ce9914",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/24-trampa-2022-vix.jpg"
+  },
+  {
+    "file": "045ac5318d6a04d9.jpg",
+    "sha256": "045ac5318d6a04d99852d9e7561860d3a3e0e2a6067edfaa788dd6ec863738b7",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/25-dow-vs-nasdaq.jpg"
+  },
+  {
+    "file": "0c9376f5243b2dc9.jpg",
+    "sha256": "0c9376f5243b2dc9fa796e750afd5339c6ced3270fbf988d2b61c59c130733ee",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/26-rotaciones-dow-nasdaq.jpg"
+  },
+  {
+    "file": "478e40f7fc27db68.jpg",
+    "sha256": "478e40f7fc27db688f564aa390053e8ab7807f062ac1bedd3302d826db0bbe79",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/27-economia-todavia-aguanta.jpg"
+  },
+  {
+    "file": "efdc4b56b4a433d6.jpg",
+    "sha256": "efdc4b56b4a433d64c6dfd59051b2d00e325a88b3c84e27189fce68a211b15ad",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/28-deterioro-todos-los-angulos.jpg"
+  },
+  {
+    "file": "9e8f3bac81ec2c64.jpg",
+    "sha256": "9e8f3bac81ec2c64fa86c7ccdc680847b56a12aac414a299ef58ebf4c5510012",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/29-tablero-de-hoy.jpg"
+  },
+  {
+    "file": "0f7c8e2fc9cc7e7c.jpg",
+    "sha256": "0f7c8e2fc9cc7e7cc549362c5352c7d7678fec082f5e2fcc749b286319b611f1",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/30-los-dos-lados.jpg"
+  },
+  {
+    "file": "76247d4441cc9758.jpg",
+    "sha256": "76247d4441cc97588a693ab7b43e4abb5e4b1af79b7a3ead7061fd77504828be",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/31-valoracion-no-da-momento.jpg"
+  },
+  {
+    "file": "87ffc8caa0111426.jpg",
+    "sha256": "87ffc8caa0111426ff66768e10dd531d2144d9b2baaa825137c6a6020e61b07a",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/32-cinco-caminos-sp500-2028.jpg"
+  },
+  {
+    "file": "9c60f62e740ae152.jpg",
+    "sha256": "9c60f62e740ae1526e34004548d2d4a7ba5f9f1fce22a977c8d38e86eb109c72",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/33-ubs-escenarios.jpg"
+  },
+  {
+    "file": "dc22c39415107321.jpg",
+    "sha256": "dc22c39415107321df1519308252a83437fbb5fb0f24ba017e7dfa8106ab45ce",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/34-cautela-no-oportunidad-clara.jpg"
+  },
+  {
+    "file": "96fa03c0fb7f27eb.jpg",
+    "sha256": "96fa03c0fb7f27eb58ce83f2d20120a2c2b02f3b93967211a5da66a19d74d136",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/35-lo-que-me-haria-comprar.jpg"
+  },
+  {
+    "file": "c5ea15b8710b7dca.jpg",
+    "sha256": "c5ea15b8710b7dca7afe69fc8975b81c92bd84b64b8065603d6e01643f0f8e65",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/36-lo-que-me-haria-bajista.jpg"
+  },
+  {
+    "file": "0a11770bfd9f6a77.jpg",
+    "sha256": "0a11770bfd9f6a77742ab9928b73d0a968bc159b287a2bf77dfc238b39e9d25c",
+    "lessonId": "masterclass-miedo-2",
+    "source": "masterclass/capturas-video4/37-calendario.jpg"
   }
 ]
