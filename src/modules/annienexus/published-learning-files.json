@@ -400,5 +400,101 @@
     "sha256": "253e46b1e1c1b76ec6cd103d05c81f976fab8549af7de4b518f64fd5fe067f43",
     "lessonId": "masterclass-cuenta",
     "source": "masterclass/capturas-video2/30-extra-cuatro-grandes-flujo-caja.jpg"
+  },
+  {
+    "file": "0dfc0dde4e274207.jpg",
+    "sha256": "0dfc0dde4e274207c479d78cd1ea2ee1366a2791bb0412238f80e28326f80d2e",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/01-el-mercado-nos-hace-una-pregunta.jpg"
+  },
+  {
+    "file": "600a40987f41cd11.jpg",
+    "sha256": "600a40987f41cd11913dc315696d599ad2f830a728abefbc959e0d490501089c",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/02-yo-no-adivino-identifico.jpg"
+  },
+  {
+    "file": "bd65c7222b99c497.jpg",
+    "sha256": "bd65c7222b99c497b80807412f22af6741749d7d8008f166c0256ec4eec4ab91",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/03-cinco-bloques.jpg"
+  },
+  {
+    "file": "010ece79cebe8aeb.jpg",
+    "sha256": "010ece79cebe8aeb0ce2d1173444658df4b2403fcc42cb7754ae7b5738405e68",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/04-45-dias-que-cambiaron-el-mercado.jpg"
+  },
+  {
+    "file": "01d1cb45f7544d82.jpg",
+    "sha256": "01d1cb45f7544d8273a273acfc10869da9e46626b12f10bdf9b0eb65790f0f05",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/05-octubre-mercado-partido-en-dos.jpg"
+  },
+  {
+    "file": "5889af155160c35d.jpg",
+    "sha256": "5889af155160c35dfa143b63a1029e050872f902fd5c4ca53e8089fec8d1f4b9",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/06-primero-cae-lo-especulativo.jpg"
+  },
+  {
+    "file": "8b04be837b901a8e.jpg",
+    "sha256": "8b04be837b901a8e789b991d16471377f8b1800f5457162d7af7cf767a95bf82",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/07-bitcoin-vs-nasdaq-largo-plazo.jpg"
+  },
+  {
+    "file": "e1ba0bf17e79f716.jpg",
+    "sha256": "e1ba0bf17e79f7169add7c3092187119155b95b2faa8aede0484fd946843776b",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/08-bitcoin-vs-nasdaq-2021-2026.jpg"
+  },
+  {
+    "file": "a8b29067861dd994.jpg",
+    "sha256": "a8b29067861dd9946e838dca146bbb02c593250ddb08f0dc65d6e8b2af3e470a",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/09-tres-tipos-de-indicadores.jpg"
+  },
+  {
+    "file": "d01292e84c9f56af.jpg",
+    "sha256": "d01292e84c9f56afb27f8ffdfed1429781f2fb3fac0e95c4ad0343b0581d8939",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/10-los-adelantados-que-miro.jpg"
+  },
+  {
+    "file": "4c589e2811423faa.jpg",
+    "sha256": "4c589e2811423faaa065cc6111f5c27bb02e7c17fa3ffd44bca0571f1bb19cb0",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/11-cuatro-trampas-indicadores.jpg"
+  },
+  {
+    "file": "b6b2b6c0dc50fc28.jpg",
+    "sha256": "b6b2b6c0dc50fc2897ac19383bd26acd3ce49923435f7d93997a98c3c04eb6f3",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/12-leccion-2022.jpg"
+  },
+  {
+    "file": "64c9b14a93d02624.jpg",
+    "sha256": "64c9b14a93d02624e48c33b6db171506ee4971787f94bb86121bd0879a6df60d",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/13-adelantado-ocde.jpg"
+  },
+  {
+    "file": "8bde4caf47e1c42f.jpg",
+    "sha256": "8bde4caf47e1c42f8dad94c09e2ddf0d79c7d594058f6be5fb0e337dde6916c0",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/14-cinco-fases-mania.jpg"
+  },
+  {
+    "file": "a0d484b256e70129.jpg",
+    "sha256": "a0d484b256e701295c111aa994daf2e9381510e71422576e017802c2341e3c7c",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/15-sintomas-euforia.jpg"
+  },
+  {
+    "file": "31f61a59bb51dace.jpg",
+    "sha256": "31f61a59bb51dace8f811c9dae956cb49d96a625d4b890e695a07cf54140347c",
+    "lessonId": "masterclass-miedo",
+    "source": "masterclass/capturas-video3/16-sox-10500.jpg"
   }
 ]

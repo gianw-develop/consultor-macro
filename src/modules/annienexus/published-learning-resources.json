@@ -280,5 +280,71 @@
       "kind": "image",
       "url": "/api/learning/253e46b1e1c1b76e.jpg"
     }
+  },
+  "masterclass-miedo": {
+    "capturas-video3/01-el-mercado-nos-hace-una-pregunta.jpg": {
+      "kind": "image",
+      "url": "/api/learning/0dfc0dde4e274207.jpg"
+    },
+    "capturas-video3/02-yo-no-adivino-identifico.jpg": {
+      "kind": "image",
+      "url": "/api/learning/600a40987f41cd11.jpg"
+    },
+    "capturas-video3/03-cinco-bloques.jpg": {
+      "kind": "image",
+      "url": "/api/learning/bd65c7222b99c497.jpg"
+    },
+    "capturas-video3/04-45-dias-que-cambiaron-el-mercado.jpg": {
+      "kind": "image",
+      "url": "/api/learning/010ece79cebe8aeb.jpg"
+    },
+    "capturas-video3/05-octubre-mercado-partido-en-dos.jpg": {
+      "kind": "image",
+      "url": "/api/learning/01d1cb45f7544d82.jpg"
+    },
+    "capturas-video3/06-primero-cae-lo-especulativo.jpg": {
+      "kind": "image",
+      "url": "/api/learning/5889af155160c35d.jpg"
+    },
+    "capturas-video3/07-bitcoin-vs-nasdaq-largo-plazo.jpg": {
+      "kind": "image",
+      "url": "/api/learning/8b04be837b901a8e.jpg"
+    },
+    "capturas-video3/08-bitcoin-vs-nasdaq-2021-2026.jpg": {
+      "kind": "image",
+      "url": "/api/learning/e1ba0bf17e79f716.jpg"
+    },
+    "capturas-video3/09-tres-tipos-de-indicadores.jpg": {
+      "kind": "image",
+      "url": "/api/learning/a8b29067861dd994.jpg"
+    },
+    "capturas-video3/10-los-adelantados-que-miro.jpg": {
+      "kind": "image",
+      "url": "/api/learning/d01292e84c9f56af.jpg"
+    },
+    "capturas-video3/11-cuatro-trampas-indicadores.jpg": {
+      "kind": "image",
+      "url": "/api/learning/4c589e2811423faa.jpg"
+    },
+    "capturas-video3/12-leccion-2022.jpg": {
+      "kind": "image",
+      "url": "/api/learning/b6b2b6c0dc50fc28.jpg"
+    },
+    "capturas-video3/13-adelantado-ocde.jpg": {
+      "kind": "image",
+      "url": "/api/learning/64c9b14a93d02624.jpg"
+    },
+    "capturas-video3/14-cinco-fases-mania.jpg": {
+      "kind": "image",
+      "url": "/api/learning/8bde4caf47e1c42f.jpg"
+    },
+    "capturas-video3/15-sintomas-euforia.jpg": {
+      "kind": "image",
+      "url": "/api/learning/a0d484b256e70129.jpg"
+    },
+    "capturas-video3/16-sox-10500.jpg": {
+      "kind": "image",
+      "url": "/api/learning/31f61a59bb51dace.jpg"
+    }
   }
 }
