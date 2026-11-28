@@ -1,0 +1,436 @@
+<title>Radar Cazador</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: ruta vertical de 8 paradas; barra superior fija con el progreso; cada parada = pregunta, respuesta corta, tarjetas de indicadores con ⓘ. */
+:root{
+  --bg:#f4f5f2; --panel:#ffffff; --ink:#17201c; --muted:#5b6862; --line:#d8ded9; --soft:#eef1ee;
+  --amber:#a85f00; --amber-soft:#fff0d6;
+  --bull:#127a4b; --bull-soft:#e0f2e8; --bear:#b3261e; --bear-soft:#fbe4e2; --warn:#8f6200; --warn-soft:#fbefcc; --flat:#56615c; --flat-soft:#e9ecea;
+  --f-display:"Space Grotesk","Segoe UI",system-ui,sans-serif;
+  --f-body:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --f-mono:"JetBrains Mono",ui-monospace,Menlo,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0e1311; --panel:#151c19; --ink:#e6ebe8; --muted:#9aa6a0; --line:#28332e; --soft:#1b2420;
+  --amber:#ffb240; --amber-soft:#33250e;
+  --bull:#4cc98a; --bull-soft:#12291e; --bear:#ff7a70; --bear-soft:#361614; --warn:#f0c14d; --warn-soft:#2f2710; --flat:#a9b3ae; --flat-soft:#212a26;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0e1311; --panel:#151c19; --ink:#e6ebe8; --muted:#9aa6a0; --line:#28332e; --soft:#1b2420;
+  --amber:#ffb240; --amber-soft:#33250e;
+  --bull:#4cc98a; --bull-soft:#12291e; --bear:#ff7a70; --bear-soft:#361614; --warn:#f0c14d; --warn-soft:#2f2710; --flat:#a9b3ae; --flat-soft:#212a26;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--panel)}
+.bar{position:sticky;top:env(safe-area-inset-top,0px);z-index:9;background:var(--panel);border-bottom:1px solid var(--line)}
+.bar-in{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:8px;display:flex;gap:12px;align-items:center;justify-content:space-between;flex-wrap:wrap}
+.brand{font-family:var(--f-mono);font-size:.76rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:600}
+.dots{display:flex;gap:6px;flex-wrap:wrap}
+.dots a{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);font-family:var(--f-mono);font-size:.75rem;color:var(--muted);text-decoration:none;background:var(--bg)}
+.dots a.on{background:var(--amber);border-color:var(--amber);color:var(--panel);font-weight:600}
+.wrap{max-width:820px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:24px 72px;display:grid;gap:56px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(1.9rem,6vw,2.6rem)}
+h2{font-size:clamp(1.35rem,4.5vw,1.7rem)}
+h3{font-size:1rem}
+p{margin:0}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber);font-weight:600}
+.muted{color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.stop{display:grid;gap:16px;scroll-margin-top:72px}
+.answer{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px 18px;display:grid;gap:8px}
+.answer .lbl{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.answer p.big{font-size:1.12rem;font-weight:500}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.03em;padding:2px 9px;border-radius:99px;white-space:nowrap;vertical-align:middle}
+.bear{background:var(--bear-soft);color:var(--bear)} .bull{background:var(--bull-soft);color:var(--bull)} .warn{background:var(--warn-soft);color:var(--warn)} .flat{background:var(--flat-soft);color:var(--flat)}
+.cards{display:grid;align-items:start;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:12px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:8px;align-content:start;min-width:0;border-left:4px solid var(--flat)}
+.card.c-bear{border-left-color:var(--bear)} .card.c-bull{border-left-color:var(--bull)} .card.c-warn{border-left-color:var(--warn)}
+.chead{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}
+.chead h3{font-family:var(--f-body);font-weight:600;font-size:.95rem}
+.info{flex:none;width:28px;height:28px;border-radius:50%;border:1px solid var(--line);background:var(--soft);color:var(--amber);font-family:var(--f-display);font-weight:700;font-size:.9rem;cursor:pointer;line-height:1}
+.info[aria-expanded="true"]{background:var(--amber);color:var(--panel);border-color:var(--amber)}
+.info:focus-visible,.dots a:focus-visible,.next:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+.val{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.val .now{font-family:var(--f-display);font-size:1.6rem;font-weight:700;font-variant-numeric:tabular-nums}
+.val .prev{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
+.spark{width:100%;height:46px;display:block}
+.today{font-size:.9rem}
+.explain[hidden]{display:none}
+.explain{background:var(--soft);border-radius:8px;padding:12px 14px;font-size:.9rem;display:grid;gap:6px}
+.explain dl{margin:0;display:grid;gap:6px}
+.explain dt{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.08em;text-transform:uppercase;color:var(--amber)}
+.explain dd{margin:0}
+.take{border-top:1px dashed var(--line);padding-top:12px;display:grid;gap:6px}
+.take b{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--amber)}
+.next{justify-self:start;font-family:var(--f-mono);font-size:.82rem;color:var(--amber);text-decoration:none;border:1px solid var(--line);border-radius:99px;padding:6px 14px;background:var(--panel)}
+.panel{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:16px;display:grid;gap:12px;min-width:0}
+.compass{width:100%;max-width:520px;justify-self:center;display:block}
+.legend{display:flex;flex-wrap:wrap;gap:8px 16px;font-size:.85rem;color:var(--muted)}
+.tally{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px}
+.tally .box{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px 14px}
+.tally .n{font-family:var(--f-display);font-size:2rem;font-weight:700;line-height:1}
+.fams{display:grid;gap:8px}
+.fam{display:flex;justify-content:space-between;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px;flex-wrap:wrap}
+.fam span:first-child{font-weight:600}
+.agenda{display:grid;gap:10px}
+.ev{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:8px}
+.ev .when{font-family:var(--f-mono);font-size:.8rem;color:var(--amber);font-weight:600}
+.ev ul{margin:0;padding-left:1.1rem;display:grid;gap:4px;font-size:.92rem}
+.hero{display:grid;gap:14px}
+.route{display:grid;grid-template-columns:repeat(auto-fit,minmax(170px,1fr));gap:8px;margin:0;padding:0;list-style:none}
+.route li a{display:flex;gap:10px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:9px 12px;text-decoration:none;color:var(--ink);font-size:.9rem;height:100%}
+.route li a span.k{font-family:var(--f-mono);color:var(--amber);font-weight:600}
+.foot{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+.mini{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:8px}
+.mini div{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:.88rem}
+.mini .mono{font-size:1.05rem;font-weight:600;display:block}
+@media (prefers-reduced-motion: no-preference){html{scroll-behavior:smooth}}
+</style>
+
+<div class="bar"><div class="bar-in">
+  <span class="brand">Radar Cazador · EE. UU.</span>
+  <nav class="dots" aria-label="Paradas de la ruta">
+    <a href="#p1">1</a><a href="#p2">2</a><a href="#p3">3</a><a href="#p4">4</a><a href="#p5">5</a><a href="#p6">6</a><a href="#p7">7</a><a href="#p8">8</a>
+  </nav>
+</div></div>
+
+<main class="wrap">
+
+<section class="hero" id="inicio">
+  <div class="eyebrow">Lectura del cierre del viernes 27-nov-2026 · maqueta</div>
+  <h1>Hoy en tres frases</h1>
+  <div class="answer">
+    <p class="big">1. La economía de EE. UU. sigue creciendo, pero la inflación vuelve a acelerar y la Fed va a subir tipos el 9 de diciembre.</p>
+    <p class="big">2. El mercado ya lo descuenta: caen los gigantes de la IA, el dinero se va a lo defensivo y el S&amp;P rebota por debajo de sus medias.</p>
+    <p class="big">3. Sesgo bajista, todavía sin confirmar: faltan que el CLI del G7 gire a la baja y que los subsidios por desempleo empiecen a subir.</p>
+  </div>
+  <p class="muted">La ruta tiene 8 paradas y se lee en unos 5 minutos. Cada parada responde a una pregunta. Si olvidas qué significa un indicador, toca <b>ⓘ</b>.</p>
+  <ol class="route">
+    <li><a href="#p1"><span class="k">1</span>¿En qué fase del ciclo estamos?</a></li>
+    <li><a href="#p2"><span class="k">2</span>¿Qué va a hacer la Fed?</a></li>
+    <li><a href="#p3"><span class="k">3</span>¿La economía aguanta?</a></li>
+    <li><a href="#p4"><span class="k">4</span>¿Hacia dónde va el dinero?</a></li>
+    <li><a href="#p5"><span class="k">5</span>¿Cuántos tiran de la cuerda?</a></li>
+    <li><a href="#p6"><span class="k">6</span>¿Qué dice el precio?</a></li>
+    <li><a href="#p7"><span class="k">7</span>El recuento: ¿hay tendencia?</a></li>
+    <li><a href="#p8"><span class="k">8</span>Qué viene y qué haremos</a></li>
+  </ol>
+</section>
+
+<!-- PARADA 1 -->
+<section class="stop" id="p1">
+  <div class="eyebrow">Parada 1 de 8 · Brújula del Ciclo</div>
+  <h2>¿En qué fase del ciclo estamos?</h2>
+  <div class="answer">
+    <span class="lbl">Respuesta corta</span>
+    <p class="big"><span class="pill warn">Expansión caliente</span> y deslizándose hacia <span class="pill bear">Fricción</span>.</p>
+    <p>El punto está arriba a la derecha: la economía crece y la inflación sube. Pero la estela se mueve hacia la izquierda, porque el crecimiento pierde impulso mientras la inflación acelera.</p>
+  </div>
+  <div class="panel">
+    <div class="chead"><h3>La Brújula, últimos 12 meses</h3><button class="info" aria-expanded="false" aria-controls="x-brujula" aria-label="Qué es la Brújula del Ciclo">i</button></div>
+    <div class="explain" id="x-brujula" hidden><dl>
+      <dt>Qué es</dt><dd>El cuadrante de Gregory (mentoría 8): cruza la dirección del crecimiento con la dirección de la inflación. La economía recorre las cuatro zonas en orden, en meses o años.</dd>
+      <dt>Cómo se mide aquí</dt><dd>Eje horizontal: cuánto ha cambiado el CLI del G7 en 3 meses (a la derecha, crece). Eje vertical: el PCE frente a su media de 10 meses (arriba, la inflación acelera).</dd>
+      <dt>Las cuatro zonas y qué hace Gregory</dt><dd><b>Despegue</b> (abajo a la derecha): la economía sale del suelo sin inflación; aquí carga fuerte. <b>Expansión caliente</b> (arriba a la derecha): crece con inflación; sigue comprado con cuidado. <b>Fricción</b> (arriba a la izquierda): inflación alta y crecimiento débil; cobra beneficios y reduce largos. <b>Invierno</b> (abajo a la izquierda): recesión; liquidez y esperar el suelo.</dd>
+    </dl></div>
+    <svg class="compass" id="compass" viewBox="0 0 520 400" role="img" aria-label="Brújula del Ciclo: el punto actual está en Expansión caliente, moviéndose hacia Fricción"></svg>
+    <div class="legend"><span>● hoy (octubre)</span><span>○ meses anteriores</span><span>Riesgo sugerido en esta zona: <b>moderado, sin apalancamiento agresivo</b></span></div>
+  </div>
+  <div class="take"><b>Lo que te llevas</b><p>Estamos en la fase en que Gregory sigue comprado, pero con cuidado. La pregunta del mes es si el punto cruza a la izquierda. Si lo hace, toca reducir largos.</p></div>
+  <a class="next" href="#p2">Siguiente: ¿qué va a hacer la Fed? ↓</a>
+</section>
+
+<!-- PARADA 2 -->
+<section class="stop" id="p2">
+  <div class="eyebrow">Parada 2 de 8 · Inflación y Fed</div>
+  <h2>¿Qué va a hacer la Fed?</h2>
+  <div class="answer">
+    <span class="lbl">Respuesta corta</span>
+    <p class="big"><span class="pill bear">Subir tipos</span> el miércoles 9 de diciembre, y probablemente más veces.</p>
+    <p>La inflación acelera por tercer mes seguido y el bono a 2 años ya cotiza 61 puntos básicos por encima del tipo de la Fed. Cuando la Fed sube, el dinero se encarece y el Nasdaq es el que más sufre.</p>
+  </div>
+  <div class="cards" id="cards-p2"></div>
+  <div class="take"><b>Lo que te llevas</b><p>Para la bolsa, la inflación es hoy la variable dominante. Mientras el PCE siga por encima de su media, la Fed no ayuda.</p></div>
+  <a class="next" href="#p3">Siguiente: ¿la economía aguanta? ↓</a>
+</section>
+
+<!-- PARADA 3 -->
+<section class="stop" id="p3">
+  <div class="eyebrow">Parada 3 de 8 · Crecimiento</div>
+  <h2>¿La economía aguanta?</h2>
+  <div class="answer">
+    <span class="lbl">Respuesta corta</span>
+    <p class="big"><span class="pill bull">Sí, todavía</span>, pero los indicadores adelantados empiezan a agrietarse.</p>
+    <p>Los datos que miden el presente están bien: PIB fuerte, empleo y subsidios en mínimos. Los que miran adelante empiezan a fallar: permisos de construcción, confianza del consumidor, crédito y el CLI del G20.</p>
+  </div>
+  <h3 class="muted">Adelantados: avisan con meses de antelación</h3>
+  <div class="cards" id="cards-p3"></div>
+  <h3 class="muted">Coincidentes: confirman lo que ya está pasando</h3>
+  <div class="mini" id="mini-p3"></div>
+  <div class="take"><b>Lo que te llevas</b><p>Los dos indicadores clave de diciembre son el CLI del G7 (hacia el día 9) y la media de 4 semanas de los subsidios (cada jueves). Si giran los dos, la lectura pasa de «posible» a «probable».</p></div>
+  <a class="next" href="#p4">Siguiente: ¿hacia dónde va el dinero? ↓</a>
+</section>
+
+<!-- PARADA 4 -->
+<section class="stop" id="p4">
+  <div class="eyebrow">Parada 4 de 8 · Sectores</div>
+  <h2>¿Hacia dónde va el dinero?</h2>
+  <div class="answer">
+    <span class="lbl">Respuesta corta</span>
+    <p class="big"><span class="pill bear">A lo defensivo y al value</span>. Cuando el dinero se refugia, la tendencia suele ser bajista.</p>
+    <p>El consumo básico (XLP) le gana al discrecional (XLY), el ciclo de los industriales es negativo y el Dow aguanta mejor que el Nasdaq.</p>
+  </div>
+  <div class="cards" id="cards-p4"></div>
+  <div class="take"><b>Lo que te llevas</b><p>La regla del −10 está a medias: XLI llegó a −14,4 el 6 de noviembre, pero XLF no pasó de −7,7. Si XLF toca −10, sería la confirmación total de Gregory: cerrar compras.</p></div>
+  <a class="next" href="#p5">Siguiente: ¿cuántos tiran de la cuerda? ↓</a>
+</section>
+
+<!-- PARADA 5 -->
+<section class="stop" id="p5">
+  <div class="eyebrow">Parada 5 de 8 · La Cuerda</div>
+  <h2>¿Cuántos tiran de la cuerda?</h2>
+  <div class="answer">
+    <span class="lbl">Respuesta corta</span>
+    <p class="big"><span class="pill warn">Los gigantes soltaron la cuerda</span>; el resto aguanta, por ahora.</p>
+    <p>Desde el techo del 6 de octubre, las Magníficas 7 caen de media un 9,7 % y las otras 493 suben un 3,4 %. El índice baja por los grandes, no porque caiga todo el mercado.</p>
+  </div>
+  <div class="cards">
+    <div class="card c-warn">
+      <div class="chead"><h3>Magníficas 7 frente a las otras 493</h3><button class="info" aria-expanded="false" aria-controls="x-m7" aria-label="Qué mide">i</button></div>
+      <div class="explain" id="x-m7" hidden><dl><dt>Qué mide</dt><dd>La media de cada grupo desde el máximo del S&amp;P. El S&amp;P pondera por tamaño: Apple, Microsoft, Nvidia, Amazon, Alphabet, Meta y Tesla pesan muchísimo, así que pueden mover el índice aunque las demás vayan al revés.</dd><dt>Cómo lo lee Gregory</dt><dd>Mentoría 11: «mirar debajo de la superficie». Si pocas empresas explican el movimiento, el índice es frágil.</dd></dl></div>
+      <svg class="spark" id="sp-m7" style="height:90px" viewBox="0 0 300 90" role="img" aria-label="Barras: Magníficas 7 −9,7 %, otras 493 +3,4 %, S&P ponderado −6,5 %, S&P equiponderado +2,8 %"></svg>
+      <p class="today">Nvidia −37 %, Alphabet −21 %, Meta −15 %. El S&amp;P normal cae un 6,5 %; el equiponderado, donde todas pesan igual, sube un 2,8 %.</p>
+    </div>
+    <div class="card c-bull">
+      <div class="chead"><h3>Mínimos y máximos de 1 año, por semana</h3><button class="info" aria-expanded="false" aria-controls="x-hl" aria-label="Qué mide">i</button></div>
+      <div class="explain" id="x-hl" hidden><dl><dt>Qué mide</dt><dd>Cuántas acciones del S&amp;P 500 marcan su precio más alto (o más bajo) de las últimas 52 semanas en cada semana.</dd><dt>Por qué importa</dt><dd>Si el índice sube mientras crecen los mínimos, la subida es de pocos. En la semana del 2 de octubre, a 4 días del máximo histórico, había 147 mínimos y solo 41 máximos: ese fue el aviso.</dd><dt>Cada cuánto</dt><dd>Diario; aquí sumado por semanas.</dd></dl></div>
+      <svg class="spark" id="sp-hl" style="height:90px" viewBox="0 0 300 90" role="img" aria-label="Barras semanales de nuevos máximos y mínimos"></svg>
+      <p class="today">Esta semana: <b class="mono">67</b> máximos y <b class="mono">7</b> mínimos. Si los mínimos vuelven a pasar de 100, el daño se estaría contagiando.</p>
+    </div>
+    <div class="card c-bear">
+      <div class="chead"><h3>Dow 30: quién explica la caída</h3><button class="info" aria-expanded="false" aria-controls="x-dow" aria-label="Qué mide">i</button></div>
+      <div class="explain" id="x-dow" hidden><dl><dt>Qué mide</dt><dd>El Dow pondera por precio: una acción cara pesa más. Calculamos cuántos puntos aporta cada empresa desde el techo del 5 de agosto. La lista de 30 está verificada contra el índice oficial, incluido el cambio de junio (entró Alphabet, salió Verizon).</dd><dt>Por qué importa</dt><dd>Caterpillar (industria) y Goldman Sachs (banca) son termómetros del ciclo económico.</dd></dl></div>
+      <div class="val"><span class="now">−3.574</span><span class="prev">puntos desde el 5-ago</span></div>
+      <p class="today">Caterpillar resta <b class="mono">1.838</b> y Goldman Sachs <b class="mono">1.471</b>: el 92 % de la caída. La mediana de los 30 valores sube un 2,6 %.</p>
+    </div>
+    <div class="card c-bear">
+      <div class="chead"><h3>Nasdaq 100: normal frente a equiponderado</h3><button class="info" aria-expanded="false" aria-controls="x-qq" aria-label="Qué mide">i</button></div>
+      <div class="explain" id="x-qq" hidden><dl><dt>Qué mide</dt><dd>QQQ sigue al Nasdaq 100 ponderado por tamaño; QQEW, al mismo índice con todas las empresas pesando lo mismo. Si los dos caen igual, la caída es de todos.</dd></dl></div>
+      <div class="val"><span class="now">−14,3 %</span><span class="prev">equiponderado −14,1 %</span></div>
+      <p class="today">En el Nasdaq el daño es general: no solo caen los gigantes.</p>
+    </div>
+  </div>
+  <div class="take"><b>Lo que te llevas</b><p>Si las 493 aguantan, es una rotación lenta, como en 2000-2002. Si empiezan a soltar la cuerda (más mínimos, equiponderado a la baja) y el crédito sigue empeorando, se parecería a 2008.</p></div>
+  <a class="next" href="#p6">Siguiente: ¿qué dice el precio? ↓</a>
+</section>
+
+<!-- PARADA 6 -->
+<section class="stop" id="p6">
+  <div class="eyebrow">Parada 6 de 8 · Precio y miedo</div>
+  <h2>¿Qué dice el precio?</h2>
+  <div class="answer">
+    <span class="lbl">Respuesta corta</span>
+    <p class="big"><span class="pill bear">Rebote por debajo de las medias</span></p>
+    <p>El S&amp;P subió un 5,6 % esta semana, pero sigue por debajo de su EMA 50 y de su EMA 200. Gregory lo llama «rebote para seguir cayendo» mientras no recupere esas medias.</p>
+  </div>
+  <div class="cards" id="cards-p6"></div>
+  <div class="take"><b>Lo que te llevas</b><p>Primera señal técnica de cambio: que el S&amp;P cierre por encima de su EMA 200 (7.355) y después de su EMA 50 (7.512).</p></div>
+  <a class="next" href="#p7">Siguiente: el recuento ↓</a>
+</section>
+
+<!-- PARADA 7 -->
+<section class="stop" id="p7">
+  <div class="eyebrow">Parada 7 de 8 · El recuento</div>
+  <h2>¿Hay tendencia para cazar?</h2>
+  <div class="answer">
+    <span class="lbl">Veredicto</span>
+    <p class="big"><span class="pill bear">Sesgo bajista</span> · <span class="pill warn">sin confirmar</span></p>
+    <p>No hay combinación fija: contamos cuántas familias de señales empujan a cada lado. Hoy 4 de 7 están en contra. Faltan las de mayor peso en el método, el crecimiento (CLI G7) y el empleo, para pasar de «posible» a «probable».</p>
+  </div>
+  <div class="tally">
+    <div class="box"><div class="n" style="color:var(--bear)">4</div><div class="muted">familias en contra</div></div>
+    <div class="box"><div class="n" style="color:var(--warn)">1</div><div class="muted">en alerta</div></div>
+    <div class="box"><div class="n" style="color:var(--bull)">1</div><div class="muted">a favor</div></div>
+    <div class="box"><div class="n" style="color:var(--flat)">1</div><div class="muted">neutral</div></div>
+  </div>
+  <div class="fams">
+    <div class="fam"><span>Inflación</span><span class="pill bear">En contra · PCE acelerando</span></div>
+    <div class="fam"><span>Bonos y Fed</span><span class="pill bear">En contra · descuenta subidas</span></div>
+    <div class="fam"><span>Sectores</span><span class="pill bear">En contra · lidera lo defensivo</span></div>
+    <div class="fam"><span>Precio</span><span class="pill bear">En contra · bajo EMA 50 y 200</span></div>
+    <div class="fam"><span>Crecimiento</span><span class="pill warn">Alerta · G7 sube, G20 y adelantados giran</span></div>
+    <div class="fam"><span>Amplitud (la cuerda)</span><span class="pill bull">A favor · las 493 aguantan</span></div>
+    <div class="fam"><span>Sentimiento</span><span class="pill flat">Neutral · miedo sin capitulación</span></div>
+  </div>
+  <div class="panel">
+    <h3>Qué cambiaría la lectura</h3>
+    <p><span class="pill bear">Hacia bajista confirmada</span> XLF/XLP toca −10 · la curva 10Y−2Y toca 0 · el CLI del G7 gira a la baja · los subsidios suben 3 semanas seguidas · los mínimos de 1 año pasan de 100.</p>
+    <p><span class="pill bull">Hacia alcista</span> el PCE vuelve bajo su media · el 2Y gira a la baja · el % de acciones sobre su media de 50 pasa de 20 a 90 · XLY/XLP recupera sus dos EMA.</p>
+  </div>
+  <div class="take"><b>Lo que te llevas</b><p>Según el método: nada de largos agresivos; preferir value frente a growth; tamaño pequeño y salida definida. La decisión de entrar es tuya.</p></div>
+  <a class="next" href="#p8">Siguiente: qué viene ↓</a>
+</section>
+
+<!-- PARADA 8 -->
+<section class="stop" id="p8">
+  <div class="eyebrow">Parada 8 de 8 · Agenda del cazador</div>
+  <h2>Qué viene y qué haremos</h2>
+  <p class="muted">Regla de la masterclass: decidir hoy qué haremos con cada resultado. Decidir con la noticia encima es decidir con miedo o con euforia.</p>
+  <div class="agenda">
+    <div class="ev"><span class="when">Jueves 3 dic · y cada jueves</span><h3>Subsidios por desempleo</h3><ul><li>Si la media de 4 semanas sube 3 semanas seguidas → primer aviso de daño en el empleo; la familia de crecimiento pasa a rojo.</li><li>Si sigue cerca de 196.000 → el empleo aguanta; sin cambios.</li></ul></div>
+    <div class="ev"><span class="when">Viernes 4 dic · 14:30 (Madrid)</span><h3>Empleo de noviembre (BLS)</h3><ul><li>Fuerte (más de 150.000) con inflación alta → más subidas descontadas, el 2Y sube y el Nasdaq sufre.</li><li>Débil (menos de 50.000) con inflación alta → la Brújula se acerca a Fricción: reducir largos.</li></ul></div>
+    <div class="ev"><span class="when">Miércoles 9 dic</span><h3>Decisión de la Fed</h3><ul><li>+25 pb: ya descontado; importa el mensaje sobre 2027.</li><li>+50 pb: sorpresa dura → presión sobre los índices, sobre todo el Nasdaq.</li><li>Pausa: sorpresa → rebote, aunque con la inflación acelerando no cambiaría el fondo.</li></ul></div>
+    <div class="ev"><span class="when">Jueves 10 dic · 14:30 (Madrid)</span><h3>IPC de noviembre (BLS)</h3><ul><li>Por encima del 4,25 % (máximo de mayo) y sobre su media → la alarma de la mentoría 20 para cortos de varios meses, si otras familias acompañan.</li><li>Por debajo de su media de 10 meses → primer paso de la fórmula de compra.</li></ul></div>
+    <div class="ev"><span class="when">Segunda semana de dic · fecha por confirmar</span><h3>CLI de la OCDE (G7 y G20)</h3><ul><li>G7 girando a la baja → la señal de más peso del método; con el G20 ya cayendo, el crecimiento pasaría a rojo.</li><li>G7 sigue subiendo → la economía todavía sostiene la tesis alcista de fondo.</li></ul></div>
+    <div class="ev"><span class="when">Miércoles 23 dic · fecha de calendario externo</span><h3>PCE de noviembre y PIB (3.ª estimación)</h3><ul><li>Confirmará si la inflación favorita de la Fed sigue acelerando.</li></ul></div>
+    <div class="ev"><span class="when">Finales de enero</span><h3>Guías de inversión de las grandes de la IA</h3><ul><li>Si recortan → se activa la cadena del ciclo de capital (masterclass 4): inversión, empleo, recesión.</li></ul></div>
+  </div>
+</section>
+
+<p class="foot">Maqueta con datos reales al 27-nov-2026: FRED (St. Louis Fed), OCDE, Yahoo Finance y cálculo propio sobre los componentes del S&amp;P 500 y del Dow. Fechas de diciembre: BLS (empleo e IPC), prensa (Fed); el CLI y el PCE están por confirmar. Material educativo; no es asesoramiento financiero.</p>
+</main>
+
+<script>
+const DATA = /*DATA*/;
+const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
+const fmt = (v,d=1) => v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
+
+function spark(svg, series, opts={}){
+  const W=300,H=opts.h||46,P=4; svg.setAttribute('viewBox',`0 0 ${W} ${H}`);
+  const all=[].concat(...series.map(s=>s.v), opts.ref!=null?[opts.ref]:[]);
+  let lo=Math.min(...all), hi=Math.max(...all); if(hi===lo){hi+=1;lo-=1}
+  const n=Math.max(...series.map(s=>s.v.length));
+  const X=i=>P+(W-2*P)*i/(n-1), Y=v=>H-P-(H-2*P)*(v-lo)/(hi-lo);
+  let out='';
+  if(opts.ref!=null) out+=`<line x1="${P}" x2="${W-P}" y1="${Y(opts.ref)}" y2="${Y(opts.ref)}" stroke="${css('--line')}" stroke-dasharray="3 3"/>`;
+  series.forEach((s,k)=>{
+    const pts=s.v.map((v,i)=>`${X(i+(n-s.v.length)).toFixed(1)},${Y(v).toFixed(1)}`).join(' ');
+    out+=`<polyline fill="none" points="${pts}" stroke="${css(s.c||'--ink')}" stroke-width="${k?1.2:2}" ${k?'stroke-dasharray="4 3"':''} stroke-linejoin="round"/>`;
+    if(!k){const lv=s.v[s.v.length-1]; out+=`<circle cx="${X(n-1)}" cy="${Y(lv)}" r="3.2" fill="${css(s.c||'--ink')}"/>`}
+  });
+  svg.innerHTML=out;
+}
+
+/* Card definitions: status bull|bear|warn|flat ; info: [label, text][] */
+const C = {
+p2:[
+ {id:'pce',t:'PCE · inflación favorita de la Fed',now:'3,84 %',prev:'antes 3,67 %',st:'bear',sp:[{k:'pce',c:'--bear'}],today:'Acelera por tercer mes seguido y está muy por encima de su media de 10 meses (3,42 %).',
+  info:[['Siglas','Personal Consumption Expenditures: gasto en consumo personal. Lo publica el BEA cada mes.'],['Qué mide','Cuánto suben los precios de todo lo que consumen los hogares, incluido lo que se paga por ellos, como la sanidad a través del seguro.'],['Por qué es la favorita de la Fed','Cubre más gasto que el IPC y tiene en cuenta que la gente cambia de producto cuando algo se encarece. El objetivo del 2 % de la Fed está definido sobre el PCE.'],['Cómo leerlo','Por encima de su media y subiendo: la Fed endurece. Bueno para la bolsa cuando cruza por debajo de su media.'],['Tipo','Retrasado: confirma lo que ya pasó, pero dice qué hará la Fed.']]},
+ {id:'pcecore',t:'PCE subyacente',now:'3,26 %',prev:'antes 3,14 %',st:'bear',sp:[{k:'pcecore',c:'--bear'}],today:'El máximo desde 2023. Sin energía ni alimentos, también acelera: la subida no es solo por el petróleo.',
+  info:[['Qué es','El mismo PCE sin alimentos ni energía, que son muy volátiles.'],['Por qué importa','Es la tendencia de fondo de la inflación. La Fed lo mira más que el general.']]},
+ {id:'sticky',t:'Sticky CPI · inflación pegajosa',now:'3,06 %',prev:'antes 2,78 %',st:'bear',sp:[{k:'sticky',c:'--bear'}],today:'Saltó en un solo mes. Es la señal de la mentoría 9 de que la inflación se está incrustando.',
+  info:[['Qué es','Índice de la Fed de Atlanta con los precios que cambian poco: alquileres, seguros, educación.'],['Cómo lo lee Gregory','Si se modera con crecimiento positivo, las correcciones se compran. Si acelera, la inflación está incrustada y la Fed será dura (mentoría 9).'],['Cada cuánto','Mensual, junto al IPC.']]},
+ {id:'cpi',t:'IPC frente a su EMA 10',now:'3,74 %',prev:'media 3,37 %',st:'bear',sp:[{k:'cpi',c:'--bear'},{k:'cpiema',c:'--muted'}],today:'Por encima de su media (línea discontinua). El máximo de mayo, 4,25 %, es el nivel que no debe romper.',
+  info:[['Siglas','Índice de Precios al Consumo; en EE. UU., CPI. Lo publica el BLS cada mes.'],['Cómo lo lee Gregory','Mentoría 20: el IPC interanual frente a su EMA de 10 meses. Por encima, régimen inflacionario. Cruce por debajo, primer paso de su fórmula de compra.'],['Nota','Octubre de 2025 no se publicó por el cierre del gobierno; el último interanual limpio es septiembre.']]},
+ {id:'y2',t:'Bono a 2 años frente a la Fed',now:'4,61 %',prev:'Fed 4,00 %',st:'bear',sp:[{k:'y2',c:'--bear'},{k:'fed',c:'--muted'}],today:'+0,61 por encima del tipo de la Fed: el mercado espera unas 2 o 3 subidas de 25 puntos básicos.',
+  info:[['Qué es','La rentabilidad del bono del Tesoro a 2 años frente al límite superior del tipo de la Fed (línea discontinua).'],['Por qué importa','El 2Y se adelanta a la Fed (mentoría 7). Si sube con fuerza, frena a los índices antes de que la Fed actúe. Su giro a la baja es la primera condición de recompra (mentoría 13).'],['Cada cuánto','Diario.']]}
+],
+p3:[
+ {id:'clig7',t:'CLI del G7 · el favorito de Gregory',now:'100,90',prev:'antes 100,86',st:'bull',sp:[{k:'cliG7',c:'--bull'}],ref:100,today:'Sigue subiendo, aunque cada vez más despacio. Es el pilar que todavía sostiene la economía.',
+  info:[['Siglas','Composite Leading Indicator: indicador compuesto adelantado de la OCDE.'],['Qué mide','Mezcla datos que se adelantan entre 6 y 9 meses al ciclo (pedidos, confianza, bolsa, construcción…) de las 7 grandes economías: EE. UU., Japón, Alemania, Reino Unido, Francia, Italia y Canadá.'],['Cómo lo lee Gregory','Importa más el giro que el nivel 100. Primer mes sin crecer = alerta; segundo cayendo = vigilar cortos (mentoría 3).'],['Cada cuánto','Mensual, hacia el día 9-12.']]},
+ {id:'clig20',t:'CLI del G20',now:'99,97',prev:'antes 100,02',st:'warn',sp:[{k:'cliG20',c:'--warn'}],ref:100,today:'Cuatro meses cayendo y acaba de cruzar bajo 100. El G20 incluye a China y a los emergentes.',
+  info:[['Qué es','El mismo indicador de la OCDE, para las 20 mayores economías.'],['Por qué importa','Gregory lo llamó su favorito «10/10» en la mentoría 3, y en la 20 usa el G7. Hoy divergen: el G20 avisa antes.']]},
+ {id:'claims',t:'Subsidios por desempleo (media 4 semanas)',now:'196.000',prev:'antes 198.000',st:'bull',sp:[{k:'claims',c:'--bull'}],today:'En mínimos del año: las empresas casi no despiden.',
+  info:[['Qué es','Personas que piden el subsidio por primera vez. Sale cada jueves; se usa la media de las últimas 4 semanas para quitar ruido.'],['Por qué es adelantado','Los despidos aparecen aquí semanas antes que en la tasa de paro.'],['Cómo leerlo','Lo que importa es que suba varias semanas seguidas, no una semana suelta (mentoría 1).']]},
+ {id:'permit',t:'Permisos de construcción',now:'1,297 M',prev:'antes 1,398 M',st:'bear',sp:[{k:'permit',c:'--bear'}],today:'−7 % en el mes y −8,5 % en el año. Los tipos altos frenan la vivienda.',
+  info:[['Qué es','Permisos para construir viviendas nuevas. Lo publica el Census cada mes.'],['Por qué es adelantado','El ejemplo de clase: antes de ver obreros construyendo, se piden permisos. Si caen, habrá menos obra y menos empleo en unos meses.']]},
+ {id:'mich',t:'Confianza del consumidor (Michigan)',now:'48,0',prev:'antes 48,1',st:'bear',sp:[{k:'mich',c:'--bear'}],today:'Muy baja: el consumidor está pesimista por los precios.',
+  info:[['Qué es','Encuesta mensual de la Universidad de Michigan sobre cómo ven los hogares su economía.'],['Por qué importa','El consumo es dos tercios del PIB de EE. UU. Un consumidor pesimista acaba gastando menos.']]},
+ {id:'capgoods',t:'Pedidos de bienes de capital',now:'+14,7 %',prev:'antes +13,9 %',st:'bull',sp:[{k:'capgoods',c:'--bull'}],today:'Las empresas siguen invirtiendo con fuerza, sobre todo en IA.',
+  info:[['Qué es','Pedidos de maquinaria y equipos (sin defensa ni aviones), variación interanual.'],['Por qué importa','Anticipa la inversión empresarial. Ojo: hoy está inflado por la IA; si las guías de enero recortan, caerá rápido.']]},
+ {id:'hy',t:'Diferencial de los bonos basura',now:'3,77 %',prev:'hace 1 mes 3,14 %',st:'bear',sp:[{k:'hy',c:'--bear'}],today:'Máximo del año, subiendo rápido. Los prestamistas empiezan a temer impagos.',
+  info:[['Qué es','Lo que pagan de más que el Tesoro las empresas con peor crédito.'],['Por qué importa','Suele adelantarse a la bolsa. Si sube, el crédito se cierra para las empresas débiles. En la masterclass 4 era «la grieta que más miro».'],['Cada cuánto','Diario.']]},
+ {id:'curve',t:'Curva 10 años − 2 años',now:'+0,25',prev:'hace 3 meses +0,47',st:'warn',sp:[{k:'curve',c:'--warn'}],ref:0,today:'Aplanándose hacia 0. Tocar 0 es la alerta estructural de Gregory.',
+  info:[['Qué es','Rentabilidad del bono a 10 años menos la del de 2 años.'],['Cómo lo lee Gregory','Cerca de +2: expansión sana. Por encima de 0: las caídas se compran. Tocar 0: alerta estructural; acercarse no basta (mentoría 7).']]}
+],
+p4:[
+ {id:'xlyxlp',t:'XLY/XLP · cíclico frente a defensivo',now:'1,294',prev:'EMA 50 1,314 · EMA 200 1,358',st:'bear',sp:[{k:'xlyxlp',c:'--bear'},{k:'xlyxlp_e50',c:'--muted'},{k:'xlyxlp_e200',c:'--warn'}],today:'Por debajo de sus dos medias: lidera lo defensivo. Rebota desde 1,243.',
+  info:[['Qué es','Consumo discrecional (XLY: lo que compras si te sobra dinero) entre consumo básico (XLP: lo que compras siempre).'],['Cómo lo lee Gregory','Si sube, el dinero apuesta por la economía. Cuando recupera sus dos EMA (50 y 200 diarias), el mercado suele subir con fuerza (junio de 2023, abril de 2025).'],['Recuerda','«En recesión no dejas de comer, dejas de viajar.»']]},
+ {id:'roc5',t:'Regla del −10 (ROC 5 semanal)',now:'XLI −4,2',prev:'XLF −2,6',st:'warn',sp:[{k:'roc5_XLI',c:'--warn'},{k:'roc5_XLF',c:'--muted'}],ref:-10,today:'XLI tocó −14,4 el 6-nov (alerta parcial). XLF (discontinua) no llegó a −10: sin confirmación total.',
+  info:[['Qué es','Cuánto cambian en 5 semanas los ratios industriales/consumo básico (XLI/XLP) y financieras/consumo básico (XLF/XLP).'],['Cómo lo lee Gregory','Uno en −10 = alerta parcial. Los dos en −10 = confirmación total: cerrar compras y estudiar cortos amplios. Acercarse no cuenta (mentoría 17).'],['Lo que comprobamos','Desde 2010 se activó 3 veces. Cerrar compras fue acertado; los cortos solo funcionaron en 2022.']]},
+ {id:'roc12',t:'Ciclo industrial (XLI/XLP, 12 meses)',now:'−7,7 %',prev:'antes −7,9 %',st:'bear',sp:[{k:'roc12',c:'--bear'}],ref:0,today:'Negativo desde octubre: los industriales llevan un año perdiendo frente a los defensivos.',
+  info:[['Qué es','El mismo ratio XLI/XLP en mensual, comparado con hace 12 meses (mentoría 16).'],['Cómo leerlo','Por debajo de 0 = zona delicada para el S&P. Volver sobre 0 sería la confirmación del ciclo para una segunda entrada.']]},
+ {id:'downdx',t:'Value frente a growth (Dow/Nasdaq)',now:'Dow −6,6 %',prev:'Nasdaq −14,4 % desde máx.',st:'bear',sp:[{k:'dow_ndx',c:'--bear'}],today:'Lidera el value: el dinero huye de las promesas de crecimiento hacia los negocios que ganan hoy.',
+  info:[['Qué es','El Dow (value: industria, banca, consumo) frente al Nasdaq 100 (growth: empresas valoradas por lo que prometen ganar). La línea sube cuando gana el Dow.'],['Cómo lo lee Gregory','Cuando el Dow resiste mejor (2000-02, 2008, 2022), suele ser fase bajista. La señal de un nuevo alcista es que el Nasdaq vuelva a liderar (masterclass 4).']]}
+],
+p6:[
+ {id:'spx',t:'S&P 500 frente a sus EMA 50 y 200',now:'7.297',prev:'EMA 50 7.512 · EMA 200 7.355',st:'bear',sp:[{k:'spx',c:'--bear'},{k:'spx_e50',c:'--muted'},{k:'spx_e200',c:'--warn'}],today:'Por debajo de las dos medias, a −6,7 % del máximo del 6-oct.',
+  info:[['Qué es','Las medias móviles exponenciales de 50 y 200 sesiones: el precio medio reciente, con más peso en lo último.'],['Cómo lo lee Gregory','Macro mejorando y precio sobre sus medias = tendencia confirmada. La EMA 50 diaria recuperada es la confirmación tardía de su fórmula de compra.']]},
+ {id:'sox',t:'SOX · el líder (semiconductores)',now:'9.187',prev:'nivel clave 10.500',st:'bear',sp:[{k:'sox',c:'--bear'}],ref:10500,today:'−37 % desde junio y por debajo de 10.500, el nivel binario de la masterclass.',
+  info:[['Qué es','Índice de semiconductores (Nvidia, AMD, Broadcom…). Fue el motor de la subida de la IA.'],['Cómo lo lee Gregory','Por encima de 10.500, la manía sigue viva; por debajo, pasó a bajista. Que recupere sus máximos sería la señal de que se equivocó.']]},
+ {id:'s5fi',t:'% de acciones sobre su media de 50',now:'63 %',prev:'mínimo 21 % el 30-sep',st:'flat',sp:[{k:'s5fi',c:'--flat'}],today:'Se recupera, pero aún no hay impulso de 20 a 90. Si llegara ahora, el filtro macro lo descartaría, como en agosto de 2022.',
+  info:[['Qué es','El S5FI de TradingView, calculado aquí con los 503 valores del S&P 500.'],['Cómo lo lee Gregory','Pasar rápido de cerca de 20 a 90 = impulso alcista de largo plazo, solo si la macro da permiso (mentorías 11, 19 y 20).'],['Lo que comprobamos','Funcionó en noviembre de 2022 (+13 % a 12 meses) y enero de 2024 (+24 %); agosto de 2022 era trampa y el filtro la evitaba.']]},
+ {id:'vix',t:'VIX · el miedo',now:'23,8',prev:'pico 35,9 el 20-nov',st:'flat',sp:[{k:'vix',c:'--flat'}],today:'El miedo baja sin haber llegado a capitulación. Falta el ratio put/call para completar esta familia.',
+  info:[['Qué es','La volatilidad que esperan las opciones del S&P a 30 días.'],['Cómo lo lee Gregory','Un pico de VIX no es un suelo por sí solo: en 2022 tres de cuatro picos fueron trampas. El suelo real llega con capitulación (put/call por encima de 1,40) o con divergencias.']]}
+]};
+
+function card(d){
+  const el=document.createElement('article'); el.className='card c-'+d.st;
+  const pillTxt={bull:'Bueno para la bolsa',bear:'Malo para la bolsa',warn:'Alerta',flat:'Neutral'}[d.st];
+  el.innerHTML=`<div class="chead"><h3>${d.t}</h3><button class="info" aria-expanded="false" aria-controls="x-${d.id}" aria-label="Explicación de ${d.t}">i</button></div>
+  <div class="explain" id="x-${d.id}" hidden><dl>${d.info.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl></div>
+  <div class="val"><span class="now">${d.now}</span><span class="prev">${d.prev}</span></div>
+  <span class="pill ${d.st}" style="justify-self:start">${pillTxt}</span>
+  <svg class="spark" role="img" aria-label="Evolución reciente de ${d.t}"></svg>
+  <p class="today">${d.today}</p>`;
+  const svg=el.querySelector('svg');
+  requestAnimationFrame(()=>spark(svg,d.sp.map(s=>({v:DATA[s.k].v,c:s.c})),{ref:d.ref}));
+  return el;
+}
+for(const k of ['p2','p3','p4','p6']){const box=document.getElementById('cards-'+k); C[k].forEach(d=>box.appendChild(card(d)));}
+
+document.getElementById('mini-p3').innerHTML=[
+ ['PIB 3.er trimestre','+4,3 %','antes +2,2 %'],['GDPNow 4.º trimestre','+2,9 %','estimación en tiempo real'],['Empleo octubre','+165.000','antes +60.000'],['Tasa de paro','4,1 %','antes 4,2 %'],['Ventas reales','−0,1 %','octubre, en el mes']
+].map(([a,b,c])=>`<div>${a}<span class="mono">${b}</span><span class="muted">${c}</span></div>`).join('');
+
+document.addEventListener('click',e=>{
+  const b=e.target.closest('.info'); if(!b) return;
+  const x=document.getElementById(b.getAttribute('aria-controls')); const open=b.getAttribute('aria-expanded')==='true';
+  b.setAttribute('aria-expanded',String(!open)); x.hidden=open;
+});
+
+function bars(svg,groups,opts={}){
+  const W=300,H=opts.h||90; const n=groups.length; const max=Math.max(...groups.map(g=>Math.max(...g.v.map(Math.abs))));
+  let out=''; const zero=opts.signed?H/2:H-14;
+  if(opts.signed) out+=`<line x1="0" x2="${W}" y1="${zero}" y2="${zero}" stroke="${css('--line')}"/>`;
+  groups.forEach((g,i)=>{ const bw=(W-10)/n; g.v.forEach((v,j)=>{const w=bw/g.v.length-3; const x=5+i*bw+j*(w+2); const h=(opts.signed?(H/2-14):(H-20))*Math.abs(v)/max; const y=v>=0?zero-h:zero;
+    out+=`<rect x="${x.toFixed(1)}" y="${y.toFixed(1)}" width="${w.toFixed(1)}" height="${Math.max(h,1).toFixed(1)}" fill="${css(g.c[j])}" rx="1"/>`;});
+    if(g.label) out+=`<text x="${5+i*bw+bw/2}" y="${H-2}" text-anchor="middle" font-size="9" fill="${css('--muted')}" font-family="JetBrains Mono, monospace">${g.label}</text>`; });
+  svg.setAttribute('viewBox',`0 0 ${W} ${H}`); svg.innerHTML=out;
+}
+requestAnimationFrame(()=>{
+  bars(document.getElementById('sp-m7'),[
+    {v:[-9.7],c:['--bear'],label:'M7 −9,7'},{v:[3.4],c:['--bull'],label:'493 +3,4'},{v:[-6.5],c:['--bear'],label:'S&P −6,5'},{v:[2.8],c:['--bull'],label:'Equip. +2,8'}],{signed:true});
+  const hl=DATA.newhl; bars(document.getElementById('sp-hl'),hl.h.map((h,i)=>({v:[h,-hl.l[i]],c:['--bull','--bear'],label:(i%4===0?hl.d[i].slice(5):'')})),{signed:true});
+  compass();
+});
+
+function compass(){
+  const svg=document.getElementById('compass'), q=DATA.quad, W=520,H=400,cx=W/2,cy=H/2;
+  const mx=Math.max(...q.x.map(Math.abs))*1.6, my=Math.max(...q.y.map(Math.abs))*1.4;
+  const X=v=>cx+(W/2-30)*v/mx, Y=v=>cy-(H/2-30)*v/my;
+  const zone=(x,y,w,h,fill,label,sub,ax,ay,anchor)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${css(fill)}" opacity=".55"/><text x="${ax}" y="${ay}" text-anchor="${anchor}" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="15" fill="${css('--ink')}">${label}</text><text x="${ax}" y="${ay+16}" text-anchor="${anchor}" font-size="11" fill="${css('--muted')}" font-family="Inter, sans-serif">${sub}</text>`;
+  let o='';
+  o+=zone(0,0,cx,cy,'--bear-soft','Fricción','inflación alta · crece poco',14,24,'start');
+  o+=zone(cx,0,cx,cy,'--warn-soft','Expansión caliente','crece · inflación sube',W-14,24,'end');
+  o+=zone(0,cy,cx,cy,'--flat-soft','Invierno','recesión · cae la inflación',14,H-28,'start');
+  o+=zone(cx,cy,cx,cy,'--bull-soft','Despegue','crece sin inflación',W-14,H-28,'end');
+  o+=`<line x1="0" x2="${W}" y1="${cy}" y2="${cy}" stroke="${css('--muted')}"/><line x1="${cx}" x2="${cx}" y1="0" y2="${H}" stroke="${css('--muted')}"/>`;
+  o+=`<text x="${W-8}" y="${cy+16}" text-anchor="end" font-size="10" fill="${css('--muted')}" font-family="JetBrains Mono, monospace">crecimiento →</text><text x="${cx+6}" y="14" font-size="10" fill="${css('--muted')}" font-family="JetBrains Mono, monospace">↑ inflación</text>`;
+  const pts=q.x.map((x,i)=>[X(x),Y(q.y[i])]);
+  o+=`<polyline fill="none" stroke="${css('--amber')}" stroke-width="1.5" stroke-dasharray="4 3" points="${pts.map(p=>p.map(v=>v.toFixed(1)).join(',')).join(' ')}"/>`;
+  pts.forEach((p,i)=>{const last=i===pts.length-1; o+=`<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${last?7:3.5}" fill="${last?css('--amber'):css('--panel')}" stroke="${css('--amber')}" stroke-width="1.5"/>`;
+    if(i===0||last) o+=`<text x="${(p[0]+10).toFixed(1)}" y="${(p[1]+4).toFixed(1)}" font-size="11" font-family="JetBrains Mono, monospace" fill="${css('--ink')}">${last?'hoy':''} ${q.d[i]}</text>`;});
+  svg.innerHTML=o;
+}
+
+/* progreso */
+const dots=[...document.querySelectorAll('.dots a')];
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){dots.forEach(d=>d.classList.toggle('on',d.getAttribute('href')==='#'+e.target.id));}})},{rootMargin:'-40% 0px -55% 0px'});
+document.querySelectorAll('.stop').forEach(s=>io.observe(s));
+matchMedia('(prefers-color-scheme: dark)').addEventListener('change',()=>location.reload());
+</script>
