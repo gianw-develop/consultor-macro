@@ -1,0 +1,336 @@
+<title>Cazador de Tendencias</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<style>
+/* Layout: una columna de lectura (~760px) con bandas: veredicto, método, familias, lectura de hoy, pruebas, riesgo, sistema. */
+:root{
+  --bg:#f5f6f4; --panel:#ffffff; --ink:#17201c; --muted:#5d6a64; --line:#d9dfdb;
+  --amber:#b86e00; --amber-soft:#fff1d9;
+  --bull:#127a4b; --bull-soft:#e1f3e9; --bear:#b3261e; --bear-soft:#fbe5e3; --warn:#9a6a00; --warn-soft:#fdf1d2; --flat:#56615c; --flat-soft:#eceeed;
+  --f-display:"Space Grotesk", "Segoe UI", system-ui, sans-serif;
+  --f-body:"Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --f-mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#0f1412; --panel:#161d1a; --ink:#e7ece9; --muted:#9aa7a1; --line:#2a3530;
+  --amber:#ffb340; --amber-soft:#33260f;
+  --bull:#4cc98a; --bull-soft:#12291e; --bear:#ff7a70; --bear-soft:#341614; --warn:#f1c24f; --warn-soft:#2e2610; --flat:#a9b3ae; --flat-soft:#222a27;
+  color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#0f1412; --panel:#161d1a; --ink:#e7ece9; --muted:#9aa7a1; --line:#2a3530;
+  --amber:#ffb340; --amber-soft:#33260f;
+  --bull:#4cc98a; --bull-soft:#12291e; --bear:#ff7a70; --bear-soft:#341614; --warn:#f1c24f; --warn-soft:#2e2610; --flat:#a9b3ae; --flat-soft:#222a27;
+  color-scheme:dark}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:16px;line-height:1.6}
+.wrap{max-width:780px;margin:0 auto;padding-left:max(16px, env(safe-area-inset-left, 0px));padding-right:max(16px, env(safe-area-inset-right, 0px));padding-block:28px 64px;display:grid;gap:40px}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;line-height:1.2;margin:0}
+h1{font-size:clamp(2rem,6vw,2.8rem);letter-spacing:-.01em}
+h2{font-size:1.45rem}
+h3{font-size:1.08rem}
+p{margin:0}
+section{display:grid;gap:14px}
+.eyebrow{font-family:var(--f-mono);font-size:.74rem;letter-spacing:.12em;text-transform:uppercase;color:var(--amber)}
+.lede{font-size:1.08rem;color:var(--ink)}
+.muted{color:var(--muted)}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+.band{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:18px;display:grid;gap:12px}
+.verdict{border-left:4px solid var(--amber)}
+ul,ol{margin:0;padding-left:1.25rem;display:grid;gap:6px}
+.tblwrap{overflow-x:auto;border:1px solid var(--line);border-radius:10px;background:var(--panel)}
+table{border-collapse:collapse;width:100%;min-width:560px;font-size:.92rem}
+th,td{text-align:left;vertical-align:top;padding:10px 12px;border-bottom:1px solid var(--line)}
+th{font-family:var(--f-mono);font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+tr:last-child td{border-bottom:0}
+td.num{font-family:var(--f-mono);font-variant-numeric:tabular-nums;white-space:nowrap}
+.pill{display:inline-block;font-family:var(--f-mono);font-size:.72rem;font-weight:600;letter-spacing:.04em;padding:2px 8px;border-radius:99px;white-space:nowrap}
+.bear{background:var(--bear-soft);color:var(--bear)}
+.bull{background:var(--bull-soft);color:var(--bull)}
+.warn{background:var(--warn-soft);color:var(--warn)}
+.flat{background:var(--flat-soft);color:var(--flat)}
+.fam{display:grid;gap:10px}
+.famcard{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:grid;gap:6px}
+.famhead{display:flex;flex-wrap:wrap;gap:8px;align-items:baseline;justify-content:space-between}
+.famhead h3{min-width:0}
+.kv{display:grid;grid-template-columns:7.5rem 1fr;gap:4px 12px;font-size:.93rem}
+.kv dt{color:var(--muted);font-family:var(--f-mono);font-size:.76rem;letter-spacing:.04em;padding-top:3px}
+.kv dd{margin:0;min-width:0}
+.formula{display:grid;gap:8px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:16px}
+.steps{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.step{border:1px solid var(--line);border-radius:8px;padding:6px 10px;font-size:.9rem;background:var(--bg)}
+.plus{font-family:var(--f-mono);color:var(--amber);font-weight:600}
+.board{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px}
+.tile{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px;display:grid;gap:6px;border-top:4px solid var(--flat)}
+.tile.t-bear{border-top-color:var(--bear)} .tile.t-warn{border-top-color:var(--warn)} .tile.t-bull{border-top-color:var(--bull)}
+.tile h3{font-size:.98rem}
+.tile p{font-size:.88rem}
+.count{display:flex;flex-wrap:wrap;gap:10px}
+.count .box{flex:1 1 150px;background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:12px 14px}
+.count .n{font-family:var(--f-display);font-size:2rem;line-height:1}
+details{background:var(--panel);border:1px solid var(--line);border-radius:10px;padding:10px 14px}
+details+details{margin-top:-6px}
+summary{cursor:pointer;font-weight:600}
+summary:focus-visible,a:focus-visible{outline:2px solid var(--amber);outline-offset:2px}
+details[open] summary{margin-bottom:8px}
+a{color:var(--amber)}
+.foot{font-size:.85rem;color:var(--muted);border-top:1px solid var(--line);padding-top:16px}
+@media (max-width:480px){.kv{grid-template-columns:1fr}.kv dt{padding-top:0}}
+</style>
+
+<div class="wrap">
+
+<header style="display:grid;gap:12px">
+  <div class="eyebrow">AWNexus · Método Gregory Trejo · revisión de las 20 mentorías</div>
+  <h1>Cazador de Tendencias</h1>
+  <p class="lede">Leí las 20 mentorías una por una, las crucé con las cuatro masterclass y comprobé las reglas con datos reales de mercado. Aquí tienes el método ordenado en 7 familias de señales, la lectura de hoy, lo que funciona, lo que flojea y cómo lo convertimos en tu sistema.</p>
+  <p class="muted mono" style="font-size:.85rem">Datos al cierre del viernes 27-nov-2026 · Yahoo Finance, OCDE y cálculo propio sobre los 503 valores del S&amp;P 500</p>
+</header>
+
+<section>
+  <div class="band verdict">
+    <div class="eyebrow">Mi respuesta corta</div>
+    <h2>Sí se puede, y el método es más sólido de lo que parece en tus apuntes</h2>
+    <p>El método de Gregory se resume en una regla: <strong>la macro da el permiso, la amplitud da el momento, la rotación y el precio confirman</strong>. Hay tesis cuando 3 o más familias apuntan al mismo lado. No es complejo: son 7 familias, y casi todas se pueden calcular solas cada día.</p>
+    <p>Lo comprobé con datos. Mi cálculo del impulso de amplitud 20→90 encuentra exactamente los casos que él enseña: agosto de 2022, que su filtro macro descartaba y tras el que el S&amp;P cayó otro 16 %; noviembre de 2022, que fue el suelo; y enero de 2024, con +24 % en 12 meses. El método se puede automatizar.</p>
+    <p>El problema de los apuntes anteriores era otro: estaban tan llenos de advertencias («no convertir en orden», «pendiente de verificar») que el método se perdía. Aquí va directo. Te digo qué dice cada señal, qué hace falta para actuar y dónde están los riesgos de verdad.</p>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Qué encontré en el ZIP</div>
+  <h2>20 documentos, 19 clases distintas</h2>
+  <p>Los documentos 5 y 6 son la misma sesión, con el texto idéntico. La 15 está incompleta, a la 18 le falta audio y de la 19 solo está la primera parte. De cada clase hay una ficha detallada con señales, reglas, contradicciones y mi consejo.</p>
+  <details>
+    <summary>Ver las 19 clases, una línea por clase</summary>
+    <div class="tblwrap" style="margin-top:8px">
+    <table>
+      <thead><tr><th>Clase</th><th>Tema</th><th>Lo que aporta al sistema</th></tr></thead>
+      <tbody>
+        <tr><td class="num">M01</td><td>Fundamento macro</td><td>Solicitudes de desempleo (media 4 semanas) como alerta; adelantados, coincidentes y retrasados; nunca un dato aislado.</td></tr>
+        <tr><td class="num">M02</td><td>Tres pilares</td><td>Solicitudes, ventas minoristas reales y M1 real semestral (&lt; 0 = alerta). Índice equiponderado frente al oficial como termómetro interno.</td></tr>
+        <tr><td class="num">M03</td><td>LEI y CLI</td><td>LEI a 6 meses (&lt; −4,5 % = recesión). CLI de la OCDE: nivel 100 × dirección. Primer mes sin crecer = alerta; segundo cayendo = vigilar cortos.</td></tr>
+        <tr><td class="num">M04</td><td>Setups</td><td>Mínimo 3 adelantados alineados. Setup confirmado: CLI gira desde mínimos + índice sobre su MA200 + solicitudes bajando.</td></tr>
+        <tr><td class="num">M05/06</td><td>Curva 10Y−2Y</td><td>Por encima de +2, expansión sana; cerca de 0, ciclo maduro; por debajo de 0, riesgo de recesión. Fase 1: CLI con suelo y curva empinándose = comprar.</td></tr>
+        <tr><td class="num">M07</td><td>2Y frente a la Fed</td><td>El 2Y se adelanta a la Fed. Con la curva por encima de 0, las caídas se compran; tocar 0 = alerta estructural. «El apalancamiento es el enemigo.»</td></tr>
+        <tr><td class="num">M08</td><td>Cuatro cuadrantes</td><td>Crecimiento (CLI) × inflación. Paso de boom inflacionario a estanflación = cobrar beneficios y reducir largos.</td></tr>
+        <tr><td class="num">M09</td><td>Inflación</td><td>Sticky CPI moderándose + crecimiento positivo = las correcciones se compran. La bolsa gira antes que la Fed.</td></tr>
+        <tr><td class="num">M10</td><td>Variable dominante</td><td>Detectar qué noticia mueve el precio y seguirla. Cada tesis con su dato de invalidación.</td></tr>
+        <tr><td class="num">M11</td><td>S5FI 20/90</td><td>«La amplitud da el momento, la macro el permiso.» Un 90 tras una crisis inicia tendencias de un año o más.</td></tr>
+        <tr><td class="num">M12</td><td>Cíclicos frente a defensivos</td><td>Protocolo según el régimen: inflación → Fed → precio, o crecimiento → Fed → precio. La rotación confirma, no dispara.</td></tr>
+        <tr><td class="num">M13</td><td>US2Y y familias</td><td>Recompra con 5 condiciones: el 2Y gira a la baja, XLY acelera, los cíclicos acompañan, los defensivos dejan de liderar y el índice confirma.</td></tr>
+        <tr><td class="num">M14</td><td>Matriz XLI–XLP</td><td>Deterioro serio = CLI girando a la baja + cíclicos débiles + defensivos liderando + precio rompiendo su estructura.</td></tr>
+        <tr><td class="num">M15</td><td>XLP:XLY y EMA</td><td>Entrada anticipada (mejora el CLI) frente a entrada confirmada (el ratio cruza sus medias). La macro se adelanta a la técnica.</td></tr>
+        <tr><td class="num">M16</td><td>XLI/XLP mensual</td><td>ROC 12 del ratio para leer el ciclo. Segunda entrada solo con nueva evidencia (nada de martingala).</td></tr>
+        <tr><td class="num">M17</td><td>La regla del −10</td><td>ROC 5 semanal de XLI/XLP y de XLF/XLP: uno en −10 = alerta parcial; los dos = confirmación total, cerrar compras.</td></tr>
+        <tr><td class="num">M18</td><td>Repaso y amplitud</td><td>«Casi −10 no cuenta.» Amplitud sectorial: de ≤ 2 a &gt; 6 sectores en tendencia = impulso.</td></tr>
+        <tr><td class="num">M19</td><td>Impulso 20→90</td><td>% de acciones sobre su media de 50 días: de 20 a 90 rápido = compra de largo plazo, solo con permiso macro (agosto de 2022 se descarta).</td></tr>
+        <tr><td class="num">M20</td><td>La fórmula final</td><td>Compra: inflación bajo su EMA 10 + CLI G7 al alza + dos impulsos de amplitud. Venta: CLI débil + amplitud deteriorándose + XLI cediendo frente a XLP. Sentimiento como refuerzo.</td></tr>
+      </tbody>
+    </table>
+    </div>
+  </details>
+</section>
+
+<section>
+  <div class="eyebrow">El método</div>
+  <h2>Las 7 familias de señales</h2>
+  <p>Gregory insiste en que no se cuentan indicadores sueltos, se cuentan <strong>familias</strong>. Dos lecturas de amplitud son un solo voto. Este es el tablero que propongo. Cada familia lleva sus indicadores exactos, cómo se leen y de dónde salen.</p>
+  <div class="fam">
+    <article class="famcard">
+      <div class="famhead"><h3>1 · Crecimiento</h3><span class="pill flat">mensual · da el permiso</span></div>
+      <dl class="kv">
+        <dt>Indicadores</dt><dd>CLI de la OCDE: G7 (principal en la fórmula final), G20 y EE. UU. (USCLI en TradingView). Solicitudes de desempleo, media de 4 semanas. LEI como apoyo.</dd>
+        <dt>Cómo se lee</dt><dd>Cuenta primero el <strong>giro</strong> y después el nivel 100. Primer mes sin crecer = alerta; segundo cayendo = vigilar cortos. Las solicitudes subiendo varias semanas seguidas = daño en el empleo.</dd>
+        <dt>Fuente</dt><dd>API de la OCDE (exacta, se publica hacia el día 9-12) y FRED (ICSA, IC4WSA).</dd>
+      </dl>
+    </article>
+    <article class="famcard">
+      <div class="famhead"><h3>2 · Inflación</h3><span class="pill flat">mensual · da el permiso</span></div>
+      <dl class="kv">
+        <dt>Indicadores</dt><dd>IPC interanual de EE. UU. (USIRYY) frente a su EMA de 10 meses. Sticky CPI como control.</dd>
+        <dt>Cómo se lee</dt><dd>Por encima de la EMA = régimen inflacionario, la Fed no ayuda. Cruce por debajo = posible techo, pieza que cierra la fórmula de compra. Romper el máximo previo (4,24 %, mayo de 2026) y seguir sobre la EMA = escenario de cortos de varios meses.</dd>
+        <dt>Fuente</dt><dd>FRED / BLS (exacta).</dd>
+      </dl>
+    </article>
+    <article class="famcard">
+      <div class="famhead"><h3>3 · Bonos y Fed</h3><span class="pill flat">diario · contexto y alerta</span></div>
+      <dl class="kv">
+        <dt>Indicadores</dt><dd>Rendimiento a 2 años frente a la tasa de la Fed. Curva 10Y−2Y.</dd>
+        <dt>Cómo se lee</dt><dd>El 2Y subiendo con fuerza frena los índices antes de que la Fed actúe; el 2Y girando a la baja es la primera condición de recompra. Curva por encima de 0 = las caídas se compran; tocar 0 = alerta estructural.</dd>
+        <dt>Fuente</dt><dd>FRED: DGS2, DGS10, T10Y2Y y DFEDTARU (exacta).</dd>
+      </dl>
+    </article>
+    <article class="famcard">
+      <div class="famhead"><h3>4 · Amplitud (participación)</h3><span class="pill flat">diario y semanal · da el momento</span></div>
+      <dl class="kv">
+        <dt>Indicadores</dt><dd>% de acciones del S&amp;P 500 sobre su media de 50 días (S5FI). Línea acumulada de nuevos máximos menos nuevos mínimos con su media (CUM High Low NYSE). Equiponderado frente a ponderado (RSP/SPY).</dd>
+        <dt>Cómo se lee</dt><dd>De ≤ 20 a 90 rápido = impulso alcista; la fórmula pide un primer y un segundo impulso. Índice en máximos con la amplitud cayendo = subida frágil. La compra llega cuando la línea vuelve a cruzar hacia arriba, no en el miedo.</dd>
+        <dt>Fuente</dt><dd>Cálculo propio sobre los 503 valores (exacto para el S&amp;P). Para la NYSE no hay fuente gratuita limpia: uso la versión del S&amp;P 500.</dd>
+      </dl>
+    </article>
+    <article class="famcard">
+      <div class="famhead"><h3>5 · Rotación sectorial</h3><span class="pill flat">semanal y mensual · confirma</span></div>
+      <dl class="kv">
+        <dt>Indicadores</dt><dd>ROC 5 semanal de XLI/XLP y de XLF/XLP (regla del −10). ROC 12 mensual de XLI/XLP. XLY/XLP diario con EMA 50 y EMA 200. Cíclicos frente a defensivos.</dd>
+        <dt>Cómo se lee</dt><dd>Un ROC en −10 = alerta parcial; los dos = confirmación total, cerrar compras. XLY/XLP recuperando sus dos EMA = el dinero vuelve al riesgo (así fue en junio de 2023 y abril de 2025). Terremoto: el defensivo sube más de un 10 % frente al cíclico en 5 semanas.</dd>
+        <dt>Fuente</dt><dd>ETF SPDR, precios diarios (exacta).</dd>
+      </dl>
+    </article>
+    <article class="famcard">
+      <div class="famhead"><h3>6 · Precio y tendencia</h3><span class="pill flat">diario · confirma</span></div>
+      <dl class="kv">
+        <dt>Indicadores</dt><dd>S&amp;P 500, Nasdaq 100 y Dow frente a su EMA 50 y EMA 200. El líder: SOX y su nivel binario de 10.500.</dd>
+        <dt>Cómo se lee</dt><dd>Macro mejorando + precio sobre sus medias = tendencia confirmada. La EMA 50 diaria recuperada es la confirmación técnica tardía de la fórmula de compra.</dd>
+        <dt>Fuente</dt><dd>Precios diarios (exacta).</dd>
+      </dl>
+    </article>
+    <article class="famcard">
+      <div class="famhead"><h3>7 · Sentimiento</h3><span class="pill flat">diario y semanal · refuerza, nunca decide</span></div>
+      <dl class="kv">
+        <dt>Indicadores</dt><dd>Put/call (extremos: 1,40, luego 1,27 y 1,04), VIX, encuesta AAII, TRIN. Anxious Index como expectativa de los economistas.</dd>
+        <dt>Cómo se lee</dt><dd>Miedo extremo + macro y amplitud mejorando = la mejor relación riesgo/beneficio. Miedo sin capitulación = un rebote suele ser «para seguir cayendo». Un pico de VIX no marca suelo por sí solo: en 2022, tres de cuatro fueron trampas.</dd>
+        <dt>Fuente</dt><dd>VIX exacto. El put/call de Cboe no se puede descargar gratis desde aquí; está pendiente de elegir proveedor.</dd>
+      </dl>
+    </article>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Las reglas para actuar</div>
+  <h2>Las fórmulas de Gregory</h2>
+  <div class="formula">
+    <div class="famhead"><h3>Compra de medio plazo</h3><span class="pill bull">4 pasos · 3 familias</span></div>
+    <div class="steps">
+      <span class="step">Inflación interanual cruza bajo su EMA 10</span><span class="plus">+</span>
+      <span class="step">CLI G7 gira al alza</span><span class="plus">+</span>
+      <span class="step">1.<sup>er</sup> impulso de amplitud</span><span class="plus">+</span>
+      <span class="step">2.º impulso de amplitud</span>
+    </div>
+    <p class="muted" style="font-size:.92rem">Refuerzos: XLI gana a XLP, el precio recupera la EMA 50 diaria y el sentimiento sigue con miedo. <strong>Filtro obligatorio:</strong> si la inflación sube y la Fed es restrictiva, el impulso de amplitud se descarta (caso de agosto de 2022).</p>
+  </div>
+  <div class="formula">
+    <div class="famhead"><h3>Tesis bajista</h3><span class="pill bear">3 señales + confirmación</span></div>
+    <div class="steps">
+      <span class="step">CLI debilitándose</span><span class="plus">+</span>
+      <span class="step">Máximos − mínimos acumulados deteriorándose</span><span class="plus">+</span>
+      <span class="step">XLI cede frente a XLP</span>
+    </div>
+    <p class="muted" style="font-size:.92rem"><strong>Confirmación total:</strong> los dos ROC 5 semanales, de XLI/XLP y de XLF/XLP, tocan −10. Entonces cierra compras antes del stop y estudia cortos de horizonte amplio, nunca intradía. Acercarse a −10 no cuenta.</p>
+  </div>
+  <div class="formula">
+    <div class="famhead"><h3>Cómo entra</h3><span class="pill flat">escalonado</span></div>
+    <ul>
+      <li><strong>Entrada anticipada:</strong> cuando gira la macro (el CLI mejora). Mejor precio, más incertidumbre: tamaño pequeño.</li>
+      <li><strong>Entrada confirmada:</strong> cuando confirman también la rotación y el precio. Peor precio, más evidencia: se completa la posición.</li>
+      <li><strong>Segunda entrada solo con nueva evidencia</strong>, nunca para promediar a la baja.</li>
+      <li>Cada tesis lleva escrito el dato que la invalida. El stop de precio y la invalidación macro se apuntan por separado.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Lectura de hoy · cierre del 27-nov-2026</div>
+  <h2>Sesgo bajista, tesis todavía no confirmada</h2>
+  <div class="count">
+    <div class="box"><div class="n" style="color:var(--bear)">3</div><div class="muted">familias en contra: bonos, rotación y precio</div></div>
+    <div class="box"><div class="n" style="color:var(--warn)">2</div><div class="muted">en alerta: crecimiento e inflación</div></div>
+    <div class="box"><div class="n" style="color:var(--bull)">1</div><div class="muted">mejorando: amplitud</div></div>
+    <div class="box"><div class="n" style="color:var(--flat)">1</div><div class="muted">neutral: sentimiento</div></div>
+  </div>
+  <div class="board">
+    <div class="tile t-warn"><div class="famhead"><h3>Crecimiento</h3><span class="pill warn">Alerta</span></div>
+      <p class="mono">CLI G7 100,90 ↑ · EE. UU. 100,96 ↑ · G20 99,97 ↓</p>
+      <p>El G7 y EE. UU. suben sin pausa desde junio. El <strong>G20 cae cuatro meses seguidos y acaba de cruzar bajo 100</strong>: es la primera alerta de M03 y M14. Se publica de nuevo hacia el 9 de diciembre.</p></div>
+    <div class="tile t-warn"><div class="famhead"><h3>Inflación</h3><span class="pill warn">Alerta</span></div>
+      <p class="mono">IPC EE. UU. 3,74 % (sep.) &gt; EMA 10 3,37 %</p>
+      <p>Por encima de su media: régimen inflacionario, y el primer paso de la fórmula de compra no se cumple. Sigue por debajo del máximo de mayo, 4,25 %; romperlo sería la alarma de M20.</p></div>
+    <div class="tile t-bear"><div class="famhead"><h3>Bonos y Fed</h3><span class="pill bear">En contra</span></div>
+      <p class="mono">10Y 4,94 % · 2Y ≈4,78 % · 10Y−2Y ≈ +0,16</p>
+      <p>El 2Y subió unos 60 pb en 3 meses: el mercado descuenta una Fed más dura, lo que frena a los índices según M10 y M13. La curva está a 16 pb de tocar 0, la alerta estructural de M07. El 2Y sale de un futuro y es aproximado.</p></div>
+    <div class="tile t-bull"><div class="famhead"><h3>Amplitud</h3><span class="pill bull">Mejorando</span></div>
+      <p class="mono">% sobre MA50: 63,5 (mín. 21 el 30-sep) · RSP/SPY +5,6 % sobre su media</p>
+      <p>El daño está concentrado en tecnología y semiconductores; el resto del mercado aguanta. El rebote desde 21 todavía no es un impulso hasta 90. Si llega ahora, el filtro de agosto de 2022 lo descartaría, porque la inflación está sobre su EMA y el 2Y sube.</p></div>
+    <div class="tile t-bear"><div class="famhead"><h3>Rotación</h3><span class="pill bear">En contra</span></div>
+      <p class="mono">ROC5 XLI/XLP tocó −14,4 (6-nov) · XLF/XLP mín. −7,7</p>
+      <p>Alerta parcial: solo uno tocó −10, así que no hay confirmación total. El ROC 12 de XLI/XLP es negativo desde octubre (−7,7). XLY/XLP está en 1,294, por debajo de su EMA 50 (1,314) y de su EMA 200 (1,358). Ningún sector cíclico de 6 bate a los defensivos en 3 meses.</p></div>
+    <div class="tile t-bear"><div class="famhead"><h3>Precio</h3><span class="pill bear">En contra</span></div>
+      <p class="mono">S&amp;P 7.297 &lt; EMA50 7.512 y EMA200 7.355</p>
+      <p>Nasdaq 100 a −14,4 % de su máximo, por debajo de las dos medias. Dow bajo su EMA 50 y justo sobre su EMA 200. SOX en 9.187, −37 %, por debajo de 10.500. El +5,6 % de esta semana ocurre por debajo de las medias.</p></div>
+    <div class="tile"><div class="famhead"><h3>Sentimiento</h3><span class="pill flat">Neutral</span></div>
+      <p class="mono">VIX 23,8 (pico 35,9 el 20-nov)</p>
+      <p>El miedo bajó sin llegar a capitulación. Falta el put/call: sin él, esta familia queda incompleta.</p></div>
+  </div>
+  <div class="band">
+    <h3>Cómo lo leo yo</h3>
+    <p>Hay 3 familias en contra, así que se cumple la regla de Gregory para vigilar una tesis bajista. Pero su fórmula exacta de venta solo se cumple a medias: XLI cede frente a XLP, el CLI solo se debilita en el G20 y la amplitud interna no se está deteriorando. Tampoco hay confirmación total del −10. Para compras, la fórmula alcista está en 0 de 4: la inflación sigue sobre su EMA y no ha habido impulsos de amplitud.</p>
+    <p>Conclusión: <strong>no hay tesis de compra de medio plazo</strong>, y la bajista está en vigilancia, no confirmada. Coincide con el «cautela, no oportunidad clara» de la masterclass del 20 de noviembre. El rebote de esta semana se trata como rebote mientras el S&amp;P no recupere su EMA 200 y la rotación no mejore.</p>
+    <p><strong>Qué cambiaría la lectura:</strong></p>
+    <ul>
+      <li><strong>Hacia bajista confirmada:</strong> XLF/XLP tocando −10 con XLI/XLP de nuevo en −10, la curva tocando 0, el CLI G7 girando a la baja el 9 de diciembre o el IPC rompiendo 4,25 %.</li>
+      <li><strong>Hacia alcista:</strong> el IPC cruza bajo su EMA, el 2Y gira a la baja y la amplitud hace un impulso de 20 a 90 con XLY/XLP recuperando sus dos EMA.</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">Lo que comprobé con datos</div>
+  <h2>Qué aguanta la prueba y qué no</h2>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>Regla</th><th>Resultado</th><th>Veredicto</th></tr></thead>
+      <tbody>
+        <tr><td>Impulso de amplitud 20→90 (M19, M20)</td><td>En 5 años hubo 3 impulsos. <span class="mono">12-ago-2022</span>: −16,4 % en los 6 meses siguientes, el que su filtro macro descartaba. <span class="mono">23-nov-2022</span>: +13,1 % a 12 meses. <span class="mono">2-ene-2024</span>: +23,7 % a 12 meses.</td><td><span class="pill bull">Funciona con filtro</span></td></tr>
+        <tr><td>Confirmación total del −10 (M17)</td><td>Con cierres semanales desde 2010 se activó 3 veces. <span class="mono">oct-2018</span>: el S&amp;P ya caía −9 %, cayó −11,6 % más y a 12 meses estaba en +13,7 %. <span class="mono">mar-2020</span>: ya caía −20 %, cayó −17,5 % más y a 12 meses estaba en +45 %. <span class="mono">abr-2022</span>: ya caía −11 %, cayó −16,3 % más y a 12 meses estaba en −3 %.</td><td><span class="pill warn">Útil para salir, flojo para cortos</span></td></tr>
+        <tr><td>Las dos EMA de XLY/XLP (masterclass)</td><td>Las medias de su diapositiva (1,32 y 1,36) coinciden exactamente con la EMA 50 y la EMA 200 diarias.</td><td><span class="pill bull">Resuelto</span></td></tr>
+        <tr><td>Nivel 4,24 del IPC (M20)</td><td>Es el máximo del IPC interanual de mayo de 2026 (4,25 % según la OCDE).</td><td><span class="pill bull">Confirmado</span></td></tr>
+        <tr><td>«Caso limpio» del 18-feb-2025 (M17)</td><td>Con cierres semanales no se activó: XLI/XLP llegó a −9,4 y XLF/XLP a −10,3, en semanas distintas. Puede que él cuente los toques dentro de la semana.</td><td><span class="pill warn">A confirmar</span></td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p>La lección más útil es la del −10: la confirmación llega cuando el mercado ya ha caído entre un 9 % y un 20 %. Cerrar compras con ella fue acertado las tres veces, porque después vino otra caída del 12 al 17 %. Pero en dos de tres casos, 12 meses después el mercado estaba más alto. Mi consejo: <strong>úsala para salir y dejar de comprar; abre cortos solo si la macro también confirma</strong>, como en 2022, con inflación y Fed en contra.</p>
+</section>
+
+<section>
+  <div class="eyebrow">Tu capital</div>
+  <h2>El riesgo con 200.000 USD en CFD</h2>
+  <p>En esto Gregory se contradice entre clases. En la M01 habla de arriesgar entre el 10 % y el 15 % por operación; en la M07 dice que el apalancamiento «es el enemigo»; en la M08 recomienda apalancarse de forma agresiva en un boom. Con 3 millones puede permitírselo; con 200.000 en CFD, un 15 % son 30.000 USD por idea. Esto es lo que te propongo:</p>
+  <div class="tblwrap">
+    <table>
+      <thead><tr><th>Regla</th><th>Propuesta</th><th>Por qué</th></tr></thead>
+      <tbody>
+        <tr><td>Riesgo por tesis</td><td class="num">1 % (máx. 2 %) = 2.000–4.000 USD</td><td>Sus stops son amplios (Dow 50.000 → 47.000): el tamaño sale del stop, no al revés.</td></tr>
+        <tr><td>Exposición nocional total</td><td class="num">≤ 1,5–2 × capital</td><td>S&amp;P, Nasdaq y Dow se mueven juntos: tres posiciones son casi una sola apuesta.</td></tr>
+        <tr><td>Escalonado</td><td class="num">⅓ anticipada · ⅔ confirmada</td><td>Es su método de entrada anticipada y confirmada, aplicado al tamaño.</td></tr>
+        <tr><td>Con amplitud débil</td><td>Reducir el apalancamiento sin vender</td><td>Regla de M19.</td></tr>
+        <tr><td>Coste de mantener</td><td>Visible en cada tesis</td><td>En CFD la financiación nocturna se come las tesis de meses (M13).</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section>
+  <div class="eyebrow">El sistema</div>
+  <h2>Cómo lo montamos</h2>
+  <ol>
+    <li><strong>Cálculo diario automático.</strong> Un proceso calcula las 7 familias tras el cierre de Nueva York, con los cálculos de esta página. Guarda el historial y registra cada cambio de estado con su fecha.</li>
+    <li><strong>Dashboard nuevo en AWNexus.</strong> Arriba, el recuento de familias y el veredicto («sin tesis», «bajista en vigilancia», «alcista confirmada»). Debajo, las dos fórmulas como listas de pasos, una tarjeta por familia y una línea de tiempo de confirmaciones. El mapa de régimen actual se mantiene como pieza de crecimiento × inflación.</li>
+    <li><strong>Agente de Claude en la nube, dos veces al día</strong> (tras el cierre de Nueva York y antes de Europa). Lee el tablero, busca en las noticias cuál es la variable dominante (Fed, petróleo, IPC, resultados), escribe la lectura y te manda una alerta al móvil <strong>solo cuando algo cambia de estado</strong>: un −10 tocado, la curva en 0, el CLI girando, un impulso de amplitud.</li>
+    <li><strong>Tú decides la entrada</strong>, con tu experiencia y tus alertas de precio en TradingView. El sistema te dice hacia dónde hay tesis, cuánta confirmación tiene y qué la invalidaría.</li>
+  </ol>
+  <div class="band">
+    <h3>Lo que necesito de ti</h3>
+    <p>Cinco dudas que solo se resuelven mirando tus capturas o tu TradingView. Las respondes cuando puedas; mientras tanto, el sistema calcula ambas versiones:</p>
+    <ul>
+      <li>¿El CLI principal es el G7 o el G20? En la M04 elegiste el G20 y en la fórmula final aparece el G7. Hoy divergen, así que importa.</li>
+      <li>En las M12 y M14, ¿el ratio era XLI/XLP o XLY/XLP? La transcripción los confunde.</li>
+      <li>La regla del −10: ¿cuenta el cierre semanal o también un toque dentro de la semana? ¿Y cuántas semanas pueden separar los toques de los dos ratios?</li>
+      <li>¿Qué serie de put/call usa (total, de acciones o de índices) y en qué plataforma?</li>
+      <li>¿Usas el CUM High Low de la NYSE en TradingView? Si es así, me sirve una captura con sus ajustes.</li>
+    </ul>
+    <p>Para publicarlo en consultormacro.com hace falta renovar el acceso a Vercel. Te lo explico antes de pedirte nada.</p>
+  </div>
+</section>
+
+<p class="foot">Material educativo basado en tus apuntes de las mentorías y en datos públicos. Los cálculos son míos: el % sobre la media de 50 usa los componentes actuales del S&amp;P 500, el 2Y es una aproximación con futuros y el IPC llega hasta septiembre. No es asesoramiento financiero; las decisiones de operar son tuyas.</p>
+
+</div>
