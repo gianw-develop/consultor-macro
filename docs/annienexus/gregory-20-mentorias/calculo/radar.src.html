@@ -59,6 +59,13 @@ p{margin:0}
 .val .prev{font-family:var(--f-mono);font-size:.8rem;color:var(--muted)}
 .spark{width:100%;height:46px;display:block}
 .today{font-size:.9rem}
+.upd{font-family:var(--f-mono);font-size:.72rem;color:var(--muted)}
+.heat{width:100%;border-collapse:collapse;font-size:.88rem;min-width:420px}
+.heat th,.heat td{padding:7px 8px;border-bottom:1px solid var(--line);text-align:right;font-variant-numeric:tabular-nums}
+.heat th:first-child,.heat td:first-child{text-align:left}
+.heat th{font-family:var(--f-mono);font-size:.7rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.heat td.cell{font-family:var(--f-mono);font-weight:600}
+.scroll{overflow-x:auto}
 .explain[hidden]{display:none}
 .explain{background:var(--soft);border-radius:8px;padding:12px 14px;font-size:.9rem;display:grid;gap:6px}
 .explain dl{margin:0;display:grid;gap:6px}
@@ -101,7 +108,7 @@ p{margin:0}
 <main class="wrap">
 
 <section class="hero" id="inicio">
-  <div class="eyebrow">Lectura del cierre del viernes 27-nov-2026 · maqueta</div>
+  <div class="eyebrow">Actualizado: cierre de Nueva York del viernes 27-nov-2026 · maqueta v2</div>
   <h1>Hoy en tres frases</h1>
   <div class="answer">
     <p class="big">1. La economía de EE. UU. sigue creciendo, pero la inflación vuelve a acelerar y la Fed va a subir tipos el 9 de diciembre.</p>
@@ -123,24 +130,24 @@ p{margin:0}
 
 <!-- PARADA 1 -->
 <section class="stop" id="p1">
-  <div class="eyebrow">Parada 1 de 8 · Brújula del Ciclo</div>
+  <div class="eyebrow">Parada 1 de 8 · Régimen macro</div>
   <h2>¿En qué fase del ciclo estamos?</h2>
   <div class="answer">
     <span class="lbl">Respuesta corta</span>
-    <p class="big"><span class="pill warn">Expansión caliente</span> y deslizándose hacia <span class="pill bear">Fricción</span>.</p>
+    <p class="big"><span class="pill warn">Boom inflacionario</span>, desplazándose hacia <span class="pill bear">Estanflación</span>.</p>
     <p>El punto está arriba a la derecha: la economía crece y la inflación sube. Pero la estela se mueve hacia la izquierda, porque el crecimiento pierde impulso mientras la inflación acelera.</p>
   </div>
   <div class="panel">
-    <div class="chead"><h3>La Brújula, últimos 12 meses</h3><button class="info" aria-expanded="false" aria-controls="x-brujula" aria-label="Qué es la Brújula del Ciclo">i</button></div>
+    <div class="chead"><h3>Cuadrante de régimen, últimos 12 meses</h3><button class="info" aria-expanded="false" aria-controls="x-brujula" aria-label="Qué es el cuadrante de régimen">i</button></div>
     <div class="explain" id="x-brujula" hidden><dl>
-      <dt>Qué es</dt><dd>El cuadrante de Gregory (mentoría 8): cruza la dirección del crecimiento con la dirección de la inflación. La economía recorre las cuatro zonas en orden, en meses o años.</dd>
+      <dt>Qué es</dt><dd>El cuadrante de régimen macro: cruza la dirección del crecimiento con la dirección de la inflación. La economía suele recorrer los cuatro regímenes en orden, en meses o años.</dd>
       <dt>Cómo se mide aquí</dt><dd>Eje horizontal: cuánto ha cambiado el CLI del G7 en 3 meses (a la derecha, crece). Eje vertical: el PCE frente a su media de 10 meses (arriba, la inflación acelera).</dd>
-      <dt>Las cuatro zonas y qué hace Gregory</dt><dd><b>Despegue</b> (abajo a la derecha): la economía sale del suelo sin inflación; aquí carga fuerte. <b>Expansión caliente</b> (arriba a la derecha): crece con inflación; sigue comprado con cuidado. <b>Fricción</b> (arriba a la izquierda): inflación alta y crecimiento débil; cobra beneficios y reduce largos. <b>Invierno</b> (abajo a la izquierda): recesión; liquidez y esperar el suelo.</dd>
+      <dt>Los cuatro regímenes y la postura AWNexus</dt><dd><b>Boom desinflacionario</b> (abajo a la derecha): crecimiento al alza con inflación a la baja; la fase de mayor exposición. <b>Boom inflacionario</b> (arriba a la derecha): crecimiento e inflación al alza; seguir comprado con cuidado. <b>Estanflación</b> (arriba a la izquierda): inflación alta y crecimiento débil; tomar beneficios y reducir largos. <b>Recesión deflacionaria</b> (abajo a la izquierda): caen el crecimiento y la inflación; liquidez y esperar el suelo.</dd>
     </dl></div>
-    <svg class="compass" id="compass" viewBox="0 0 520 400" role="img" aria-label="Brújula del Ciclo: el punto actual está en Expansión caliente, moviéndose hacia Fricción"></svg>
+    <svg class="compass" id="compass" viewBox="0 0 520 400" role="img" aria-label="Cuadrante de régimen: el punto actual está en Boom inflacionario, moviéndose hacia Estanflación"></svg>
     <div class="legend"><span>● hoy (octubre)</span><span>○ meses anteriores</span><span>Riesgo sugerido en esta zona: <b>moderado, sin apalancamiento agresivo</b></span></div>
   </div>
-  <div class="take"><b>Lo que te llevas</b><p>Estamos en la fase en que Gregory sigue comprado, pero con cuidado. La pregunta del mes es si el punto cruza a la izquierda. Si lo hace, toca reducir largos.</p></div>
+  <div class="take"><b>Lo que te llevas</b><p>En esta fase se puede seguir comprado, pero con cuidado y sin apalancamiento agresivo. La pregunta del mes es si el punto cruza a la izquierda, hacia Estanflación. Si lo hace, toca reducir largos.</p></div>
   <a class="next" href="#p2">Siguiente: ¿qué va a hacer la Fed? ↓</a>
 </section>
 
@@ -185,7 +192,12 @@ p{margin:0}
     <p>El consumo básico (XLP) le gana al discrecional (XLY), el ciclo de los industriales es negativo y el Dow aguanta mejor que el Nasdaq.</p>
   </div>
   <div class="cards" id="cards-p4"></div>
-  <div class="take"><b>Lo que te llevas</b><p>La regla del −10 está a medias: XLI llegó a −14,4 el 6 de noviembre, pero XLF no pasó de −7,7. Si XLF toca −10, sería la confirmación total de Gregory: cerrar compras.</p></div>
+  <h3 class="muted">Mapa de sectores: dónde está el dinero</h3>
+  <div class="panel"><div class="scroll"><table class="heat" id="heat"><thead><tr><th>Sector</th><th>1 mes</th><th>3 meses</th><th>Desde el techo del S&amp;P</th></tr></thead><tbody></tbody></table></div>
+  <p class="muted" style="font-size:.85rem">Ordenado por 3 meses. Arriba, lo defensivo (consumo básico, salud); abajo, tecnología. Así se ve una rotación hacia la protección.</p></div>
+  <h3 class="muted">Apetito por riesgo y refugios</h3>
+  <div class="cards" id="cards-p4b"></div>
+  <div class="take"><b>Lo que te llevas</b><p>La regla del −10 está a medias: XLI llegó a −14,4 el 6 de noviembre, pero XLF no pasó de −7,7. Si XLF toca −10, sería la confirmación total: cerrar compras.</p></div>
   <a class="next" href="#p5">Siguiente: ¿cuántos tiran de la cuerda? ↓</a>
 </section>
 
@@ -201,7 +213,7 @@ p{margin:0}
   <div class="cards">
     <div class="card c-warn">
       <div class="chead"><h3>Magníficas 7 frente a las otras 493</h3><button class="info" aria-expanded="false" aria-controls="x-m7" aria-label="Qué mide">i</button></div>
-      <div class="explain" id="x-m7" hidden><dl><dt>Qué mide</dt><dd>La media de cada grupo desde el máximo del S&amp;P. El S&amp;P pondera por tamaño: Apple, Microsoft, Nvidia, Amazon, Alphabet, Meta y Tesla pesan muchísimo, así que pueden mover el índice aunque las demás vayan al revés.</dd><dt>Cómo lo lee Gregory</dt><dd>Mentoría 11: «mirar debajo de la superficie». Si pocas empresas explican el movimiento, el índice es frágil.</dd></dl></div>
+      <div class="explain" id="x-m7" hidden><dl><dt>Qué mide</dt><dd>La media de cada grupo desde el máximo del S&amp;P. El S&amp;P pondera por tamaño: Apple, Microsoft, Nvidia, Amazon, Alphabet, Meta y Tesla pesan muchísimo, así que pueden mover el índice aunque las demás vayan al revés.</dd><dt>Cómo lo leemos</dt><dd>Mirar debajo de la superficie del índice: si pocas empresas explican el movimiento, el índice es frágil.</dd></dl></div>
       <svg class="spark" id="sp-m7" style="height:90px" viewBox="0 0 300 90" role="img" aria-label="Barras: Magníficas 7 −9,7 %, otras 493 +3,4 %, S&P ponderado −6,5 %, S&P equiponderado +2,8 %"></svg>
       <p class="today">Nvidia −37 %, Alphabet −21 %, Meta −15 %. El S&amp;P normal cae un 6,5 %; el equiponderado, donde todas pesan igual, sube un 2,8 %.</p>
     </div>
@@ -235,7 +247,7 @@ p{margin:0}
   <div class="answer">
     <span class="lbl">Respuesta corta</span>
     <p class="big"><span class="pill bear">Rebote por debajo de las medias</span></p>
-    <p>El S&amp;P subió un 5,6 % esta semana, pero sigue por debajo de su EMA 50 y de su EMA 200. Gregory lo llama «rebote para seguir cayendo» mientras no recupere esas medias.</p>
+    <p>El S&amp;P subió un 5,6 % esta semana, pero sigue por debajo de su EMA 50 y de su EMA 200. Mientras no recupere esas medias, lo tratamos como un rebote dentro de una caída.</p>
   </div>
   <div class="cards" id="cards-p6"></div>
   <div class="take"><b>Lo que te llevas</b><p>Primera señal técnica de cambio: que el S&amp;P cierre por encima de su EMA 200 (7.355) y después de su EMA 50 (7.512).</p></div>
@@ -267,6 +279,11 @@ p{margin:0}
     <div class="fam"><span>Sentimiento</span><span class="pill flat">Neutral · miedo sin capitulación</span></div>
   </div>
   <div class="panel">
+    <h3>Umbral de anticipación AWNexus</h3>
+    <p><b class="mono">4 de 7</b> familias en contra hoy. Si el CLI del G7, el indicador de más peso, gira a la baja en su publicación de diciembre, serían <b class="mono">5 de 7</b> con el principal incluido: suficiente para anticiparnos a una tendencia bajista y preparar la operativa.</p>
+    <p class="muted">Regla del CLI: un primer mes sin crecer es la alerta; un segundo mes cayendo, la confirmación.</p>
+  </div>
+  <div class="panel">
     <h3>Qué cambiaría la lectura</h3>
     <p><span class="pill bear">Hacia bajista confirmada</span> XLF/XLP toca −10 · la curva 10Y−2Y toca 0 · el CLI del G7 gira a la baja · los subsidios suben 3 semanas seguidas · los mínimos de 1 año pasan de 100.</p>
     <p><span class="pill bull">Hacia alcista</span> el PCE vuelve bajo su media · el 2Y gira a la baja · el % de acciones sobre su media de 50 pasa de 20 a 90 · XLY/XLP recupera sus dos EMA.</p>
@@ -279,15 +296,15 @@ p{margin:0}
 <section class="stop" id="p8">
   <div class="eyebrow">Parada 8 de 8 · Agenda del cazador</div>
   <h2>Qué viene y qué haremos</h2>
-  <p class="muted">Regla de la masterclass: decidir hoy qué haremos con cada resultado. Decidir con la noticia encima es decidir con miedo o con euforia.</p>
+  <p class="muted">Regla AWNexus: decidir hoy qué haremos con cada resultado. Decidir con la noticia encima es decidir con miedo o con euforia.</p>
   <div class="agenda">
     <div class="ev"><span class="when">Jueves 3 dic · y cada jueves</span><h3>Subsidios por desempleo</h3><ul><li>Si la media de 4 semanas sube 3 semanas seguidas → primer aviso de daño en el empleo; la familia de crecimiento pasa a rojo.</li><li>Si sigue cerca de 196.000 → el empleo aguanta; sin cambios.</li></ul></div>
-    <div class="ev"><span class="when">Viernes 4 dic · 14:30 (Madrid)</span><h3>Empleo de noviembre (BLS)</h3><ul><li>Fuerte (más de 150.000) con inflación alta → más subidas descontadas, el 2Y sube y el Nasdaq sufre.</li><li>Débil (menos de 50.000) con inflación alta → la Brújula se acerca a Fricción: reducir largos.</li></ul></div>
+    <div class="ev"><span class="when">Viernes 4 dic · 14:30 (Madrid)</span><h3>Empleo de noviembre (BLS)</h3><ul><li>Fuerte (más de 150.000) con inflación alta → más subidas descontadas, el 2Y sube y el Nasdaq sufre.</li><li>Débil (menos de 50.000) con inflación alta → el régimen se acerca a Estanflación: reducir largos.</li></ul></div>
     <div class="ev"><span class="when">Miércoles 9 dic</span><h3>Decisión de la Fed</h3><ul><li>+25 pb: ya descontado; importa el mensaje sobre 2027.</li><li>+50 pb: sorpresa dura → presión sobre los índices, sobre todo el Nasdaq.</li><li>Pausa: sorpresa → rebote, aunque con la inflación acelerando no cambiaría el fondo.</li></ul></div>
-    <div class="ev"><span class="when">Jueves 10 dic · 14:30 (Madrid)</span><h3>IPC de noviembre (BLS)</h3><ul><li>Por encima del 4,25 % (máximo de mayo) y sobre su media → la alarma de la mentoría 20 para cortos de varios meses, si otras familias acompañan.</li><li>Por debajo de su media de 10 meses → primer paso de la fórmula de compra.</li></ul></div>
+    <div class="ev"><span class="when">Jueves 10 dic · 14:30 (Madrid)</span><h3>IPC de noviembre (BLS)</h3><ul><li>Por encima del 4,25 % (máximo de mayo) y sobre su media → alarma para cortos de varios meses, si otras familias acompañan.</li><li>Por debajo de su media de 10 meses → primer paso de la fórmula de compra.</li></ul></div>
     <div class="ev"><span class="when">Segunda semana de dic · fecha por confirmar</span><h3>CLI de la OCDE (G7 y G20)</h3><ul><li>G7 girando a la baja → la señal de más peso del método; con el G20 ya cayendo, el crecimiento pasaría a rojo.</li><li>G7 sigue subiendo → la economía todavía sostiene la tesis alcista de fondo.</li></ul></div>
     <div class="ev"><span class="when">Miércoles 23 dic · fecha de calendario externo</span><h3>PCE de noviembre y PIB (3.ª estimación)</h3><ul><li>Confirmará si la inflación favorita de la Fed sigue acelerando.</li></ul></div>
-    <div class="ev"><span class="when">Finales de enero</span><h3>Guías de inversión de las grandes de la IA</h3><ul><li>Si recortan → se activa la cadena del ciclo de capital (masterclass 4): inversión, empleo, recesión.</li></ul></div>
+    <div class="ev"><span class="when">Finales de enero</span><h3>Guías de inversión de las grandes de la IA</h3><ul><li>Si recortan → se activa la cadena del ciclo de capital: inversión, empleo, recesión.</li></ul></div>
   </div>
 </section>
 
@@ -296,6 +313,7 @@ p{margin:0}
 
 <script>
 const DATA = /*DATA*/;
+Object.assign(DATA, /*EXTRA*/);
 const css = n => getComputedStyle(document.documentElement).getPropertyValue(n).trim();
 const fmt = (v,d=1) => v.toLocaleString('es-ES',{minimumFractionDigits:d,maximumFractionDigits:d});
 
@@ -318,54 +336,66 @@ function spark(svg, series, opts={}){
 /* Card definitions: status bull|bear|warn|flat ; info: [label, text][] */
 const C = {
 p2:[
- {id:'pce',t:'PCE · inflación favorita de la Fed',now:'3,84 %',prev:'antes 3,67 %',st:'bear',sp:[{k:'pce',c:'--bear'}],today:'Acelera por tercer mes seguido y está muy por encima de su media de 10 meses (3,42 %).',
+ {id:'pce',act:'Mensual · próximo dato: 23-dic',t:'PCE · inflación favorita de la Fed',now:'3,84 %',prev:'antes 3,67 %',st:'bear',sp:[{k:'pce',c:'--bear'}],today:'Acelera por tercer mes seguido y está muy por encima de su media de 10 meses (3,42 %).',
   info:[['Siglas','Personal Consumption Expenditures: gasto en consumo personal. Lo publica el BEA cada mes.'],['Qué mide','Cuánto suben los precios de todo lo que consumen los hogares, incluido lo que se paga por ellos, como la sanidad a través del seguro.'],['Por qué es la favorita de la Fed','Cubre más gasto que el IPC y tiene en cuenta que la gente cambia de producto cuando algo se encarece. El objetivo del 2 % de la Fed está definido sobre el PCE.'],['Cómo leerlo','Por encima de su media y subiendo: la Fed endurece. Bueno para la bolsa cuando cruza por debajo de su media.'],['Tipo','Retrasado: confirma lo que ya pasó, pero dice qué hará la Fed.']]},
- {id:'pcecore',t:'PCE subyacente',now:'3,26 %',prev:'antes 3,14 %',st:'bear',sp:[{k:'pcecore',c:'--bear'}],today:'El máximo desde 2023. Sin energía ni alimentos, también acelera: la subida no es solo por el petróleo.',
+ {id:'pcecore',act:'Mensual · próximo dato: 23-dic',t:'PCE subyacente',now:'3,26 %',prev:'antes 3,14 %',st:'bear',sp:[{k:'pcecore',c:'--bear'}],today:'El máximo desde 2023. Sin energía ni alimentos, también acelera: la subida no es solo por el petróleo.',
   info:[['Qué es','El mismo PCE sin alimentos ni energía, que son muy volátiles.'],['Por qué importa','Es la tendencia de fondo de la inflación. La Fed lo mira más que el general.']]},
- {id:'sticky',t:'Sticky CPI · inflación pegajosa',now:'3,06 %',prev:'antes 2,78 %',st:'bear',sp:[{k:'sticky',c:'--bear'}],today:'Saltó en un solo mes. Es la señal de la mentoría 9 de que la inflación se está incrustando.',
-  info:[['Qué es','Índice de la Fed de Atlanta con los precios que cambian poco: alquileres, seguros, educación.'],['Cómo lo lee Gregory','Si se modera con crecimiento positivo, las correcciones se compran. Si acelera, la inflación está incrustada y la Fed será dura (mentoría 9).'],['Cada cuánto','Mensual, junto al IPC.']]},
- {id:'cpi',t:'IPC frente a su EMA 10',now:'3,74 %',prev:'media 3,37 %',st:'bear',sp:[{k:'cpi',c:'--bear'},{k:'cpiema',c:'--muted'}],today:'Por encima de su media (línea discontinua). El máximo de mayo, 4,25 %, es el nivel que no debe romper.',
-  info:[['Siglas','Índice de Precios al Consumo; en EE. UU., CPI. Lo publica el BLS cada mes.'],['Cómo lo lee Gregory','Mentoría 20: el IPC interanual frente a su EMA de 10 meses. Por encima, régimen inflacionario. Cruce por debajo, primer paso de su fórmula de compra.'],['Nota','Octubre de 2025 no se publicó por el cierre del gobierno; el último interanual limpio es septiembre.']]},
- {id:'y2',t:'Bono a 2 años frente a la Fed',now:'4,61 %',prev:'Fed 4,00 %',st:'bear',sp:[{k:'y2',c:'--bear'},{k:'fed',c:'--muted'}],today:'+0,61 por encima del tipo de la Fed: el mercado espera unas 2 o 3 subidas de 25 puntos básicos.',
-  info:[['Qué es','La rentabilidad del bono del Tesoro a 2 años frente al límite superior del tipo de la Fed (línea discontinua).'],['Por qué importa','El 2Y se adelanta a la Fed (mentoría 7). Si sube con fuerza, frena a los índices antes de que la Fed actúe. Su giro a la baja es la primera condición de recompra (mentoría 13).'],['Cada cuánto','Diario.']]}
+ {id:'sticky',act:'Mensual · próximo dato: 10-dic',t:'Sticky CPI · inflación pegajosa',now:'3,06 %',prev:'antes 2,78 %',st:'bear',sp:[{k:'sticky',c:'--bear'}],today:'Saltó en un solo mes. Es la señal de que la inflación se está incrustando.',
+  info:[['Qué es','Índice de la Fed de Atlanta con los precios que cambian poco: alquileres, seguros, educación.'],['Cómo lo leemos','Si se modera con crecimiento positivo, las correcciones se compran. Si acelera, la inflación está incrustada y la Fed será dura.'],['Cada cuánto','Mensual, junto al IPC.']]},
+ {id:'cpi',act:'Mensual · próximo dato: 10-dic',t:'IPC frente a su EMA 10',now:'3,74 %',prev:'media 3,37 %',st:'bear',sp:[{k:'cpi',c:'--bear'},{k:'cpiema',c:'--muted'}],today:'Por encima de su media (línea discontinua). El máximo de mayo, 4,25 %, es el nivel que no debe romper.',
+  info:[['Siglas','Índice de Precios al Consumo; en EE. UU., CPI. Lo publica el BLS cada mes.'],['Cómo lo leemos','El IPC interanual frente a su EMA de 10 meses. Por encima, régimen inflacionario. Cruce por debajo, primer paso de nuestra fórmula de compra.'],['Nota','Octubre de 2025 no se publicó por el cierre del gobierno; el último interanual limpio es septiembre.']]},
+ {id:'y2',act:'Diario',t:'Bono a 2 años frente a la Fed',now:'4,61 %',prev:'Fed 4,00 %',st:'bear',sp:[{k:'y2',c:'--bear'},{k:'fed',c:'--muted'}],today:'+0,61 por encima del tipo de la Fed: el mercado espera unas 2 o 3 subidas de 25 puntos básicos.',
+  info:[['Qué es','La rentabilidad del bono del Tesoro a 2 años frente al límite superior del tipo de la Fed (línea discontinua).'],['Por qué importa','El 2Y se adelanta a la Fed. Si sube con fuerza, frena a los índices antes de que la Fed actúe. Su giro a la baja es la primera condición de recompra.'],['Cada cuánto','Diario.']]}
 ],
 p3:[
- {id:'clig7',t:'CLI del G7 · el favorito de Gregory',now:'100,90',prev:'antes 100,86',st:'bull',sp:[{k:'cliG7',c:'--bull'}],ref:100,today:'Sigue subiendo, aunque cada vez más despacio. Es el pilar que todavía sostiene la economía.',
-  info:[['Siglas','Composite Leading Indicator: indicador compuesto adelantado de la OCDE.'],['Qué mide','Mezcla datos que se adelantan entre 6 y 9 meses al ciclo (pedidos, confianza, bolsa, construcción…) de las 7 grandes economías: EE. UU., Japón, Alemania, Reino Unido, Francia, Italia y Canadá.'],['Cómo lo lee Gregory','Importa más el giro que el nivel 100. Primer mes sin crecer = alerta; segundo cayendo = vigilar cortos (mentoría 3).'],['Cada cuánto','Mensual, hacia el día 9-12.']]},
- {id:'clig20',t:'CLI del G20',now:'99,97',prev:'antes 100,02',st:'warn',sp:[{k:'cliG20',c:'--warn'}],ref:100,today:'Cuatro meses cayendo y acaba de cruzar bajo 100. El G20 incluye a China y a los emergentes.',
-  info:[['Qué es','El mismo indicador de la OCDE, para las 20 mayores economías.'],['Por qué importa','Gregory lo llamó su favorito «10/10» en la mentoría 3, y en la 20 usa el G7. Hoy divergen: el G20 avisa antes.']]},
- {id:'claims',t:'Subsidios por desempleo (media 4 semanas)',now:'196.000',prev:'antes 198.000',st:'bull',sp:[{k:'claims',c:'--bull'}],today:'En mínimos del año: las empresas casi no despiden.',
-  info:[['Qué es','Personas que piden el subsidio por primera vez. Sale cada jueves; se usa la media de las últimas 4 semanas para quitar ruido.'],['Por qué es adelantado','Los despidos aparecen aquí semanas antes que en la tasa de paro.'],['Cómo leerlo','Lo que importa es que suba varias semanas seguidas, no una semana suelta (mentoría 1).']]},
- {id:'permit',t:'Permisos de construcción',now:'1,297 M',prev:'antes 1,398 M',st:'bear',sp:[{k:'permit',c:'--bear'}],today:'−7 % en el mes y −8,5 % en el año. Los tipos altos frenan la vivienda.',
-  info:[['Qué es','Permisos para construir viviendas nuevas. Lo publica el Census cada mes.'],['Por qué es adelantado','El ejemplo de clase: antes de ver obreros construyendo, se piden permisos. Si caen, habrá menos obra y menos empleo en unos meses.']]},
- {id:'mich',t:'Confianza del consumidor (Michigan)',now:'48,0',prev:'antes 48,1',st:'bear',sp:[{k:'mich',c:'--bear'}],today:'Muy baja: el consumidor está pesimista por los precios.',
+ {id:'clig7',act:'Mensual · próximo dato: 2.ª semana de dic',t:'CLI del G7 · indicador principal AWNexus',now:'100,90',prev:'antes 100,86',st:'bull',sp:[{k:'cliG7',c:'--bull'}],ref:100,today:'Sigue subiendo, aunque cada vez más despacio. Es el pilar que todavía sostiene la economía.',
+  info:[['Siglas','Composite Leading Indicator: indicador compuesto adelantado de la OCDE.'],['Qué mide','Mezcla datos que se adelantan entre 6 y 9 meses al ciclo (pedidos, confianza, bolsa, construcción…) de las 7 grandes economías: EE. UU., Japón, Alemania, Reino Unido, Francia, Italia y Canadá.'],['Cómo lo leemos','Importa más el giro que el nivel 100. Primer mes sin crecer = alerta; segundo cayendo = vigilar cortos.'],['Cada cuánto','Mensual, hacia el día 9-12.']]},
+ {id:'clig20',act:'Mensual · próximo dato: 2.ª semana de dic',t:'CLI del G20',now:'99,97',prev:'antes 100,02',st:'warn',sp:[{k:'cliG20',c:'--warn'}],ref:100,today:'Cuatro meses cayendo y acaba de cruzar bajo 100. El G20 incluye a China y a los emergentes.',
+  info:[['Qué es','El mismo indicador de la OCDE, para las 20 mayores economías.'],['Por qué importa','Incluye a China y a los emergentes. Hoy diverge del G7 y avisa antes: vigilarlo como alerta temprana.']]},
+ {id:'claims',act:'Semanal, cada jueves · próximo: 3-dic',t:'Subsidios por desempleo (media 4 semanas)',now:'196.000',prev:'antes 198.000',st:'bull',sp:[{k:'claims',c:'--bull'}],today:'En mínimos del año: las empresas casi no despiden.',
+  info:[['Qué es','Personas que piden el subsidio por primera vez. Sale cada jueves; se usa la media de las últimas 4 semanas para quitar ruido.'],['Por qué es adelantado','Los despidos aparecen aquí semanas antes que en la tasa de paro.'],['Cómo leerlo','Lo que importa es que suba varias semanas seguidas, no una semana suelta.']]},
+ {id:'permit',act:'Mensual · próximo dato: mediados de dic',t:'Permisos de construcción',now:'1,297 M',prev:'antes 1,398 M',st:'bear',sp:[{k:'permit',c:'--bear'}],today:'−7 % en el mes y −8,5 % en el año. Los tipos altos frenan la vivienda.',
+  info:[['Qué es','Permisos para construir viviendas nuevas. Lo publica el Census cada mes.'],['Por qué es adelantado','Antes de ver obreros construyendo, se piden permisos. Si caen, habrá menos obra y menos empleo en unos meses.']]},
+ {id:'mich',act:'Mensual · preliminar a mediados de dic',t:'Confianza del consumidor (Michigan)',now:'48,0',prev:'antes 48,1',st:'bear',sp:[{k:'mich',c:'--bear'}],today:'Muy baja: el consumidor está pesimista por los precios.',
   info:[['Qué es','Encuesta mensual de la Universidad de Michigan sobre cómo ven los hogares su economía.'],['Por qué importa','El consumo es dos tercios del PIB de EE. UU. Un consumidor pesimista acaba gastando menos.']]},
- {id:'capgoods',t:'Pedidos de bienes de capital',now:'+14,7 %',prev:'antes +13,9 %',st:'bull',sp:[{k:'capgoods',c:'--bull'}],today:'Las empresas siguen invirtiendo con fuerza, sobre todo en IA.',
+ {id:'capgoods',act:'Mensual · próximo dato: finales de dic',t:'Pedidos de bienes de capital',now:'+14,7 %',prev:'antes +13,9 %',st:'bull',sp:[{k:'capgoods',c:'--bull'}],today:'Las empresas siguen invirtiendo con fuerza, sobre todo en IA.',
   info:[['Qué es','Pedidos de maquinaria y equipos (sin defensa ni aviones), variación interanual.'],['Por qué importa','Anticipa la inversión empresarial. Ojo: hoy está inflado por la IA; si las guías de enero recortan, caerá rápido.']]},
- {id:'hy',t:'Diferencial de los bonos basura',now:'3,77 %',prev:'hace 1 mes 3,14 %',st:'bear',sp:[{k:'hy',c:'--bear'}],today:'Máximo del año, subiendo rápido. Los prestamistas empiezan a temer impagos.',
-  info:[['Qué es','Lo que pagan de más que el Tesoro las empresas con peor crédito.'],['Por qué importa','Suele adelantarse a la bolsa. Si sube, el crédito se cierra para las empresas débiles. En la masterclass 4 era «la grieta que más miro».'],['Cada cuánto','Diario.']]},
- {id:'curve',t:'Curva 10 años − 2 años',now:'+0,25',prev:'hace 3 meses +0,47',st:'warn',sp:[{k:'curve',c:'--warn'}],ref:0,today:'Aplanándose hacia 0. Tocar 0 es la alerta estructural de Gregory.',
-  info:[['Qué es','Rentabilidad del bono a 10 años menos la del de 2 años.'],['Cómo lo lee Gregory','Cerca de +2: expansión sana. Por encima de 0: las caídas se compran. Tocar 0: alerta estructural; acercarse no basta (mentoría 7).']]}
+ {id:'hy',act:'Diario',t:'Diferencial de los bonos basura',now:'3,77 %',prev:'hace 1 mes 3,14 %',st:'bear',sp:[{k:'hy',c:'--bear'}],today:'Máximo del año, subiendo rápido. Los prestamistas empiezan a temer impagos.',
+  info:[['Qué es','Lo que pagan de más que el Tesoro las empresas con peor crédito.'],['Por qué importa','Suele adelantarse a la bolsa. Si sube, el crédito se cierra para las empresas débiles. Es una de las grietas que más vigilamos.'],['Cada cuánto','Diario.']]},
+ {id:'curve',act:'Diario',t:'Curva 10 años − 2 años',now:'+0,25',prev:'hace 3 meses +0,47',st:'warn',sp:[{k:'curve',c:'--warn'}],ref:0,today:'Aplanándose hacia 0. Tocar 0 es la alerta estructural.',
+  info:[['Qué es','Rentabilidad del bono a 10 años menos la del de 2 años.'],['Cómo lo leemos','Cerca de +2: expansión sana. Por encima de 0: las caídas se compran. Tocar 0: alerta estructural; acercarse no basta.']]}
 ],
 p4:[
- {id:'xlyxlp',t:'XLY/XLP · cíclico frente a defensivo',now:'1,294',prev:'EMA 50 1,314 · EMA 200 1,358',st:'bear',sp:[{k:'xlyxlp',c:'--bear'},{k:'xlyxlp_e50',c:'--muted'},{k:'xlyxlp_e200',c:'--warn'}],today:'Por debajo de sus dos medias: lidera lo defensivo. Rebota desde 1,243.',
-  info:[['Qué es','Consumo discrecional (XLY: lo que compras si te sobra dinero) entre consumo básico (XLP: lo que compras siempre).'],['Cómo lo lee Gregory','Si sube, el dinero apuesta por la economía. Cuando recupera sus dos EMA (50 y 200 diarias), el mercado suele subir con fuerza (junio de 2023, abril de 2025).'],['Recuerda','«En recesión no dejas de comer, dejas de viajar.»']]},
- {id:'roc5',t:'Regla del −10 (ROC 5 semanal)',now:'XLI −4,2',prev:'XLF −2,6',st:'warn',sp:[{k:'roc5_XLI',c:'--warn'},{k:'roc5_XLF',c:'--muted'}],ref:-10,today:'XLI tocó −14,4 el 6-nov (alerta parcial). XLF (discontinua) no llegó a −10: sin confirmación total.',
-  info:[['Qué es','Cuánto cambian en 5 semanas los ratios industriales/consumo básico (XLI/XLP) y financieras/consumo básico (XLF/XLP).'],['Cómo lo lee Gregory','Uno en −10 = alerta parcial. Los dos en −10 = confirmación total: cerrar compras y estudiar cortos amplios. Acercarse no cuenta (mentoría 17).'],['Lo que comprobamos','Desde 2010 se activó 3 veces. Cerrar compras fue acertado; los cortos solo funcionaron en 2022.']]},
- {id:'roc12',t:'Ciclo industrial (XLI/XLP, 12 meses)',now:'−7,7 %',prev:'antes −7,9 %',st:'bear',sp:[{k:'roc12',c:'--bear'}],ref:0,today:'Negativo desde octubre: los industriales llevan un año perdiendo frente a los defensivos.',
-  info:[['Qué es','El mismo ratio XLI/XLP en mensual, comparado con hace 12 meses (mentoría 16).'],['Cómo leerlo','Por debajo de 0 = zona delicada para el S&P. Volver sobre 0 sería la confirmación del ciclo para una segunda entrada.']]},
- {id:'downdx',t:'Value frente a growth (Dow/Nasdaq)',now:'Dow −6,6 %',prev:'Nasdaq −14,4 % desde máx.',st:'bear',sp:[{k:'dow_ndx',c:'--bear'}],today:'Lidera el value: el dinero huye de las promesas de crecimiento hacia los negocios que ganan hoy.',
-  info:[['Qué es','El Dow (value: industria, banca, consumo) frente al Nasdaq 100 (growth: empresas valoradas por lo que prometen ganar). La línea sube cuando gana el Dow.'],['Cómo lo lee Gregory','Cuando el Dow resiste mejor (2000-02, 2008, 2022), suele ser fase bajista. La señal de un nuevo alcista es que el Nasdaq vuelva a liderar (masterclass 4).']]}
+ {id:'xlyxlp',act:'Diario',t:'XLY/XLP · cíclico frente a defensivo',now:'1,294',prev:'EMA 50 1,314 · EMA 200 1,358',st:'bear',sp:[{k:'xlyxlp',c:'--bear'},{k:'xlyxlp_e50',c:'--muted'},{k:'xlyxlp_e200',c:'--warn'}],today:'Por debajo de sus dos medias: lidera lo defensivo. Rebota desde 1,243.',
+  info:[['Qué es','Consumo discrecional (XLY: lo que compras si te sobra dinero) entre consumo básico (XLP: lo que compras siempre).'],['Cómo lo leemos','Si sube, el dinero apuesta por la economía. Cuando recupera sus dos EMA (50 y 200 diarias), el mercado suele subir con fuerza (junio de 2023, abril de 2025).'],['Recuerda','«En recesión no dejas de comer, dejas de viajar.»']]},
+ {id:'roc5',act:'Semanal, al cierre del viernes',t:'Regla del −10 (ROC 5 semanal)',now:'XLI −4,2',prev:'XLF −2,6',st:'warn',sp:[{k:'roc5_XLI',c:'--warn'},{k:'roc5_XLF',c:'--muted'}],ref:-10,today:'XLI tocó −14,4 el 6-nov (alerta parcial). XLF (discontinua) no llegó a −10: sin confirmación total.',
+  info:[['Qué es','Cuánto cambian en 5 semanas los ratios industriales/consumo básico (XLI/XLP) y financieras/consumo básico (XLF/XLP).'],['Cómo lo leemos','Uno en −10 = alerta parcial. Los dos en −10 = confirmación total: cerrar compras y estudiar cortos amplios. Acercarse no cuenta.'],['Lo que comprobamos','Desde 2010 se activó 3 veces. Cerrar compras fue acertado; los cortos solo funcionaron en 2022.']]},
+ {id:'roc12',act:'Mensual, al cierre de mes',t:'Ciclo industrial (XLI/XLP, 12 meses)',now:'−7,7 %',prev:'antes −7,9 %',st:'bear',sp:[{k:'roc12',c:'--bear'}],ref:0,today:'Negativo desde octubre: los industriales llevan un año perdiendo frente a los defensivos.',
+  info:[['Qué es','El mismo ratio XLI/XLP en mensual, comparado con hace 12 meses.'],['Cómo leerlo','Por debajo de 0 = zona delicada para el S&P. Volver sobre 0 sería la confirmación del ciclo para una segunda entrada.']]},
+ {id:'downdx',act:'Diario',t:'Value frente a growth (Dow/Nasdaq)',now:'Dow −6,6 %',prev:'Nasdaq −14,4 % desde máx.',st:'bear',sp:[{k:'dow_ndx',c:'--bear'}],today:'Lidera el value: el dinero huye de las promesas de crecimiento hacia los negocios que ganan hoy.',
+  info:[['Qué es','El Dow (value: industria, banca, consumo) frente al Nasdaq 100 (growth: empresas valoradas por lo que prometen ganar). La línea sube cuando gana el Dow.'],['Cómo lo leemos','Cuando el Dow resiste mejor (2000-02, 2008, 2022), suele ser fase bajista. La señal de un nuevo alcista es que el Nasdaq vuelva a liderar .']]}
+],
+p4b:[
+ {id:'iwmspy',act:'Diario',t:'Pequeñas frente a grandes (IWM/SPY)',now:'+3,2 %',prev:'en 1 mes · 3 meses −2,2 %',st:'flat',sp:[{k:'iwmspy',c:'--flat'}],today:'Las pequeñas recuperan terreno en el último mes: el dinero sale de los gigantes, no del mercado.',
+  info:[['Qué es','El Russell 2000 (empresas pequeñas, ETF IWM) frente al S&P 500 (SPY).'],['Por qué importa','Las pequeñas dependen más de la economía y del crédito. Si lideran, el apetito por riesgo es amplio; si se hunden, el mercado busca refugio.']]},
+ {id:'cobreoro',act:'Diario',t:'Cobre / oro',now:'−7,5 %',prev:'en 1 mes · 3 meses +4,6 %',st:'warn',sp:[{k:'cobreoro',c:'--warn'}],today:'El cobre pierde frente al oro en el último mes: el mercado rebaja sus expectativas de crecimiento.',
+  info:[['Qué es','El precio del cobre dividido por el del oro.'],['Por qué importa','El cobre depende de la industria y el oro es refugio. Si el cociente sube, el mercado espera más crecimiento; suele moverse con el bono a 10 años.']]},
+ {id:'dxy',act:'Diario',t:'Dólar (DXY)',now:'104,0',prev:'en 3 meses +4,3 %',st:'bear',sp:[{k:'dxy',c:'--bear'}],today:'El dólar se fortalece: es el refugio elegido y refleja una Fed más dura.',
+  info:[['Qué es','El dólar frente a una cesta de seis monedas (euro, yen, libra…).'],['Por qué importa','Un dólar fuerte endurece las condiciones financieras, resta beneficios a las multinacionales y presiona a los emergentes.']]},
+ {id:'oil',act:'Diario',t:'Petróleo WTI',now:'83,1 $',prev:'en 1 mes −19,2 %',st:'bull',sp:[{k:'oil',c:'--bull'}],today:'Cae con fuerza. Si sigue, aliviaría la inflación y daría margen a la Fed: es el principal factor alcista a vigilar.',
+  info:[['Qué es','El precio del barril de petróleo de referencia en EE. UU.'],['Por qué importa','La energía entra directa en la inflación. Cuando domina las noticias, es la variable que manda: su caída sostenida puede adelantar el techo de la inflación.']]},
+ {id:'gold',act:'Diario',t:'Oro',now:'3.640 $',prev:'en 3 meses −19,7 %',st:'flat',sp:[{k:'gold',c:'--flat'}],today:'Sin huida al oro: deshace la subida anterior y el refugio elegido es el dólar.',
+  info:[['Qué es','La onza de oro en dólares.'],['Por qué importa','Refugio clásico. No paga intereses, así que sufre con tipos altos y dólar fuerte.']]}
 ],
 p6:[
- {id:'spx',t:'S&P 500 frente a sus EMA 50 y 200',now:'7.297',prev:'EMA 50 7.512 · EMA 200 7.355',st:'bear',sp:[{k:'spx',c:'--bear'},{k:'spx_e50',c:'--muted'},{k:'spx_e200',c:'--warn'}],today:'Por debajo de las dos medias, a −6,7 % del máximo del 6-oct.',
-  info:[['Qué es','Las medias móviles exponenciales de 50 y 200 sesiones: el precio medio reciente, con más peso en lo último.'],['Cómo lo lee Gregory','Macro mejorando y precio sobre sus medias = tendencia confirmada. La EMA 50 diaria recuperada es la confirmación tardía de su fórmula de compra.']]},
- {id:'sox',t:'SOX · el líder (semiconductores)',now:'9.187',prev:'nivel clave 10.500',st:'bear',sp:[{k:'sox',c:'--bear'}],ref:10500,today:'−37 % desde junio y por debajo de 10.500, el nivel binario de la masterclass.',
-  info:[['Qué es','Índice de semiconductores (Nvidia, AMD, Broadcom…). Fue el motor de la subida de la IA.'],['Cómo lo lee Gregory','Por encima de 10.500, la manía sigue viva; por debajo, pasó a bajista. Que recupere sus máximos sería la señal de que se equivocó.']]},
- {id:'s5fi',t:'% de acciones sobre su media de 50',now:'63 %',prev:'mínimo 21 % el 30-sep',st:'flat',sp:[{k:'s5fi',c:'--flat'}],today:'Se recupera, pero aún no hay impulso de 20 a 90. Si llegara ahora, el filtro macro lo descartaría, como en agosto de 2022.',
-  info:[['Qué es','El S5FI de TradingView, calculado aquí con los 503 valores del S&P 500.'],['Cómo lo lee Gregory','Pasar rápido de cerca de 20 a 90 = impulso alcista de largo plazo, solo si la macro da permiso (mentorías 11, 19 y 20).'],['Lo que comprobamos','Funcionó en noviembre de 2022 (+13 % a 12 meses) y enero de 2024 (+24 %); agosto de 2022 era trampa y el filtro la evitaba.']]},
- {id:'vix',t:'VIX · el miedo',now:'23,8',prev:'pico 35,9 el 20-nov',st:'flat',sp:[{k:'vix',c:'--flat'}],today:'El miedo baja sin haber llegado a capitulación. Falta el ratio put/call para completar esta familia.',
-  info:[['Qué es','La volatilidad que esperan las opciones del S&P a 30 días.'],['Cómo lo lee Gregory','Un pico de VIX no es un suelo por sí solo: en 2022 tres de cuatro picos fueron trampas. El suelo real llega con capitulación (put/call por encima de 1,40) o con divergencias.']]}
+ {id:'spx',act:'Diario',t:'S&P 500 frente a sus EMA 50 y 200',now:'7.297',prev:'EMA 50 7.512 · EMA 200 7.355',st:'bear',sp:[{k:'spx',c:'--bear'},{k:'spx_e50',c:'--muted'},{k:'spx_e200',c:'--warn'}],today:'Por debajo de las dos medias, a −6,7 % del máximo del 6-oct.',
+  info:[['Qué es','Las medias móviles exponenciales de 50 y 200 sesiones: el precio medio reciente, con más peso en lo último.'],['Cómo lo leemos','Macro mejorando y precio sobre sus medias = tendencia confirmada. La EMA 50 diaria recuperada es la confirmación tardía de nuestra fórmula de compra.']]},
+ {id:'sox',act:'Diario',t:'SOX · el líder (semiconductores)',now:'9.187',prev:'nivel clave 10.500',st:'bear',sp:[{k:'sox',c:'--bear'}],ref:10500,today:'−37 % desde junio y por debajo de 10.500, el nivel que separa manía de mercado bajista.',
+  info:[['Qué es','Índice de semiconductores (Nvidia, AMD, Broadcom…). Fue el motor de la subida de la IA.'],['Cómo lo leemos','Por encima de 10.500, la manía sigue viva; por debajo, pasó a bajista. Que recupere sus máximos invalidaría la lectura bajista.']]},
+ {id:'s5fi',act:'Diario',t:'% de acciones sobre su media de 50',now:'63 %',prev:'mínimo 21 % el 30-sep',st:'flat',sp:[{k:'s5fi',c:'--flat'}],today:'Se recupera, pero aún no hay impulso de 20 a 90. Si llegara ahora, el filtro macro lo descartaría, como en agosto de 2022.',
+  info:[['Qué es','El S5FI de TradingView, calculado aquí con los 503 valores del S&P 500.'],['Cómo lo leemos','Pasar rápido de cerca de 20 a 90 = impulso alcista de largo plazo, solo si la macro da permiso.'],['Lo que comprobamos','Funcionó en noviembre de 2022 (+13 % a 12 meses) y enero de 2024 (+24 %); agosto de 2022 era trampa y el filtro la evitaba.']]},
+ {id:'vix',act:'Diario',t:'VIX · el miedo',now:'23,8',prev:'pico 35,9 el 20-nov',st:'flat',sp:[{k:'vix',c:'--flat'}],today:'El miedo baja sin haber llegado a capitulación. Falta el ratio put/call para completar esta familia.',
+  info:[['Qué es','La volatilidad que esperan las opciones del S&P a 30 días.'],['Cómo lo leemos','Un pico de VIX no es un suelo por sí solo: en 2022 tres de cuatro picos fueron trampas. El suelo real llega con capitulación (put/call por encima de 1,40) o con divergencias.']]}
 ]};
 
 function card(d){
@@ -375,14 +405,19 @@ function card(d){
   <div class="explain" id="x-${d.id}" hidden><dl>${d.info.map(([a,b])=>`<dt>${a}</dt><dd>${b}</dd>`).join('')}</dl></div>
   <div class="val"><span class="now">${d.now}</span><span class="prev">${d.prev}</span></div>
   <span class="pill ${d.st}" style="justify-self:start">${pillTxt}</span>
+  <span class="upd">⟳ ${d.act||""}</span>
   <svg class="spark" role="img" aria-label="Evolución reciente de ${d.t}"></svg>
   <p class="today">${d.today}</p>`;
   const svg=el.querySelector('svg');
   requestAnimationFrame(()=>spark(svg,d.sp.map(s=>({v:DATA[s.k].v,c:s.c})),{ref:d.ref}));
   return el;
 }
-for(const k of ['p2','p3','p4','p6']){const box=document.getElementById('cards-'+k); C[k].forEach(d=>box.appendChild(card(d)));}
+for(const k of ['p2','p3','p4','p4b','p6']){const box=document.getElementById('cards-'+k); C[k].forEach(d=>box.appendChild(card(d)));}
 
+const hb=document.querySelector('#heat tbody');
+DATA.sectors.forEach(r=>{const tr=document.createElement('tr');
+ const cell=v=>{const a=Math.min(Math.abs(v)/15,1); const col=v>=0?'--bull':'--bear'; return `<td class="cell" style="color:var(${col});background:color-mix(in srgb, var(${col}) ${Math.round(a*28)}%, transparent)">${v>0?'+':''}${fmt(v)} %</td>`};
+ tr.innerHTML=`<td><b class="mono">${r[0]}</b> ${r[1]}</td>${cell(r[2])}${cell(r[3])}${cell(r[4])}`; hb.appendChild(tr);});
 document.getElementById('mini-p3').innerHTML=[
  ['PIB 3.er trimestre','+4,3 %','antes +2,2 %'],['GDPNow 4.º trimestre','+2,9 %','estimación en tiempo real'],['Empleo octubre','+165.000','antes +60.000'],['Tasa de paro','4,1 %','antes 4,2 %'],['Ventas reales','−0,1 %','octubre, en el mes']
 ].map(([a,b,c])=>`<div>${a}<span class="mono">${b}</span><span class="muted">${c}</span></div>`).join('');
@@ -415,10 +450,10 @@ function compass(){
   const X=v=>cx+(W/2-30)*v/mx, Y=v=>cy-(H/2-30)*v/my;
   const zone=(x,y,w,h,fill,label,sub,ax,ay,anchor)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" fill="${css(fill)}" opacity=".55"/><text x="${ax}" y="${ay}" text-anchor="${anchor}" font-family="Space Grotesk, sans-serif" font-weight="700" font-size="15" fill="${css('--ink')}">${label}</text><text x="${ax}" y="${ay+16}" text-anchor="${anchor}" font-size="11" fill="${css('--muted')}" font-family="Inter, sans-serif">${sub}</text>`;
   let o='';
-  o+=zone(0,0,cx,cy,'--bear-soft','Fricción','inflación alta · crece poco',14,24,'start');
-  o+=zone(cx,0,cx,cy,'--warn-soft','Expansión caliente','crece · inflación sube',W-14,24,'end');
-  o+=zone(0,cy,cx,cy,'--flat-soft','Invierno','recesión · cae la inflación',14,H-28,'start');
-  o+=zone(cx,cy,cx,cy,'--bull-soft','Despegue','crece sin inflación',W-14,H-28,'end');
+  o+=zone(0,0,cx,cy,'--bear-soft','Estanflación','inflación ↑ · crecimiento ↓',14,24,'start');
+  o+=zone(cx,0,cx,cy,'--warn-soft','Boom inflacionario','crecimiento ↑ · inflación ↑',W-14,24,'end');
+  o+=zone(0,cy,cx,cy,'--flat-soft','Recesión deflacionaria','crecimiento ↓ · inflación ↓',14,H-28,'start');
+  o+=zone(cx,cy,cx,cy,'--bull-soft','Boom desinflacionario','crecimiento ↑ · inflación ↓',W-14,H-28,'end');
   o+=`<line x1="0" x2="${W}" y1="${cy}" y2="${cy}" stroke="${css('--muted')}"/><line x1="${cx}" x2="${cx}" y1="0" y2="${H}" stroke="${css('--muted')}"/>`;
   o+=`<text x="${W-8}" y="${cy+16}" text-anchor="end" font-size="10" fill="${css('--muted')}" font-family="JetBrains Mono, monospace">crecimiento →</text><text x="${cx+6}" y="14" font-size="10" fill="${css('--muted')}" font-family="JetBrains Mono, monospace">↑ inflación</text>`;
   const pts=q.x.map((x,i)=>[X(x),Y(q.y[i])]);
